@@ -12,5 +12,23 @@ public class FloatValue : ScriptableObject
         get => floatValue;
         set => floatValue = value;
     }
+
+    public FloatValue(float value)
+    {
+        floatValue = value;
+    }
+
+    public static FloatValue operator -(FloatValue a, FloatValue b)
+    {
+        var instance = CreateInstance<FloatValue>();
+        instance.Float = a.Float - b.Float;
+        return instance;
+    }
     
+    public static FloatValue operator +(FloatValue a, FloatValue b)
+    {
+        var instance = CreateInstance<FloatValue>();
+        instance.Float = a.Float + b.Float;
+        return instance;
+    }
 }

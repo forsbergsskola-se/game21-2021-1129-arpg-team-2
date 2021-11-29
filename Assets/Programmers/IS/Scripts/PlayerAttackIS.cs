@@ -16,7 +16,7 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
     {
         Debug.Log("Show me Power: " + Power);
         Debug.Log("Show me Power.Float: " + Power.Float);
-        thisTarget.TakeDamage(Power.Float);
+        thisTarget.TakeDamage(Power);
     }
 
     private IEnumerator AttackOnInterval(IDamageableIS entity)

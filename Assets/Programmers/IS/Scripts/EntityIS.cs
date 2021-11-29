@@ -13,9 +13,9 @@ public class EntityIS : MonoBehaviour, IDamageableIS
         set => currentHealth = value;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(FloatValue damage)
     {
-        CurrentHealth.Float -= damage;
+        CurrentHealth -= damage;
         Debug.Log("Entity is taking damage! " + CurrentHealth.Float);
     }
 }
