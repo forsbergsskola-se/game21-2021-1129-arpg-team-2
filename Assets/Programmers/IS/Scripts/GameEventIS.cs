@@ -5,9 +5,9 @@ using UnityEngine;
 /// A GameEvent represents any message that we want to send across the system
 /// </summary>
 [CreateAssetMenu(fileName = "Event", menuName = "Game/Event")]
-public class GameEvent : ScriptableObject
+public class GameEventIS : ScriptableObject
 {
-    private List<GameEventListener> listeners = new List<GameEventListener>();
+    private List<GameEventListenerIS> listeners = new List<GameEventListenerIS>();
 
     public void Raise()
     {
@@ -17,6 +17,6 @@ public class GameEvent : ScriptableObject
         }
     }
 
-    public void RegisterListener(GameEventListener listener) => listeners.Add(listener);
-    public void UnregisterListener(GameEventListener listener) => listeners.Remove(listener);
+    public void RegisterListener(GameEventListenerIS listener) => listeners.Add(listener);
+    public void UnregisterListener(GameEventListenerIS listener) => listeners.Remove(listener);
 }

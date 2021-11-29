@@ -7,6 +7,8 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
     [SerializeField] private FloatValue attackInterval;
     [SerializeField] private AudioSource swordAttack;
 
+    private IEnumerator coroutine;
+
     public FloatVariableIS BasePower
     {
         get => basePower;
@@ -32,8 +34,15 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
         // The range for this trigger is controller by SphereCollider/Radius
         if (other.TryGetComponent(out EntityIS entity) && entity is IDamageableIS)
         {
-            StartCoroutine(AttackOnInterval(entity));
+            coroutine = AttackOnInterval(entity);
+            StartCoroutine(coroutine);
             Debug.Log("An IDamageable entity in range! " + entity);
         }
+    }
+
+    public void OnDestructibleDestroyed()
+    {
+        Debug.Log("Attack coroutine stopping...");
+        StopCoroutine(coroutine);
     }
 }
