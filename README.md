@@ -20,7 +20,7 @@ Rachael Whelan [LinkedIn](https://www.linkedin.com/in/rachaelmai/) [Portfolio](h
 *Programmers*
 
 Armin Afazeli [LinkedIn](https://www.linkedin.com/in/arminafazeli/)  
-Ina Shen-Lewander [LinkedIn](https://www.linkedin.com/in/inashen-lewander/) 
+Ina Shen-Lewander [LinkedIn](https://www.linkedin.com/in/inashen-lewander/)   
 Jasmine Öhlin [LinkedIn](https://www.linkedin.com/in/jasmine-%C3%B6hlin-712840209/?originalSubdomain=se)  
 Sara Saber [LinkedIn](https://www.linkedin.com/in/sara-saber-6b0804b6/)  
 Sokratis Papageorgiou [LinkedIn](https://www.linkedin.com/in/sokratis-papageorgiou-b26b1652/)  
