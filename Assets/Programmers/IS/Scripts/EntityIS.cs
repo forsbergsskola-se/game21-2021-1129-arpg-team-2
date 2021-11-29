@@ -8,8 +8,9 @@ public class EntityIS : MonoBehaviour, IDamageableIS
     [SerializeField] private FloatValue currentHealth;
     public FloatValue CurrentHealth { get; set; }
 
-    public void TakeDamage(IAttackIS attacker)
+    public void TakeDamage(float damage)
     {
-        CurrentHealth.Float -= attacker.Power.Float;
+        CurrentHealth.Float -= damage;
+        Debug.Log("Entity is taking damage! " + CurrentHealth.Float);
     }
 }
