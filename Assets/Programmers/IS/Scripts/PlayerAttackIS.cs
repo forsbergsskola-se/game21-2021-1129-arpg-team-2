@@ -5,41 +5,35 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
 {
     [SerializeField] private FloatValue power;
     [SerializeField] private FloatValue attackInterval;
-    public FloatValue Power { get; set; }
-    private IDamageableIS target;
 
-    public void Attack(IDamageableIS someTarget)
+    public FloatValue Power
     {
-        someTarget.TakeDamage(Power.Float);
+        get => power;
+        set => power = value;
     }
-    
-    // private void Update()
-    // {
-    //     Debug.Log("What is target " + target);
-    //     if (target is not null && Input.GetMouseButtonDown(0))
-    //     {
-    //         Attack(target);
-    //     }
-    // }
+    // private IDamageableIS target;
 
-    private IEnumerator AttackOnInterval()
+    public void Attack(IDamageableIS thisTarget)
     {
-        Debug.Log("Gimme target: " + target);
-        Attack(target);
+        Debug.Log("Show me Power: " + Power);
+        Debug.Log("Show me Power.Float: " + Power.Float);
+        thisTarget.TakeDamage(Power.Float);
+    }
+
+    private IEnumerator AttackOnInterval(IDamageableIS entity)
+    {
+        Attack(entity);
         yield return new WaitForSeconds(attackInterval.Float);
     }
     
     
     private void OnTriggerEnter(Collider other)
     {
-        target = null;
         // The range for this trigger is controller by SphereCollider/Radius
         if (other.TryGetComponent(out EntityIS entity) && entity is IDamageableIS)
         {
-            target = entity;
-            // Attack(target);
-            StartCoroutine(AttackOnInterval());
-            Debug.Log("An IDamageable entity in range! " + target);
+            StartCoroutine(AttackOnInterval(entity));
+            Debug.Log("An IDamageable entity in range! " + entity);
         }
     }
 }

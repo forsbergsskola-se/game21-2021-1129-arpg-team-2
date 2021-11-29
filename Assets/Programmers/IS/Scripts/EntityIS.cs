@@ -6,7 +6,12 @@ public class EntityIS : MonoBehaviour, IDamageableIS
 {
     [SerializeField] private EntityType entityType;
     [SerializeField] private FloatValue currentHealth;
-    public FloatValue CurrentHealth { get; set; }
+
+    public FloatValue CurrentHealth
+    {
+        get => currentHealth;
+        set => currentHealth = value;
+    }
 
     public void TakeDamage(float damage)
     {
