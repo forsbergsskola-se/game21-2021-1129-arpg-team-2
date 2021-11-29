@@ -1,5 +1,5 @@
 public interface IAttackIS
 {
-    public FloatValue Power { get; set; }
+    public FloatValue BasePower { get; set; }
     public void Attack(IDamageableIS thisTarget);
 }

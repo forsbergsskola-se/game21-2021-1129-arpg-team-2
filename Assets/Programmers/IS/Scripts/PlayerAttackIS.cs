@@ -3,20 +3,18 @@ using UnityEngine;
 
 public class PlayerAttackIS : MonoBehaviour, IAttackIS
 {
-    [SerializeField] private FloatValue power;
+    [SerializeField] private FloatValue basePower;
     [SerializeField] private FloatValue attackInterval;
 
-    public FloatValue Power
+    public FloatValue BasePower
     {
-        get => power;
-        set => power = value;
+        get => basePower;
+        set => basePower = value;
     }
 
     public void Attack(IDamageableIS thisTarget)
     {
-        Debug.Log("Show me Power: " + Power);
-        Debug.Log("Show me Power.Float: " + Power.Float);
-        thisTarget.TakeDamage(Power);
+        thisTarget.TakeDamage(BasePower);
     }
 
     private IEnumerator AttackOnInterval(IDamageableIS entity)
