@@ -11,7 +11,6 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
         get => power;
         set => power = value;
     }
-    // private IDamageableIS target;
 
     public void Attack(IDamageableIS thisTarget)
     {
@@ -24,6 +23,7 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
     {
         Attack(entity);
         yield return new WaitForSeconds(attackInterval.Float);
+        StartCoroutine(AttackOnInterval(entity));
     }
     
     
