@@ -1,21 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EntityIS : MonoBehaviour, IDamageableIS
 {
     [SerializeField] private EntityType entityType;
-    [SerializeField] private FloatValue currentHealth;
+    [SerializeField] private FloatValue maxHealth;
+    public float CurrentHealth { get; set; }
 
-    public FloatValue CurrentHealth
+    private void Awake()
     {
-        get => currentHealth;
-        set => currentHealth = value;
+        CurrentHealth = maxHealth.Float;
     }
 
     public void TakeDamage(FloatValue damage)
     {
-        CurrentHealth -= damage;
-        Debug.Log("Entity is taking damage! " + CurrentHealth.Float);
+        CurrentHealth -= damage.Float;
+        Debug.Log("Entity is taking damage! " + CurrentHealth);
     }
 }
