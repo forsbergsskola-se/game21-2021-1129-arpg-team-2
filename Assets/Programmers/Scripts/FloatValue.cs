@@ -12,4 +12,5 @@ public class FloatValue : ScriptableObject
         get => floatValue;
         set => floatValue = value;
     }
+    
 }
