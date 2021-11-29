@@ -5,6 +5,7 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
 {
     [SerializeField] private FloatValue basePower;
     [SerializeField] private FloatValue attackInterval;
+    [SerializeField] private AudioSource swordAttack;
 
     public FloatValue BasePower
     {
@@ -14,6 +15,7 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
 
     public void Attack(IDamageableIS thisTarget)
     {
+        swordAttack.Play();
         thisTarget.TakeDamage(BasePower);
     }
 
