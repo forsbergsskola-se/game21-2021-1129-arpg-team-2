@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class PlayerAttackIS : MonoBehaviour, IAttackIS
 {
-    [SerializeField] private FloatValue basePower;
+    [SerializeField] private FloatVariableIS basePower;
     [SerializeField] private FloatValue attackInterval;
     [SerializeField] private AudioSource swordAttack;
 
-    public FloatValue BasePower
+    public FloatVariableIS BasePower
     {
         get => basePower;
         set => basePower = value;

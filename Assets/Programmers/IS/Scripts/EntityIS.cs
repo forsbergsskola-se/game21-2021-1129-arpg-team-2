@@ -3,17 +3,12 @@ using UnityEngine;
 public class EntityIS : MonoBehaviour, IDamageableIS
 {
     [SerializeField] private EntityType entityType;
-    [SerializeField] private FloatValue maxHealth;
-    public float CurrentHealth { get; set; }
+    [SerializeField] private FloatVariableIS currentHealth;
+    public FloatVariableIS CurrentHealth { get => currentHealth; set => currentHealth = value; }
 
-    private void Awake()
+    public void TakeDamage(FloatVariableIS damage)
     {
-        CurrentHealth = maxHealth.Float;
-    }
-
-    public void TakeDamage(FloatValue damage)
-    {
-        CurrentHealth -= damage.Float;
-        Debug.Log("Entity is taking damage! " + CurrentHealth);
+        CurrentHealth.RuntimeValue -= damage.RuntimeValue;
+        Debug.Log("Entity is taking damage! " + CurrentHealth.RuntimeValue);
     }
 }
