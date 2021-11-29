@@ -6,7 +6,21 @@
 
 ## Team Name
 
-{team members and roles}
+*Game Designers*
+Elias Bernmarker [LinkedIn](https://www.linkedin.com/in/elias-bernmarker-0733a9203/)
+Lucas Olsson [LinkedIn](https://www.linkedin.com/in/lucasolsson/)
+Max DK [LinkedIn](https://www.linkedin.com/in/max-dk-5641b5224/)
+
+*Artists*
+Linnea Lundbeck [LinkedIn](https://www.linkedin.com/in/linnea-lundbeck-844398220/)
+Rachael Whelan [LinkedIn](https://www.linkedin.com/in/rachaelmai/) [Portfolio](https://www.behance.net/rachaelmai)
+
+*Programmers*
+Armin Afazeli [LinkedIn](https://www.linkedin.com/in/arminafazeli/)
+Sara Saber [LinkedIn](https://www.linkedin.com/in/sara-saber-6b0804b6/)
+Sokratis Papageorgiou [LinkedIn](https://www.linkedin.com/in/sokratis-papageorgiou-b26b1652/)
+
+*Sound Designers*
 
 Feel free to link any existing Linked.in Profiles or Portfolio Websites.
 
