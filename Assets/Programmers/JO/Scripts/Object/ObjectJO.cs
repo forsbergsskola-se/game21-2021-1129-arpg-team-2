@@ -7,11 +7,7 @@ public class ObjectJO : MonoBehaviour, IDamageableJO
     [SerializeField] IntegerValue objectHealth;
     static int weaponDam = 10;
 
-    void IDamageableJO.TakeDamage(int WeaponDamage) {
+    public void TakeDamage(int WeaponDamage) {
         objectHealth.Int -= WeaponDamage;
-    }
-
-    void main() {
-        //IDamageableJO.TakeDamage(weaponDam);
     }
 }

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IDamageableJO
 {
-    void TakeDamage(int weaponDamage);
+    public void TakeDamage(int weaponDamage);
 }
