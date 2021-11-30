@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class PlayerAttackIS : MonoBehaviour, IAttackIS
 {
-    [SerializeField] private FloatVariableIS basePower;
+    [SerializeField] private FloatValue basePower;
     [SerializeField] private FloatValue attackInterval;
     [SerializeField] private AudioSource swordAttack;
 
-    public FloatVariableIS BasePower
+    public FloatValue BasePower
     {
         get => basePower;
         set => basePower = value;
@@ -15,7 +15,9 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
 
     public void Attack(IDamageableIS thisTarget)
     {
-        swordAttack.Play();
+        // swordAttack.Play();
+        Debug.Log("gimme BasePower: " + BasePower);
+        Debug.Log("gimme BasePower.Runtime: " + BasePower.RuntimeValue);
         thisTarget.TakeDamage(BasePower);
     }
 
