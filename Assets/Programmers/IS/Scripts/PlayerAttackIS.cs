@@ -15,17 +15,17 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
 
     public void Attack(IDamageableIS thisTarget)
     {
-        // swordAttack.Play();
-        Debug.Log("gimme BasePower: " + BasePower);
-        Debug.Log("gimme BasePower.Runtime: " + BasePower.RuntimeValue);
+        swordAttack.Play();
         thisTarget.TakeDamage(BasePower);
     }
 
     private IEnumerator AttackOnInterval(IDamageableIS entity)
     {
-        Attack(entity);
-        yield return new WaitForSeconds(attackInterval.RuntimeValue);
-        StartCoroutine(AttackOnInterval(entity));
+        while (entity.CurrentHealth.RuntimeValue > 0f)
+        {
+            Attack(entity);
+            yield return new WaitForSeconds(attackInterval.RuntimeValue);
+        }
     }
     
     
