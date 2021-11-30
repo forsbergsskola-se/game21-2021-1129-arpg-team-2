@@ -15,6 +15,7 @@ public class EntityIS : MonoBehaviour, IDamageableIS
     public void TakeDamage(FloatValue damage)
     {
         CurrentHealth.RuntimeValue -= damage.RuntimeValue;
+        
         if (CurrentHealth.RuntimeValue <= 0f)
         {
             entityStatus = EntityStatus.Destroyed;
@@ -26,6 +27,7 @@ public class EntityIS : MonoBehaviour, IDamageableIS
     {
         destroySound.Play();
         DisableAsObstacle();
+        SpawnDestructionParticles();
     }
 
     private void DisableAsObstacle()
@@ -37,5 +39,10 @@ public class EntityIS : MonoBehaviour, IDamageableIS
             obstacleMesh.enabled = false;
             collider.enabled = false;
         }
+    }
+
+    private void SpawnDestructionParticles()
+    {
+        
     }
 }
