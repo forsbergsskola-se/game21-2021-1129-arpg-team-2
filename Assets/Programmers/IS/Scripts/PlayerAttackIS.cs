@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerAttackIS : MonoBehaviour, IAttackIS
@@ -6,6 +8,9 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
     [SerializeField] private FloatValue basePower;
     [SerializeField] private FloatValue attackInterval;
     [SerializeField] private AudioSource swordAttack;
+    [SerializeField] private WeaponIS weapon;
+
+    private IDamageableIS target;
 
     public FloatValue BasePower
     {
@@ -15,6 +20,7 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
 
     public void Attack(IDamageableIS thisTarget)
     {
+        if (thisTarget == null) return;
         swordAttack.Play();
         thisTarget.TakeDamage(BasePower);
     }
@@ -27,21 +33,51 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
             yield return new WaitForSeconds(attackInterval.RuntimeValue);
         }
     }
-    
-    
-    private void OnTriggerEnter(Collider other)
+
+    private void Update()
     {
-        // The range for this trigger is controller by SphereCollider/Radius
-        if (other.TryGetComponent(out EntityIS entity) && entity is IDamageableIS)
+        if (Input.GetMouseButtonDown(0))
         {
-            StartCoroutine(AttackOnInterval(entity));
-            Debug.Log("An IDamageable entity in range! " + entity);
+            if (IsTargetInRange())
+            {
+                Debug.Log("Target acquired, ready to attack");
+                StartCoroutine(AttackOnInterval(target));
+            }
+            else
+            {
+                Debug.Log("Target out of range");
+            }
         }
     }
 
-    // public void OnDestructibleDestroyed()
+    private bool IsTargetInRange()
+    {
+        var result = false;
+        var temp = FindObjectsOfType<EntityIS>().Where(x => x is IDamageableIS).ToList();
+        for (var i = 0; i < temp.Count; i++)
+        {
+            var tempPos = temp[i].transform.position;
+            result = Vector3.Distance(transform.position, tempPos) <= weapon.Range;
+            if (result)
+            {
+                target = temp[i];
+                break;
+            }
+        }
+
+        if (!result) target = null;
+        return result;
+    }
+
+    //
+    
+    // private void OnTriggerEnter(Collider other)
     // {
-    //     Debug.Log("Attack coroutine stopping...");
-    //     StopCoroutine(coroutine);
+    //     // The range for this trigger is controller by SphereCollider/Radius
+    //     if (other.TryGetComponent(out EntityIS entity) && entity is IDamageableIS)
+    //     {
+    //         StartCoroutine(AttackOnInterval(entity));
+    //         Debug.Log("An IDamageable entity in range! " + entity);
+    //     }
     // }
 }

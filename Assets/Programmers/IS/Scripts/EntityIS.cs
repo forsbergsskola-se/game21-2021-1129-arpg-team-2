@@ -15,6 +15,9 @@ public class EntityIS : MonoBehaviour, IDamageableIS
     public void TakeDamage(FloatValue damage)
     {
         CurrentHealth.RuntimeValue -= damage.RuntimeValue;
+
+        Debug.Log("Entity taking damage! " + CurrentHealth.RuntimeValue);
+        
         if (CurrentHealth.RuntimeValue <= 0f)
         {
             entityStatus = EntityStatus.Destroyed;
