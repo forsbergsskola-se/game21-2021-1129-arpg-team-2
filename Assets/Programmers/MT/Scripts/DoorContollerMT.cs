@@ -12,6 +12,12 @@ public class DoorContollerMT : MonoBehaviour
         doorAnim.SetBool("isOpening", true);
     }
 
+
+    private void OnTriggerExit(Collider other)
+    {
+        doorAnim.SetBool("isOpening", false);
+    }
+
     void Start()
     {
         doorAnim = this.transform.parent.GetComponent<Animator>();
