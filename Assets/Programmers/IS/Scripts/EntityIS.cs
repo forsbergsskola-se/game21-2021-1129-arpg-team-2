@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -27,7 +28,7 @@ public class EntityIS : MonoBehaviour, IDamageableIS
     {
         destroySound.Play();
         DisableAsObstacle();
-        SpawnDestructionParticles();
+        StartCoroutine(VisualDestruction());
     }
 
     private void DisableAsObstacle()
@@ -41,8 +42,17 @@ public class EntityIS : MonoBehaviour, IDamageableIS
         }
     }
 
-    private void SpawnDestructionParticles()
+    private IEnumerator VisualDestruction()
     {
-        
+        ParticleSystem destructionParticles = GetComponent<ParticleSystem>();
+        MeshRenderer entityMesh = GetComponent<MeshRenderer>();
+
+        if (destructionParticles != null)
+        {
+            destructionParticles.Play();
+        }
+
+        yield return new WaitForSeconds(0.100f);
+        entityMesh.enabled = false;
     }
 }
