@@ -49,6 +49,8 @@ public class EntityIS : MonoBehaviour, IDamageableIS
         MeshRenderer entityMesh = GetComponent<MeshRenderer>();
 
         Instantiate(destructionParticles, this.transform.position, Quaternion.identity);
+        ParticleSystem ps = destructionParticles.GetComponentInChildren<ParticleSystem>();
+        ps.Play();
 
         Debug.Log("Particles spawned");
        /*if (destructionParticles != null)
