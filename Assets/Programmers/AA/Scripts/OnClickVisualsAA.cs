@@ -11,7 +11,9 @@ public class OnClickVisualsAA : MonoBehaviour
     public AudioSource ValidMove;
     public AudioSource InvalidMove;
     public AudioSource Hammer;
-
+    public AudioSource Sword;
+    
+    
     void Start()
     {
         //anim = gameObject.GetComponent<Animator>();
@@ -20,34 +22,29 @@ public class OnClickVisualsAA : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //anim.SetTrigger("Active");
-
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit) && CheckDestination(hit.transform.position))
+            if (Physics.Raycast(ray, out hit) && CheckDestination(hit.transform.position) && !hit.transform.GetComponent<EnemyFollowAA>())
             {
                 Instantiate(myPrefabValid, hit.point, Quaternion.identity);
                 ValidMove.Play();
 
             }
-            else if (hit.transform.tag == "Wall")
+            else if (hit.transform.CompareTag("Wall"))
             {
                 Hammer.Play();
             }
-            else if (hit.transform.tag == "Enemy")
+            else if (hit.transform.GetComponent<EnemyFollowAA>())
             {
-                Hammer.Play();
+                Sword.Play();
             }
             else
             {
                 Instantiate(myPrefabInvalid, hit.point, Quaternion.identity);
                 InvalidMove.Play();
             }
-            
         }
-        
-        
     }
     private bool CheckDestination(Vector3 targetDestination)
     {
