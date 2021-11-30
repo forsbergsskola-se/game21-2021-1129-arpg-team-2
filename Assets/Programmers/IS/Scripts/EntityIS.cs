@@ -13,24 +13,13 @@ public class EntityIS : MonoBehaviour, IDamageableIS
 
     public void TakeDamage(FloatValue damage)
     {
-        Debug.Log("CurrentHealth: " + CurrentHealth.RuntimeValue);
-        Debug.Log("damage: " + damage.RuntimeValue);
-        
         CurrentHealth.RuntimeValue -= damage.RuntimeValue;
-        Debug.Log("Entity is taking damage! " + CurrentHealth.RuntimeValue);
-
         if (CurrentHealth.RuntimeValue <= 0f)
         {
             entityStatus = EntityStatus.Destroyed;
-
-            Debug.Log("EntityDie event raised");
-            
             entityDie.Raise();
         }
     }
 
-    public void OnEntityDie()
-    {
-        destroySound.Play();
-    }
+    public void OnEntityDie() => destroySound.Play();
 }
