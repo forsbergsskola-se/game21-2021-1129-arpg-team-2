@@ -32,9 +32,9 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
         while (entity.CurrentHealth.RuntimeValue > 0f)
         {
             Attack(entity);
-            yield return new WaitForSeconds(attackInterval.RuntimeValue);
+            if (attackOnGoing) yield return new WaitForSeconds(attackInterval.RuntimeValue);
+            else yield break;
         }
-        attackOnGoing = false;
     }
 
     private void Update()
@@ -46,15 +46,22 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
                 Debug.Log("Target acquired, ready to attack");
                 StartCoroutine(AttackOnInterval(target));
             }
-            else
-            {
-                Debug.Log("Target out of range");
-                if (attackOnGoing)
-                {
-                    Debug.Log("Stopping active coroutine...");
-                    StopCoroutine(nameof(AttackOnInterval));
-                }
-            }
+            // else
+            // {
+            //     Debug.Log("Target out of range");
+            //     if (attackOnGoing)
+            //     {
+            //         Debug.Log("Stopping active coroutine...");
+            //         StopCoroutine(nameof(AttackOnInterval));
+            //     }
+            // }
+        }
+
+        if (!IsTargetInRange() && attackOnGoing)
+        {
+            Debug.Log("Stopping active coroutine...");
+            // StopCoroutine(nameof(AttackOnInterval));
+            attackOnGoing = false;
         }
     }
 

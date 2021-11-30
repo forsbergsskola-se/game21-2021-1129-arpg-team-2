@@ -5,8 +5,8 @@ public class WeaponIS : ScriptableObject
 {
     [SerializeField] private new string name;
     [SerializeField] private float power;
-    [SerializeField] private float range;
+    [SerializeField] private FloatValue range;
     public float Power => power;
-    public float Range => range;
+    public float Range => range.RuntimeValue;
     public string Name => name;
 }
