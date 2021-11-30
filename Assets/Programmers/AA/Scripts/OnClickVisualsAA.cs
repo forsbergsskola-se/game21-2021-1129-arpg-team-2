@@ -10,6 +10,7 @@ public class OnClickVisualsAA : MonoBehaviour
     public GameObject myPrefabInvalid;
     public AudioSource ValidMove;
     public AudioSource InvalidMove;
+    public AudioSource Hammer;
 
     void Start()
     {
@@ -29,6 +30,14 @@ public class OnClickVisualsAA : MonoBehaviour
                 Instantiate(myPrefabValid, hit.point, Quaternion.identity);
                 ValidMove.Play();
 
+            }
+            else if (hit.transform.tag == "Wall")
+            {
+                Hammer.Play();
+            }
+            else if (hit.transform.tag == "Enemy")
+            {
+                Hammer.Play();
             }
             else
             {
