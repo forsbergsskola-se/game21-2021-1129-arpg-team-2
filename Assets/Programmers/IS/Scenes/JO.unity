@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5780,7 +5780,7 @@ MonoBehaviour:
   basePower: {fileID: 11400000, guid: 312f2dc86b0e7f74faba0ad42fc30f45, type: 2}
   attackInterval: {fileID: 11400000, guid: f3ee0385400c6894a8675bba073eb6bb, type: 2}
   swordAttack: {fileID: 564121641}
-  weapon: {fileID: 0}
+  weapon: {fileID: 11400000, guid: f223fbec50eb6ef4abfdc1abe1c3713a, type: 2}
 --- !u!54 &564121640
 Rigidbody:
   m_ObjectHideFlags: 0

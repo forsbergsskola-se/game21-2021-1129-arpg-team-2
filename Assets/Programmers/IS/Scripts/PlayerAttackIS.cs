@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -46,21 +45,11 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
                 Debug.Log("Target acquired, ready to attack");
                 StartCoroutine(AttackOnInterval(target));
             }
-            // else
-            // {
-            //     Debug.Log("Target out of range");
-            //     if (attackOnGoing)
-            //     {
-            //         Debug.Log("Stopping active coroutine...");
-            //         StopCoroutine(nameof(AttackOnInterval));
-            //     }
-            // }
         }
 
         if (!IsTargetInRange() && attackOnGoing)
         {
             Debug.Log("Stopping active coroutine...");
-            // StopCoroutine(nameof(AttackOnInterval));
             attackOnGoing = false;
         }
     }
@@ -83,16 +72,4 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
         if (!result) target = null;
         return result;
     }
-
-    //
-    
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     // The range for this trigger is controller by SphereCollider/Radius
-    //     if (other.TryGetComponent(out EntityIS entity) && entity is IDamageableIS)
-    //     {
-    //         StartCoroutine(AttackOnInterval(entity));
-    //         Debug.Log("An IDamageable entity in range! " + entity);
-    //     }
-    // }
 }
