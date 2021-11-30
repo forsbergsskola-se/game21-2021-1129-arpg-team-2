@@ -535,7 +535,6 @@ GameObject:
   - component: {fileID: 564121633}
   - component: {fileID: 564121632}
   - component: {fileID: 564121636}
-  - component: {fileID: 564121638}
   - component: {fileID: 564121640}
   - component: {fileID: 564121641}
   - component: {fileID: 564121639}
@@ -623,7 +622,8 @@ Transform:
   m_LocalPosition: {x: 1.9615173, y: 1.27, z: 0.662632}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1655208789}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -649,19 +649,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!135 &564121638
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 564121631}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &564121639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -677,6 +664,7 @@ MonoBehaviour:
   basePower: {fileID: 11400000, guid: 312f2dc86b0e7f74faba0ad42fc30f45, type: 2}
   attackInterval: {fileID: 11400000, guid: f3ee0385400c6894a8675bba073eb6bb, type: 2}
   swordAttack: {fileID: 564121641}
+  weapon: {fileID: 11400000, guid: f223fbec50eb6ef4abfdc1abe1c3713a, type: 2}
 --- !u!54 &564121640
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -830,7 +818,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPosition: {fileID: 11400000, guid: e0dc665763f850148b4d31424b602fd4, type: 2}
-  entityDestination: {fileID: 0}
+  playerRange: {fileID: 11400000, guid: 4b1121ad89341b14797f065185e82ede, type: 2}
+  entityDestination: {fileID: 11400000, guid: ea0b25297ac49e648a38c2f1b561b825, type: 2}
 --- !u!1 &673693943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,6 +1828,89 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527871279}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1655208788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1655208789}
+  - component: {fileID: 1655208792}
+  - component: {fileID: 1655208791}
+  m_Layer: 0
+  m_Name: MockSword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1655208789
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655208788}
+  m_LocalRotation: {x: -0.30714908, y: -0, z: -0, w: 0.95166147}
+  m_LocalPosition: {x: 0.5984826, y: 0.23000002, z: -0.402632}
+  m_LocalScale: {x: 0.2, y: 1.5, z: 0.20000002}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 564121635}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -35.775, y: 0, z: 0}
+--- !u!23 &1655208791
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655208788}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1655208792
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655208788}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1680228848
 GameObject:

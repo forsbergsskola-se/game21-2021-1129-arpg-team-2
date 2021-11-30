@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,6 +9,7 @@ public class EntityIS : MonoBehaviour, IDamageableIS
     [SerializeField] private FloatValue currentHealth;
     [SerializeField] private GameEventIS entityDie;
     [SerializeField] private AudioSource destroySound;
+    [SerializeField] private GameObject destructionParticles;
     
     public FloatValue CurrentHealth { get => currentHealth; set => currentHealth = value; }
     public EntityStatus CurrentStatus { get => entityStatus; set => entityStatus = value; }
@@ -27,7 +29,7 @@ public class EntityIS : MonoBehaviour, IDamageableIS
     {
         destroySound.Play();
         DisableAsObstacle();
-        SpawnDestructionParticles();
+        StartCoroutine(VisualDestruction());
     }
 
     private void DisableAsObstacle()
@@ -41,8 +43,22 @@ public class EntityIS : MonoBehaviour, IDamageableIS
         }
     }
 
-    private void SpawnDestructionParticles()
+    private IEnumerator VisualDestruction()
     {
-        
+        //ParticleSystem destructionParticles = GetComponent<ParticleSystem>();
+        MeshRenderer entityMesh = GetComponent<MeshRenderer>();
+
+        Instantiate(destructionParticles, this.transform.position, Quaternion.identity);
+        ParticleSystem ps = destructionParticles.GetComponentInChildren<ParticleSystem>();
+        ps.Play();
+
+        Debug.Log("Particles spawned");
+       /*if (destructionParticles != null)
+        {
+            destructionParticles.Play();
+        }*/
+
+        yield return new WaitForSeconds(0.100f);
+        entityMesh.enabled = false;
     }
 }
