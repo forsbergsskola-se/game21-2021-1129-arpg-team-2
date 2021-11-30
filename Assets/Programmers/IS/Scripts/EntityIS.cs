@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,8 +16,6 @@ public class EntityIS : MonoBehaviour, IDamageableIS
     public void TakeDamage(FloatValue damage)
     {
         CurrentHealth.RuntimeValue -= damage.RuntimeValue;
-
-        Debug.Log("Entity taking damage! " + CurrentHealth.RuntimeValue);
         
         if (CurrentHealth.RuntimeValue <= 0f)
         {
@@ -29,6 +28,7 @@ public class EntityIS : MonoBehaviour, IDamageableIS
     {
         destroySound.Play();
         DisableAsObstacle();
+        StartCoroutine(VisualDestruction());
     }
 
     private void DisableAsObstacle()
@@ -40,5 +40,19 @@ public class EntityIS : MonoBehaviour, IDamageableIS
             obstacleMesh.enabled = false;
             collider.enabled = false;
         }
+    }
+
+    private IEnumerator VisualDestruction()
+    {
+        ParticleSystem destructionParticles = GetComponent<ParticleSystem>();
+        MeshRenderer entityMesh = GetComponent<MeshRenderer>();
+
+        if (destructionParticles != null)
+        {
+            destructionParticles.Play();
+        }
+
+        yield return new WaitForSeconds(0.100f);
+        entityMesh.enabled = false;
     }
 }
