@@ -7,12 +7,14 @@ using UnityEngine.AI;
 
 public class PlayernavMeshIS : MonoBehaviour
 {
-    [SerializeField] private Transform movePositionTransform;
+    [SerializeField] private Vector3Value playerPosition;
+    public Vector3Value entityDestination;
     private NavMeshAgent navMeshAgent;
     
     private void Awake()
     {
-         navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        playerPosition.Vector3 = transform.position;
     }
 
     private void Update()
@@ -26,6 +28,8 @@ public class PlayernavMeshIS : MonoBehaviour
                 navMeshAgent.destination = hit.point;
             }
         }
+
+        playerPosition.Vector3 = transform.position;
     }
     
     private bool SetDestination(Vector3 targetDestination)
@@ -37,6 +41,11 @@ public class PlayernavMeshIS : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void TestTest()
+    {
+        navMeshAgent.SetDestination(entityDestination.Vector3);
     }
 }
 
