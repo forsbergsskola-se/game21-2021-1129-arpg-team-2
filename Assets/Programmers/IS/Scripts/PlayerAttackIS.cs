@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class PlayerAttackIS : MonoBehaviour, IAttackIS
 {
-    [SerializeField] private FloatVariableIS basePower;
+    [SerializeField] private FloatValue basePower;
     [SerializeField] private FloatValue attackInterval;
     [SerializeField] private AudioSource swordAttack;
 
-    public FloatVariableIS BasePower
+    public FloatValue BasePower
     {
         get => basePower;
         set => basePower = value;
@@ -21,9 +21,11 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
 
     private IEnumerator AttackOnInterval(IDamageableIS entity)
     {
-        Attack(entity);
-        yield return new WaitForSeconds(attackInterval.Float);
-        StartCoroutine(AttackOnInterval(entity));
+        while (entity.CurrentHealth.RuntimeValue > 0f)
+        {
+            Attack(entity);
+            yield return new WaitForSeconds(attackInterval.RuntimeValue);
+        }
     }
     
     
