@@ -11,6 +11,7 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
     [SerializeField] private WeaponIS weapon;
 
     private IDamageableIS target;
+    private bool attackOnGoing;
 
     public FloatValue BasePower
     {
@@ -27,11 +28,13 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
 
     private IEnumerator AttackOnInterval(IDamageableIS entity)
     {
+        attackOnGoing = true;
         while (entity.CurrentHealth.RuntimeValue > 0f)
         {
             Attack(entity);
             yield return new WaitForSeconds(attackInterval.RuntimeValue);
         }
+        attackOnGoing = false;
     }
 
     private void Update()
@@ -46,6 +49,11 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
             else
             {
                 Debug.Log("Target out of range");
+                if (attackOnGoing)
+                {
+                    Debug.Log("Stopping active coroutine...");
+                    StopCoroutine(nameof(AttackOnInterval));
+                }
             }
         }
     }
