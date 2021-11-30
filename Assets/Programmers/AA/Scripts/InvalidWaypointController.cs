@@ -6,17 +6,11 @@ public class InvalidWaypointController : MonoBehaviour
 {
     void Update()
     {
-        
+        Invoke(nameof(DestroyObject), 0.5f);
         if (Input.GetMouseButtonDown(0))
         {
-            Destroy(gameObject);
+            DestroyObject();
         }
-        else
-        {
-            Invoke(nameof(DestroyObject), 0.5f);
-        }
-        
-        
     }
     
     void DestroyObject()
