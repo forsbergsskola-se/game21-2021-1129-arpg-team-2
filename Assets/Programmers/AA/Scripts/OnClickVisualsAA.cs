@@ -6,7 +6,8 @@ using UnityEngine.AI;
 public class OnClickVisualsAA : MonoBehaviour
 {
     //Animator anim;
-    public GameObject myPrefab;
+    public GameObject myPrefabValid;
+    public GameObject myPrefabInvalid;
 
     void Start()
     {
@@ -17,20 +18,32 @@ public class OnClickVisualsAA : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             //anim.SetTrigger("Active");
-            //Instantiate(myPrefab, hit.position, Quaternion.identity);
-            
+
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit) && CheckDestination(hit.transform.position))
             {
-                Instantiate(myPrefab, hit.point, Quaternion.identity);
+                Instantiate(myPrefabValid, hit.point, Quaternion.identity);
 
+            }
+            else
+            {
+                Instantiate(myPrefabInvalid, hit.point, Quaternion.identity);
             }
             
         }
         
         
+    }
+    private bool CheckDestination(Vector3 targetDestination)
+    {
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(targetDestination, out hit, 1f, NavMesh.AllAreas))
+        {
+            return true;
+        }
+        return false;
     }
 
     
