@@ -7,6 +7,7 @@ using UnityEngine.AI;
 
 public class PlayernavMeshAA : MonoBehaviour
 {
+
     [SerializeField] private Vector3Value playerPosition;
     
     [SerializeField] private Transform movePositionTransform;
@@ -25,7 +26,7 @@ public class PlayernavMeshAA : MonoBehaviour
             RaycastHit hit;
             //var hit: RaycastHit;
                 
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) & SetDestination(hit.transform.position)) {
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && SetDestination(hit.transform.position)) {
                 navMeshAgent.destination = hit.point;
             }
         }
