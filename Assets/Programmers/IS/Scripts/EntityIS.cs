@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EntityIS : MonoBehaviour, IDamageableIS
 {
@@ -21,5 +22,20 @@ public class EntityIS : MonoBehaviour, IDamageableIS
         }
     }
 
-    public void OnEntityDie() => destroySound.Play();
+    public void OnEntityDie()
+    {
+        destroySound.Play();
+        DisableAsObstacle();
+    }
+
+    private void DisableAsObstacle()
+    {
+        NavMeshObstacle obstacleMesh = GetComponent<NavMeshObstacle>();
+        BoxCollider collider = GetComponent<BoxCollider>();
+        if (obstacleMesh != null && collider != null)
+        {
+            obstacleMesh.enabled = false;
+            collider.enabled = false;
+        }
+    }
 }
