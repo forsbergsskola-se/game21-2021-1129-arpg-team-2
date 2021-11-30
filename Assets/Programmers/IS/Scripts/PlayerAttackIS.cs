@@ -22,7 +22,7 @@ public class PlayerAttackIS : MonoBehaviour, IAttackIS
     private IEnumerator AttackOnInterval(IDamageableIS entity)
     {
         Attack(entity);
-        yield return new WaitForSeconds(attackInterval.Float);
+        yield return new WaitForSeconds(attackInterval.RuntimeValue);
         StartCoroutine(AttackOnInterval(entity));
     }
     
