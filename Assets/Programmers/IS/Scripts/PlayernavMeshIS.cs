@@ -24,8 +24,17 @@ public class PlayernavMeshIS : MonoBehaviour
             RaycastHit hit;
             //var hit: RaycastHit;
                 
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) & SetDestination(hit.transform.position)) {
-                navMeshAgent.destination = hit.point;
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+            {
+                if (hit.transform.GetComponent<DestructibleTestIS>() != null)
+                {
+                    Debug.Log("Moving towards a destructable stuff");
+                    navMeshAgent.destination = hit.transform.position;
+                }
+                else if (SetDestination(hit.transform.position))
+                {
+                    navMeshAgent.destination = hit.point;    
+                }
             }
         }
 
