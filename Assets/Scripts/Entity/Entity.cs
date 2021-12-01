@@ -15,9 +15,11 @@ public class Entity : MonoBehaviour, IDamageable
     {
         CurrentHealth.RuntimeValue -= damage.RuntimeValue;
 
+        Debug.Log("Entity taking damage: " + CurrentHealth.RuntimeValue);
+
         if (CurrentHealth.RuntimeValue <= 0f)
         {
-            entityDie.Raise();
+            OnEntityDie();
         }
     }
 
@@ -30,11 +32,11 @@ public class Entity : MonoBehaviour, IDamageable
     private void DisableAsObstacle()
     {
         NavMeshObstacle obstacleMesh = GetComponent<NavMeshObstacle>();
-        BoxCollider collider = GetComponent<BoxCollider>();
-        if (obstacleMesh != null && collider != null)
+        BoxCollider boxCollider = GetComponent<BoxCollider>();
+        if (obstacleMesh != null && boxCollider != null)
         {
             obstacleMesh.enabled = false;
-            collider.enabled = false;
+            boxCollider.enabled = false;
         }
     }
 
