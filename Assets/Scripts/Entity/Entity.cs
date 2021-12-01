@@ -7,7 +7,6 @@ public class Entity : MonoBehaviour, IDamageable
     [SerializeField] private EntityType entityType;
     [SerializeField] private FloatValue currentHealth;
     [SerializeField] private GameEvent entityDie;
-    [SerializeField] private AudioSource destroySound;
     [SerializeField] private ParticleSystem destructionParticlesPrefab;
     
     public FloatValue CurrentHealth { get => currentHealth; set => currentHealth = value; }
@@ -16,8 +15,6 @@ public class Entity : MonoBehaviour, IDamageable
     {
         CurrentHealth.RuntimeValue -= damage.RuntimeValue;
 
-        Debug.Log("Entity taking damage: " + CurrentHealth.RuntimeValue);
-        
         if (CurrentHealth.RuntimeValue <= 0f)
         {
             entityDie.Raise();
@@ -26,7 +23,6 @@ public class Entity : MonoBehaviour, IDamageable
 
     public void OnEntityDie()
     {
-        destroySound.Play();
         DisableAsObstacle();
         StartCoroutine(VisualDestruction());
     }
