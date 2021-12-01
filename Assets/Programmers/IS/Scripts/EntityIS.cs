@@ -9,7 +9,7 @@ public class EntityIS : MonoBehaviour, IDamageableIS
     [SerializeField] private FloatValue currentHealth;
     [SerializeField] private GameEventIS entityDie;
     [SerializeField] private AudioSource destroySound;
-    [SerializeField] private GameObject destructionParticles;
+    [SerializeField] private ParticleSystem destructionParticlesPrefab;
     
     public FloatValue CurrentHealth { get => currentHealth; set => currentHealth = value; }
     public EntityStatus CurrentStatus { get => entityStatus; set => entityStatus = value; }
@@ -45,19 +45,9 @@ public class EntityIS : MonoBehaviour, IDamageableIS
 
     private IEnumerator VisualDestruction()
     {
-        //ParticleSystem destructionParticles = GetComponent<ParticleSystem>();
         MeshRenderer entityMesh = GetComponent<MeshRenderer>();
-
-        Instantiate(destructionParticles, this.transform.position, Quaternion.identity);
-        ParticleSystem ps = destructionParticles.GetComponentInChildren<ParticleSystem>();
-        ps.Play();
-
-        Debug.Log("Particles spawned");
-       /*if (destructionParticles != null)
-        {
-            destructionParticles.Play();
-        }*/
-
+        ParticleSystem destructionParticles = Instantiate(destructionParticlesPrefab, this.transform.position, Quaternion.identity);
+        destructionParticles.Play();
         yield return new WaitForSeconds(0.100f);
         entityMesh.enabled = false;
     }
