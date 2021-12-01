@@ -25,18 +25,28 @@ public class OnClickVisualsAA : MonoBehaviour
                 ValidMove.Play();
 
             }
-            else if (hit.transform.CompareTag("Wall"))
+            else if (hit.transform.CompareTag("Wall") || hit.transform.GetComponent<EnemyFollowAA>())
             {
-                Hammer.Play();
-            }
-            else if (hit.transform.GetComponent<EnemyFollowAA>())
-            {
-                Sword.Play();
+                InvalidMove.Play();
             }
             else
             {
                 Instantiate(myPrefabInvalid, hit.point, Quaternion.identity);
                 InvalidMove.Play();
+            }
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit) && CheckDestination(hit.transform.position) && hit.transform.GetComponent<EnemyFollowAA>())
+            {
+                Sword.Play();
+            }
+            else if (hit.transform.CompareTag("Wall"))
+            {
+                Hammer.Play();
             }
         }
     }

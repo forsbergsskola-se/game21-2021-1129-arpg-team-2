@@ -24,9 +24,17 @@ public class PlayernavMeshAA : MonoBehaviour
         //navMeshAgent.destination = movePositionTransform.position;
         if (Input.GetMouseButtonDown(0)) {
             RaycastHit hit;
-            //var hit: RaycastHit;
-                
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && (hit.transform.CompareTag("Wall") || SetDestination(hit.transform.position))) {
+
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && SetDestination(hit.transform.position) && !hit.transform.CompareTag("Enemy")) {
+                navMeshAgent.destination = hit.point;
+            }
+        }
+        
+        if (Input.GetMouseButtonDown(1)) {
+            RaycastHit hit;
+
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && (hit.transform.CompareTag("Wall") || hit.transform.CompareTag("Enemy"))) 
+            {
                 navMeshAgent.destination = hit.point;
             }
         }
