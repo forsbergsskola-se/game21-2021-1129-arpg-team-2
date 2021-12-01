@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,11 +9,21 @@ public class Entity : MonoBehaviour, IDamageable
     [SerializeField] private FloatValue currentHealth;
     [SerializeField] private GameEvent entityDie;
     [SerializeField] private ParticleSystem destructionParticlesPrefab;
-    
+    private Renderer render;
+    private static readonly int Color1 = Shader.PropertyToID("_Color");
+    private Color defaultColor;
+
     public FloatValue CurrentHealth { get => currentHealth; set => currentHealth = value; }
+
+    private void Awake()
+    {
+        render = GetComponent<Renderer>();
+        defaultColor = render.material.color;
+    }
 
     public void TakeDamage(FloatValue damage)
     {
+        FlashRed();
         CurrentHealth.RuntimeValue -= damage.RuntimeValue;
 
         Debug.Log("Entity taking damage: " + CurrentHealth.RuntimeValue);
@@ -21,6 +32,12 @@ public class Entity : MonoBehaviour, IDamageable
         {
             OnEntityDie();
         }
+    }
+
+    private void FlashRed()
+    {
+        render.material.SetColor(Color1, Color.red);
+        render.material.SetColor(Color1, defaultColor);
     }
 
     public void OnEntityDie()
