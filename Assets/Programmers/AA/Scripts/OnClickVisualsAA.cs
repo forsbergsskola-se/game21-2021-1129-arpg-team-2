@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class OnClickVisualsAA : MonoBehaviour
 {
-    //Animator anim;
     public GameObject myPrefabValid;
     public GameObject myPrefabInvalid;
     public AudioSource ValidMove;
@@ -13,11 +12,6 @@ public class OnClickVisualsAA : MonoBehaviour
     public AudioSource Hammer;
     public AudioSource Sword;
     
-    
-    void Start()
-    {
-        //anim = gameObject.GetComponent<Animator>();
-    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -49,11 +43,7 @@ public class OnClickVisualsAA : MonoBehaviour
     private bool CheckDestination(Vector3 targetDestination)
     {
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(targetDestination, out hit, 1f, NavMesh.AllAreas))
-        {
-            return true;
-        }
-        return false;
+        return NavMesh.SamplePosition(targetDestination, out hit, 1f, NavMesh.AllAreas);
     }
 
     
