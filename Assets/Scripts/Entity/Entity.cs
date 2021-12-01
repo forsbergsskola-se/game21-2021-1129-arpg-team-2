@@ -37,6 +37,11 @@ public class Entity : MonoBehaviour, IDamageable
     private void FlashRed()
     {
         render.material.SetColor(Color1, Color.red);
+        Invoke(nameof(test), .5f);
+    }
+
+    private void test()
+    {
         render.material.SetColor(Color1, defaultColor);
     }
 
