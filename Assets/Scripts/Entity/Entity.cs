@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Entity : MonoBehaviour, IDamageableIS
+public class Entity : MonoBehaviour, IDamageable
 {
     [SerializeField] private EntityType entityType;
     [SerializeField] private FloatValue currentHealth;

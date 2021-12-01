@@ -2,14 +2,14 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour, IAttackIS
+public class PlayerAttack : MonoBehaviour, IAttack
 {
     [SerializeField] private FloatValue basePower;
     [SerializeField] private FloatValue attackInterval;
     [SerializeField] private AudioSource swordAttack;
     [SerializeField] private Weapon weapon;
 
-    private IDamageableIS target;
+    private IDamageable target;
     private bool attackOnGoing;
 
     public FloatValue BasePower
@@ -18,14 +18,14 @@ public class PlayerAttack : MonoBehaviour, IAttackIS
         set => basePower = value;
     }
 
-    public void Attack(IDamageableIS thisTarget)
+    public void Attack(IDamageable thisTarget)
     {
         if (thisTarget == null) return;
         swordAttack.Play();
         thisTarget.TakeDamage(BasePower);
     }
 
-    private IEnumerator AttackOnInterval(IDamageableIS entity)
+    private IEnumerator AttackOnInterval(IDamageable entity)
     {
         attackOnGoing = true;
         while (entity.CurrentHealth.RuntimeValue > 0f)
@@ -57,7 +57,7 @@ public class PlayerAttack : MonoBehaviour, IAttackIS
     private bool IsTargetInRange()
     {
         var result = false;
-        var temp = FindObjectsOfType<Entity>().Where(x => x is IDamageableIS).ToList();
+        var temp = FindObjectsOfType<Entity>().Where(x => x is IDamageable).ToList();
         for (var i = 0; i < temp.Count; i++)
         {
             var tempPos = temp[i].transform.position;

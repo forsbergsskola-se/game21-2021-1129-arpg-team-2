@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CursorChangeIS : MonoBehaviour
+public class CursorChange : MonoBehaviour
 {
     public Texture2D cursorBase;
     public Texture2D cursorTexture;
