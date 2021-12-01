@@ -273,6 +273,7 @@ MonoBehaviour:
   currentHealth: {fileID: 11400000, guid: 180cca52c9bb28345b7a28779def4cfb, type: 2}
   entityDie: {fileID: 11400000, guid: 39a76b532f3c62d41a933832fb614b67, type: 2}
   destroySound: {fileID: 27220219}
+  destructionParticles: {fileID: 0}
 --- !u!82 &27220219
 AudioSource:
   m_ObjectHideFlags: 0
@@ -818,7 +819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPosition: {fileID: 11400000, guid: e0dc665763f850148b4d31424b602fd4, type: 2}
-  playerRange: {fileID: 11400000, guid: 4b1121ad89341b14797f065185e82ede, type: 2}
+  weapon: {fileID: 11400000, guid: f223fbec50eb6ef4abfdc1abe1c3713a, type: 2}
   entityDestination: {fileID: 11400000, guid: ea0b25297ac49e648a38c2f1b561b825, type: 2}
 --- !u!1 &673693943
 GameObject:

@@ -1,14 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class PlayernavMeshIS : MonoBehaviour
 {
     [SerializeField] private Vector3Value playerPosition;
-    [SerializeField] private FloatValue playerRange;
+    [SerializeField] private WeaponIS weapon;
     public Vector3Value entityDestination;
     private NavMeshAgent navMeshAgent;
     
@@ -32,7 +28,7 @@ public class PlayernavMeshIS : MonoBehaviour
                 {
                     Debug.Log("Moving towards a destructable stuff");
                     navMeshAgent.destination = hit.transform.position;
-                    navMeshAgent.stoppingDistance = playerRange.RuntimeValue;
+                    navMeshAgent.stoppingDistance = weapon.Range;
                 }
                 else if (SetDestination(hit.transform.position))
                 {
@@ -52,7 +48,7 @@ public class PlayernavMeshIS : MonoBehaviour
 
     private bool IsInRange(Vector3 target)
     {
-        return Vector3.Distance(transform.position, target) <= playerRange.RuntimeValue;
+        return Vector3.Distance(transform.position, target) <= weapon.Range;
     }
 
     private bool SetDestination(Vector3 targetDestination)

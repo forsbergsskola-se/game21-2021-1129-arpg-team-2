@@ -17,19 +17,6 @@ public class CursorChangeAA : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
     }
     
-    void Update()
-    {
-        //if (Input.GetMouseButtonDown(0))
-
-
-        //if (Input.GetMouseButtonDown(1))
-                //Debug.Log("Pressed secondary button.");
-
-        //if (Input.GetMouseButtonDown(2))
-                //Debug.Log("Pressed middle click.");
-    }
-    
-
     void OnMouseEnter()
     {
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
