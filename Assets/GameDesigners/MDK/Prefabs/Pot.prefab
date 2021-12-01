@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 596553559}
   - component: {fileID: 5434411280886229605}
   - component: {fileID: 6451621834618005137}
-  - component: {fileID: 940252089}
   m_Layer: 0
   m_Name: Pot
   m_TagString: Untagged
@@ -163,31 +162,3 @@ MonoBehaviour:
   cursorTexture: {fileID: 2800000, guid: 4ba269bebaa15421688aaaa34e04a612, type: 3}
   cursorMode: 1
   hotSpot: {x: 0, y: 0}
---- !u!114 &940252089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7613495829753175376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2f698b8af41f264abd87ae44d449008, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: b46aa3013c9d88249a07da7fc5ea69a2, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 596553559}
-        m_TargetAssemblyTypeName: Entity, Assembly-CSharp
-        m_MethodName: OnEntityDie
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
