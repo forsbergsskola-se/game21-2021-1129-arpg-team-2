@@ -5,6 +5,7 @@ public class PlayernavMesh : MonoBehaviour
 {
     [SerializeField] private Vector3Value playerPosition;
     [SerializeField] private Weapon weapon;
+    [SerializeField] private GameObjectValue target;
     public Vector3Value entityDestination;
     private NavMeshAgent navMeshAgent;
     
@@ -43,6 +44,7 @@ public class PlayernavMesh : MonoBehaviour
         Debug.Log("Moving towards a destructable stuff");
         navMeshAgent.destination = hit.transform.position;
         navMeshAgent.stoppingDistance = weapon.Range;
+        target.Value = hit.transform.gameObject;
     }
 
     private static bool IsDestructable(RaycastHit hit) => 
