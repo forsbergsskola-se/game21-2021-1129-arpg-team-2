@@ -53,8 +53,8 @@ public class CameraFollowAA : MonoBehaviour
         camTransform.position = cameraPosition;
         //Rotation when paning on corner
         //1-Define rotation
-        if(Input.GetKeyDown(KeyCode.Space))
-            camTransform.RotateAroundLocal( Vector3.up,01f);
+        //if(Input.GetKeyDown(KeyCode.Space))
+            //camTransform.RotateAroundLocal( Vector3.up,01f);
         //2-Check condition if input position of the mouse is on screen width (we move only the y axis)
     }
 
