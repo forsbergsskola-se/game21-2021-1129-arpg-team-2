@@ -25,7 +25,7 @@ public class OnClickVisualsAA : MonoBehaviour
                 ValidMove.Play();
 
             }
-            else if (hit.transform.CompareTag("Wall") || hit.transform.GetComponent<EnemyFollowAA>())
+            else if (hit.transform.CompareTag("Wall") || hit.transform.GetComponent<EnemyFollowAA>() || (hit.transform.CompareTag("Gate")))
             {
                 InvalidMove.Play();
             }
