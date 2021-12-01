@@ -37,7 +37,7 @@ public class CameraFollowAA : MonoBehaviour
             camTransform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, SmoothTime);
             
             // update rotation
-            //transform.LookAt(Target.transform);
+            transform.LookAt(target.Vector3);
         }
         
     }
