@@ -49,10 +49,13 @@ public class CameraFollowAA : MonoBehaviour
             Vector3 targetPosition = new Vector3(target.Vector3.x + Offset.x, cameraPosition.y, target.Vector3.z + Offset.z);
             cameraPosition = Vector3.SmoothDamp(cameraPosition, targetPosition, ref velocity, SmoothTime);
 
-            // update rotation
-            //transform.LookAt(target.Vector3);
         }
         camTransform.position = cameraPosition;
+        //Rotation when paning on corner
+        //1-Define rotation
+        if(Input.GetKeyDown(KeyCode.Space))
+        camTransform.RotateAroundLocal( Vector3.up,01f);
+        //2-Check condition if input position of the mouse is on screen width (we move only the y axis)
     }
 
     private void ZoomCamera()
