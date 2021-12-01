@@ -24,27 +24,29 @@ public class PlayernavMeshIS : MonoBehaviour
             {
                 entityDestination.Vector3 = hit.transform.position;
                 
-                if (IsDestructable(hit) && !IsInRange(entityDestination.Vector3))
-                {
-                    Debug.Log("Moving towards a destructable stuff");
-                    navMeshAgent.destination = hit.transform.position;
-                    navMeshAgent.stoppingDistance = weapon.Range;
-                }
-                else if (SetDestination(hit.transform.position))
-                {
-                    navMeshAgent.destination = hit.point;
-                    navMeshAgent.stoppingDistance = 0;
-                }
+                if (IsDestructable(hit) && !IsInRange(entityDestination.Vector3)) MoveTowardsWithRange(hit);
+                else if (SetDestination(hit.transform.position)) MoveTowardsWithoutRange(hit);
             }
         }
 
         playerPosition.Vector3 = transform.position;
     }
 
-    private static bool IsDestructable(RaycastHit hit)
+    private void MoveTowardsWithoutRange(RaycastHit hit)
     {
-        return hit.transform.GetComponent<DestructibleTestIS>() != null;
+        navMeshAgent.destination = hit.point;
+        navMeshAgent.stoppingDistance = 0;
     }
+
+    private void MoveTowardsWithRange(RaycastHit hit)
+    {
+        Debug.Log("Moving towards a destructable stuff");
+        navMeshAgent.destination = hit.transform.position;
+        navMeshAgent.stoppingDistance = weapon.Range;
+    }
+
+    private static bool IsDestructable(RaycastHit hit) => 
+        hit.transform.GetComponent<DestructibleTestIS>() != null;
 
     private bool IsInRange(Vector3 target)
     {
