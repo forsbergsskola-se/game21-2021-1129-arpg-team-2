@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 public class EnemyFollowAA : MonoBehaviour
 {
     [SerializeField] private Vector3Value enemyPosition;
     public NavMeshAgent enemy;
 
-    public Transform Player;
+    [FormerlySerializedAs("Player")] public Transform player;
 
     private void Awake()
     {
@@ -18,7 +19,7 @@ public class EnemyFollowAA : MonoBehaviour
 
     void Update()
     {
-        enemy.SetDestination(Player.position);
+        enemy.SetDestination(player.position);
         enemyPosition.Vector3 = transform.position;
     }
 }

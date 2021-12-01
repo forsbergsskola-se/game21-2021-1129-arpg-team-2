@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InvalidWaypointController : MonoBehaviour
 {
-    void Update()
+    private void Update()
     {
         Invoke(nameof(DestroyObject), 0.5f);
         if (Input.GetMouseButtonDown(0))
@@ -12,8 +12,8 @@ public class InvalidWaypointController : MonoBehaviour
             DestroyObject();
         }
     }
-    
-    void DestroyObject()
+
+    private void DestroyObject()
     {
         Destroy(gameObject);
     }
