@@ -31,8 +31,7 @@ public class CameraFollowAA : MonoBehaviour
         Offset = camTransform.position - target.Vector3;
         //rigidbody = Target.GetComponent<Rigidbody>();
     }
-
-
+    
     private void LateUpdate()
     {
         //Create a vector3 position empty value for the camera
@@ -51,15 +50,19 @@ public class CameraFollowAA : MonoBehaviour
 
         }
         camTransform.position = cameraPosition;
-        //Rotation when paning on corner
-        //1-Define rotation
-        //if(Input.GetKeyDown(KeyCode.Space))
-            //camTransform.RotateAroundLocal( Vector3.up,01f);
-        //2-Check condition if input position of the mouse is on screen width (we move only the y axis)
-    }
 
-    private void ZoomCamera()
-    {
-        
+        Vector3 pos = target.Vector3;
+        // Check condition if input position of the mouse is on screen width - Rotation when panning on corner
+        if (Input.mousePosition.x <= 15f)
+        {
+            // Define rotation
+            camTransform.RotateAround(pos, Vector3.up, -0.3f);
+        }
+
+        if (Input.mousePosition.x >= Screen.width - 15f)
+        {
+            camTransform.RotateAround(pos, Vector3.up, 0.3f);
+        }
+        transform.LookAt(pos);
     }
 }
