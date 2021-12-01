@@ -1504,6 +1504,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 11400000, guid: e0dc665763f850148b4d31424b602fd4, type: 2}
+  scrollSpeed: 20
+  minY: 20
+  maxY: 120
   camTransform: {fileID: 963194228}
   Offset: {x: 0, y: 0, z: 0}
   SmoothTime: 0.3
@@ -1521,11 +1524,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panSpeed: 20
-  panBorder: 20
-  panLimit: {x: 10, y: 20}
+  panBorder: 15
+  panLimit: {x: 0, y: 0}
   scrollSpeed: 20
-  minY: 15
-  maxY: 80
+  minY: 20
+  maxY: 120
 --- !u!1 &1007325389 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4480635459621249896, guid: 451197f1edc3f254ea0251dff482e455, type: 3}
