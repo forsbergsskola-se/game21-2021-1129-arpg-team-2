@@ -8,9 +8,8 @@ public class PlayerAttack : MonoBehaviour, IAttack
     [SerializeField] private FloatValue attackInterval;
     [SerializeField] private AudioSource swordAttack;
     [SerializeField] private Weapon weapon;
-    [SerializeField] private GameObjectValue attackTarget;
 
-    //private IDamageable target;
+    private IDamageable target;
     private bool attackOnGoing;
 
     public FloatValue BasePower
@@ -44,7 +43,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
             if (IsTargetInRange())
             {
                 Debug.Log("Target acquired, ready to attack");
-                StartCoroutine(AttackOnInterval(attackTarget as IDamageable));
+                StartCoroutine(AttackOnInterval(target));
             }
         }
 
@@ -55,13 +54,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
         }
     }
 
-    private bool IsTargetInRange()
-    {
-        if(attackTarget.Value != null) 
-            return Vector3.Distance(transform.position, attackTarget.Value.transform.position) <= weapon.Range;
-        
-        return false;
-    }
-        
-    
+    private bool IsTargetInRange() => false;
+
+
 }
