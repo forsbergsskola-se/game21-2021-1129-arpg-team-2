@@ -13,7 +13,11 @@ public class CameraFollowTutorial : MonoBehaviour
     [SerializeField] private bool rotateAroundPlayer;
     [SerializeField] private float rotationSpeed = 3f;
     
-    private void Awake()
+    [SerializeField] private float scrollSpeed = 20f;
+    [SerializeField] private float minY = 20;
+    [SerializeField] private float maxY = 120f;
+    
+    private void Start()
     {
         cameraOffset = transform.position - playerPosition.Vector3;
     }
@@ -41,6 +45,11 @@ public class CameraFollowTutorial : MonoBehaviour
 
             cameraOffset = camTurnAngle * cameraOffset;
         }
+       
+        //Check the scrolling This is what changes (Y value)
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        cameraOffset.y -= scroll * scrollSpeed * 100f * Time.deltaTime;
+        cameraOffset.y = Mathf.Clamp(cameraOffset.y, minY, maxY);
 
         Vector3 newPos = playerPosition.Vector3 + cameraOffset;
 

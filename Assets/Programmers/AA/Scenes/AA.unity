@@ -1419,6 +1419,7 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   - component: {fileID: 963194231}
+  - component: {fileID: 963194232}
   - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
@@ -1511,8 +1512,8 @@ MonoBehaviour:
   navMeshAgent: {fileID: 564121636}
   target: {fileID: 11400000, guid: e0dc665763f850148b4d31424b602fd4, type: 2}
   scrollSpeed: 20
-  minY: 20
-  maxY: 120
+  minY: 5
+  maxY: 25
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1546,9 +1547,27 @@ MonoBehaviour:
   playerPosition: {fileID: 11400000, guid: e0dc665763f850148b4d31424b602fd4, type: 2}
   cameraOffset: {x: 0, y: 0, z: 0}
   smoothFactor: 0.5
-  lookAtPlayer: 0
+  lookAtPlayer: 1
   rotateAroundPlayer: 1
   rotationSpeed: 5
+  scrollSpeed: 20
+  minY: 5
+  maxY: 25
+--- !u!114 &963194232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775e792752e95434588de2d3063bdd5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 20
+  minY: 20
+  maxY: 120
 --- !u!1 &1007325389 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4480635459621249896, guid: 451197f1edc3f254ea0251dff482e455, type: 3}
@@ -1752,7 +1771,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154359909}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3783685fe35f1b742bb3d3a2c7ae08f6, type: 3}
   m_Name: 
