@@ -57,11 +57,11 @@ public class Entity : MonoBehaviour, IDamageable
     private void DisableAsObstacle()
     {
         NavMeshObstacle obstacleMesh = GetComponent<NavMeshObstacle>();
-        BoxCollider boxCollider = GetComponent<BoxCollider>();
-        if (obstacleMesh != null && boxCollider != null)
+        CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
+        if (obstacleMesh != null && capsuleCollider != null)
         {
             obstacleMesh.enabled = false;
-            boxCollider.enabled = false;
+            capsuleCollider.enabled = false;
         }
     }
 
