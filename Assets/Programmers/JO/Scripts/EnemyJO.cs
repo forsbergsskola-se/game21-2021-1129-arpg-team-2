@@ -4,14 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class EnemyJO : MonoBehaviour, IDamageable
-{
+public class EnemyJO : MonoBehaviour {
+    public Action OnDeath;
     [SerializeField] private FloatValue currentHealth;
     private float health;
     public FloatValue CurrentHealth { get => currentHealth; set => currentHealth = value; }
-    public void TakeDamage(FloatValue damage) {
-        throw new NotImplementedException();
-    }
 
     private void Start() {
         health = currentHealth.RuntimeValue;
@@ -21,12 +18,10 @@ public class EnemyJO : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         health -= damage;
-        
-        Debug.Log(health);
-        
         if (health <= 0f)
         {
             gameObject.SetActive(false);
+            OnDeath?.Invoke();
         }
     }
 

@@ -3,16 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(ObjectPoolerJO))]
-public class SpawnerJO : MonoBehaviour {
+[RequireComponent(typeof(EnemyPooler))]
+public class EnemySpawner : MonoBehaviour {
     [SerializeField] private SpawnPoint[] spawnPositions;
     [SerializeField] private FloatValue spawnInterval;
-    private ObjectPoolerJO objectPool;
+    [SerializeField] private EnemyJO enemyPrefab;
+    private EnemyPooler objectPool;
     private List<GameObject> _spawnedObjects;
 
     private void Start() {
-        objectPool = GetComponent<ObjectPoolerJO>();
-        objectPool.Setup(this, spawnPositions.Length);
+        objectPool = GetComponent<EnemyPooler>();
+        objectPool.Setup(spawnPositions.Length, enemyPrefab);
         
         for (int i = 0; i < spawnPositions.Length; i++) {
             SpawnFromPool(i);
@@ -33,11 +34,11 @@ public class SpawnerJO : MonoBehaviour {
     }
 
     private void SpawnFromPool(int index) {
-        GameObject objectFromPool = objectPool.GetPooledObject(); 
+        EnemyJO objectFromPool = objectPool.GetPooledObject(); 
         if (objectFromPool != null) {
             objectFromPool.transform.position = spawnPositions[index].transform.position;
             objectFromPool.transform.rotation = Quaternion.identity;
-            objectFromPool.SetActive(true);
+            objectFromPool.gameObject.SetActive(true);
         }
     }
 }
