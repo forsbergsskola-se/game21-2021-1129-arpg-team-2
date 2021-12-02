@@ -32,6 +32,6 @@ public class SpawnerJO : MonoBehaviour {
 
     private IEnumerator Respawn(int index) {
         yield return new WaitForSeconds(spawnInterval.InitialValue);
-        spawnedRats[index] = Instantiate(ratPrefab, spawnPositions[index].Vector3, Quaternion.identity);
+        //spawnedRats[index] = Instantiate(ratPrefab, spawnPositions[index].Vector3, Quaternion.identity);
     }
 }

@@ -7,6 +7,6 @@ public class ObjectPoolerJO : MonoBehaviour {
     public static ObjectPoolerJO SharedInstance;
 
     private void Awake() {
-        throw new NotImplementedException();
+        SharedInstance = this;
     }
 }
