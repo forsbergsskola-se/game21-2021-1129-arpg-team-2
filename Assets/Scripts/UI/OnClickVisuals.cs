@@ -11,6 +11,7 @@ public class OnClickVisuals : MonoBehaviour
     public AudioSource InvalidMove;
     public AudioSource Hammer;
     public AudioSource Sword;
+    public AudioSource Gate;
     
     void Update()
     {
@@ -19,13 +20,13 @@ public class OnClickVisuals : MonoBehaviour
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit) && CheckDestination(hit.transform.position) && !hit.transform.GetComponent<EnemyFollowAA>())
+            if (Physics.Raycast(ray, out hit) && CheckDestination(hit.transform.position) && !hit.transform.CompareTag("Destructible"))
             {
                 Instantiate(myPrefabValid, hit.point, Quaternion.identity);
                 ValidMove.Play();
 
             }
-            else if (hit.transform.CompareTag("Wall") && hit.transform.CompareTag("Destructible"))
+            else if (hit.transform.CompareTag("Destructible"))
             {
                 Hammer.Play();
             }
@@ -35,7 +36,7 @@ public class OnClickVisuals : MonoBehaviour
             }
             else if (hit.transform.CompareTag("Gate"))
             {
-                Hammer.Play();
+                Gate.Play();
             }
             else
             {
