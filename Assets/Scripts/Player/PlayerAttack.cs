@@ -17,6 +17,33 @@ public class PlayerAttack : MonoBehaviour, IAttack
         set => basePower = value;
     }
 
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0) && IsTargetInRange()) StartCoroutine(AttackOnInterval(target));
+        if (target == null && attackOnGoing) attackOnGoing = false;
+    }
+
+    private bool IsTargetInRange()
+    {
+        var result = false;
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+        {
+            if (IsTarget(hit) && IsInWeaponRange(hit))
+            {
+                result = true;
+                target = hit.transform.gameObject.GetComponent<Entity>();
+            }
+            else target = null;
+        }
+        return result;
+    }
+
+    private bool IsInWeaponRange(RaycastHit hit)
+        => Vector3.Distance(transform.position, hit.transform.position) <= weapon.Range;
+
+    private bool IsTarget(RaycastHit hit) => hit.transform.CompareTag("Destructible");
+    
     public void Attack(IDamageable thisTarget)
     {
         if (thisTarget == null) return;
@@ -34,43 +61,4 @@ public class PlayerAttack : MonoBehaviour, IAttack
             else yield break;
         }
     }
-
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (IsTargetInRange())
-            {
-                Debug.Log("Target acquired, ready to attack");
-                StartCoroutine(AttackOnInterval(target));
-            }
-        }
-
-        // if (!IsTargetInRange() && attackOnGoing)
-        // {
-        //     Debug.Log("Stopping active coroutine...");
-        //     attackOnGoing = false;
-        // }
-    }
-
-    private bool IsTargetInRange()
-    {
-        var result = false;
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
-        {
-            if (IsTarget(hit) && IsInWeaponRange(hit))
-            {
-                result = true;
-                target = hit.transform.gameObject.GetComponent<Entity>();
-            }
-        }
-
-        return result;
-    }
-
-    private bool IsInWeaponRange(RaycastHit hit)
-        => Vector3.Distance(transform.position, hit.transform.position) <= weapon.Range;
-
-    private bool IsTarget(RaycastHit hit) => hit.transform.CompareTag("Destructible");
 }
