@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     private bool attackOnGoing;
     private IDamageable target;
     [SerializeField] private GameObjectValue target2;
+    private GameObjectValue defaultValue;
 
     public FloatValue BasePower
     {
@@ -31,6 +33,12 @@ public class PlayerAttack : MonoBehaviour, IAttack
             attackOnGoing = false;
             target = null;
             StopCoroutine(nameof(AttackOnInterval));
+        }
+
+        if (Input.GetMouseButtonDown(0) && target2.Value.GetComponent<Entity>() is IDamageable && IsInWeaponRange())
+        {
+            target = target2.Value.GetComponent<Entity>();
+            StartCoroutine(AttackOnInterval(target));
         }
     }
 
