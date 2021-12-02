@@ -5,34 +5,28 @@ using UnityEngine.AI;
 
 public class CameraFollowAA : MonoBehaviour
 {
-    // camera will follow this object
-    [SerializeField] private Vector3Value target;
-    // camera zoom
-    [SerializeField] private float scrollSpeed = 20f;
-    [SerializeField] private float minY = 20;
-    [SerializeField] private float maxY = 120f;
     //camera transform
     public Transform camTransform;
     // offset between camera and target
     public Vector3 Offset;
     // change this value to get desired smoothness
     public float SmoothTime = 0.3f;
-
     //public Rigidbody rigidbody;
     public NavMeshAgent navMeshAgent;
-
-
+    // camera will follow this object
+    [SerializeField] private Vector3Value target;
+    // camera zoom
+    [SerializeField] private float scrollSpeed = 20f;
+    [SerializeField] private float minY = 20;
+    [SerializeField] private float maxY = 120f;
     // This value will change at the runtime depending on target movement. Initialize with zero vector.
     private Vector3 velocity = Vector3.zero;
 
     private void Start()
     {
-        //navMeshAgent = GetComponent<NavMeshAgent>();
         Offset = camTransform.position - target.Vector3;
-        //rigidbody = Target.GetComponent<Rigidbody>();
     }
-
-
+    
     private void LateUpdate()
     {
         //Create a vector3 position empty value for the camera
@@ -51,15 +45,19 @@ public class CameraFollowAA : MonoBehaviour
 
         }
         camTransform.position = cameraPosition;
-        //Rotation when paning on corner
-        //1-Define rotation
-        if(Input.GetKeyDown(KeyCode.Space))
-            camTransform.RotateAroundLocal( Vector3.up,01f);
-        //2-Check condition if input position of the mouse is on screen width (we move only the y axis)
-    }
 
-    private void ZoomCamera()
-    {
-        
+        Vector3 pos = target.Vector3;
+        // Check condition if input position of the mouse is on screen width - Rotation when panning on corner
+        if (Input.mousePosition.x <= 15f)
+        {
+            // Define rotation
+            camTransform.RotateAround(pos, Vector3.up, -0.3f);
+        }
+
+        if (Input.mousePosition.x >= Screen.width - 15f)
+        {
+            camTransform.RotateAround(pos, Vector3.up, 0.3f);
+        }
+        transform.LookAt(pos);
     }
 }

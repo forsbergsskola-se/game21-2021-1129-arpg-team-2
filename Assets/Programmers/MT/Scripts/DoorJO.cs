@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 
 public class DoorJO : MonoBehaviour
 {
+    [SerializeField] private float OpenDistance;
+    
     private Animator doorAnimation;
     private void Start()
     {
@@ -15,6 +17,12 @@ public class DoorJO : MonoBehaviour
 
     private void OnMouseDown()
     {
-        doorAnimation.SetBool("isOpening", true);
+        var player = GameObject.FindGameObjectWithTag("Player");
+            
+        if (Vector3.Distance(transform.position, player.transform.position) <= OpenDistance)
+        {
+            doorAnimation.SetBool("isOpening", true);
+        }
+        
     }
 }

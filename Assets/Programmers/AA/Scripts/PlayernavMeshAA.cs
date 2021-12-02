@@ -25,20 +25,12 @@ public class PlayernavMeshAA : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) {
             RaycastHit hit;
 
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && SetDestination(hit.transform.position) && !hit.transform.GetComponent<EnemyFollowAA>()) {
-                navMeshAgent.destination = hit.point;
-            }
-        }
-        
-        if (Input.GetMouseButtonDown(1)) {
-            RaycastHit hit;
-
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && (hit.transform.CompareTag("Wall") || hit.transform.GetComponent<EnemyFollowAA>())) 
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && (SetDestination(hit.transform.position) || (hit.transform.CompareTag("Wall"))))
             {
                 navMeshAgent.destination = hit.point;
             }
         }
-
+        
         playerPosition.Vector3 = transform.position;
     }
     
