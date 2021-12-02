@@ -5,12 +5,17 @@ using UnityEngine;
 
 [RequireComponent(typeof(EnemyPooler))]
 public class EnemySpawner : MonoBehaviour {
+    public Action<int> OnEnemyDeath;
     [SerializeField] private SpawnPoint[] spawnPositions;
     [SerializeField] private FloatValue spawnInterval;
     [SerializeField] private EnemyJO enemyPrefab;
     private EnemyPooler enemyPool;
     private List<GameObject> _spawnedObjects;
     private int deathCount;
+    public int SpawnPointsCount {
+        get { return spawnPositions.Length; }
+    }
+    
     private void Start() {
         enemyPool = GetComponent<EnemyPooler>();
         enemyPool.Setup(spawnPositions.Length, enemyPrefab);
@@ -44,6 +49,7 @@ public class EnemySpawner : MonoBehaviour {
 
     private void EnemyDied(EnemyJO enemy) {
         deathCount++;
+        OnEnemyDeath?.Invoke(deathCount);
         StartCoroutine(Respawn(enemy.SpawnIndex));
     }
 }
