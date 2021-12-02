@@ -14,12 +14,11 @@ GameObject:
   - component: {fileID: 7613495829753175378}
   - component: {fileID: 1547508055}
   - component: {fileID: 596553559}
-  - component: {fileID: 5434411280886229605}
   - component: {fileID: 6451621834618005137}
   - component: {fileID: 940252089}
   m_Layer: 0
   m_Name: Pot
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 7613495829753175376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.287411, y: -14.769235, z: 13.321056}
-  m_LocalScale: {x: 0.48905253, y: 0.48905253, z: 0.48905253}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -135,18 +134,6 @@ MonoBehaviour:
   currentHealth: {fileID: 11400000, guid: 72f2afc166e5a9e478fc4ce30ff50e78, type: 2}
   entityDie: {fileID: 11400000, guid: b46aa3013c9d88249a07da7fc5ea69a2, type: 2}
   destructionParticlesPrefab: {fileID: 8252861213837807792, guid: 2aba1d984b261460fa8a904127f58f74, type: 3}
---- !u!114 &5434411280886229605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7613495829753175376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87f857c4395a30649945f9e3ac16e403, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6451621834618005137
 MonoBehaviour:
   m_ObjectHideFlags: 0
