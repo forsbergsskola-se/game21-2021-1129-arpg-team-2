@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -24,7 +25,7 @@ public class PlayernavMesh : MonoBehaviour
 
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
-                if (hit.transform.CompareTag("Destructible"))
+                if (hit.transform.CompareTag("Destructible") || hit.transform.CompareTag("Gate"))
                 {
                     Debug.Log("Moving towards destructible stuff");
                     navMeshAgent.destination = hit.transform.position;
