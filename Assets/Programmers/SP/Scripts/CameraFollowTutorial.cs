@@ -11,7 +11,7 @@ public class CameraFollowTutorial : MonoBehaviour
 
     [SerializeField] private bool lookAtPlayer;
     [SerializeField] private bool rotateAroundPlayer;
-    [SerializeField] private float rotationSpeed = 5f;
+    [SerializeField] private float rotationSpeed = 3f;
     
     private void Awake()
     {
@@ -20,9 +20,24 @@ public class CameraFollowTutorial : MonoBehaviour
 
     private void LateUpdate()
     {
+        float rotationMagnite = 0;
+        
+        if (Input.mousePosition.x <= 15f)
+        {
+            rotationMagnite = -1;
+        }
+        else if (Input.mousePosition.x >= Screen.width - 15f)
+        {
+            rotationMagnite = 1;
+        }
+        else
+        {
+            rotationMagnite = 0;
+        }
+        
         if (rotateAroundPlayer)
         {
-            Quaternion camTurnAngle = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * rotationSpeed, Vector3.up);
+            Quaternion camTurnAngle = Quaternion.AngleAxis(rotationMagnite * rotationSpeed / 100, Vector3.up);
 
             cameraOffset = camTurnAngle * cameraOffset;
         }
