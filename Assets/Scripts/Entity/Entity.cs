@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -5,9 +6,9 @@ using UnityEngine.AI;
 public class Entity : MonoBehaviour, IDamageable
 {
     [SerializeField] private EntityType entityType;
-    [SerializeField] private FloatValue currentHealth;
-    [SerializeField] private GameEvent entityDie;
+    [SerializeField] private float maxHealth;
     [SerializeField] private ParticleSystem destructionParticlesPrefab;
+    private FloatValue currentHealth;
     private float redFlashInterval = .5f;
     private Renderer render;
     private static readonly int Color1 = Shader.PropertyToID("_Color");
@@ -19,6 +20,8 @@ public class Entity : MonoBehaviour, IDamageable
     {
         render = GetComponent<Renderer>();
         defaultColor = render.material.color;
+        currentHealth = ScriptableObject.CreateInstance<FloatValue>();
+        currentHealth.RuntimeValue = maxHealth;
     }
 
     public void TakeDamage(FloatValue damage)
