@@ -22,16 +22,6 @@ public class PlayerAttack : MonoBehaviour, IAttack
     {
         if (IsInWeaponRange())
         {
-            // RaycastHit hit;
-            // if (target2 != null && 
-            //     Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 100))
-            // {
-            //     Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance,
-            //         Color.red);
-            //     target = hit.transform.gameObject.GetComponent<Entity>();
-            //     StartCoroutine(AttackOnInterval(target));
-            // }
-            // else target2 = null;
             target = target2.Value.GetComponent<Entity>();
             StartCoroutine(AttackOnInterval(target));
         }
