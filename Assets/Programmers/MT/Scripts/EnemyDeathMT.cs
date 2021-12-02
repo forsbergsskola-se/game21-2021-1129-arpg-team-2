@@ -12,4 +12,3 @@ public class EnemyDeath : MonoBehaviour
         deathCounter?.Invoke();
     }
 }
-
