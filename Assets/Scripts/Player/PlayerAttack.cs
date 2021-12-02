@@ -20,15 +20,16 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     private void Update()
     {
-        if (IsInWeaponRange())
+        if (IsInWeaponRange() && !attackOnGoing)
         {
             target = target2.Value.GetComponent<Entity>();
             StartCoroutine(AttackOnInterval(target));
         }
 
-        if (target2 == null && attackOnGoing)
+        if (!IsInWeaponRange() && attackOnGoing)
         {
             attackOnGoing = false;
+            target = null;
             StopCoroutine(nameof(AttackOnInterval));
         }
     }
