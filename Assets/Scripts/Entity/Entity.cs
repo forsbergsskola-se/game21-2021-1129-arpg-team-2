@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,6 +8,7 @@ public class Entity : MonoBehaviour, IDamageable
     [SerializeField] private FloatValue currentHealth;
     [SerializeField] private GameEvent entityDie;
     [SerializeField] private ParticleSystem destructionParticlesPrefab;
+    private float redFlashInterval = .5f;
     private Renderer render;
     private static readonly int Color1 = Shader.PropertyToID("_Color");
     private Color defaultColor;
@@ -37,10 +37,10 @@ public class Entity : MonoBehaviour, IDamageable
     private void FlashRed()
     {
         render.material.SetColor(Color1, Color.red);
-        Invoke(nameof(test), .5f);
+        Invoke(nameof(SetToDefaultColor), redFlashInterval);
     }
 
-    private void test()
+    private void SetToDefaultColor()
     {
         render.material.SetColor(Color1, defaultColor);
     }
