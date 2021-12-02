@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Linq;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour, IAttack
@@ -47,11 +46,11 @@ public class PlayerAttack : MonoBehaviour, IAttack
             }
         }
 
-        if (!IsTargetInRange() && attackOnGoing)
-        {
-            Debug.Log("Stopping active coroutine...");
-            attackOnGoing = false;
-        }
+        // if (!IsTargetInRange() && attackOnGoing)
+        // {
+        //     Debug.Log("Stopping active coroutine...");
+        //     attackOnGoing = false;
+        // }
     }
 
     private bool IsTargetInRange()
@@ -60,7 +59,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
         {
-            if (hit.transform.CompareTag("Destructible"))
+            if (IsTarget(hit) && IsInWeaponRange(hit))
             {
                 result = true;
                 target = hit.transform.gameObject.GetComponent<Entity>();
@@ -69,5 +68,9 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
         return result;
     }
-    
+
+    private bool IsInWeaponRange(RaycastHit hit)
+        => Vector3.Distance(transform.position, hit.transform.position) <= weapon.Range;
+
+    private bool IsTarget(RaycastHit hit) => hit.transform.CompareTag("Destructible");
 }
