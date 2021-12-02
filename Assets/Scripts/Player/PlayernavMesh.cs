@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,8 +6,9 @@ public class PlayernavMesh : MonoBehaviour
 {
 
     [SerializeField] private Vector3Value playerPosition;
-    
     [SerializeField] private Weapon weapon;
+    [SerializeField] private GameObjectValue target;
+    
     private NavMeshAgent navMeshAgent;
     
     private void Awake()
@@ -28,8 +28,10 @@ public class PlayernavMesh : MonoBehaviour
                 if (hit.transform.CompareTag("Destructible") || hit.transform.CompareTag("Gate"))
                 {
                     Debug.Log("Moving towards destructible stuff");
-                    navMeshAgent.destination = hit.transform.position;
+                    var position = hit.transform.position;
+                    navMeshAgent.destination = position;
                     navMeshAgent.stoppingDistance = weapon.Range;
+                    target.Value = hit.transform.gameObject;
                 }
                 else if (SetDestination(hit.transform.position) || hit.transform.CompareTag("Wall"))
                 {
