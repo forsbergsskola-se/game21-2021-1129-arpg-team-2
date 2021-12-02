@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class EnemyJO : MonoBehaviour
+public class EnemyJO : MonoBehaviour, IDamageable
 {
     [SerializeField] private FloatValue currentHealth;
     private float health;
     public FloatValue CurrentHealth { get => currentHealth; set => currentHealth = value; }
+    public void TakeDamage(FloatValue damage) {
+        throw new NotImplementedException();
+    }
 
     private void Start() {
         health = currentHealth.RuntimeValue;
@@ -17,7 +20,6 @@ public class EnemyJO : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        Debug.Log("Takedam method");
         health -= damage;
         
         Debug.Log(health);
@@ -29,8 +31,6 @@ public class EnemyJO : MonoBehaviour
     }
 
     private IEnumerator TestKill() {
-        Debug.Log("testkill method");
-
         while (currentHealth.RuntimeValue > 0f) {
             TakeDamage(5f);
             yield return new WaitForSeconds(2);

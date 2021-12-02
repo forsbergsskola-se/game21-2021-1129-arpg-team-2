@@ -3,12 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerJo : MonoBehaviour {
-    [SerializeField] private Vector3Value[] spawnPositions;
+[RequireComponent(typeof(ObjectPoolerJO))]
+public class SpawnerJO : MonoBehaviour {
+    [SerializeField] private SpawnPoint[] spawnPositions;
     [SerializeField] private FloatValue spawnInterval;
+    private ObjectPoolerJO objectPool;
     private List<GameObject> _spawnedObjects;
 
     private void Start() {
+        objectPool = GetComponent<ObjectPoolerJO>();
+        objectPool.Setup(this, spawnPositions.Length);
+        
         for (int i = 0; i < spawnPositions.Length; i++) {
             SpawnFromPool(i);
         }
@@ -22,19 +27,15 @@ public class SpawnerJo : MonoBehaviour {
         //Add object pooling, will be in a list
     }
 
-    public int NumberOfObjects() {
-        return spawnPositions.Length;
-    }
-
     private IEnumerator Respawn(int index) {
         yield return new WaitForSeconds(spawnInterval.InitialValue);
         //SpawnFromPool(); <- should contain index of correct spawnPosition
     }
 
     private void SpawnFromPool(int index) {
-        GameObject objectFromPool = ObjectPoolerJO.SharedInstance.GetPooledObject(); 
+        GameObject objectFromPool = objectPool.GetPooledObject(); 
         if (objectFromPool != null) {
-            objectFromPool.transform.position = spawnPositions[index].Vector3;
+            objectFromPool.transform.position = spawnPositions[index].transform.position;
             objectFromPool.transform.rotation = Quaternion.identity;
             objectFromPool.SetActive(true);
         }
