@@ -44,9 +44,10 @@ public class CameraFollowAA : MonoBehaviour
             cameraPosition = Vector3.SmoothDamp(cameraPosition, targetPosition, ref velocity, SmoothTime);
 
         }
-        camTransform.position = cameraPosition;
 
         Vector3 pos = target.Vector3;
+
+        camTransform.position = cameraPosition;
         // Check condition if input position of the mouse is on screen width - Rotation when panning on corner
         if (Input.mousePosition.x <= 15f)
         {
@@ -58,6 +59,7 @@ public class CameraFollowAA : MonoBehaviour
         {
             camTransform.RotateAround(pos, Vector3.up, 0.3f);
         }
+
         transform.LookAt(pos);
     }
 }
