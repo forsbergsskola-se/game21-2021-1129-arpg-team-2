@@ -8,12 +8,12 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField] private SpawnPoint[] spawnPositions;
     [SerializeField] private FloatValue spawnInterval;
     [SerializeField] private EnemyJO enemyPrefab;
-    private EnemyPooler objectPool;
+    private EnemyPooler enemyPool;
     private List<GameObject> _spawnedObjects;
-
+    private int deathCount;
     private void Start() {
-        objectPool = GetComponent<EnemyPooler>();
-        objectPool.Setup(spawnPositions.Length, enemyPrefab);
+        enemyPool = GetComponent<EnemyPooler>();
+        enemyPool.Setup(spawnPositions.Length, enemyPrefab);
         
         for (int i = 0; i < spawnPositions.Length; i++) {
             SpawnFromPool(i);
@@ -28,17 +28,22 @@ public class EnemySpawner : MonoBehaviour {
         //Add object pooling, will be in a list
     }
 
-    private IEnumerator Respawn(int index) {
-        yield return new WaitForSeconds(spawnInterval.InitialValue);
-        //SpawnFromPool(); <- should contain index of correct spawnPosition
+    private IEnumerator Respawn(int spawnIndex) {
+        yield return new WaitForSeconds(1);
+        Debug.Log("Respawning enemy on " + spawnIndex);
+        SpawnFromPool(spawnIndex);
     }
 
     private void SpawnFromPool(int index) {
-        EnemyJO objectFromPool = objectPool.GetPooledObject(); 
-        if (objectFromPool != null) {
-            objectFromPool.transform.position = spawnPositions[index].transform.position;
-            objectFromPool.transform.rotation = Quaternion.identity;
-            objectFromPool.gameObject.SetActive(true);
+        EnemyJO enemy = enemyPool.GetPooledObject(); 
+        if (enemy != null) {
+            enemy.Spawn(index, spawnPositions[index]);
+            enemy.OnDeath += EnemyDied;
         }
+    }
+
+    private void EnemyDied(EnemyJO enemy) {
+        deathCount++;
+        StartCoroutine(Respawn(enemy.SpawnIndex));
     }
 }

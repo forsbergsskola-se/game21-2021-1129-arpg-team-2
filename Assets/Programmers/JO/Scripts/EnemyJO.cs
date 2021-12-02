@@ -3,15 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Random = UnityEngine.Random;
 
 public class EnemyJO : MonoBehaviour {
-    public Action OnDeath;
+    public Action<EnemyJO> OnDeath;
     [SerializeField] private FloatValue currentHealth;
     private float health;
+    
+    public int SpawnIndex { get; private set; }
     public FloatValue CurrentHealth { get => currentHealth; set => currentHealth = value; }
 
-    private void Start() {
-        health = currentHealth.RuntimeValue;
+    public void Spawn(int index, SpawnPoint spawnPoint) {
+        SpawnIndex = index;
+        transform.position = spawnPoint.transform.position;
+        transform.rotation = Quaternion.identity;
+        health = currentHealth.InitialValue;
+        gameObject.SetActive(true);
         StartCoroutine(TestKill());
     }
 
@@ -21,13 +28,14 @@ public class EnemyJO : MonoBehaviour {
         if (health <= 0f)
         {
             gameObject.SetActive(false);
-            OnDeath?.Invoke();
+            Debug.Log(gameObject + " died");
+            OnDeath?.Invoke(this);
         }
     }
 
     private IEnumerator TestKill() {
         while (currentHealth.RuntimeValue > 0f) {
-            TakeDamage(5f);
+            TakeDamage(Random.Range(1f,5f));
             yield return new WaitForSeconds(2);
         }
     }
