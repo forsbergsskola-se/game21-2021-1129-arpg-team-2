@@ -13,7 +13,7 @@ public class SpawnerJO : MonoBehaviour {
         for (int i = 0; i < spawnPositions.Length; i++)
         {
             GameObject spawnedRat = Instantiate(ratPrefab, spawnPositions[i].Vector3, Quaternion.identity);
-            spawnedRats[i] = spawnedRat;
+            //spawnedRats[i] = spawnedRat;
             
             //Want to subscribe to action of rat death
             //Want to call respawn for dead rat after set interval
