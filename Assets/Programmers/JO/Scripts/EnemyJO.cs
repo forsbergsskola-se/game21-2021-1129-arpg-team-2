@@ -1,19 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyJO : MonoBehaviour, IDamageable
+public class EnemyJO : MonoBehaviour
 {
     [SerializeField] private FloatValue currentHealth;
+    private float health;
     public FloatValue CurrentHealth { get => currentHealth; set => currentHealth = value; }
-    
-    public void TakeDamage(FloatValue damage)
+
+    private void Start() {
+        health = currentHealth.RuntimeValue;
+        StartCoroutine(TestKill());
+    }
+
+    public void TakeDamage(float damage)
     {
-        CurrentHealth.RuntimeValue -= damage.RuntimeValue;
+        Debug.Log("Takedam method");
+        health -= damage;
         
-        if (CurrentHealth.RuntimeValue <= 0f)
+        Debug.Log(health);
+        
+        if (health <= 0f)
         {
             gameObject.SetActive(false);
+        }
+    }
+
+    private IEnumerator TestKill() {
+        Debug.Log("testkill method");
+
+        while (currentHealth.RuntimeValue > 0f) {
+            TakeDamage(5f);
+            yield return new WaitForSeconds(2);
         }
     }
 }
