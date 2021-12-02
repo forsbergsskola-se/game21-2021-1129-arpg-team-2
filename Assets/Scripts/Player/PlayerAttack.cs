@@ -54,7 +54,20 @@ public class PlayerAttack : MonoBehaviour, IAttack
         }
     }
 
-    private bool IsTargetInRange() => false;
+    private bool IsTargetInRange()
+    {
+        var result = false;
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+        {
+            if (hit.transform.CompareTag("Destructible"))
+            {
+                result = true;
+                target = hit.transform.gameObject.GetComponent<Entity>();
+            }
+        }
 
-
+        return result;
+    }
+    
 }
