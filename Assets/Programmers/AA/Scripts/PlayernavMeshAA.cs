@@ -33,7 +33,7 @@ public class PlayernavMeshAA : MonoBehaviour
         
         playerPosition.Vector3 = transform.position;
     }
-    
+
     private bool SetDestination(Vector3 targetDestination)
     {
         NavMeshHit hit;
