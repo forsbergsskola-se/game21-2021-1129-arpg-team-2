@@ -32,8 +32,8 @@ Transform:
   m_GameObject: {fileID: 7613495829753175376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.287411, y: -14.769235, z: 13.321056}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -45,7 +45,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7613495829753175376}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 8792586484180348971, guid: b1f00e6f1ff802941b9aaf7f15f3a2c4, type: 3}
 --- !u!23 &7613495829753175379
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 46e91b34ebe16a24bbaf29cc70d2b73f, type: 2}
+  - {fileID: 24307668516107806, guid: b1f00e6f1ff802941b9aaf7f15f3a2c4, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,10 +98,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Radius: 0.008
+  m_Height: 0.02
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.007}
 --- !u!208 &1547508055
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -112,11 +112,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_Extents: {x: 0.0065, y: 0.0065, z: 0.0075}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0.009}
   m_TimeToStationary: 0.5
 --- !u!114 &596553559
 MonoBehaviour:
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityType: {fileID: 11400000, guid: 0d4973cf1804e1f40b3ff04d0a0849a7, type: 2}
-  maxHealth: 30
+  maxHealth: 5
   destructionParticlesPrefab: {fileID: 8252861213837807792, guid: 2aba1d984b261460fa8a904127f58f74, type: 3}
 --- !u!114 &6451621834618005137
 MonoBehaviour:

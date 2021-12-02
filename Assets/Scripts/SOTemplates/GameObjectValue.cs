@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "GameObject", menuName = "Value/GameObject")]
+[CreateAssetMenu(fileName = "GameObjectValue", menuName = "Value/GameObjectValue")]
 public class GameObjectValue : ScriptableObject
 {
     [SerializeField] private GameObject _gameObject;

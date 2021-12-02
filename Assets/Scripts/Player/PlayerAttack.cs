@@ -8,8 +8,9 @@ public class PlayerAttack : MonoBehaviour, IAttack
     [SerializeField] private AudioSource swordAttack;
     [SerializeField] private Weapon weapon;
 
-    private IDamageable target;
     private bool attackOnGoing;
+    private IDamageable target;
+    [SerializeField] private GameObjectValue target2;
 
     public FloatValue BasePower
     {
@@ -19,31 +20,23 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && IsTargetInRange()) StartCoroutine(AttackOnInterval(target));
-        if (target == null && attackOnGoing) attackOnGoing = false;
-    }
-
-    private bool IsTargetInRange()
-    {
-        var result = false;
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+        if (IsInWeaponRange() && !attackOnGoing)
         {
-            if (IsTarget(hit) && IsInWeaponRange(hit))
-            {
-                result = true;
-                target = hit.transform.gameObject.GetComponent<Entity>();
-            }
-            else target = null;
+            target = target2.Value.GetComponent<Entity>();
+            StartCoroutine(AttackOnInterval(target));
         }
-        return result;
+
+        if (!IsInWeaponRange() && attackOnGoing)
+        {
+            attackOnGoing = false;
+            target = null;
+            StopCoroutine(nameof(AttackOnInterval));
+        }
     }
 
-    private bool IsInWeaponRange(RaycastHit hit)
-        => Vector3.Distance(transform.position, hit.transform.position) <= weapon.Range;
+    private bool IsInWeaponRange()
+        => Vector3.Distance(transform.position, target2.Value.transform.position) <= weapon.Range;
 
-    private bool IsTarget(RaycastHit hit) => hit.transform.CompareTag("Destructible");
-    
     public void Attack(IDamageable thisTarget)
     {
         if (thisTarget == null) return;
