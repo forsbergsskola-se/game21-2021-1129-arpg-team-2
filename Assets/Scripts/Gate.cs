@@ -1,11 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class DoorJO : MonoBehaviour
+public class Gate : MonoBehaviour
 {
     [SerializeField] private IntegerValue OpenDistance;
     
