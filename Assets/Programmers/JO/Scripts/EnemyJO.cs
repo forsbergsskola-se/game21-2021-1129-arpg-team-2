@@ -5,7 +5,8 @@ using UnityEngine;
 using System;
 using Random = UnityEngine.Random;
 
-public class EnemyJO : MonoBehaviour {
+public class EnemyJO : MonoBehaviour
+{
     public Action<EnemyJO> OnDeath;
     [SerializeField] private FloatValue currentHealth;
     private float health;
@@ -13,7 +14,8 @@ public class EnemyJO : MonoBehaviour {
     public int SpawnIndex { get; private set; }
     public FloatValue CurrentHealth { get => currentHealth; set => currentHealth = value; }
 
-    public void Spawn(int index, SpawnPoint spawnPoint) {
+    public void Spawn(int index, SpawnPoint spawnPoint)
+    {
         SpawnIndex = index;
         transform.position = spawnPoint.transform.position;
         transform.rotation = Quaternion.identity;
@@ -28,13 +30,14 @@ public class EnemyJO : MonoBehaviour {
         if (health <= 0f)
         {
             gameObject.SetActive(false);
-            Debug.Log(gameObject + " died");
             OnDeath?.Invoke(this);
         }
     }
 
-    private IEnumerator TestKill() {
-        while (currentHealth.RuntimeValue > 0f) {
+    private IEnumerator TestKill()
+    {
+        while (currentHealth.RuntimeValue > 0f)
+        {
             TakeDamage(Random.Range(1f,5f));
             yield return new WaitForSeconds(2);
         }
