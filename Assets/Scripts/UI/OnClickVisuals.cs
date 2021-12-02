@@ -25,11 +25,11 @@ public class OnClickVisuals : MonoBehaviour
                 ValidMove.Play();
 
             }
-            else if (hit.transform.CompareTag("Wall") )
+            else if (hit.transform.CompareTag("Wall") && hit.transform.CompareTag("Destructible"))
             {
                 Hammer.Play();
             }
-            else if (hit.transform.GetComponent<EnemyFollowAA>() )
+            else if (hit.transform.CompareTag("Enemy") )
             {
                 Sword.Play();
             }
