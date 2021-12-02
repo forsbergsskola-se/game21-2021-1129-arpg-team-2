@@ -5,5 +5,11 @@ using System;
 
 public class EnemyDeath : MonoBehaviour
 {
-    public static  
+    public static event Action deathCounter;
+
+    private void OnDisable()
+    {
+        deathCounter?.Invoke();
+    }
 }
+
