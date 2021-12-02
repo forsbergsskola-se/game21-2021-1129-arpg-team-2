@@ -3,21 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerJO : MonoBehaviour {
-    //[SerializeField] private GameObject ratPrefab;
+public class SpawnerJo : MonoBehaviour {
     [SerializeField] private Vector3Value[] spawnPositions;
     [SerializeField] private FloatValue spawnInterval;
-    private List<GameObject> spawnedObjects;
+    private List<GameObject> _spawnedObjects;
 
     private void Start() {
         for (int i = 0; i < spawnPositions.Length; i++) {
-            //Instantiate(ratPrefab, spawnPositions[i].Vector3, Quaternion.identity);
-            GameObject objectFromPool = ObjectPoolerJO.SharedInstance.GetPooledObject(); 
-            if (objectFromPool != null) {
-                objectFromPool.transform.position = spawnPositions[i].Vector3;
-                objectFromPool.transform.rotation = Quaternion.identity;
-                objectFromPool.SetActive(true);
-            }
+            SpawnFromPool(i);
         }
 
         //Want to subscribe to action of rat death
@@ -29,21 +22,21 @@ public class SpawnerJO : MonoBehaviour {
         //Add object pooling, will be in a list
     }
 
-    public int numberOfObjects() {
+    public int NumberOfObjects() {
         return spawnPositions.Length;
     }
 
     private IEnumerator Respawn(int index) {
         yield return new WaitForSeconds(spawnInterval.InitialValue);
-        //spawnedRats[index] = Instantiate(ratPrefab, spawnPositions[index].Vector3, Quaternion.identity);
+        //SpawnFromPool(); <- should contain index of correct spawnPosition
     }
 
-    private void SpawnFromPool() {
-        GameObject obj = ObjectPoolerJO.SharedInstance.GetPooledObject(); 
-        if (obj != null) {
-           // obj.transform.position = turret.transform.position;
-           // obj.transform.rotation = turret.transform.rotation;
-            obj.SetActive(true);
+    private void SpawnFromPool(int index) {
+        GameObject objectFromPool = ObjectPoolerJO.SharedInstance.GetPooledObject(); 
+        if (objectFromPool != null) {
+            objectFromPool.transform.position = spawnPositions[index].Vector3;
+            objectFromPool.transform.rotation = Quaternion.identity;
+            objectFromPool.SetActive(true);
         }
     }
 }

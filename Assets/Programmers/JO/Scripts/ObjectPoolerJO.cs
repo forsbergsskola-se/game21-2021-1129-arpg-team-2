@@ -8,12 +8,12 @@ public class ObjectPoolerJO : MonoBehaviour {
     public List<GameObject> pooledObjects;
     public GameObject objectToPool;
     public int amountToPool;
-    private SpawnerJO spawner;
+    private SpawnerJo spawner;
 
     private void Awake() {
         SharedInstance = this;
-        spawner = GetComponent<SpawnerJO>();
-        amountToPool = spawner.numberOfObjects();
+        spawner = GetComponent<SpawnerJo>();
+        amountToPool = spawner.NumberOfObjects();
     }
 
     private void Start() {
