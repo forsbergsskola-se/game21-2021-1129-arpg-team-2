@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EnemyJO : MonoBehaviour, IDamageable
 {
@@ -13,7 +14,7 @@ public class EnemyJO : MonoBehaviour, IDamageable
         
         if (CurrentHealth.RuntimeValue <= 0f)
         {
-            Destroy(this);
+            gameObject.SetActive(false);
         }
     }
 }
