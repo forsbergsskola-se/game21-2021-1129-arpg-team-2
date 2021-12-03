@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class KillTriggeredGate : MonoBehaviour {
     [SerializeField] private EnemySpawner enemySpawner;
+    [SerializeField] private BooleanValue isLocked;
     private Animator doorAnimation;
-    private bool isLocked = true;
+    // private BooleanValue isLocked;
     private int initialEnemiesInRoom;
     private void Start()
     {
@@ -14,7 +15,7 @@ public class KillTriggeredGate : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        if (!isLocked) {
+        if (!isLocked.BoolValue) {
             Debug.Log("Gate be opening!");
             doorAnimation.SetBool("isOpening", true);
         }
@@ -27,7 +28,7 @@ public class KillTriggeredGate : MonoBehaviour {
         
         if (deathCount >= initialEnemiesInRoom)
         {
-            isLocked = false;
+            isLocked.BoolValue = false;
         }
     }
 }
