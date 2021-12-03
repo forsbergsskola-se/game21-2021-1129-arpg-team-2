@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class OnClickVisuals : MonoBehaviour
 {
+    [SerializeField] private BooleanValue isLocked;
     public GameObject myPrefabValid;
     public GameObject myPrefabInvalid;
     public AudioSource ValidMove;
@@ -53,7 +54,11 @@ public class OnClickVisuals : MonoBehaviour
             }
             else if (hit.transform.CompareTag("Gate"))
             {
-                Gate.Play();
+                if (isLocked.BoolValue)
+                {
+                  Gate.Play();  
+                }
+                
             }
             else
             {
