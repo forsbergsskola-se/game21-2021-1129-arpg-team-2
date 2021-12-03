@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 522556064874947381}
   - component: {fileID: 3618753522706355557}
   - component: {fileID: 7975904022497877467}
+  - component: {fileID: 7451778977802126171}
   m_Layer: 0
   m_Name: RatPlaceholder
   m_TagString: Destructible
@@ -112,3 +113,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: {fileID: 11400000, guid: 72f2afc166e5a9e478fc4ce30ff50e78, type: 2}
+--- !u!114 &7451778977802126171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3727973343909372596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25fcf4373b27d749a44bceead491355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorBase: {fileID: 2800000, guid: 2e71a8202d3b4a3448ec85ced5a40265, type: 3}
+  cursorTexture: {fileID: 2800000, guid: 2d18e23e3ce249b4489b8bcdd02d3f48, type: 3}
+  cursorMode: 1
+  hotSpot: {x: 0, y: 0}
