@@ -26,7 +26,7 @@ public class PlayernavMesh : MonoBehaviour
 
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
-                if (hit.transform.CompareTag("Destructible"))
+                if (hit.transform.CompareTag("Destructible") || hit.transform.CompareTag("Enemy"))
                 {
                     var position = hit.transform.position;
                     navMeshAgent.destination = position;
