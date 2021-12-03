@@ -14,16 +14,20 @@ public class OnClickVisualsAA : MonoBehaviour
     public Transform prefabInitialPosition;
     private GameObject instantiatedValid;
     private GameObject instantiatedInvalid;
-    
+
+    //Add those lines
+    private GameObject instantiatedPrefabValid;
+    private GameObject instantiatedPrefabInvalid;
+
+    //Add the whole Start() method
     private void Start()
     {
-        
-        instantiatedValid = Instantiate(myPrefabValid, prefabInitialPosition.position, myPrefabValid.transform.rotation);
-        instantiatedInvalid = Instantiate(myPrefabInvalid, prefabInitialPosition.position, myPrefabInvalid.transform.rotation);
-        prefabInitialPosition.position = Vector3.zero;
-        prefabInitialPosition.rotation = instantiatedValid.transform.rotation;
-
+        instantiatedPrefabValid = Instantiate(myPrefabValid, Vector3.zero, Quaternion.identity);
+        instantiatedPrefabValid.GetComponent<Animation>().Stop();
+        instantiatedPrefabInvalid = Instantiate(myPrefabInvalid, Vector3.zero, Quaternion.identity);
+        instantiatedPrefabInvalid.GetComponent<Animation>().Stop();
     }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -31,32 +35,37 @@ public class OnClickVisualsAA : MonoBehaviour
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit) && CheckDestination(hit.transform.position) && !hit.transform.GetComponent<EnemyFollowAA>())
+            if (Physics.Raycast(ray, out hit) && CheckDestination(hit.transform.position) && !hit.transform.CompareTag("Destructible"))
             {
-                //Instantiate(myPrefabValid, hit.point, Quaternion.identity);
+                //Added lines
+                //Start
+                instantiatedPrefabValid.transform.SetPositionAndRotation(hit.point, Quaternion.identity);
+                instantiatedPrefabValid.GetComponent<Animation>().Stop();
+                instantiatedPrefabValid.GetComponent<Animation>().Play();
+                //End
                 ValidMove.Play();
-                instantiatedValid.transform.SetPositionAndRotation(hit.point, prefabInitialPosition.rotation);
-                instantiatedValid.GetComponent<Animation>().Play();
-
             }
-            else if (hit.transform.CompareTag("Wall") )
+            else if (hit.transform.CompareTag("Destructible"))
             {
                 Hammer.Play();
             }
-            else if (hit.transform.GetComponent<EnemyFollowAA>() )
+            else if (hit.transform.CompareTag("Enemy"))
             {
                 Sword.Play();
             }
             else if (hit.transform.CompareTag("Gate"))
             {
-                Hammer.Play();
+                //Gate.Play();
             }
             else
             {
-                //Instantiate(myPrefabInvalid, hit.point, Quaternion.identity);
+                //Added lines
+                //Start
+                instantiatedPrefabInvalid.transform.SetPositionAndRotation(hit.point, Quaternion.identity);
+                instantiatedPrefabInvalid.GetComponent<Animation>().Stop();
+                instantiatedPrefabInvalid.GetComponent<Animation>().Play();
+                //End
                 InvalidMove.Play();
-                instantiatedInvalid.transform.SetPositionAndRotation(hit.point, prefabInitialPosition.rotation);
-                instantiatedInvalid.GetComponent<Animation>().Play();
             }
         }
     }
@@ -66,5 +75,5 @@ public class OnClickVisualsAA : MonoBehaviour
         return NavMesh.SamplePosition(targetDestination, out hit, 1f, NavMesh.AllAreas);
     }
 
-    
+
 }
