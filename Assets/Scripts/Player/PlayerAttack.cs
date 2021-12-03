@@ -34,9 +34,6 @@ public class PlayerAttack : MonoBehaviour, IAttack
             target = null;
             StopCoroutine(nameof(AttackOnInterval));
         }
-
-        Debug.Log("Target2: " + target2.Value);
-        Debug.Log("Weapon in range: " + IsInWeaponRange());
         
         if (Input.GetMouseButtonDown(0) && target2.Value.GetComponent<Entity>() is IDamageable && IsInWeaponRange())
         {

@@ -27,7 +27,6 @@ public class PlayernavMesh : MonoBehaviour
             {
                 if (hit.transform.CompareTag("Destructible") || hit.transform.CompareTag("Gate"))
                 {
-                    Debug.Log("Moving towards destructible stuff");
                     var position = hit.transform.position;
                     navMeshAgent.destination = position;
                     navMeshAgent.stoppingDistance = weapon.Range;
