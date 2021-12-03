@@ -11,6 +11,7 @@ public class KillTriggeredGate : MonoBehaviour {
         doorAnimation = GetComponent<Animator>();
         enemySpawner.OnEnemyDeath += EnemyDied;
         initialEnemiesInRoom = enemySpawner.SpawnPointsCount;
+        isLocked.BoolValue = true;
     }
 
     private void OnMouseDown()
