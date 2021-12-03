@@ -14,9 +14,11 @@ GameObject:
   - component: {fileID: 5256555466936569751}
   - component: {fileID: 1346956155334449853}
   - component: {fileID: 1963195614680260972}
+  - component: {fileID: 1438884753}
+  - component: {fileID: 1438884759}
   m_Layer: 0
   m_Name: GateDoor
-  m_TagString: Untagged
+  m_TagString: Gate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +30,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9042648808822598089}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4.03, y: 2.7, z: 0.3}
   m_ConstrainProportionsScale: 0
@@ -134,4 +136,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8be347d3c501d438b8c90c1fd7580a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OpenDistance: {fileID: 11400000, guid: aa1ab83c818b7fb4f902bbeabbe91d52, type: 2}
+  enemySpawner: {fileID: 0}
+--- !u!65 &1438884753
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9042648808822598089}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.01, y: 1.0000001, z: 1.3}
+  m_Center: {x: 0.00000023841858, y: 0, z: 0}
+--- !u!208 &1438884759
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9042648808822598089}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
