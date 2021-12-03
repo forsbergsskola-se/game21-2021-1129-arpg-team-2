@@ -15,12 +15,16 @@ public class KillTriggeredGate : MonoBehaviour {
     private void OnMouseDown()
     {
         if (!isLocked) {
+            Debug.Log("Gate be opening!");
             doorAnimation.SetBool("isOpening", true);
         }
     }
 
     private void EnemyDied(int deathCount)
     {
+        Debug.Log("deathCount: " + deathCount);
+        Debug.Log("initialEnemiesInRoom: " + initialEnemiesInRoom);
+        
         if (deathCount >= initialEnemiesInRoom)
         {
             isLocked = false;

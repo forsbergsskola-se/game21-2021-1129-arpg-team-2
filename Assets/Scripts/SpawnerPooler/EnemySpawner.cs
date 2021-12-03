@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public Action<int> OnEnemyDeath;
     [SerializeField] private SpawnPoint[] spawnPositions;
     [SerializeField] private FloatValue spawnInterval;
-    [SerializeField] private EnemyJO enemyPrefab; //Everywhere it says EnemyJO needs to be Enemy
+    [SerializeField] private Enemy enemyPrefab; //Everywhere it says EnemyJO needs to be Enemy
     private EnemyPooler enemyPool;
     private List<GameObject> spawnedEnemies;
     private int deathCount;
@@ -34,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnFromPool(int index)
     {
-        EnemyJO enemy = enemyPool.GetPooledObject(); 
+        Enemy enemy = enemyPool.GetPooledObject(); 
         if (enemy != null)
         {
             enemy.Spawn(index, spawnPositions[index]);
@@ -42,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void EnemyDied(EnemyJO enemy)
+    private void EnemyDied(Enemy enemy)
     {
         deathCount++;
         OnEnemyDeath?.Invoke(deathCount);

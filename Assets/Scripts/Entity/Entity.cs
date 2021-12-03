@@ -24,10 +24,10 @@ public class Entity : MonoBehaviour, IDamageable
         currentHealth.RuntimeValue = maxHealth;
     }
 
-    public void TakeDamage(FloatValue damage)
+    public void TakeDamage(float damage)
     {
         FlashRed();
-        CurrentHealth.RuntimeValue -= damage.RuntimeValue;
+        CurrentHealth.RuntimeValue -= damage;
 
         Debug.Log("Entity taking damage: " + CurrentHealth.RuntimeValue);
 

@@ -1,12 +1,11 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class EnemyJO : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
-    public Action<EnemyJO> OnDeath; //Important
+    public Action<Enemy> OnDeath; //Important
     [SerializeField] private FloatValue currentHealth;
     private float health;
     
@@ -25,8 +24,11 @@ public class EnemyJO : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
-        if (health <= 0f)
+        CurrentHealth.RuntimeValue -= damage;
+
+        Debug.Log("Enemy takes damage: " + CurrentHealth.RuntimeValue);
+        // health -= damage;
+        if (CurrentHealth.RuntimeValue <= 0f)
         {
             gameObject.SetActive(false); //Important happen on death
             OnDeath?.Invoke(this); //Important happen on death

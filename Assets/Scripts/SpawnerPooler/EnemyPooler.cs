@@ -7,9 +7,9 @@ using Object = System.Object;
 public class EnemyPooler : MonoBehaviour
 {
     private int amountToPool;
-    private List<EnemyJO> pooledObjects = new List<EnemyJO>(); //Everywhere it says EnemyJO needs to be Enemy
+    private List<Enemy> pooledObjects = new List<Enemy>(); //Everywhere it says EnemyJO needs to be Enemy
 
-    public void Setup(int poolSize, EnemyJO prefab)
+    public void Setup(int poolSize, Enemy prefab)
     {
         amountToPool = poolSize;
         
@@ -21,7 +21,7 @@ public class EnemyPooler : MonoBehaviour
         }
     }
 
-    public EnemyJO GetPooledObject()
+    public Enemy GetPooledObject()
     {
         for (int i = 0; i < pooledObjects.Count; i++)
         {
