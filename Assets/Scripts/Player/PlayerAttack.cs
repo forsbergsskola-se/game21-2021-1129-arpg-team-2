@@ -21,9 +21,9 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     private void Update()
     {
-        if (IsInWeaponRange() && !attackOnGoing)
+        if (IsInWeaponRange() && !attackOnGoing && movementTarget.Value.TryGetComponent(out Entity entity))
         {
-            attackTarget = movementTarget.Value.GetComponent<Entity>();
+            attackTarget = entity;
             StartCoroutine(AttackOnInterval(attackTarget));
         }
 
