@@ -28,22 +28,26 @@ public class PlayerAttack : MonoBehaviour, IAttack
             StartCoroutine(AttackOnInterval(target));
         }
 
-        if (!IsInWeaponRange() && attackOnGoing)
+        else if (!IsInWeaponRange() && attackOnGoing)
         {
             attackOnGoing = false;
             target = null;
             StopCoroutine(nameof(AttackOnInterval));
         }
 
+        Debug.Log("Target2: " + target2.Value);
+        Debug.Log("Weapon in range: " + IsInWeaponRange());
+        
         if (Input.GetMouseButtonDown(0) && target2.Value.GetComponent<Entity>() is IDamageable && IsInWeaponRange())
         {
             target = target2.Value.GetComponent<Entity>();
             StartCoroutine(AttackOnInterval(target));
+            Debug.Log(target.CurrentHealth.RuntimeValue);
         }
     }
 
     private bool IsInWeaponRange()
-        => Vector3.Distance(transform.position, target2.Value.transform.position) <= weapon.Range;
+        => Mathf.Round(Vector3.Distance(transform.position, target2.Value.transform.position)) <= weapon.Range;
 
     public void Attack(IDamageable thisTarget)
     {
