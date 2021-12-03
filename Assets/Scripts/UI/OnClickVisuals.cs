@@ -12,7 +12,20 @@ public class OnClickVisuals : MonoBehaviour
     public AudioSource Hammer;
     public AudioSource Sword;
     public AudioSource Gate;
-    
+    //Add those lines
+    private GameObject instantiatedPrefabValid;
+    private GameObject instantiatedPrefabInvalid;
+
+    //Add the whole Start() method
+    private void Start()
+    {
+        instantiatedPrefabValid = Instantiate(myPrefabValid, Vector3.zero, Quaternion.identity);
+        instantiatedPrefabValid.GetComponent<Animation>().Stop();
+        instantiatedPrefabInvalid = Instantiate(myPrefabInvalid, Vector3.zero, Quaternion.identity);
+        instantiatedPrefabInvalid.GetComponent<Animation>().Stop();
+
+    }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -22,15 +35,19 @@ public class OnClickVisuals : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit) && CheckDestination(hit.transform.position) && !hit.transform.CompareTag("Destructible"))
             {
-                Instantiate(myPrefabValid, hit.point, Quaternion.identity);
+                //Added lines
+                //Start
+                instantiatedPrefabValid.transform.SetPositionAndRotation(hit.point, Quaternion.identity);
+                instantiatedPrefabValid.GetComponent<Animation>().Stop();
+                instantiatedPrefabValid.GetComponent<Animation>().Play();
+                //End
                 ValidMove.Play();
-
             }
             else if (hit.transform.CompareTag("Destructible"))
             {
                 Hammer.Play();
             }
-            else if (hit.transform.CompareTag("Enemy") )
+            else if (hit.transform.CompareTag("Enemy"))
             {
                 Sword.Play();
             }
@@ -40,7 +57,12 @@ public class OnClickVisuals : MonoBehaviour
             }
             else
             {
-                Instantiate(myPrefabInvalid, hit.point, Quaternion.identity);
+                //Added lines
+                //Start
+                instantiatedPrefabInvalid.transform.SetPositionAndRotation(hit.point, Quaternion.identity);
+                instantiatedPrefabInvalid.GetComponent<Animation>().Stop();
+                instantiatedPrefabInvalid.GetComponent<Animation>().Play();
+                //End
                 InvalidMove.Play();
             }
         }
