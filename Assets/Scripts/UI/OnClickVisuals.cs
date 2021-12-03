@@ -33,7 +33,7 @@ public class OnClickVisuals : MonoBehaviour
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit) && CheckDestination(hit.transform.position) && !hit.transform.CompareTag("Destructible"))
+            if (Physics.Raycast(ray, out hit) && CheckDestination(hit.transform.position) && !hit.transform.CompareTag("Destructible") && !hit.transform.CompareTag("Enemy"))
             {
                 //Added lines
                 //Start
