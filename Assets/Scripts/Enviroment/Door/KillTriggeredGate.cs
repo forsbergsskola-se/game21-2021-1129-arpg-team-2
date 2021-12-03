@@ -8,7 +8,6 @@ public class KillTriggeredGate : MonoBehaviour {
     private void Start()
     {
         doorAnimation = GetComponent<Animator>();
-        collider = GetComponent<BoxCollider>();
         enemySpawner.OnEnemyDeath += EnemyDied;
         initialEnemiesInRoom = enemySpawner.SpawnPointsCount;
     }
