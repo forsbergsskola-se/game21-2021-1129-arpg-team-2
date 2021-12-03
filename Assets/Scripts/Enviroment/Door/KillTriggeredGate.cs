@@ -3,6 +3,8 @@ using UnityEngine;
 public class KillTriggeredGate : MonoBehaviour {
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private BooleanValue isLocked;
+    [SerializeField] private FloatValue minDistanceToOpen;
+    [SerializeField] private Vector3Value playerPosition;
     private Animator doorAnimation;
     // private BooleanValue isLocked;
     private int initialEnemiesInRoom;
@@ -11,11 +13,13 @@ public class KillTriggeredGate : MonoBehaviour {
         doorAnimation = GetComponent<Animator>();
         enemySpawner.OnEnemyDeath += EnemyDied;
         initialEnemiesInRoom = enemySpawner.SpawnPointsCount;
+        isLocked.BoolValue = true;
     }
 
     private void OnMouseDown()
     {
-        if (!isLocked.BoolValue) {
+        if (!isLocked.BoolValue && DistanceDoorCheck()) 
+        {
             Debug.Log("Gate be opening!");
             doorAnimation.SetBool("isOpening", true);
         }
@@ -30,5 +34,11 @@ public class KillTriggeredGate : MonoBehaviour {
         {
             isLocked.BoolValue = false;
         }
+    }
+
+    private bool DistanceDoorCheck()
+    {
+        return Mathf.Round(Vector3.Distance(transform.position, playerPosition.Vector3)) <=
+               minDistanceToOpen.InitialValue;
     }
 }
