@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class EnemyDeath : MonoBehaviour
+public class EnemyDeathMT : MonoBehaviour
 {
-    public static event Action deathCounter;
+    public static event Action enemyDeath;
 
     private void OnDisable()
     {
-        deathCounter?.Invoke();
+        enemyDeath?.Invoke();
     }
 }
