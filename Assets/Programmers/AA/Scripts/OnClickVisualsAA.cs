@@ -11,7 +11,19 @@ public class OnClickVisualsAA : MonoBehaviour
     public AudioSource InvalidMove;
     public AudioSource Hammer;
     public AudioSource Sword;
+    public Transform prefabInitialPosition;
+    private GameObject instantiatedValid;
+    private GameObject instantiatedInvalid;
     
+    private void Start()
+    {
+        
+        instantiatedValid = Instantiate(myPrefabValid, prefabInitialPosition.position, myPrefabValid.transform.rotation);
+        instantiatedInvalid = Instantiate(myPrefabInvalid, prefabInitialPosition.position, myPrefabInvalid.transform.rotation);
+        prefabInitialPosition.position = Vector3.zero;
+        prefabInitialPosition.rotation = instantiatedValid.transform.rotation;
+
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -21,8 +33,10 @@ public class OnClickVisualsAA : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit) && CheckDestination(hit.transform.position) && !hit.transform.GetComponent<EnemyFollowAA>())
             {
-                Instantiate(myPrefabValid, hit.point, Quaternion.identity);
+                //Instantiate(myPrefabValid, hit.point, Quaternion.identity);
                 ValidMove.Play();
+                instantiatedValid.transform.SetPositionAndRotation(hit.point, prefabInitialPosition.rotation);
+                instantiatedValid.GetComponent<Animation>().Play();
 
             }
             else if (hit.transform.CompareTag("Wall") )
@@ -39,8 +53,10 @@ public class OnClickVisualsAA : MonoBehaviour
             }
             else
             {
-                Instantiate(myPrefabInvalid, hit.point, Quaternion.identity);
+                //Instantiate(myPrefabInvalid, hit.point, Quaternion.identity);
                 InvalidMove.Play();
+                instantiatedInvalid.transform.SetPositionAndRotation(hit.point, prefabInitialPosition.rotation);
+                instantiatedInvalid.GetComponent<Animation>().Play();
             }
         }
     }
