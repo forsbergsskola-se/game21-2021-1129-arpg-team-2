@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public Action<int> OnEnemyDeath;
     [SerializeField] private SpawnPoint[] spawnPositions;
     [SerializeField] private FloatValue spawnInterval;
-    [SerializeField] private Enemy enemyPrefab; //Everywhere it says EnemyJO needs to be Enemy
+    [SerializeField] private Enemy enemyPrefab;
     private EnemyPooler enemyPool;
     private List<GameObject> spawnedEnemies;
     private int deathCount;

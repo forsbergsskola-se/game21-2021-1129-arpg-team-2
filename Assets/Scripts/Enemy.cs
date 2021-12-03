@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour, IDamageable
         transform.rotation = Quaternion.identity;
         health = currentHealth.InitialValue;
         gameObject.SetActive(true);
-        StartCoroutine(TestKill()); //Not important only for testing
+        // StartCoroutine(TestKill()); //Not important only for testing
     }
 
     public void TakeDamage(float damage)
@@ -27,20 +27,20 @@ public class Enemy : MonoBehaviour, IDamageable
         CurrentHealth.RuntimeValue -= damage;
 
         Debug.Log("Enemy takes damage: " + CurrentHealth.RuntimeValue);
-        // health -= damage;
-        if (CurrentHealth.RuntimeValue <= 0f)
+        health -= damage;
+        if (health <= 0f)
         {
             gameObject.SetActive(false); //Important happen on death
             OnDeath?.Invoke(this); //Important happen on death
         }
     }
 
-    private IEnumerator TestKill() //Remove, only used for testing
-    {
-        while (currentHealth.RuntimeValue > 0f)
-        {
-            TakeDamage(Random.Range(1f,5f));
-            yield return new WaitForSeconds(2);
-        }
-    }
+    // private IEnumerator TestKill() //Remove, only used for testing
+    // {
+    //     while (currentHealth.RuntimeValue > 0f)
+    //     {
+    //         TakeDamage(Random.Range(1f,5f));
+    //         yield return new WaitForSeconds(2);
+    //     }
+    // }
 }
