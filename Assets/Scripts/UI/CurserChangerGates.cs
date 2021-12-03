@@ -6,7 +6,7 @@ public class CurserChangerGates : MonoBehaviour
 {
     public Texture2D cursorBase;
     public Texture2D cursorLocked;
-    public Texture2D cursorUnklocked;
+    public Texture2D cursorUnlocked;
     public CursorMode cursorMode = CursorMode.ForceSoftware;
     public Vector2 hotSpot = Vector2.zero;
     Animator anim;
@@ -20,13 +20,14 @@ public class CurserChangerGates : MonoBehaviour
     
     void OnMouseEnter()
     {
-        if (GateIsClosed)
+        Debug.Log("Gate is Closed?"+ GateIsClosed.BoolValue);
+        if (GateIsClosed.BoolValue)
         {
             Cursor.SetCursor(cursorLocked, hotSpot, cursorMode);
         }
         else
         {
-            Cursor.SetCursor(cursorUnklocked, hotSpot, cursorMode);
+            Cursor.SetCursor(cursorUnlocked, hotSpot, cursorMode);
         }
     }    
     void OnMouseExit()

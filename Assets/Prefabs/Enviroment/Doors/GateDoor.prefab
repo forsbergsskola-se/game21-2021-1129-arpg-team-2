@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8380552574011265564}
   - component: {fileID: 352630686220435112}
   - component: {fileID: 5256555466936569751}
-  - component: {fileID: 1346956155334449853}
   - component: {fileID: 1963195614680260972}
   - component: {fileID: 1438884753}
   - component: {fileID: 1438884759}
+  - component: {fileID: 1438884754}
   m_Layer: 0
   m_Name: GateDoor
   m_TagString: Gate
@@ -108,22 +108,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1346956155334449853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9042648808822598089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bcab6ecab1f9ee44a51e3f303ee981c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cursorBase: {fileID: 2800000, guid: 8ea795c067613354898068091ffc7130, type: 3}
-  cursorTexture: {fileID: 2800000, guid: 7d4a349e204be984cbd483b7ba288543, type: 3}
-  cursorMode: 1
-  hotSpot: {x: 0, y: 0}
 --- !u!114 &1963195614680260972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpawner: {fileID: 0}
+  isLocked: {fileID: 11400000, guid: 527dd2eb4a32d5a4ebf3cdb96e14b872, type: 2}
 --- !u!65 &1438884753
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -166,3 +151,21 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &1438884754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9042648808822598089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e981a9099aa796548922f6b5f31d3d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorBase: {fileID: 2800000, guid: 2e71a8202d3b4a3448ec85ced5a40265, type: 3}
+  cursorLocked: {fileID: 2800000, guid: 21628736160fcc9488493401da3ef621, type: 3}
+  cursorUnlocked: {fileID: 2800000, guid: 72bb43463816aad42852103286479cb0, type: 3}
+  cursorMode: 1
+  hotSpot: {x: 0, y: 0}
+  GateIsClosed: {fileID: 11400000, guid: 527dd2eb4a32d5a4ebf3cdb96e14b872, type: 2}
