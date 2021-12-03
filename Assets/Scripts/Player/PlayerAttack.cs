@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,12 +5,12 @@ public class PlayerAttack : MonoBehaviour, IAttack
 {
     [SerializeField] private FloatValue basePower;
     [SerializeField] private FloatValue attackInterval;
-    [SerializeField] private AudioSource swordAttack;
+    [SerializeField] private AudioSource attackSound;
     [SerializeField] private Weapon weapon;
 
     private bool attackOnGoing;
-    private IDamageable target;
-    [SerializeField] private GameObjectValue target2;
+    private IDamageable attackTarget;
+    [SerializeField] private GameObjectValue movementTarget;
     private GameObjectValue defaultValue;
 
     public FloatValue BasePower
@@ -24,32 +23,32 @@ public class PlayerAttack : MonoBehaviour, IAttack
     {
         if (IsInWeaponRange() && !attackOnGoing)
         {
-            target = target2.Value.GetComponent<Entity>();
-            StartCoroutine(AttackOnInterval(target));
+            attackTarget = movementTarget.Value.GetComponent<Entity>();
+            StartCoroutine(AttackOnInterval(attackTarget));
         }
 
         else if (!IsInWeaponRange() && attackOnGoing)
         {
             attackOnGoing = false;
-            target = null;
+            attackTarget = null;
             StopCoroutine(nameof(AttackOnInterval));
         }
 
-        if (Input.GetMouseButtonDown(0) && target2.Value.GetComponent<Entity>() is IDamageable && IsInWeaponRange())
+        if (Input.GetMouseButtonDown(0) && movementTarget.Value.GetComponent<Entity>() is IDamageable && IsInWeaponRange())
         {
-            target = target2.Value.GetComponent<Entity>();
-            StartCoroutine(AttackOnInterval(target));
-            Debug.Log(target.CurrentHealth.RuntimeValue);
+            attackTarget = movementTarget.Value.GetComponent<Entity>();
+            StartCoroutine(AttackOnInterval(attackTarget));
+            Debug.Log(attackTarget.CurrentHealth.RuntimeValue);
         }
     }
 
     private bool IsInWeaponRange()
-        => Mathf.Round(Vector3.Distance(transform.position, target2.Value.transform.position)) <= weapon.Range;
+        => Mathf.Round(Vector3.Distance(transform.position, movementTarget.Value.transform.position)) <= weapon.Range;
 
     public void Attack(IDamageable thisTarget)
     {
         if (thisTarget == null) return;
-        swordAttack.Play();
+        attackSound.Play();
         thisTarget.TakeDamage(BasePower);
     }
 
