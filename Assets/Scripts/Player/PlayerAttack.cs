@@ -46,9 +46,6 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     public void Attack(IDamageable thisTarget)
     {
-        
-        Debug.Log("Attack fired!");
-        
         if (thisTarget == null) return;
         attackSound.Play();
         thisTarget.TakeDamage(BasePower.RuntimeValue);

@@ -20,7 +20,6 @@ public class CurserChangerGates : MonoBehaviour
     
     void OnMouseEnter()
     {
-        Debug.Log("Gate is Closed?"+ GateIsClosed.BoolValue);
         if (GateIsClosed.BoolValue)
         {
             Cursor.SetCursor(cursorLocked, hotSpot, cursorMode);

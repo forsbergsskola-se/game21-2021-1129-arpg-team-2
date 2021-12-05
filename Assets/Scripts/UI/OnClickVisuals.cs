@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class OnClickVisuals : MonoBehaviour
 {
+    [SerializeField] private BooleanValue isLocked;
     public GameObject myPrefabValid;
     public GameObject myPrefabInvalid;
     public AudioSource ValidMove;
@@ -20,9 +21,9 @@ public class OnClickVisuals : MonoBehaviour
     private void Start()
     {
         instantiatedPrefabValid = Instantiate(myPrefabValid, Vector3.zero, Quaternion.identity);
-        instantiatedPrefabValid.GetComponent<Animation>().Stop();
+        instantiatedPrefabValid.GetComponentInChildren<Animation>().Stop();
         instantiatedPrefabInvalid = Instantiate(myPrefabInvalid, Vector3.zero, Quaternion.identity);
-        instantiatedPrefabInvalid.GetComponent<Animation>().Stop();
+        instantiatedPrefabInvalid.GetComponentInChildren<Animation>().Stop();
 
     }
 
@@ -33,13 +34,13 @@ public class OnClickVisuals : MonoBehaviour
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit) && CheckDestination(hit.transform.position) && !hit.transform.CompareTag("Destructible"))
+            if (Physics.Raycast(ray, out hit) && CheckDestination(hit.transform.position) && !hit.transform.CompareTag("Destructible") && !hit.transform.CompareTag("Enemy"))
             {
                 //Added lines
                 //Start
                 instantiatedPrefabValid.transform.SetPositionAndRotation(hit.point, Quaternion.identity);
-                instantiatedPrefabValid.GetComponent<Animation>().Stop();
-                instantiatedPrefabValid.GetComponent<Animation>().Play();
+                instantiatedPrefabValid.GetComponentInChildren<Animation>().Stop();
+                instantiatedPrefabValid.GetComponentInChildren<Animation>().Play();
                 //End
                 ValidMove.Play();
             }
@@ -53,15 +54,19 @@ public class OnClickVisuals : MonoBehaviour
             }
             else if (hit.transform.CompareTag("Gate"))
             {
-                Gate.Play();
+                if (isLocked.BoolValue)
+                {
+                  Gate.Play();  
+                }
+                
             }
             else
             {
                 //Added lines
                 //Start
                 instantiatedPrefabInvalid.transform.SetPositionAndRotation(hit.point, Quaternion.identity);
-                instantiatedPrefabInvalid.GetComponent<Animation>().Stop();
-                instantiatedPrefabInvalid.GetComponent<Animation>().Play();
+                instantiatedPrefabInvalid.GetComponentInChildren<Animation>().Stop();
+                instantiatedPrefabInvalid.GetComponentInChildren<Animation>().Play();
                 //End
                 InvalidMove.Play();
             }
