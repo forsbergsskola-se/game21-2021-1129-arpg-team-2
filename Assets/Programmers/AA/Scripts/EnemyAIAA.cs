@@ -11,7 +11,7 @@ public class EnemyAIAA : MonoBehaviour
 
     [SerializeField] private Vector3Value playerPosition;
 
-    public LayerMask whatIsGround, whatIsPlayer;
+    public LayerMask Player, Ground;
 
     public float health;
 
@@ -31,15 +31,15 @@ public class EnemyAIAA : MonoBehaviour
 
     private void Awake()
     {
-        playerPosition.Vector3 = GameObject.Find("PlayerObj").transform.position;
+        //playerPosition.Vector3 = GameObject.Find("PlayerObj").transform.position;
         //agent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
         //Check for sight and attack range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, Player);
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
@@ -67,7 +67,7 @@ public class EnemyAIAA : MonoBehaviour
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, Ground))
             walkPointSet = true;
     }
 
