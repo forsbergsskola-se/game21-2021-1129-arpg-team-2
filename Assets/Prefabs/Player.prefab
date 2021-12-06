@@ -247,7 +247,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
   weapon: {fileID: 11400000, guid: 49e3fb9430814444795772bb521b70fb, type: 2}
-  target: {fileID: 11400000, guid: 3822b48aecca15341a5d2a736bc7ac74, type: 2}
+  movementTarget: {fileID: 11400000, guid: 3822b48aecca15341a5d2a736bc7ac74, type: 2}
+  stopFrontOfGateDistance: {fileID: 11400000, guid: 069304486c538450c84c063c7a9dd1e8, type: 2}
 --- !u!114 &4032229772199897195
 MonoBehaviour:
   m_ObjectHideFlags: 0
