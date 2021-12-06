@@ -5,6 +5,7 @@ public class KillTriggeredGate : MonoBehaviour {
     [SerializeField] private BooleanValue isLocked;
     [SerializeField] private FloatValue minDistanceToOpen;
     [SerializeField] private Vector3Value playerPosition;
+    public AudioSource gateOpening;
     private Animator doorAnimation;
     // private BooleanValue isLocked;
     private int initialEnemiesInRoom;
@@ -22,6 +23,8 @@ public class KillTriggeredGate : MonoBehaviour {
         {
             Debug.Log("Gate be opening!");
             doorAnimation.SetBool("isOpening", true);
+            gateOpening.Play();
+
         }
     }
 

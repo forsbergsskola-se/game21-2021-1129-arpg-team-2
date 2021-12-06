@@ -21,9 +21,9 @@ public class OnClickVisuals : MonoBehaviour
     private void Start()
     {
         instantiatedPrefabValid = Instantiate(myPrefabValid, Vector3.zero, Quaternion.identity);
-        instantiatedPrefabValid.GetComponent<Animation>().Stop();
+        instantiatedPrefabValid.GetComponentInChildren<Animation>().Stop();
         instantiatedPrefabInvalid = Instantiate(myPrefabInvalid, Vector3.zero, Quaternion.identity);
-        instantiatedPrefabInvalid.GetComponent<Animation>().Stop();
+        instantiatedPrefabInvalid.GetComponentInChildren<Animation>().Stop();
 
     }
 
@@ -39,8 +39,8 @@ public class OnClickVisuals : MonoBehaviour
                 //Added lines
                 //Start
                 instantiatedPrefabValid.transform.SetPositionAndRotation(hit.point, Quaternion.identity);
-                instantiatedPrefabValid.GetComponent<Animation>().Stop();
-                instantiatedPrefabValid.GetComponent<Animation>().Play();
+                instantiatedPrefabValid.GetComponentInChildren<Animation>().Stop();
+                instantiatedPrefabValid.GetComponentInChildren<Animation>().Play();
                 //End
                 ValidMove.Play();
             }
@@ -65,8 +65,8 @@ public class OnClickVisuals : MonoBehaviour
                 //Added lines
                 //Start
                 instantiatedPrefabInvalid.transform.SetPositionAndRotation(hit.point, Quaternion.identity);
-                instantiatedPrefabInvalid.GetComponent<Animation>().Stop();
-                instantiatedPrefabInvalid.GetComponent<Animation>().Play();
+                instantiatedPrefabInvalid.GetComponentInChildren<Animation>().Stop();
+                instantiatedPrefabInvalid.GetComponentInChildren<Animation>().Play();
                 //End
                 InvalidMove.Play();
             }
