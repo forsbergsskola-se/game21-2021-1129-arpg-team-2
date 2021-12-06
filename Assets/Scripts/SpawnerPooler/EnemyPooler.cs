@@ -7,7 +7,7 @@ using Object = System.Object;
 public class EnemyPooler : MonoBehaviour
 {
     private int amountToPool;
-    private List<Enemy> pooledObjects = new List<Enemy>(); //Everywhere it says EnemyJO needs to be Enemy
+    private List<Enemy> pooledObjects = new List<Enemy>();
 
     public void Setup(int poolSize, Enemy prefab)
     {

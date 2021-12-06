@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private SpawnPoint[] spawnPositions;
     [SerializeField] private FloatValue spawnInterval;
     [SerializeField] private Enemy enemyPrefab;
+    [SerializeField] private AudioSource deathSound;
     private EnemyPooler enemyPool;
     private List<GameObject> spawnedEnemies;
     private int deathCount;
@@ -44,8 +45,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void EnemyDied(Enemy enemy)
     {
+        deathSound.Play();
         deathCount++;
         OnEnemyDeath?.Invoke(deathCount);
-        StartCoroutine(Respawn(enemy.SpawnIndex));
     }
 }

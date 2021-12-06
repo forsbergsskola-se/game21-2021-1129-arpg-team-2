@@ -1,20 +1,18 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
-    public Action<Enemy> OnDeath; //Important
+    public Action<Enemy> OnDeath;
     [SerializeField] private FloatValue currentHealth;
-    [SerializeField] private AudioSource deathSound;
     private float health;
     private Renderer render;
     private static readonly int Color1 = Shader.PropertyToID("_Color");
     private Color defaultColor;
     private float redFlashInterval = .5f;
     
-    public int SpawnIndex { get; private set; } //Important
+    public int SpawnIndex { get; private set; }
     public FloatValue CurrentHealth { get => currentHealth; set => currentHealth = value; }
 
     private void Awake()
@@ -23,7 +21,7 @@ public class Enemy : MonoBehaviour, IDamageable
         defaultColor = render.material.color;
     }
 
-    public void Spawn(int index, SpawnPoint spawnPoint) //Important
+    public void Spawn(int index, SpawnPoint spawnPoint)
     {
         SpawnIndex = index;
         transform.position = spawnPoint.transform.position;
@@ -39,9 +37,8 @@ public class Enemy : MonoBehaviour, IDamageable
         health -= damage;
         if (health <= 0f)
         {
-            deathSound.Play();
-            gameObject.SetActive(false); //Important happen on death
-            OnDeath?.Invoke(this); //Important happen on death
+            gameObject.SetActive(false);
+            OnDeath?.Invoke(this);
         }
     }
     

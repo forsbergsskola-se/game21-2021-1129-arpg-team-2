@@ -30,13 +30,7 @@ public class KillTriggeredGate : MonoBehaviour {
 
     private void EnemyDied(int deathCount)
     {
-        Debug.Log("deathCount: " + deathCount);
-        Debug.Log("initialEnemiesInRoom: " + initialEnemiesInRoom);
-        
-        if (deathCount >= initialEnemiesInRoom)
-        {
-            isLocked.BoolValue = false;
-        }
+        if (deathCount >= initialEnemiesInRoom) isLocked.BoolValue = false;
     }
 
     private bool DistanceDoorCheck()
