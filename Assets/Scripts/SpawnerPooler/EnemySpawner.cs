@@ -46,6 +46,5 @@ public class EnemySpawner : MonoBehaviour
     {
         deathCount++;
         OnEnemyDeath?.Invoke(deathCount);
-        StartCoroutine(Respawn(enemy.SpawnIndex));
     }
 }
