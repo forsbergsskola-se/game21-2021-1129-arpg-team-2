@@ -1,13 +1,11 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
-    public Action<Enemy> OnDeath; //Important
+    public Action<Enemy> OnDeath;
     [SerializeField] private FloatValue currentHealth;
-    public AudioSource deathSound;
     private float health;
     private Renderer render;
     private static readonly int Color1 = Shader.PropertyToID("_Color");
@@ -39,7 +37,6 @@ public class Enemy : MonoBehaviour, IDamageable
         health -= damage;
         if (health <= 0f)
         {
-            deathSound.Play();
             gameObject.SetActive(false);
             OnDeath?.Invoke(this);
         }
