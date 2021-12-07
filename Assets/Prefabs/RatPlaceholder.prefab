@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7975904022497877467}
   - component: {fileID: 7451778977802126171}
   - component: {fileID: 7009389986981846789}
+  - component: {fileID: -7882606695635727583}
   m_Layer: 0
   m_Name: RatPlaceholder
   m_TagString: Enemy
@@ -113,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543c1cb53ba744b72b1622aabd0eeca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: {fileID: 11400000, guid: 72f2afc166e5a9e478fc4ce30ff50e78, type: 2}
+  maxHealth: 30
 --- !u!114 &7451778977802126171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,3 +147,16 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &-7882606695635727583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3727973343909372596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b68c201007f3543bf4d42394a9b014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 30
