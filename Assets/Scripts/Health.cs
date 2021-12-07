@@ -3,12 +3,20 @@ using UnityEngine;
 public class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] private float maxHealth;
+    [SerializeField] private GameEvent entityDeath;
     private FloatValue currentHealth;
     public FloatValue CurrentHealth { get => currentHealth; set => currentHealth = value; }
-    // private float health;
+    
+    // Flash red when taking damage
+    private Renderer render;
+    private static readonly int Color1 = Shader.PropertyToID("_Color");
+    private Color defaultColor;
+    private float redFlashInterval = .5f;
 
     private void Awake()
     {
+        render = GetComponent<Renderer>();
+        defaultColor = render.material.color;
         currentHealth = ScriptableObject.CreateInstance<FloatValue>();
         currentHealth.RuntimeValue = maxHealth;
         currentHealth.InitialValue = maxHealth;
@@ -16,13 +24,21 @@ public class Health : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        Debug.Log("CurrentHealth: " + CurrentHealth.RuntimeValue);
+        FlashRed();
         CurrentHealth.RuntimeValue -= damage;
-        
-        // health -= damage;
-        // if (health <= 0f)
-        // {
-        //     gameObject.SetActive(false);
-        // }
+        if (CurrentHealth.RuntimeValue <= 0f) entityDeath.Raise();
+    }
+    
+    // (Hopefully) temporary
+    private void FlashRed()
+    {
+        render.material.SetColor(Color1, Color.red);
+        Invoke(nameof(SetToDefaultColor), redFlashInterval);
+    }
+    
+    // (Hopefully) temporary
+    private void SetToDefaultColor()
+    {
+        render.material.SetColor(Color1, defaultColor);
     }
 }
