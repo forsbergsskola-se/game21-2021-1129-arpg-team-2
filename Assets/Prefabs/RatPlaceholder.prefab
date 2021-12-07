@@ -15,7 +15,9 @@ GameObject:
   - component: {fileID: 7975904022497877467}
   - component: {fileID: 7451778977802126171}
   - component: {fileID: 7009389986981846789}
-  - component: {fileID: -7882606695635727583}
+  - component: {fileID: -1301230759970035006}
+  - component: {fileID: 9091946946093342843}
+  - component: {fileID: 7854606310091008543}
   m_Layer: 0
   m_Name: RatPlaceholder
   m_TagString: Enemy
@@ -114,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543c1cb53ba744b72b1622aabd0eeca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 30
+  currentHealth: {fileID: 11400000, guid: 72f2afc166e5a9e478fc4ce30ff50e78, type: 2}
 --- !u!114 &7451778977802126171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +149,7 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!114 &-7882606695635727583
+--- !u!114 &-1301230759970035006
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,7 +158,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 3727973343909372596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63b68c201007f3543bf4d42394a9b014, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fec1fa47338dac4c87a81af1b622035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 30
+  basePower: {fileID: 11400000, guid: 2e60983dfef45814a810f94189a4388f, type: 2}
+  attackInterval: {fileID: 11400000, guid: f929ac7eb0739654c8dce382347b2890, type: 2}
+  attackSound: {fileID: 0}
+  weapon: {fileID: 11400000, guid: 0dee2489d47b1b64790154291d3fcc79, type: 2}
+  movementTarget: {fileID: 11400000, guid: 70da94d1ac5c40e47af31e9e59bdd34a, type: 2}
+--- !u!114 &9091946946093342843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3727973343909372596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41b805387556664d833781e8213fbf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7854606310091008543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3727973343909372596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0, b: 0, a: 0.5176471}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
