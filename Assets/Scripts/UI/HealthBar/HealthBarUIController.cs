@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBarController : MonoBehaviour
+public class HealthBarUIController : MonoBehaviour
 {
    public Image healthBar;
    private  Health health;
