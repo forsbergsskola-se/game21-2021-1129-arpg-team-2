@@ -7,9 +7,8 @@ using Random = UnityEngine.Random;
 
 public class EnemyAIAA : MonoBehaviour
 {
-    [SerializeField] private Vector3Value playerPosition;
-    public NavMeshAgent agent;
-    public LayerMask Player, Ground;
+    //Layers
+    public LayerMask PlayerLayer, GroundLayer;
    
     //Patrolling
     public Vector3 walkPoint;
@@ -24,12 +23,20 @@ public class EnemyAIAA : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
     
+    //Player and Enemy - Navmesh
+    [SerializeField] private Vector3Value playerPosition;
+    private NavMeshAgent agent;
+    
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+    }
     
     private void Update()
     {
         //Check for sight and attack range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, Player);
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, PlayerLayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, PlayerLayer);
         
         if (!playerInSightRange && !playerInAttackRange) Patrolling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
@@ -57,7 +64,7 @@ public class EnemyAIAA : MonoBehaviour
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, Ground))
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, GroundLayer))
             walkPointSet = true;
     }
 
