@@ -53,7 +53,7 @@ public class EnemyAIAA : MonoBehaviour
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
         //Walkpoint reached
-        if (distanceToWalkPoint.magnitude < 1f)
+        if (distanceToWalkPoint.magnitude < 2f)
             walkPointSet = false;
     }
     private void SearchWalkPoint()
@@ -72,6 +72,7 @@ public class EnemyAIAA : MonoBehaviour
     {
         Debug.Log("Enemy found the player!");
         agent.SetDestination(playerPosition.Vector3);
+        agent.isStopped = false;
     }
 
     private void AttackPlayer()
@@ -80,6 +81,8 @@ public class EnemyAIAA : MonoBehaviour
         agent.SetDestination(transform.position);
 
         transform.LookAt(playerPosition.Vector3);
+
+        agent.isStopped = true;
 
         if (!alreadyAttacked)
         {
