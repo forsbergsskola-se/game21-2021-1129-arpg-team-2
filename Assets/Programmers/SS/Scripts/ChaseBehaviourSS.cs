@@ -22,6 +22,11 @@ public class ChaseBehaviourSS : StateMachineBehaviour
         {
             animator.SetBool("isFollowing", false);
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetBool("isPatrolling", true);
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
