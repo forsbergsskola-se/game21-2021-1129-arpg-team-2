@@ -6,6 +6,13 @@ public class Enemy : MonoBehaviour
 {
     public Action<Enemy> OnDeath;
     public int SpawnIndex { get; private set; }
+    private Health enemyHealth;
+
+    private void Awake()
+    {
+        enemyHealth = GetComponent<Health>();
+        enemyHealth.entityDeath = ScriptableObject.CreateInstance<GameEvent>();
+    }
 
     public void Spawn(int index, SpawnPoint spawnPoint)
     {

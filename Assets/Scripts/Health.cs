@@ -3,7 +3,7 @@ using UnityEngine;
 public class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] private float maxHealth;
-    [SerializeField] private GameEvent entityDeath;
+    public GameEvent entityDeath;
     private FloatValue currentHealth;
     public FloatValue CurrentHealth { get => currentHealth; set => currentHealth = value; }
     
