@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 7854606310091008543}
   - component: {fileID: 849945162660278843}
   - component: {fileID: 6974413310255559945}
+  - component: {fileID: 8595177707125797863}
   m_Layer: 0
   m_Name: RatPlaceholder
   m_TagString: Enemy
@@ -239,3 +240,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8595177707125797863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3727973343909372596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14895ed108cdf5644be57b101de5aecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: 70da94d1ac5c40e47af31e9e59bdd34a, type: 2}

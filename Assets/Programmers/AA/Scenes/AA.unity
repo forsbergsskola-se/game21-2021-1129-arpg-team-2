@@ -1565,12 +1565,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08bc8a74e549f2b4cb066c599b2b31ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
-  agent: {fileID: 1102567511}
-  Player:
+  PlayerLayer:
     serializedVersion: 2
     m_Bits: 8
-  Ground:
+  GroundLayer:
     serializedVersion: 2
     m_Bits: 64
   walkPoint: {x: 0, y: 0, z: 0}
@@ -1580,6 +1578,7 @@ MonoBehaviour:
   attackRange: 3
   playerInSightRange: 0
   playerInAttackRange: 0
+  playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!1 &1137505893 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3397351730499419565, guid: 6cf8990b50c975440878c8bd6f32f5ef, type: 3}
