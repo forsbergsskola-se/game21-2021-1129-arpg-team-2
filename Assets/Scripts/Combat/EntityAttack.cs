@@ -3,41 +3,29 @@ using UnityEngine;
 
 public class EntityAttack : MonoBehaviour, IAttack
 {
-    [SerializeField] private FloatValue basePower;
     [SerializeField] private FloatValue attackInterval;
     [SerializeField] private AudioSource attackSound;
     [SerializeField] private Weapon weapon;
 
-    private bool attackOnGoing;
-    private IDamageable attackTarget;
+    private bool _attackOnGoing;
+    private IDamageable _attackTarget;
     [SerializeField] private GameObjectValue movementTarget;
-    private GameObjectValue defaultValue;
+    private GameObjectValue _defaultValue;
 
-    public FloatValue BasePower
-    {
-        get => basePower;
-        set => basePower = value;
-    }
 
     private void Update()
     {
-        if (IsInWeaponRange() && !attackOnGoing && movementTarget.Value.TryGetComponent(out IDamageable entity))
+        if (IsInWeaponRange() && !_attackOnGoing && movementTarget.Value.TryGetComponent(out IDamageable entity))
         {
-            attackTarget = entity;
-            StartCoroutine(AttackOnInterval(attackTarget));
+            _attackTarget = entity;
+            StartCoroutine(AttackOnInterval(_attackTarget));
         }
 
-        else if (!IsInWeaponRange() && attackOnGoing)
+        else if (!IsInWeaponRange() && _attackOnGoing)
         {
-            attackOnGoing = false;
-            attackTarget = null;
+            _attackOnGoing = false;
+            _attackTarget = null;
             StopCoroutine(nameof(AttackOnInterval));
-        }
-
-        if (Input.GetMouseButtonDown(0) && movementTarget.Value.GetComponent<Entity>() is IDamageable && IsInWeaponRange())
-        {
-            attackTarget = movementTarget.Value.GetComponent<Entity>();
-            StartCoroutine(AttackOnInterval(attackTarget));
         }
     }
 
@@ -47,17 +35,17 @@ public class EntityAttack : MonoBehaviour, IAttack
     public void Attack(IDamageable thisTarget)
     {
         if (thisTarget == null) return;
-        attackSound.Play();
-        thisTarget.TakeDamage(BasePower.RuntimeValue);
+        //attackSound.Play();
+        thisTarget.TakeDamage(weapon.Power);
     }
 
     private IEnumerator AttackOnInterval(IDamageable entity)
     {
-        attackOnGoing = true;
+        _attackOnGoing = true;
         while (entity.CurrentHealth.RuntimeValue > 0f)
         {
             Attack(entity);
-            if (attackOnGoing) yield return new WaitForSeconds(attackInterval.RuntimeValue);
+            if (_attackOnGoing) yield return new WaitForSeconds(attackInterval.RuntimeValue);
             else yield break;
         }
     }

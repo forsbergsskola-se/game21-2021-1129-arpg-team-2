@@ -7,14 +7,9 @@ using Random = UnityEngine.Random;
 
 public class EnemyAIAA : MonoBehaviour
 {
-    public NavMeshAgent agent;
-
-    [SerializeField] private Vector3Value playerPosition;
-
-    public LayerMask Player, Ground;
-
-    public float health;
-
+    //Layers
+    public LayerMask PlayerLayer, GroundLayer;
+   
     //Patrolling
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -23,31 +18,26 @@ public class EnemyAIAA : MonoBehaviour
     //Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
-    //public GameObject projectile;
 
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
     
-    private enum State
-    {
-        
-    }
-
-    private State state;
-
+    //Player and Enemy - Navmesh
+    [SerializeField] private Vector3Value playerPosition;
+    private NavMeshAgent agent;
+    
     private void Awake()
     {
-        //playerPosition.Vector3 = GameObject.Find("PlayerObj").transform.position;
-        //agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
     }
-
+    
     private void Update()
     {
         //Check for sight and attack range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, Player);
-
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, PlayerLayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, PlayerLayer);
+        
         if (!playerInSightRange && !playerInAttackRange) Patrolling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
@@ -74,12 +64,13 @@ public class EnemyAIAA : MonoBehaviour
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, Ground))
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, GroundLayer))
             walkPointSet = true;
     }
 
     private void ChasePlayer()
     {
+        Debug.Log("Enemy found the player!");
         agent.SetDestination(playerPosition.Vector3);
     }
 
@@ -92,12 +83,6 @@ public class EnemyAIAA : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            //Attack code here
-            //Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            //rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            //rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-            //End of attack code
-
             Debug.Log("Attack");
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -106,24 +91,5 @@ public class EnemyAIAA : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
-    }
-
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
-    }
-    private void DestroyEnemy()
-    {
-        Destroy(gameObject);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
     }
 }

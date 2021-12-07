@@ -18,6 +18,9 @@ GameObject:
   - component: {fileID: -1301230759970035006}
   - component: {fileID: 9091946946093342843}
   - component: {fileID: 7854606310091008543}
+  - component: {fileID: 849945162660278843}
+  - component: {fileID: 6974413310255559945}
+  - component: {fileID: 8595177707125797863}
   m_Layer: 0
   m_Name: RatPlaceholder
   m_TagString: Enemy
@@ -116,7 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543c1cb53ba744b72b1622aabd0eeca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: {fileID: 11400000, guid: 72f2afc166e5a9e478fc4ce30ff50e78, type: 2}
 --- !u!114 &7451778977802126171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,3 +198,58 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &849945162660278843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3727973343909372596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b68c201007f3543bf4d42394a9b014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 30
+  entityDeath: {fileID: 11400000, guid: 7e9bb74333dc137449b2324eef6a787f, type: 2}
+--- !u!114 &6974413310255559945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3727973343909372596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2f698b8af41f264abd87ae44d449008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 7e9bb74333dc137449b2324eef6a787f, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7975904022497877467}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: OnEnemyDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8595177707125797863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3727973343909372596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14895ed108cdf5644be57b101de5aecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: 70da94d1ac5c40e47af31e9e59bdd34a, type: 2}

@@ -46,7 +46,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     public void Attack(IDamageable thisTarget)
     {
-        if (thisTarget == null) return;
+        // if (thisTarget == null) return;
         attackSound.Play();
         thisTarget.TakeDamage(BasePower.RuntimeValue);
     }
