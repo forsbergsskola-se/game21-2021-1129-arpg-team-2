@@ -23,7 +23,7 @@ public class EnemyAIAA : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
     
-    //Player and Enemy - Navmesh
+    //Player and Enemy position- Navmesh
     [SerializeField] private Vector3Value playerPosition;
     private NavMeshAgent agent;
     
