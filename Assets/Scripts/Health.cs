@@ -27,6 +27,7 @@ public class Health : MonoBehaviour, IDamageable
         FlashRed();
         CurrentHealth.RuntimeValue -= damage;
         if (CurrentHealth.RuntimeValue <= 0f) entityDeath.Raise();
+        Debug.Log(this.gameObject + ": " + CurrentHealth);
     }
     
     // (Hopefully) temporary
