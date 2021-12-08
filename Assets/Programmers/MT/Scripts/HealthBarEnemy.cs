@@ -9,11 +9,10 @@ public class HealthBarEnemy : MonoBehaviour, IDamageable
     private Health health;
     public GameObject FloatingTextPrefab;
     private float previousHealth;
-    private GameObject healthBar;
+    [SerializeField] private GameObject healthBar;
     void Awake()
     {
         previousHealth = health.CurrentHealth.InitialValue;
-        healthBar = gameObject.GetComponentInChildren<EnemyHealthBar>();
         healthBar.SetActive(false);
         
 
