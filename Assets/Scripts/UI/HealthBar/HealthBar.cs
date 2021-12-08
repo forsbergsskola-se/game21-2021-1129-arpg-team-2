@@ -3,18 +3,22 @@ using UnityEngine;
 
 namespace UI.HealthBar {
     public class HealthBar : MonoBehaviour {
-        private GameObject healthBarPrefab;
+        [NonSerialized] private GameObject healthBar;
 
         private void Awake() {
-            healthBarPrefab.SetActive(false);
+            healthBar = GameObject.Find("EnemyHealthBar");
+            if (healthBar != null) {
+                Debug.Log("Found hb");
+            }
+            healthBar.SetActive(false);
         }
 
         private void OnMouseEnter() {
-            healthBarPrefab.SetActive(true);
+            healthBar.SetActive(true);
         }
         
         private void OnMouseExit() {
-            healthBarPrefab.SetActive(false);
+            healthBar.SetActive(false);
         }
     }
 }
