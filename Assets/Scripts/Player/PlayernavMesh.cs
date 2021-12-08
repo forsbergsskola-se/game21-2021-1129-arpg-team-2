@@ -9,6 +9,7 @@ public class PlayernavMesh : MonoBehaviour
     [SerializeField] private Weapon weapon;
     [SerializeField] private GameObjectValue movementTarget;
     [SerializeField] private FloatValue stopFrontOfGateDistance;
+    [SerializeField] private GameObject emptyMovementTarget;
     
     private NavMeshAgent navMeshAgent;
     
@@ -16,6 +17,7 @@ public class PlayernavMesh : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         playerPosition.Vector3 = transform.position;
+        movementTarget.Value = emptyMovementTarget;
     }
 
     private void Update()
