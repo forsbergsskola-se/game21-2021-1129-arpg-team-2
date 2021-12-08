@@ -4,6 +4,8 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] private float maxHealth;
+    [SerializeField] private FloatValue healthFloatValue;
+    
     public GameEvent entityDeath;
     private FloatValue currentHealth;
     public FloatValue CurrentHealth { get => currentHealth; set => currentHealth = value; }
@@ -18,7 +20,10 @@ public class Health : MonoBehaviour, IDamageable
     {
         render = GetComponent<Renderer>();
         defaultColor = render.material.color;
-        currentHealth = ScriptableObject.CreateInstance<FloatValue>();
+
+        if (healthFloatValue != null) currentHealth = healthFloatValue;
+        else currentHealth = ScriptableObject.CreateInstance<FloatValue>();
+        
         currentHealth.RuntimeValue = maxHealth;
         currentHealth.InitialValue = maxHealth;
     }
@@ -28,10 +33,9 @@ public class Health : MonoBehaviour, IDamageable
         FlashRed();
         CurrentHealth.RuntimeValue -= damage;
 
-        Debug.Log("entityDeath event: " + entityDeath);
-        
         if (CurrentHealth.RuntimeValue <= 0f) entityDeath.Raise();
-        Debug.Log(this.gameObject + ": " + CurrentHealth);
+        
+        Debug.Log(this.gameObject + ": " + CurrentHealth.RuntimeValue);
     }
 
     // (Hopefully) temporary
