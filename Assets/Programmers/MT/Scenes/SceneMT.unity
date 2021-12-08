@@ -265,6 +265,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 849945162660278843, guid: 9f2bcbb617b4041c79ec7740722fd769, type: 3}
+      propertyPath: FloatingTextPrefab
+      value: 
+      objectReference: {fileID: 5189983744227234827, guid: da7c7c315b9b8ca4cbb88ab6a04efc95, type: 3}
     - target: {fileID: 1220213093531292052, guid: 9f2bcbb617b4041c79ec7740722fd769, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1061,7 +1065,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1582462780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1074,7 +1078,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b52b01076ff86c4fb26f95f84a0c130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabDamagePopup: {fileID: 3226162900806833781, guid: 84181c70a034682468fb589d1f4a9380, type: 3}
 --- !u!4 &1582462781
 Transform:
   m_ObjectHideFlags: 0
@@ -1416,7 +1419,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6742e0085094b840a22d3608d4a8fc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FloatingTextPrefab: {fileID: 0}
   healthBar: {fileID: 2029601129}
 --- !u!1 &2029601129 stripped
 GameObject:

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class HealthBarEnemy : MonoBehaviour, IDamageable
 {
     private Health health;
-    public GameObject FloatingTextPrefab;
+    // public GameObject FloatingTextPrefab;
     private float previousHealth;
     [SerializeField] private GameObject healthBar;
     void Awake()
@@ -33,7 +33,7 @@ public class HealthBarEnemy : MonoBehaviour, IDamageable
         // Debug.Log(this.gameObject + ": " + CurrentHealth);
         
         
-        // if (FloatingTextPrefab != null)
+        // if (FloatingTextPrefab)
         // {
         //     ShowFlaotingText();
         // }
@@ -55,6 +55,6 @@ public class HealthBarEnemy : MonoBehaviour, IDamageable
     
     // void ShowFlaotingText()
     // {
-    //     Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity);
+    //     Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity, transform);
     // }
 }
