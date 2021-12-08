@@ -9,11 +9,11 @@ namespace UI.HealthBar {
 
         private void Awake() {
             healthBar.SetActive(false);
-            PlayerAttack.OnPlayerEnteredCombat += InCombatChanged;
+            //PlayerAttack.OnPlayerEnteredCombat += InCombatChanged;
         }
 
         private void OnDestroy() {
-            PlayerAttack.OnPlayerEnteredCombat -= InCombatChanged;
+            //PlayerAttack.OnPlayerEnteredCombat -= InCombatChanged;
         }
 
         private void OnMouseEnter() {

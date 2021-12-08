@@ -19,28 +19,13 @@ public class Health : MonoBehaviour, IDamageable
     {
         render = GetComponent<Renderer>();
         defaultColor = render.material.color;
-<<<<<<< Updated upstream
 
-=======
-<<<<<<< HEAD
-        currentHealth = ScriptableObject.CreateInstance<FloatValue>();
-        currentHealth.RuntimeValue = maxHealth;
-        currentHealth.InitialValue = maxHealth;
-    }
-
-=======
-
->>>>>>> Stashed changes
         if (CurrentHealth == null) currentHealth = ScriptableObject.CreateInstance<FloatValue>();
         
         currentHealth.RuntimeValue = maxHealth;
         currentHealth.InitialValue = maxHealth;
     }
     
-<<<<<<< Updated upstream
-=======
->>>>>>> 50934a7b1f8d070050e55dbac9d892db4acf7d61
->>>>>>> Stashed changes
     public void TakeDamage(float damage)
     {
         FlashRed();
