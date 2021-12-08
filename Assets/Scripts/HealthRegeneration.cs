@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class HealthRegeneration : MonoBehaviour
 {
-    [SerializeField] private GameEvent entityDeath;
     [SerializeField] private FloatValue playerHealth;
-    [SerializeField] private FloatValue regenerationRate;
+    [SerializeField] private float regenerationRate;
+
+    public void RegenerateHealth()
+    {
+        playerHealth.RuntimeValue = playerHealth.InitialValue;
+    }
 
 }
