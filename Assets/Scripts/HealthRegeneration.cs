@@ -9,6 +9,8 @@ public class HealthRegeneration : MonoBehaviour
     [SerializeField] private float regenerationRate;
     [SerializeField] private float regenerationTime;
 
+    [SerializeField] private GameEvent playerRespawn;
+
     private Health health;
 
     private void Awake()
@@ -32,6 +34,8 @@ public class HealthRegeneration : MonoBehaviour
         {
             playerHealth.RuntimeValue = playerHealth.InitialValue;
             health.enabled = true;
+            playerRespawn.Raise();
+            
             yield return null;
         }
         else
