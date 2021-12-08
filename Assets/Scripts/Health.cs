@@ -21,7 +21,7 @@ public class Health : MonoBehaviour, IDamageable
         defaultColor = render.material.color;
         currentHealth = ScriptableObject.CreateInstance<FloatValue>();
         currentHealth.RuntimeValue = maxHealth;
-        currentHealth.InitialValue = maxHealth
+        currentHealth.InitialValue = maxHealth;
         HealthBar = GameObject.Find("EnemyHealthBar");
         HealthBar.SetActive(false);
     }
