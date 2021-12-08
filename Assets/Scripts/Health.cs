@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour, IDamageable
@@ -12,30 +13,27 @@ public class Health : MonoBehaviour, IDamageable
     private static readonly int Color1 = Shader.PropertyToID("_Color");
     private Color defaultColor;
     private float redFlashInterval = .5f;
+    private GameObject HealthBar; 
     
-  
-
-    private void Awake()
+    void Awake()
     {
         render = GetComponent<Renderer>();
         defaultColor = render.material.color;
         currentHealth = ScriptableObject.CreateInstance<FloatValue>();
         currentHealth.RuntimeValue = maxHealth;
         currentHealth.InitialValue = maxHealth;
-
-        // GameObject HealthBar = GameObject.Find("EnemyHealthBar");
-        // HealthBar.SetActive(false);
+        HealthBar = GameObject.Find("EnemyHealthBar");
+        HealthBar.SetActive(false);
     }
-
+    
     void OnMouseEnter()
     {
-        GameObject.FindWithTag("HealthBar").SetActive(true);
-        
+        HealthBar.SetActive(true);
     }
 
     void OnMouseExit()
     {
-       GameObject.FindWithTag("HealthBar").SetActive(false);
+        HealthBar.SetActive(false);
     }
 
     public void TakeDamage(float damage)
