@@ -17,7 +17,6 @@ public class HealthRegeneration : MonoBehaviour
 
     public void RegenerateHealth()
     {
-        
         StartCoroutine(Heal());
     }
 
