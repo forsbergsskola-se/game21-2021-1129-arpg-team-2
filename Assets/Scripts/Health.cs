@@ -20,7 +20,7 @@ public class Health : MonoBehaviour, IDamageable
         render = GetComponent<Renderer>();
         defaultColor = render.material.color;
 
-        if (CurrentHealth == null) ScriptableObject.CreateInstance<FloatValue>();
+        if (CurrentHealth == null) currentHealth = ScriptableObject.CreateInstance<FloatValue>();
         
         currentHealth.RuntimeValue = maxHealth;
         currentHealth.InitialValue = maxHealth;
