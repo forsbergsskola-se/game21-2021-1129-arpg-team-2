@@ -14,23 +14,19 @@ public class Health : MonoBehaviour, IDamageable
     private Color defaultColor;
     private float redFlashInterval = .5f;
     private GameObject HealthBar; 
-
-        
-        void Awake()
+    
+    void Awake()
     {
         render = GetComponent<Renderer>();
         defaultColor = render.material.color;
         currentHealth = ScriptableObject.CreateInstance<FloatValue>();
         currentHealth.RuntimeValue = maxHealth;
-        currentHealth.InitialValue = maxHealth;
-        
-
-         HealthBar = GameObject.Find("EnemyHealthBar");
+        currentHealth.InitialValue = maxHealth
+        HealthBar = GameObject.Find("EnemyHealthBar");
         HealthBar.SetActive(false);
     }
-        
-
-        void OnMouseEnter()
+    
+    void OnMouseEnter()
     {
         HealthBar.SetActive(true);
     }
