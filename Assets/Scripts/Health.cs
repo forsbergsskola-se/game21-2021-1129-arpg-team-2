@@ -12,23 +12,17 @@ public class Health : MonoBehaviour, IDamageable
     private static readonly int Color1 = Shader.PropertyToID("_Color");
     private Color defaultColor;
     private float redFlashInterval = .5f;
-<<<<<<< Updated upstream:Assets/Scripts/Health.cs
-=======
-    
-    
     public int SpawnIndex { get; private set; }
-    public FloatValue CurrentHealth { get => currentHealth; set => currentHealth = value; }
->>>>>>> Stashed changes:Assets/Scripts/Enemy.cs
+  
 
     private void Awake()
     {
         render = GetComponent<Renderer>();
         defaultColor = render.material.color;
-<<<<<<< Updated upstream:Assets/Scripts/Health.cs
         currentHealth = ScriptableObject.CreateInstance<FloatValue>();
         currentHealth.RuntimeValue = maxHealth;
         currentHealth.InitialValue = maxHealth;
-=======
+
         // GameObject HealthBar = GameObject.Find("EnemyHealthBar");
         // HealthBar.SetActive(false);
     }
@@ -52,7 +46,6 @@ public class Health : MonoBehaviour, IDamageable
     void OnMouseExit()
     {
        GameObject.FindWithTag("HealthBar").SetActive(false);
->>>>>>> Stashed changes:Assets/Scripts/Enemy.cs
     }
 
     public void TakeDamage(float damage)
