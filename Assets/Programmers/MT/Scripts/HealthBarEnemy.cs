@@ -18,16 +18,7 @@ public class HealthBarEnemy : MonoBehaviour, IDamageable
 
     }
 
-    // private void Update()
-    // {
-    //     if (previousHealth != health.CurrentHealth.RuntimeValue)
-    //     {
-    //         if (FloatingTextPrefab != null)
-    //         {
-    //             ShowFlaotingText();
-    //         }
-    //     }
-    // }
+    
 
     public FloatValue CurrentHealth { get; set; }
 
