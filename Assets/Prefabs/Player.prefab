@@ -18,6 +18,10 @@ GameObject:
   - component: {fileID: 4032229772199897196}
   - component: {fileID: 4032229772199897195}
   - component: {fileID: 4032229772199897198}
+  - component: {fileID: 905321144}
+  - component: {fileID: 905321146}
+  - component: {fileID: 905321145}
+  - component: {fileID: 7032361469741264804}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -249,6 +253,7 @@ MonoBehaviour:
   weapon: {fileID: 11400000, guid: 49e3fb9430814444795772bb521b70fb, type: 2}
   movementTarget: {fileID: 11400000, guid: 3822b48aecca15341a5d2a736bc7ac74, type: 2}
   stopFrontOfGateDistance: {fileID: 11400000, guid: 069304486c538450c84c063c7a9dd1e8, type: 2}
+  emptyMovementTarget: {fileID: 2787818640270513650, guid: 830f1e06c8a58cf4c94ab3c0bd5ea272, type: 3}
 --- !u!114 &4032229772199897195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,3 +304,76 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 3
+--- !u!114 &905321144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032229772199897188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b68c201007f3543bf4d42394a9b014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 77
+  entityDeath: {fileID: 11400000, guid: 0bc55e5350f3f5849bed20f71422286b, type: 2}
+  currentHealth: {fileID: 11400000, guid: 703c051985a502643a9270229a531eee, type: 2}
+--- !u!114 &905321146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032229772199897188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cec221ceff96c8498152429488ca888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 11400000, guid: 703c051985a502643a9270229a531eee, type: 2}
+  regenerationRate: 10
+  regenerationTime: 5
+--- !u!114 &905321145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032229772199897188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2f698b8af41f264abd87ae44d449008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 0bc55e5350f3f5849bed20f71422286b, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 905321146}
+        m_TargetAssemblyTypeName: HealthRegeneration, Assembly-CSharp
+        m_MethodName: RegenerateHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7032361469741264804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032229772199897188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b68c201007f3543bf4d42394a9b014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 77
+  entityDeath: {fileID: 11400000, guid: 0bc55e5350f3f5849bed20f71422286b, type: 2}
+  currentHealth: {fileID: 0}
