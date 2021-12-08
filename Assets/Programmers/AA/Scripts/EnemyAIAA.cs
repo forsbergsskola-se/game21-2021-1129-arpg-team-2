@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class EnemyAIAA : MonoBehaviour
@@ -13,6 +14,7 @@ public class EnemyAIAA : MonoBehaviour
     //Patrolling
     public Vector3 walkPoint;
     bool walkPointSet;
+    [SerializeField]private bool isPatrolling;
     public float walkPointRange;
 
     //Attacking
@@ -20,36 +22,104 @@ public class EnemyAIAA : MonoBehaviour
     bool alreadyAttacked;
 
     //States
-    public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
-    
+    public Vector3 targetDir;
+    public float awarenessRange, attackRange, angleToPlayer, hearingRange;
+    public bool playerInAwarenessRange, playerInAttackRange, playerInSight, playerInHearingRange;
+    public bool noObstacle;
+    public bool isInAttackState, isInChaseState, isInPatrolState;
+
     //Player and Enemy position- Navmesh
+    [SerializeField] private float fieldOfViewAngle = 90;
     [SerializeField] private Vector3Value playerPosition;
     private NavMeshAgent agent;
+    private Vector3 startPosition;
     
-    private void Awake()
+    
+    
+    private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        startPosition = agent.transform.position;
+        Debug.Log(startPosition);
+        agent.isStopped = false;
+        isInPatrolState = true;
     }
     
     private void Update()
     {
-        //Check for sight and attack range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, PlayerLayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, PlayerLayer);
+        //Check for the angle of view
+        targetDir = playerPosition.Vector3 - transform.position;
+        angleToPlayer = (Vector3.Angle(targetDir, transform.forward));
+        if (angleToPlayer >= -fieldOfViewAngle && angleToPlayer <= fieldOfViewAngle && noObstacle && playerInAwarenessRange) // 180° FOV
+            playerInSight = true;
+        else
+        {
+            playerInSight = false;
+        }
+        RaycastHit hit;
+        //Check for obstacle
+        //noObstacle = Physics.Raycast(transform.position, targetDir, awarenessRange, GroundLayer);
+        if (Physics.Raycast(transform.position, targetDir, out hit))
+        {
+            if (hit.transform.CompareTag("Player"))
+            {
+                noObstacle = true;
+                agent.isStopped = false;
+            }
+            else
+            {
+                noObstacle = false;
+                agent.isStopped = true;
+            }
+        }
+
+        //Debug.Log("Raycast hits: "+ hit.transform.name);
         
-        if (!playerInSightRange && !playerInAttackRange) Patrolling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        
+        //Check for sight, hearing and attack range
+        playerInAwarenessRange = Physics.CheckSphere(transform.position, awarenessRange, PlayerLayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, PlayerLayer);
+        playerInHearingRange = Physics.CheckSphere(transform.position, hearingRange, PlayerLayer);
+
+        if (!playerInAwarenessRange)
+        {
+            if (isPatrolling)
+            {
+               isInPatrolState = true; 
+            }
+            else
+            {
+                Debug.Log("Going to the start "+startPosition);
+                agent.isStopped = false;
+                agent.SetDestination(startPosition);
+            }
+        }
+
+        if (isPatrolling && isInPatrolState)
+        {
+            Patrolling();
+        }
+        else
+        {
+            agent.isStopped = true;
+        }
+        if (((playerInAwarenessRange && playerInSight) || playerInHearingRange)  && !playerInAttackRange && noObstacle) ChasePlayer();
+        if (((playerInAwarenessRange && playerInSight) || playerInHearingRange)  && playerInAttackRange && noObstacle) AttackPlayer();
     }
 
     private void Patrolling()
     {
+        isInPatrolState = true;
+        isInAttackState = false;
+        isInChaseState = false;
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
+        {
             agent.SetDestination(walkPoint);
-
+            agent.isStopped = false;
+        }
+        
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
         //Walkpoint reached
@@ -73,6 +143,9 @@ public class EnemyAIAA : MonoBehaviour
         Debug.Log("Enemy found the player!");
         agent.SetDestination(playerPosition.Vector3);
         agent.isStopped = false;
+        isInPatrolState = false;
+        isInAttackState = false;
+        isInChaseState = true;
     }
 
     private void AttackPlayer()
@@ -83,6 +156,9 @@ public class EnemyAIAA : MonoBehaviour
         transform.LookAt(playerPosition.Vector3);
 
         agent.isStopped = true;
+        isInPatrolState = false;
+        isInAttackState = true;
+        isInChaseState = false;
 
         if (!alreadyAttacked)
         {
@@ -94,5 +170,17 @@ public class EnemyAIAA : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, awarenessRange);
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, hearingRange);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(transform.position, targetDir);
+
     }
 }
