@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +8,19 @@ public class DarkenScreen : MonoBehaviour
     [SerializeField] private float fadeSpeed;
     private Image imageBlack;
 
-    public void OnPlayerDefeated()
+    private void Awake()
     {
         imageBlack = GetComponentInChildren<Image>();
+    }
+
+    public void OnPlayerDefeated()
+    {
         StartCoroutine(FadeInBlack());
+    }
+
+    public void OnPlayerNotDefeated()
+    {
+        StartCoroutine(FadeInBlack(false));
     }
 
     private IEnumerator FadeInBlack(bool fadeToBlack = true)
