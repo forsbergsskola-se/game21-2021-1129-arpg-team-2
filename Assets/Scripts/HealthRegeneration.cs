@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealthRegeneration : MonoBehaviour
 {
     [SerializeField] private FloatValue playerHealth;
+    [SerializeField] [Range(0.1f, 1f)]private float healthThreshold;
     [SerializeField] private float regenerationRate;
     [SerializeField] private float regenerationTime;
 
@@ -27,7 +28,7 @@ public class HealthRegeneration : MonoBehaviour
         
         playerHealth.RuntimeValue += regenerationRate;
         
-        if (playerHealth.RuntimeValue >= playerHealth.InitialValue)
+        if (playerHealth.RuntimeValue >= playerHealth.InitialValue * healthThreshold)
         {
             playerHealth.RuntimeValue = playerHealth.InitialValue;
             health.enabled = true;
