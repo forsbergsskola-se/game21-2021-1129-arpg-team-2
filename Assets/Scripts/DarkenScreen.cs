@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class DarkenScreen : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float distanceFromCamera;
+    private Camera cam;
+
+    private void Awake()
     {
-        
+        cam = Camera.main;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPlayerDefeated()
     {
-        
+        transform.position = cam.transform.position + cam.transform.forward * distanceFromCamera;
+    }
+
+    public void OnPlayerNotDefeated()
+    {
+        // move the object outside camera view
     }
 }
