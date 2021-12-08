@@ -14,10 +14,6 @@ public class Health : MonoBehaviour, IDamageable
     private Color defaultColor;
     private float redFlashInterval = .5f;
 
-    // public GameObject FloatingTextPrefab; 
-    
-  
-
     private void Awake()
     {
         render = GetComponent<Renderer>();
@@ -25,24 +21,8 @@ public class Health : MonoBehaviour, IDamageable
         currentHealth = ScriptableObject.CreateInstance<FloatValue>();
         currentHealth.RuntimeValue = maxHealth;
         currentHealth.InitialValue = maxHealth;
-
-        // GameObject HealthBar = GameObject.Find("EnemyHealthBar");
-        // HealthBar.SetActive(false);
     }
     
-    //Moved to "HealthBarEnemy" script 
-
-    // void OnMouseEnter()
-    // {
-    //     GameObject.FindWithTag("HealthBar").SetActive(true);
-    //     
-    // }
-
-    // void OnMouseExit()
-    // {
-    //    GameObject.FindWithTag("HealthBar").SetActive(false);
-    // }
-
     public void TakeDamage(float damage)
     {
         FlashRed();
@@ -52,21 +32,8 @@ public class Health : MonoBehaviour, IDamageable
         
         if (CurrentHealth.RuntimeValue <= 0f) entityDeath.Raise();
         Debug.Log(this.gameObject + ": " + CurrentHealth);
-        
-        
-        // if (FloatingTextPrefab != null)
-        // {
-        //     ShowFlaotingText();
-        // }
-        
     }
 
-    //Damage Numbers On TakeDamage
-    // void ShowFlaotingText()
-    // {
-    //     Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity);
-    // }
-    
     // (Hopefully) temporary
     private void FlashRed()
     {
