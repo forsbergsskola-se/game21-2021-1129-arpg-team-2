@@ -12,7 +12,7 @@ public class Health : MonoBehaviour, IDamageable
     private static readonly int Color1 = Shader.PropertyToID("_Color");
     private Color defaultColor;
     private float redFlashInterval = .5f;
-    public int SpawnIndex { get; private set; }
+    
   
 
     private void Awake()
@@ -25,16 +25,6 @@ public class Health : MonoBehaviour, IDamageable
 
         // GameObject HealthBar = GameObject.Find("EnemyHealthBar");
         // HealthBar.SetActive(false);
-    }
-
-    public void Spawn(int index, SpawnPoint spawnPoint)
-    {
-        SpawnIndex = index;
-        transform.position = spawnPoint.transform.position;
-        transform.rotation = Quaternion.identity;
-        health = currentHealth.InitialValue;
-        gameObject.SetActive(true);
-       
     }
 
     void OnMouseEnter()
