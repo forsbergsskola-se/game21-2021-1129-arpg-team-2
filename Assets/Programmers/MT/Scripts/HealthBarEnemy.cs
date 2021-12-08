@@ -4,42 +4,67 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBarEnemy : MonoBehaviour
+public class HealthBarEnemy : MonoBehaviour, IDamageable
 {
     private Health health;
     public GameObject FloatingTextPrefab;
-    private float PreviousHealth;
+    private float previousHealth;
+    private GameObject healthBar;
     void Awake()
     {
-        PreviousHealth = health.CurrentHealth.InitialValue;
+        previousHealth = health.CurrentHealth.InitialValue;
+        healthBar = gameObject.GetComponentInChildren<EnemyHealthBar>();
+        healthBar.SetActive(false);
+        
 
     }
 
-    private void Update()
+    // private void Update()
+    // {
+    //     if (previousHealth != health.CurrentHealth.RuntimeValue)
+    //     {
+    //         if (FloatingTextPrefab != null)
+    //         {
+    //             ShowFlaotingText();
+    //         }
+    //     }
+    // }
+
+    public FloatValue CurrentHealth { get; set; }
+
+    public void TakeDamage(float damage)
     {
-        if (PreviousHealth != health.CurrentHealth.RuntimeValue)
-        {
-            if (FloatingTextPrefab != null)
-            {
-                ShowFlaotingText();
-            }
-        }
+        // FlashRed();
+        // healthealth.RuntimeValue -= damage;
+
+        // Debug.Log("entityDeath event: " + entityDeath);
+        
+        // if (CurrentHealth.RuntimeValue <= 0f) entityDeath.Raise();
+        // Debug.Log(this.gameObject + ": " + CurrentHealth);
+        
+        
+        // if (FloatingTextPrefab != null)
+        // {
+        //     ShowFlaotingText();
+        // }
+        
     }
 
     void OnMouseEnter()
     {
-        GameObject.FindWithTag("HealthBar").SetActive(true);
+        
+        healthBar.SetActive(true);
         
     }
     
     void OnMouseExit()
     {
-        GameObject.FindWithTag("HealthBar").SetActive(false);
+        healthBar.SetActive(false);
     }
    
     
-    void ShowFlaotingText()
-    {
-        Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity);
-    }
+    // void ShowFlaotingText()
+    // {
+    //     Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity);
+    // }
 }
