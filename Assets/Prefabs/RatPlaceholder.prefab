@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 849945162660278843}
   - component: {fileID: 6974413310255559945}
   - component: {fileID: 8595177707125797863}
+  - component: {fileID: 8223023202730446080}
   m_Layer: 0
   m_Name: RatPlaceholder
   m_TagString: Enemy
@@ -211,6 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 30
+  healthFloatValue: {fileID: 0}
   entityDeath: {fileID: 11400000, guid: 7e9bb74333dc137449b2324eef6a787f, type: 2}
 --- !u!114 &6974413310255559945
 MonoBehaviour:
@@ -253,6 +255,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: 70da94d1ac5c40e47af31e9e59bdd34a, type: 2}
+--- !u!114 &8223023202730446080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3727973343909372596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c45b86d4534865aa3e0fb469e0c36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 1091245590685554722}
 --- !u!1001 &4539570665594056375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -353,5 +368,10 @@ PrefabInstance:
 --- !u!224 &1220213093531292052 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3319392756575698723, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
+  m_PrefabInstance: {fileID: 4539570665594056375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1091245590685554722 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3592510631728805525, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
   m_PrefabInstance: {fileID: 4539570665594056375}
   m_PrefabAsset: {fileID: 0}

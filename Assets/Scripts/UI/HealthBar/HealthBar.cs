@@ -3,14 +3,17 @@ using UnityEngine;
 
 namespace UI.HealthBar {
     public class HealthBar : MonoBehaviour {
-        [NonSerialized] private GameObject healthBar;
+        [SerializeField] private GameObject healthBar;
+        private bool isInCombat;
+        //getcomponent från enemy
 
         private void Awake() {
-            healthBar = GameObject.Find("EnemyHealthBar");
-            if (healthBar != null) {
-                Debug.Log("Found hb");
-            }
             healthBar.SetActive(false);
+            PlayerAttack.OnPlayerEnteredCombat += InCombatChanged;
+        }
+
+        private void OnDestroy() {
+            PlayerAttack.OnPlayerEnteredCombat -= InCombatChanged;
         }
 
         private void OnMouseEnter() {
@@ -18,7 +21,16 @@ namespace UI.HealthBar {
         }
         
         private void OnMouseExit() {
-            healthBar.SetActive(false);
+            if (!isInCombat) {
+                healthBar.SetActive(false);
+            }
+        }
+
+        private void InCombatChanged(bool inCombat, IDamageable enemy)
+        {
+            
+            healthBar.SetActive(inCombat);
+            isInCombat = inCombat;
         }
     }
 }
