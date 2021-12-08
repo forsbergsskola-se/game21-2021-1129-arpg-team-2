@@ -43,6 +43,7 @@ public class EnemyAIAA : MonoBehaviour
         Debug.Log(startPosition);
         agent.isStopped = false;
         isInPatrolState = true;
+        
     }
     
     private void Update()
