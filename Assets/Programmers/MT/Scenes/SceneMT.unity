@@ -350,6 +350,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RatPlaceholder
       objectReference: {fileID: 0}
+    - target: {fileID: 5129982409653970964, guid: 9f2bcbb617b4041c79ec7740722fd769, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7811732229181398223, guid: 9f2bcbb617b4041c79ec7740722fd769, type: 3}
       propertyPath: m_TagString
       value: HealthBar
@@ -1615,6 +1619,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4003044438814792841, guid: 00c4bf942c7c7439982b02025361716c, type: 3}
   m_PrefabInstance: {fileID: 1761576807}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1945719497 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3727973343909372596, guid: 9f2bcbb617b4041c79ec7740722fd769, type: 3}
+  m_PrefabInstance: {fileID: 275020854}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1945719510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945719497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6742e0085094b840a22d3608d4a8fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FloatingTextPrefab: {fileID: 0}
 --- !u!1 &2075229562
 GameObject:
   m_ObjectHideFlags: 0
