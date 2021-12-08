@@ -26,7 +26,8 @@ public class EnemyAIAA : MonoBehaviour
     public float awarenessRange, attackRange, angleToPlayer, hearingRange;
     public bool playerInAwarenessRange, playerInAttackRange, playerInSight, playerInHearingRange;
     public bool noObstacle;
-    public bool isInAttackState, isInChaseState, isInPatrolState;
+    public bool isInPatrolState;
+    public bool isStartPositionReset;
 
     //Player and Enemy position- Navmesh
     [SerializeField] private float fieldOfViewAngle = 90;
@@ -43,7 +44,6 @@ public class EnemyAIAA : MonoBehaviour
         Debug.Log(startPosition);
         agent.isStopped = false;
         isInPatrolState = true;
-        
     }
     
     private void Update()
@@ -74,6 +74,7 @@ public class EnemyAIAA : MonoBehaviour
             }
         }
 
+
         //Debug.Log("Raycast hits: "+ hit.transform.name);
         
         
@@ -90,19 +91,21 @@ public class EnemyAIAA : MonoBehaviour
             }
             else
             {
-                Debug.Log("Going to the start "+startPosition);
-                agent.isStopped = false;
-                agent.SetDestination(startPosition);
+                if (!isStartPositionReset)
+                {
+                    //agent.ResetPath();
+                    agent.isStopped = false;
+                    agent.SetDestination(startPosition);
+                    isStartPositionReset = true;
+                    Debug.Log("Going to the start "+startPosition);
+                }
+                
             }
         }
-
+        
         if (isPatrolling && isInPatrolState)
         {
             Patrolling();
-        }
-        else
-        {
-            agent.isStopped = true;
         }
         if (((playerInAwarenessRange && playerInSight) || playerInHearingRange)  && !playerInAttackRange && noObstacle) ChasePlayer();
         if (((playerInAwarenessRange && playerInSight) || playerInHearingRange)  && playerInAttackRange && noObstacle) AttackPlayer();
@@ -111,8 +114,6 @@ public class EnemyAIAA : MonoBehaviour
     private void Patrolling()
     {
         isInPatrolState = true;
-        isInAttackState = false;
-        isInChaseState = false;
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
@@ -145,8 +146,7 @@ public class EnemyAIAA : MonoBehaviour
         agent.SetDestination(playerPosition.Vector3);
         agent.isStopped = false;
         isInPatrolState = false;
-        isInAttackState = false;
-        isInChaseState = true;
+        isStartPositionReset = false;
     }
 
     private void AttackPlayer()
@@ -158,8 +158,7 @@ public class EnemyAIAA : MonoBehaviour
 
         agent.isStopped = true;
         isInPatrolState = false;
-        isInAttackState = true;
-        isInChaseState = false;
+        
 
         if (!alreadyAttacked)
         {

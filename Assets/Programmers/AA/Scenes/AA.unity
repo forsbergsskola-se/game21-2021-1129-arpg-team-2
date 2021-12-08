@@ -176,9 +176,8 @@ MonoBehaviour:
   playerInSight: 0
   playerInHearingRange: 0
   noObstacle: 0
-  isInAttackState: 0
-  isInChaseState: 0
   isInPatrolState: 0
+  isStartPositionReset: 0
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!114 &10849029
@@ -337,9 +336,8 @@ MonoBehaviour:
   playerInSight: 0
   playerInHearingRange: 0
   noObstacle: 0
-  isInAttackState: 0
-  isInChaseState: 0
   isInPatrolState: 0
+  isStartPositionReset: 0
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!114 &13605260
@@ -498,9 +496,8 @@ MonoBehaviour:
   playerInSight: 0
   playerInHearingRange: 0
   noObstacle: 0
-  isInAttackState: 0
-  isInChaseState: 0
   isInPatrolState: 0
+  isStartPositionReset: 0
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!114 &20109306
@@ -659,9 +656,8 @@ MonoBehaviour:
   playerInSight: 0
   playerInHearingRange: 0
   noObstacle: 0
-  isInAttackState: 0
-  isInChaseState: 0
   isInPatrolState: 0
+  isStartPositionReset: 0
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!114 &22238169
@@ -820,9 +816,8 @@ MonoBehaviour:
   playerInSight: 0
   playerInHearingRange: 0
   noObstacle: 0
-  isInAttackState: 0
-  isInChaseState: 0
   isInPatrolState: 0
+  isStartPositionReset: 0
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!114 &26626200
@@ -1254,9 +1249,8 @@ MonoBehaviour:
   playerInSight: 0
   playerInHearingRange: 0
   noObstacle: 0
-  isInAttackState: 0
-  isInChaseState: 0
   isInPatrolState: 0
+  isStartPositionReset: 0
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!114 &237054338
@@ -1858,9 +1852,8 @@ MonoBehaviour:
   playerInSight: 0
   playerInHearingRange: 0
   noObstacle: 0
-  isInAttackState: 0
-  isInChaseState: 0
   isInPatrolState: 0
+  isStartPositionReset: 0
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!114 &710640263
@@ -2019,9 +2012,8 @@ MonoBehaviour:
   playerInSight: 0
   playerInHearingRange: 0
   noObstacle: 0
-  isInAttackState: 0
-  isInChaseState: 0
   isInPatrolState: 0
+  isStartPositionReset: 0
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!114 &769898832
@@ -2748,9 +2740,8 @@ MonoBehaviour:
   playerInSight: 0
   playerInHearingRange: 0
   noObstacle: 0
-  isInAttackState: 0
-  isInChaseState: 0
   isInPatrolState: 0
+  isStartPositionReset: 0
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!114 &1027609672
@@ -2999,7 +2990,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   walkPoint: {x: 0, y: 0, z: 0}
-  isPatrolling: 0
+  isPatrolling: 1
   walkPointRange: 30
   timeBetweenAttacks: 2
   targetDir: {x: 0, y: 0, z: 0}
@@ -3012,9 +3003,8 @@ MonoBehaviour:
   playerInSight: 0
   playerInHearingRange: 0
   noObstacle: 0
-  isInAttackState: 0
-  isInChaseState: 0
   isInPatrolState: 0
+  isStartPositionReset: 0
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!1 &1103091250
@@ -3070,9 +3060,8 @@ MonoBehaviour:
   playerInSight: 0
   playerInHearingRange: 0
   noObstacle: 0
-  isInAttackState: 0
-  isInChaseState: 0
   isInPatrolState: 0
+  isStartPositionReset: 0
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!114 &1103091252
@@ -3231,9 +3220,8 @@ MonoBehaviour:
   playerInSight: 0
   playerInHearingRange: 0
   noObstacle: 0
-  isInAttackState: 0
-  isInChaseState: 0
   isInPatrolState: 0
+  isStartPositionReset: 0
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!114 &1128814577
@@ -3516,9 +3504,8 @@ MonoBehaviour:
   playerInSight: 0
   playerInHearingRange: 0
   noObstacle: 0
-  isInAttackState: 0
-  isInChaseState: 0
   isInPatrolState: 0
+  isStartPositionReset: 0
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!114 &1351611580
@@ -4165,9 +4152,8 @@ MonoBehaviour:
   playerInSight: 0
   playerInHearingRange: 0
   noObstacle: 0
-  isInAttackState: 0
-  isInChaseState: 0
   isInPatrolState: 0
+  isStartPositionReset: 0
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!114 &1834143533
@@ -4326,9 +4312,8 @@ MonoBehaviour:
   playerInSight: 0
   playerInHearingRange: 0
   noObstacle: 0
-  isInAttackState: 0
-  isInChaseState: 0
   isInPatrolState: 0
+  isStartPositionReset: 0
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!114 &1855998377
@@ -4518,9 +4503,8 @@ MonoBehaviour:
   playerInSight: 0
   playerInHearingRange: 0
   noObstacle: 0
-  isInAttackState: 0
-  isInChaseState: 0
   isInPatrolState: 0
+  isStartPositionReset: 0
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!114 &1958939122
@@ -4679,9 +4663,8 @@ MonoBehaviour:
   playerInSight: 0
   playerInHearingRange: 0
   noObstacle: 0
-  isInAttackState: 0
-  isInChaseState: 0
   isInPatrolState: 0
+  isStartPositionReset: 0
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!114 &2023279981
@@ -4840,9 +4823,8 @@ MonoBehaviour:
   playerInSight: 0
   playerInHearingRange: 0
   noObstacle: 0
-  isInAttackState: 0
-  isInChaseState: 0
   isInPatrolState: 0
+  isStartPositionReset: 0
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!114 &2057051305
@@ -5001,9 +4983,8 @@ MonoBehaviour:
   playerInSight: 0
   playerInHearingRange: 0
   noObstacle: 0
-  isInAttackState: 0
-  isInChaseState: 0
   isInPatrolState: 0
+  isStartPositionReset: 0
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!114 &2107713127
