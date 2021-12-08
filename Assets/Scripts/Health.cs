@@ -13,7 +13,6 @@ public class Health : MonoBehaviour, IDamageable
     private static readonly int Color1 = Shader.PropertyToID("_Color");
     private Color defaultColor;
     private float redFlashInterval = .5f;
-    private GameObject HealthBar; 
     
     void Awake()
     {
@@ -22,18 +21,6 @@ public class Health : MonoBehaviour, IDamageable
         currentHealth = ScriptableObject.CreateInstance<FloatValue>();
         currentHealth.RuntimeValue = maxHealth;
         currentHealth.InitialValue = maxHealth;
-        HealthBar = GameObject.Find("EnemyHealthBar");
-        HealthBar.SetActive(false);
-    }
-    
-    void OnMouseEnter()
-    {
-        HealthBar.SetActive(true);
-    }
-
-    void OnMouseExit()
-    {
-        HealthBar.SetActive(false);
     }
 
     public void TakeDamage(float damage)
