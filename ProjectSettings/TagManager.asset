@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Gate
   - Destructible
+  - HealthBar
   layers:
   - Default
   - TransparentFX
@@ -43,6 +44,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: DefeatedScreen
+    uniqueID: 3885471567
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Top
+    uniqueID: 1834547137
     locked: 0

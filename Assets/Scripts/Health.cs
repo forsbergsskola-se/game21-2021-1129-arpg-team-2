@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
@@ -15,13 +16,18 @@ public class Health : MonoBehaviour, IDamageable {
     private static readonly int Color1 = Shader.PropertyToID("_Color");
     private Color defaultColor;
     private float redFlashInterval = .5f;
+    
+    public GameObject FloatingTextPrefab;
 
     private void Awake()
     {
         render = GetComponent<Renderer>();
         defaultColor = render.material.color;
 
-        if (CurrentHealth == null) currentHealth = ScriptableObject.CreateInstance<FloatValue>();
+        if (CurrentHealth == null)
+        {
+            currentHealth = ScriptableObject.CreateInstance<FloatValue>();
+        }
         
         currentHealth.RuntimeValue = maxHealth;
         currentHealth.InitialValue = maxHealth;
@@ -35,10 +41,14 @@ public class Health : MonoBehaviour, IDamageable {
         if (CurrentHealth.RuntimeValue <= 0f)
         {
             entityDeath.Raise();
-            Debug.Log("Event has been raised");
         }
-        
+
         OnTakeDamage?.Invoke(damage);
+
+        if (FloatingTextPrefab)
+        {
+            ShowFlaotingText();
+        }
     }
 
     // (Hopefully) temporary
@@ -53,4 +63,12 @@ public class Health : MonoBehaviour, IDamageable {
     {
         render.material.SetColor(Color1, defaultColor);
     }
+    
+    void ShowFlaotingText()
+    {
+        var gameObject = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity, transform);
+        gameObject.GetComponent<TextMeshPro>().text = currentHealth.ToString();
+    }
 }
+
+

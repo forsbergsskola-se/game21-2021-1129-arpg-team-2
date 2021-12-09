@@ -1,22 +1,55 @@
+using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DarkenScreen : MonoBehaviour
 {
-    [SerializeField] private float distanceFromCamera;
-    private Camera cam;
+    [SerializeField] private float fadeSpeed;
+    private Image imageBlack;
 
     private void Awake()
     {
-        cam = Camera.main;
+        imageBlack = GetComponentInChildren<Image>();
     }
 
     public void OnPlayerDefeated()
     {
-        transform.position = cam.transform.position + cam.transform.forward * distanceFromCamera;
+        StartCoroutine(FadeInBlack());
     }
 
     public void OnPlayerNotDefeated()
     {
-        // move the object outside camera view
+        StartCoroutine(FadeInBlack(false));
+    }
+
+    private IEnumerator FadeInBlack(bool fadeToBlack = true)
+    {
+        var imgColor = imageBlack.color;
+        float fadeAmount;
+
+        if (fadeToBlack)
+        {
+            Debug.Log("Inside fadeToBlack, image color alpha: " + imageBlack.color.a);
+            while (imageBlack.color.a < 1)
+            {
+                Debug.Log("fading to black coroutine firing");
+                fadeAmount = imgColor.a + (fadeSpeed * Time.deltaTime);
+                imgColor = new Color(imgColor.r, imgColor.g, imgColor.b, fadeAmount);
+                imageBlack.color = imgColor;
+                yield return null;
+            }
+        }
+        else
+        {
+            while (imageBlack.color.a > 0)
+            {
+                fadeAmount = imgColor.a - (fadeSpeed * Time.deltaTime);
+                imgColor = new Color(imgColor.r, imgColor.g, imgColor.b, fadeAmount);
+                imageBlack.color = imgColor;
+                yield return null;
+            }
+        }
+        yield return new WaitForEndOfFrame();
     }
 }
