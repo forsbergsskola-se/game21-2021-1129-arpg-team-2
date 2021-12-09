@@ -8,31 +8,34 @@ using Random = UnityEngine.Random;
 
 public class EnemyAIAA : MonoBehaviour
 {
+    [Header("Assign Layer")]
     //Layers
     public LayerMask PlayerLayer, GroundLayer;
    
     //Patrolling
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    [SerializeField]private bool isPatrolling;
-    public float walkPointRange;
+    [SerializeField] private bool isPatrolling;
     [SerializeField] private float patrolSpeed = 4f;
+    [SerializeField] float walkPointRange = 10f;
+    private Vector3 walkPoint;
+    private bool walkPointSet;
+    
 
     //Attacking
-    public float timeBetweenAttacks;
-    bool alreadyAttacked;
+    private float timeBetweenAttacks;
+    private bool alreadyAttacked;
 
     //States
-    public Vector3 targetDir;
-    public float awarenessRange, attackRange, angleToPlayer, hearingRange;
-    public bool playerInAwarenessRange, playerInAttackRange, playerInSight, playerInHearingRange;
-    public bool noObstacle;
-    public bool isInPatrolState;
-    public bool isStartPositionReset;
     [SerializeField] private float chaseSpeed = 10f;
-
+    [SerializeField] private float awarenessRange, attackRange, hearingRange;
+    private Vector3 targetDir;
+    private float angleToPlayer;
+    private bool playerInAwarenessRange, playerInAttackRange, playerInSight, playerInHearingRange;
+    private bool noObstacle;
+    private bool isInPatrolState;
+    private bool isStartPositionReset; 
+    
     //Player and Enemy position- Navmesh
-    [SerializeField] private float fieldOfViewAngle = 90;
+    [SerializeField] private float fieldOfViewAngle = 90f;
     [SerializeField] private Vector3Value playerPosition;
     private NavMeshAgent agent;
     private Vector3 startPosition;
@@ -43,7 +46,6 @@ public class EnemyAIAA : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         startPosition = agent.transform.position;
-        Debug.Log(startPosition);
         agent.isStopped = false;
         isInPatrolState = true;
     }
@@ -59,9 +61,9 @@ public class EnemyAIAA : MonoBehaviour
         {
             playerInSight = false;
         }
-        RaycastHit hit;
+        
         //Check for obstacle
-        //noObstacle = Physics.Raycast(transform.position, targetDir, awarenessRange, GroundLayer);
+        RaycastHit hit;
         if (Physics.Raycast(transform.position, targetDir, out hit))
         {
             if (hit.transform.CompareTag("Player"))
@@ -75,10 +77,6 @@ public class EnemyAIAA : MonoBehaviour
                 agent.isStopped = true;
             }
         }
-
-
-        //Debug.Log("Raycast hits: "+ hit.transform.name);
-        
         
         //Check for sight, hearing and attack range
         playerInAwarenessRange = Physics.CheckSphere(transform.position, awarenessRange, PlayerLayer);
@@ -91,24 +89,17 @@ public class EnemyAIAA : MonoBehaviour
             {
                isInPatrolState = true; 
             }
-            else
-            {
-                if (!isStartPositionReset)
-                {
-                    //agent.ResetPath();
-                    agent.isStopped = false;
-                    agent.SetDestination(startPosition);
-                    isStartPositionReset = true;
-                    Debug.Log("Going to the start "+startPosition);
-                }
-                
+            else if (!isStartPositionReset)
+            { 
+                //agent.ResetPath();
+                agent.isStopped = false;
+                agent.SetDestination(startPosition);
+                isStartPositionReset = true;
             }
         }
         
-        if (isPatrolling && isInPatrolState)
-        {
-            Patrolling();
-        }
+        // Conditions for calling patrol, chase and attack methods
+        if (isPatrolling && isInPatrolState) Patrolling();
         if (((playerInAwarenessRange && playerInSight) || playerInHearingRange)  && !playerInAttackRange && noObstacle) ChasePlayer();
         if (((playerInAwarenessRange && playerInSight) || playerInHearingRange)  && playerInAttackRange && noObstacle) AttackPlayer();
     }
@@ -116,6 +107,8 @@ public class EnemyAIAA : MonoBehaviour
     private void Patrolling()
     {
         isInPatrolState = true;
+        agent.speed = patrolSpeed;
+        
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
@@ -125,8 +118,6 @@ public class EnemyAIAA : MonoBehaviour
         }
         
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        agent.speed = patrolSpeed;
         //Walkpoint reached
         if (distanceToWalkPoint.magnitude < 2f)
             walkPointSet = false;
@@ -146,7 +137,6 @@ public class EnemyAIAA : MonoBehaviour
     private void ChasePlayer()
     {
         agent.speed = chaseSpeed;
-        Debug.Log("Enemy found the player!");
         agent.SetDestination(playerPosition.Vector3);
         agent.isStopped = false;
         isInPatrolState = false;
@@ -164,7 +154,6 @@ public class EnemyAIAA : MonoBehaviour
         agent.isStopped = true;
         isInPatrolState = false;
         
-
         if (!alreadyAttacked)
         {
             Debug.Log("Attack");
