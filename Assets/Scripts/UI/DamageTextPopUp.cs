@@ -5,11 +5,13 @@ namespace UI {
     public class DamageTextPopUp : MonoBehaviour{
         public GameObject FloatingTextPrefab;
 
-        void ShowFlaotingText()
+        public  void ShowFlaotingText()
         {
             var gameObject = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity, transform);
-            //gameObject.GetComponent<TextMeshPro>().text = currentHealth.ToString();
+            // gameObject.GetComponent<TextMeshPro>().text = currentHealth.ToString();
         }
+        
+        
     }
     
     // private TextMeshPro textMesh;
