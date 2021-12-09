@@ -17,8 +17,6 @@ public class Health : MonoBehaviour, IDamageable {
     private Color defaultColor;
     private float redFlashInterval = .5f;
     
-    public GameObject FloatingTextPrefab;
-
     private void Awake()
     {
         render = GetComponent<Renderer>();
@@ -44,11 +42,6 @@ public class Health : MonoBehaviour, IDamageable {
         }
 
         OnTakeDamage?.Invoke(damage);
-
-        if (FloatingTextPrefab)
-        {
-            ShowFlaotingText();
-        }
     }
 
     // (Hopefully) temporary
@@ -62,12 +55,6 @@ public class Health : MonoBehaviour, IDamageable {
     private void SetToDefaultColor()
     {
         render.material.SetColor(Color1, defaultColor);
-    }
-    
-    void ShowFlaotingText()
-    {
-        var gameObject = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity, transform);
-        gameObject.GetComponent<TextMeshPro>().text = currentHealth.ToString();
     }
 }
 
