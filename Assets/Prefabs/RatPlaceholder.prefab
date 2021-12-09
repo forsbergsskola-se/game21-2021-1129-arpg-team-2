@@ -290,14 +290,14 @@ MonoBehaviour:
     m_Bits: 8
   GroundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   isPatrolling: 1
-  patrolSpeed: 5
-  walkPointRange: 30
-  chaseSpeed: 9
-  awarenessRange: 14
-  attackRange: 3
-  hearingRange: 8
+  patrolSpeed: 3
+  walkPointRange: 10
+  chaseSpeed: 5
+  awarenessRange: 8
+  attackRange: 1
+  hearingRange: 5
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!195 &5966973621768611675

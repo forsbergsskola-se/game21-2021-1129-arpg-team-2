@@ -129,7 +129,7 @@ public class EnemyAI : MonoBehaviour
         
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
         //Walkpoint reached
-        if (distanceToWalkPoint.magnitude < 2f)
+        if (distanceToWalkPoint.magnitude < 5f)
             walkPointSet = false;
     }
     private void SearchWalkPoint()
@@ -192,12 +192,27 @@ public class EnemyAI : MonoBehaviour
         Debug.Log("enemy knows that player is defeated!");
         playerIsDefeated = true;
         entityAttack.enabled = false;
+        if (isPatrolling)
+        {
+            isInPatrolState = true;
+        }
+        else
+        {
+            agent.SetDestination(startPosition);
+        }
+
     }
     
     public void OnPlayerNotDefeated()
     {
         Debug.Log("enemy knows that player is NO LONGER defeated!");
-        playerIsDefeated = false;
+        StartCoroutine(TestCoroutine());
         entityAttack.enabled = true;
+    }
+
+    private IEnumerator TestCoroutine()
+    {
+        yield return new WaitForSeconds(5f);
+        playerIsDefeated = false;
     }
 }
