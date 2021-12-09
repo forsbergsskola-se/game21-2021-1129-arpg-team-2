@@ -7,6 +7,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     [SerializeField] private FloatValue attackInterval;
     [SerializeField] private AudioSource attackSound;
     [SerializeField] private Weapon weapon;
+    [SerializeField] private GameEvent onPlayerAttack;
 
     private bool attackOnGoing;
     private IDamageable attackTarget;
@@ -48,6 +49,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     {
         // if (thisTarget == null) return;
         attackSound.Play();
+        onPlayerAttack.Raise();
         thisTarget.TakeDamage(BasePower.RuntimeValue);
     }
 
