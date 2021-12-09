@@ -49,7 +49,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     {
         // if (thisTarget == null) return;
         attackSound.Play();
-        onPlayerAttack.Raise();
+        if(onPlayerAttack != null) onPlayerAttack.Raise();
         thisTarget.TakeDamage(BasePower.RuntimeValue);
     }
 
