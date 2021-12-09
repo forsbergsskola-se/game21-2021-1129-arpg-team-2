@@ -122,6 +122,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpawner: {fileID: 0}
   isLocked: {fileID: 11400000, guid: 527dd2eb4a32d5a4ebf3cdb96e14b872, type: 2}
+  minDistanceToOpen: {fileID: 0}
+  playerPosition: {fileID: 0}
+  gateOpening: {fileID: 0}
 --- !u!65 &1438884753
 BoxCollider:
   m_ObjectHideFlags: 0
