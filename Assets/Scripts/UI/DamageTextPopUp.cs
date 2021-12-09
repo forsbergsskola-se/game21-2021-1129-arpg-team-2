@@ -1,13 +1,16 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UI {
     public class DamageTextPopUp : MonoBehaviour{
-        public GameObject FloatingTextPrefab;
+        
+        public GameObject floatingTextPrefab;
 
-        public  void ShowFlaotingText()
+        public void ShowFlaotingText()
         {
-            var gameObject = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity, transform);
+            Debug.Log("ShowText has been called");
+            var gameObject = Instantiate(floatingTextPrefab, this.transform);
             // gameObject.GetComponent<TextMeshPro>().text = currentHealth.ToString();
         }
         
