@@ -50,7 +50,8 @@ public class EnemyAIAA : MonoBehaviour
     [SerializeField] private Vector3Value playerPosition;
     private NavMeshAgent agent;
     private Vector3 startPosition;
-    
+    private bool playerIsDefeated = false;
+    private EntityAttack entityAttack;
     
     
     private void Start()
@@ -59,6 +60,7 @@ public class EnemyAIAA : MonoBehaviour
         startPosition = agent.transform.position;
         agent.isStopped = false;
         isInPatrolState = true;
+        entityAttack = GetComponent<EntityAttack>();
     }
     
     private void Update()
@@ -111,8 +113,8 @@ public class EnemyAIAA : MonoBehaviour
         
         // Conditions for calling patrol, chase and attack methods
         if (isPatrolling && isInPatrolState) Patrolling();
-        if (((playerInAwarenessRange && playerInSight) || playerInHearingRange)  && !playerInAttackRange && noObstacle) ChasePlayer();
-        if (((playerInAwarenessRange && playerInSight) || playerInHearingRange)  && playerInAttackRange && noObstacle) AttackPlayer();
+        if (((playerInAwarenessRange && playerInSight) || playerInHearingRange)  && !playerInAttackRange && noObstacle && !playerIsDefeated) ChasePlayer();
+        if (((playerInAwarenessRange && playerInSight) || playerInHearingRange)  && playerInAttackRange && noObstacle && !playerIsDefeated) AttackPlayer();
     }
 
     private void Patrolling()
@@ -167,7 +169,7 @@ public class EnemyAIAA : MonoBehaviour
         
         if (!alreadyAttacked)
         {
-            Debug.Log("Attack");
+            // Debug.Log("Attack");
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
@@ -186,5 +188,20 @@ public class EnemyAIAA : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, hearingRange);
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position, targetDir);
+    }
+
+    public void OnPlayerDefeated()
+    {
+        Debug.Log("enemy knows that player is defeated!");
+        playerIsDefeated = true;
+        StartCoroutine(TestCoroutine());
+        entityAttack.enabled = false;
+        
+    }
+
+    private IEnumerator TestCoroutine()
+    {
+        yield return new WaitForSeconds(5f);
+        playerIsDefeated = false;
     }
 }
