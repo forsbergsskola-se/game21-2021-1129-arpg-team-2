@@ -1,8 +1,9 @@
 using System.Collections;
+using System;
 using UnityEngine;
 
-public class EntityAttack : MonoBehaviour, IAttack
-{
+public class EntityAttack : MonoBehaviour, IAttack {
+    public Action<bool> OnAttackingChanged;
     [SerializeField] private FloatValue attackInterval;
     [SerializeField] private AudioSource attackSound;
     [SerializeField] private Weapon weapon;
@@ -19,6 +20,7 @@ public class EntityAttack : MonoBehaviour, IAttack
         {
             _attackTarget = entity;
             StartCoroutine(AttackOnInterval(_attackTarget));
+            OnAttackingChanged?.Invoke(true);
         }
 
         else if (!IsInWeaponRange() && _attackOnGoing)
@@ -26,6 +28,7 @@ public class EntityAttack : MonoBehaviour, IAttack
             _attackOnGoing = false;
             _attackTarget = null;
             StopCoroutine(nameof(AttackOnInterval));
+            OnAttackingChanged?.Invoke(false);
         }
     }
 

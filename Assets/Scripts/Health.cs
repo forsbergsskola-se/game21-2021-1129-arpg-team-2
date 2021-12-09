@@ -1,8 +1,9 @@
 using UnityEngine;
+using System;
 using UnityEngine.UI;
 
-public class Health : MonoBehaviour, IDamageable
-{
+public class Health : MonoBehaviour, IDamageable {
+    public Action<float> OnTakeDamage;
     [SerializeField] private float maxHealth;
    
     public GameEvent entityDeath;
@@ -37,7 +38,7 @@ public class Health : MonoBehaviour, IDamageable
             Debug.Log("Event has been raised");
         }
         
-        Debug.Log(this.gameObject + ": " + CurrentHealth.RuntimeValue);
+        OnTakeDamage?.Invoke(damage);
     }
 
     // (Hopefully) temporary

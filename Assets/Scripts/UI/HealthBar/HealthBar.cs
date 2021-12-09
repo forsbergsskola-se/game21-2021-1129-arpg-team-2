@@ -5,15 +5,16 @@ namespace UI.HealthBar {
     public class HealthBar : MonoBehaviour {
         [SerializeField] private GameObject healthBar;
         private bool isInCombat;
-        //getcomponent från enemy
+        private Enemy enemy;
 
         private void Awake() {
+            enemy = GetComponent<Enemy>();
             healthBar.SetActive(false);
-            //PlayerAttack.OnPlayerEnteredCombat += InCombatChanged;
+            enemy.InCombatChanged += InCombatChanged;
         }
 
         private void OnDestroy() {
-            //PlayerAttack.OnPlayerEnteredCombat -= InCombatChanged;
+            enemy.InCombatChanged -= InCombatChanged;
         }
 
         private void OnMouseEnter() {
@@ -26,9 +27,8 @@ namespace UI.HealthBar {
             }
         }
 
-        private void InCombatChanged(bool inCombat, IDamageable enemy)
+        private void InCombatChanged(bool inCombat)
         {
-            
             healthBar.SetActive(inCombat);
             isInCombat = inCombat;
         }
