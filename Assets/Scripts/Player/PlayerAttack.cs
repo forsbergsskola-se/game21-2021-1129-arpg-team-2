@@ -49,8 +49,8 @@ public class PlayerAttack : MonoBehaviour, IAttack
     {
         // if (thisTarget == null) return;
         attackSound.Play();
-        onPlayerAttack.Raise();
         thisTarget.TakeDamage(BasePower.RuntimeValue);
+        onPlayerAttack.Raise();
     }
 
     private IEnumerator AttackOnInterval(IDamageable entity)
