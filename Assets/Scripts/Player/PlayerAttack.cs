@@ -9,7 +9,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     [SerializeField] private Weapon weapon;
     [SerializeField] private GameEvent onPlayerAttack;
 
-    private bool attackOnGoing;
+    [SerializeField] private BooleanValue attackOnGoing;
     private IDamageable attackTarget;
     [SerializeField] private GameObjectValue movementTarget;
     private GameObjectValue defaultValue;
@@ -22,15 +22,15 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     private void Update()
     {
-        if (IsInWeaponRange() && !attackOnGoing && movementTarget.Value.TryGetComponent(out IDamageable entity))
+        if (IsInWeaponRange() && !attackOnGoing.BoolValue && movementTarget.Value.TryGetComponent(out IDamageable entity))
         {
             attackTarget = entity;
             StartCoroutine(AttackOnInterval(attackTarget));
         }
 
-        else if (!IsInWeaponRange() && attackOnGoing)
+        else if (!IsInWeaponRange() && attackOnGoing.BoolValue)
         {
-            attackOnGoing = false;
+            attackOnGoing.BoolValue = false;
             attackTarget = null;
             StopCoroutine(nameof(AttackOnInterval));
         }
@@ -55,11 +55,11 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     private IEnumerator AttackOnInterval(IDamageable entity)
     {
-        attackOnGoing = true;
+        attackOnGoing.BoolValue = true;
         while (entity.CurrentHealth.RuntimeValue > 0f)
         {
             Attack(entity);
-            if (attackOnGoing) yield return new WaitForSeconds(attackInterval.RuntimeValue);
+            if (attackOnGoing.BoolValue) yield return new WaitForSeconds(attackInterval.RuntimeValue);
             else yield break;
         }
     }
