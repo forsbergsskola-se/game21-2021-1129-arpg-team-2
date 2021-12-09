@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,10 +29,8 @@ public class DarkenScreen : MonoBehaviour
 
         if (fadeToBlack)
         {
-            Debug.Log("Inside fadeToBlack, image color alpha: " + imageBlack.color.a);
             while (imageBlack.color.a < 1)
             {
-                Debug.Log("fading to black coroutine firing");
                 fadeAmount = imgColor.a + (fadeSpeed * Time.deltaTime);
                 imgColor = new Color(imgColor.r, imgColor.g, imgColor.b, fadeAmount);
                 imageBlack.color = imgColor;
