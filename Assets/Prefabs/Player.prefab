@@ -235,6 +235,8 @@ MonoBehaviour:
   attackInterval: {fileID: 11400000, guid: c4fc31372a1f09c40bc1728dfde71b20, type: 2}
   attackSound: {fileID: 4032229772199897194}
   weapon: {fileID: 11400000, guid: 49e3fb9430814444795772bb521b70fb, type: 2}
+  onPlayerAttack: {fileID: 11400000, guid: a08252074eef29946a542ffb1588ea97, type: 2}
+  attackOnGoing: {fileID: 11400000, guid: 50f05ec6bf4f6544abb4034fa1b11666, type: 2}
   movementTarget: {fileID: 11400000, guid: 3822b48aecca15341a5d2a736bc7ac74, type: 2}
 --- !u!114 &4032229772199897196
 MonoBehaviour:
@@ -335,6 +337,7 @@ MonoBehaviour:
   regenerationRate: 10
   regenerationTime: 5
   playerRespawn: {fileID: 11400000, guid: 59d9ed44283d8c04da23250820cd3e8c, type: 2}
+  attackOnGoing: {fileID: 11400000, guid: 50f05ec6bf4f6544abb4034fa1b11666, type: 2}
 --- !u!114 &905321145
 MonoBehaviour:
   m_ObjectHideFlags: 0
