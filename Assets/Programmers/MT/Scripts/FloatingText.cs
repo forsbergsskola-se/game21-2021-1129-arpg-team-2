@@ -10,6 +10,6 @@ public class FloatingText : MonoBehaviour
 
   private void Start()
   {
-    //Destroy(gameObject, destroyTime);
+    Destroy(gameObject, destroyTime);
   }
 }
