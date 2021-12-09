@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -20,13 +19,16 @@ public class HealthRegeneration : MonoBehaviour
 
     public void RegenerateHealth()
     {
+        playerHealth.RuntimeValue = 0;
+        health.enabled = false;
         StartCoroutine(Heal());
     }
 
     private IEnumerator Heal()
     {
         Debug.Log("Health is Regenerating");
-        health.enabled = false;
+        
+        yield return new WaitForSeconds(regenerationTime / regenerationRate);
         
         playerHealth.RuntimeValue += regenerationRate;
         
@@ -38,15 +40,7 @@ public class HealthRegeneration : MonoBehaviour
             
             yield return null;
         }
-        else
-        {
-            yield return new WaitForSeconds(regenerationTime / regenerationRate);
-            
-            Debug.Log(regenerationTime / regenerationRate);
-            Debug.Log(playerHealth.RuntimeValue);
-            
-            StartCoroutine(Heal());
-        }
+        else StartCoroutine(Heal());
     }
 
 }
