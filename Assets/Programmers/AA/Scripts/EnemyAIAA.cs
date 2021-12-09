@@ -8,11 +8,13 @@ using Random = UnityEngine.Random;
 
 public class EnemyAIAA : MonoBehaviour
 {
-    [Header("Assign Layer")]
     //Layers
-    public LayerMask PlayerLayer, GroundLayer;
+    [Header("Assign Layers")]
+    public LayerMask PlayerLayer;
+    public LayerMask GroundLayer;
    
     //Patrolling
+    [Header("Patrolling")]
     [SerializeField] private bool isPatrolling;
     [SerializeField] private float patrolSpeed = 4f;
     [SerializeField] float walkPointRange = 10f;
@@ -23,10 +25,16 @@ public class EnemyAIAA : MonoBehaviour
     //Attacking
     private float timeBetweenAttacks;
     private bool alreadyAttacked;
-
-    //States
+    
+    [Header("Chasing")]
     [SerializeField] private float chaseSpeed = 10f;
-    [SerializeField] private float awarenessRange, attackRange, hearingRange;
+
+    [Header("Range")] 
+    [SerializeField] private float awarenessRange;
+    [SerializeField] private float attackRange;
+    [SerializeField] private float hearingRange;
+    
+    //States
     private Vector3 targetDir;
     private float angleToPlayer;
     private bool playerInAwarenessRange, playerInAttackRange, playerInSight, playerInHearingRange;
@@ -35,7 +43,10 @@ public class EnemyAIAA : MonoBehaviour
     private bool isStartPositionReset; 
     
     //Player and Enemy position- Navmesh
+    [Header("Angle")]
     [SerializeField] private float fieldOfViewAngle = 90f;
+    
+    [Header("Assign the player's position")]
     [SerializeField] private Vector3Value playerPosition;
     private NavMeshAgent agent;
     private Vector3 startPosition;
