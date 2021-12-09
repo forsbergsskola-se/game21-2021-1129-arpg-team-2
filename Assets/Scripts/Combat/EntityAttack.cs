@@ -8,24 +8,29 @@ public class EntityAttack : MonoBehaviour, IAttack {
     [SerializeField] private AudioSource attackSound;
     [SerializeField] private Weapon weapon;
 
-    private bool _attackOnGoing;
+    private bool attackOnGoing;
     private IDamageable _attackTarget;
     [SerializeField] private GameObjectValue movementTarget;
     private GameObjectValue _defaultValue;
 
+    private void Awake()
+    {
+        attackOnGoing = false;
+    }
 
     private void Update()
     {
-        if (IsInWeaponRange() && !_attackOnGoing && movementTarget.Value.TryGetComponent(out IDamageable entity))
+        if (IsInWeaponRange() && !attackOnGoing && movementTarget.Value.TryGetComponent(out IDamageable entity))
         {
+            Debug.Log("Does this get fired?");
             _attackTarget = entity;
             StartCoroutine(AttackOnInterval(_attackTarget));
             OnAttackingChanged?.Invoke(true);
         }
 
-        else if (!IsInWeaponRange() && _attackOnGoing)
+        else if (!IsInWeaponRange() && attackOnGoing)
         {
-            _attackOnGoing = false;
+            attackOnGoing = false;
             _attackTarget = null;
             StopCoroutine(nameof(AttackOnInterval));
             OnAttackingChanged?.Invoke(false);
@@ -44,12 +49,18 @@ public class EntityAttack : MonoBehaviour, IAttack {
 
     private IEnumerator AttackOnInterval(IDamageable entity)
     {
-        _attackOnGoing = true;
+        attackOnGoing = true;
         while (entity.CurrentHealth.RuntimeValue > 0f)
         {
             Attack(entity);
-            if (_attackOnGoing) yield return new WaitForSeconds(attackInterval.RuntimeValue);
+            if (attackOnGoing) yield return new WaitForSeconds(attackInterval.RuntimeValue);
             else yield break;
         }
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        attackOnGoing = false;
     }
 }

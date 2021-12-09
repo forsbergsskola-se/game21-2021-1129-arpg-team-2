@@ -47,16 +47,16 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private Vector3Value playerPosition;
     private NavMeshAgent agent;
     private Vector3 startPosition;
-    private bool playerIsDefeated = false;
+    private bool playerIsDefeated;
     private EntityAttack entityAttack;
-    
-    
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         startPosition = agent.transform.position;
         agent.isStopped = false;
         isInPatrolState = true;
+        playerIsDefeated = false;
         entityAttack = GetComponent<EntityAttack>();
     }
     
@@ -191,14 +191,13 @@ public class EnemyAI : MonoBehaviour
     {
         Debug.Log("enemy knows that player is defeated!");
         playerIsDefeated = true;
-        StartCoroutine(TestCoroutine());
         entityAttack.enabled = false;
-        
     }
-
-    private IEnumerator TestCoroutine()
+    
+    public void OnPlayerNotDefeated()
     {
-        yield return new WaitForSeconds(5f);
+        Debug.Log("enemy knows that player is NO LONGER defeated!");
         playerIsDefeated = false;
+        entityAttack.enabled = true;
     }
 }
