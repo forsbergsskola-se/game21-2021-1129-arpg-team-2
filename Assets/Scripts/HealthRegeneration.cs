@@ -33,7 +33,7 @@ public class HealthRegeneration : MonoBehaviour
         playerHealth.RuntimeValue = 0;
         
         _health.enabled = false;
-        _playerAttack.enabled = false;
+        //_playerAttack.enabled = false;
         _playernavMesh.enabled = false;
         
         attackOnGoing.BoolValue = false;
@@ -43,8 +43,6 @@ public class HealthRegeneration : MonoBehaviour
 
     private IEnumerator Heal()
     {
-        Debug.Log("Health is Regenerating");
-        
         yield return new WaitForSeconds(regenerationTime / regenerationRate);
         
         playerHealth.RuntimeValue += regenerationRate;
