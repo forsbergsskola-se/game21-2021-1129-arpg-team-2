@@ -48,5 +48,6 @@ public class EnemySpawner : MonoBehaviour
         deathSound.Play();
         deathCount++;
         OnEnemyDeath?.Invoke(deathCount);
+        StartCoroutine(Respawn(enemy.SpawnIndex));
     }
 }
