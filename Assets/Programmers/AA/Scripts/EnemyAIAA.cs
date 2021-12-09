@@ -16,6 +16,7 @@ public class EnemyAIAA : MonoBehaviour
     bool walkPointSet;
     [SerializeField]private bool isPatrolling;
     public float walkPointRange;
+    [SerializeField] private float patrolSpeed = 4f;
 
     //Attacking
     public float timeBetweenAttacks;
@@ -28,6 +29,7 @@ public class EnemyAIAA : MonoBehaviour
     public bool noObstacle;
     public bool isInPatrolState;
     public bool isStartPositionReset;
+    [SerializeField] private float chaseSpeed = 10f;
 
     //Player and Enemy position- Navmesh
     [SerializeField] private float fieldOfViewAngle = 90;
@@ -124,6 +126,7 @@ public class EnemyAIAA : MonoBehaviour
         
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
+        agent.speed = patrolSpeed;
         //Walkpoint reached
         if (distanceToWalkPoint.magnitude < 2f)
             walkPointSet = false;
@@ -142,6 +145,7 @@ public class EnemyAIAA : MonoBehaviour
 
     private void ChasePlayer()
     {
+        agent.speed = chaseSpeed;
         Debug.Log("Enemy found the player!");
         agent.SetDestination(playerPosition.Vector3);
         agent.isStopped = false;
@@ -151,6 +155,7 @@ public class EnemyAIAA : MonoBehaviour
 
     private void AttackPlayer()
     {
+        agent.speed = chaseSpeed;
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
 
@@ -181,6 +186,5 @@ public class EnemyAIAA : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, hearingRange);
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position, targetDir);
-
     }
 }
