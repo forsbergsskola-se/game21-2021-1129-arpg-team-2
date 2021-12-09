@@ -54,24 +54,32 @@ public class Enemy : MonoBehaviour
         OnDeath?.Invoke(this);
     }
 
-    private void AttackingChanged(bool attacking) {
+    private void AttackingChanged(bool attacking)
+    {
         isAttacking = attacking;
         EvaluateIfInCombat();
     }
     
-    private void TookDamage(float damage) {
+    private void TookDamage(float damage)
+    {
         tookDamageTimer = inCombatAfterDamageTime;
         EvaluateIfInCombat();
     }
 
-    private void EvaluateIfInCombat() {
-        if (InCombat) {
-            if (!isAttacking && tookDamageTimer <= 0) {
+    private void EvaluateIfInCombat()
+    {
+        if (InCombat)
+        {
+            if (!isAttacking && tookDamageTimer <= 0)
+            {
                 InCombat = false;
                 InCombatChanged?.Invoke(false);
             }
-        } else {
-            if (isAttacking || tookDamageTimer > 0) {
+        }
+        else
+        {
+            if (isAttacking || tookDamageTimer > 0)
+            {
                 InCombat = true;
                 InCombatChanged?.Invoke(true);
             }
