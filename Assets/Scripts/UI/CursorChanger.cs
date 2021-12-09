@@ -8,21 +8,15 @@ public class CursorChanger : MonoBehaviour
     public Texture2D cursorTexture;
     public CursorMode cursorMode = CursorMode.ForceSoftware;
     public Vector2 hotSpot = Vector2.zero;
-    Animator anim;
 
     private void Start()
     {
         Cursor.SetCursor(cursorBase, hotSpot, cursorMode);
-        anim = gameObject.GetComponent<Animator>();
     }
     
     void OnMouseEnter()
     {
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
-        if (Input.GetMouseButtonDown(0))
-        {
-            anim.SetTrigger("Active");
-        }
     }    
     void OnMouseExit()
     {
