@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 905321144}
   - component: {fileID: 905321146}
   - component: {fileID: 905321145}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -251,6 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
+  playerStartPosition: {fileID: 11400000, guid: 9f75e7794d7530d41b81493a936d17a5, type: 2}
   weapon: {fileID: 11400000, guid: 49e3fb9430814444795772bb521b70fb, type: 2}
   movementTarget: {fileID: 11400000, guid: 3822b48aecca15341a5d2a736bc7ac74, type: 2}
   stopFrontOfGateDistance: {fileID: 11400000, guid: 069304486c538450c84c063c7a9dd1e8, type: 2}
@@ -357,6 +358,18 @@ MonoBehaviour:
       - m_Target: {fileID: 905321146}
         m_TargetAssemblyTypeName: HealthRegeneration, Assembly-CSharp
         m_MethodName: RegenerateHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4032229772199897196}
+        m_TargetAssemblyTypeName: PlayernavMesh, Assembly-CSharp
+        m_MethodName: ResetToStartPosition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

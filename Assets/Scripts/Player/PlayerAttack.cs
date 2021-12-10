@@ -13,6 +13,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     private IDamageable attackTarget;
     [SerializeField] private GameObjectValue movementTarget;
     private GameObjectValue defaultValue;
+    [SerializeField] private GameObject emptyMovementTarget;
 
     public FloatValue BasePower
     {
@@ -22,24 +23,32 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     private void Update()
     {
-        if (IsInWeaponRange() && !attackOnGoing.BoolValue && movementTarget.Value.TryGetComponent(out IDamageable entity))
+        if (Input.GetMouseButtonDown(0))
+        {
+            StopAllCoroutines();
+            movementTarget.Value = emptyMovementTarget;
+            
+            if (movementTarget.Value.GetComponent<Entity>() is IDamageable && IsInWeaponRange())
+            {
+                attackTarget = movementTarget.Value.GetComponent<Entity>();
+                StartCoroutine(AttackOnInterval(attackTarget));
+            }    
+        }
+
+        else if (IsInWeaponRange() && !attackOnGoing.BoolValue && movementTarget.Value.TryGetComponent(out IDamageable entity))
         {
             attackTarget = entity;
             StartCoroutine(AttackOnInterval(attackTarget));
         }
 
-        else if (!IsInWeaponRange() && attackOnGoing.BoolValue)
-        {
-            attackOnGoing.BoolValue = false;
-            attackTarget = null;
-            StopCoroutine(nameof(AttackOnInterval));
-        }
+        else if (!IsInWeaponRange() && attackOnGoing.BoolValue) StopAttacking();
+    }
 
-        if (Input.GetMouseButtonDown(0) && movementTarget.Value.GetComponent<Entity>() is IDamageable && IsInWeaponRange())
-        {
-            attackTarget = movementTarget.Value.GetComponent<Entity>();
-            StartCoroutine(AttackOnInterval(attackTarget));
-        }
+    private void StopAttacking()
+    {
+        attackOnGoing.BoolValue = false;
+        attackTarget = null;
+        StopCoroutine(nameof(AttackOnInterval));
     }
 
     private bool IsInWeaponRange()

@@ -12,6 +12,7 @@ public class PlayernavMesh : MonoBehaviour
     [SerializeField] private GameObjectValue movementTarget;
     [SerializeField] private FloatValue stopFrontOfGateDistance;
     [SerializeField] private GameObject emptyMovementTarget;
+    [SerializeField] private BooleanValue attackOnGoing;
     private NavMeshAgent navMeshAgent;
     private RaycastHit hit;
     
@@ -31,8 +32,10 @@ public class PlayernavMesh : MonoBehaviour
     private void Update()
     {
         //navMeshAgent.destination = movePositionTransform.position;
-        if (Input.GetMouseButtonDown(0)) {
-
+        if (Input.GetMouseButtonDown(0)) 
+        {
+            attackOnGoing.BoolValue = false;
+            
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
                 if (hit.transform.CompareTag("Destructible") || hit.transform.CompareTag("Enemy"))
