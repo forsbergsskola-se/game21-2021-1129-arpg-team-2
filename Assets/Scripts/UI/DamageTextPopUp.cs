@@ -23,7 +23,7 @@ namespace UI {
         {
             Debug.Log("Current Health: " + _health.CurrentHealth.RuntimeValue);
             Debug.Log("Previous Health: " + _previousHealth);
-            var temp = Instantiate(floatingTextPrefab, this.transform);
+            var temp = Instantiate(floatingTextPrefab, transform.localPosition, Quaternion.identity);
             temp.GetComponent<TextMeshPro>().text = (_health.CurrentHealth.RuntimeValue - _previousHealth).ToString();
 
             _previousHealth = _health.CurrentHealth.RuntimeValue;
