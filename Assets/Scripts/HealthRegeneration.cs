@@ -36,7 +36,7 @@ public class HealthRegeneration : MonoBehaviour
         //_playerAttack.enabled = false;
         _playernavMesh.enabled = false;
         
-        attackOnGoing.BoolValue = false;
+        //attackOnGoing.BoolValue = false;
         
         StartCoroutine(Heal());
     }

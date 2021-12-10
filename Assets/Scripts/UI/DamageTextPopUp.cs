@@ -1,9 +1,8 @@
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace UI {
+namespace UI
+{
     [RequireComponent(typeof(Health))]
     public class DamageTextPopUp : MonoBehaviour{
         
@@ -23,13 +22,10 @@ namespace UI {
         {
             Debug.Log("Current Health: " + _health.CurrentHealth.RuntimeValue);
             Debug.Log("Previous Health: " + _previousHealth);
-            var temp = Instantiate(floatingTextPrefab, transform.localPosition, Quaternion.identity);
-            temp.GetComponent<TextMeshPro>().text = (_health.CurrentHealth.RuntimeValue - _previousHealth).ToString();
-
+            var temp = Instantiate(floatingTextPrefab, transform);
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = (_health.CurrentHealth.RuntimeValue - _previousHealth).ToString();
             _previousHealth = _health.CurrentHealth.RuntimeValue;
         }
-        
-        
     }
     
     // private TextMeshPro textMesh;
