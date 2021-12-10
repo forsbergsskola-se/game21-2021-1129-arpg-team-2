@@ -61,6 +61,7 @@ public class EnemyAI : MonoBehaviour
         isInPatrolState = true;
         playerIsDefeated = false;
         entityAttack = GetComponent<EntityAttack>();
+        ratAnimator = GetComponent<Animator>();
     }
     
     private void Update()
