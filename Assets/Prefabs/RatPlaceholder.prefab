@@ -247,6 +247,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7451778977802126171}
+        m_TargetAssemblyTypeName: CursorChanger, Assembly-CSharp
+        m_MethodName: ResetCoursor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8595177707125797863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,6 +310,7 @@ MonoBehaviour:
   awarenessRange: 8
   attackRange: 1
   hearingRange: 5
+  breathingTimeAfterDefeating: 7
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!195 &5966973621768611675

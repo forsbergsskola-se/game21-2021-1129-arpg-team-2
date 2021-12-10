@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,12 +7,14 @@ public class PlayernavMesh : MonoBehaviour
 {
 
     [SerializeField] private Vector3Value playerPosition;
+    [SerializeField] private Vector3Value playerStartPosition;
     [SerializeField] private Weapon weapon;
     [SerializeField] private GameObjectValue movementTarget;
     [SerializeField] private FloatValue stopFrontOfGateDistance;
     [SerializeField] private GameObject emptyMovementTarget;
-    
     private NavMeshAgent navMeshAgent;
+    private RaycastHit hit;
+    
     
     private void Awake()
     {
@@ -20,11 +23,15 @@ public class PlayernavMesh : MonoBehaviour
         movementTarget.Value = emptyMovementTarget;
     }
 
+    private void Start()
+    {
+        playerStartPosition.Vector3 = transform.position;
+    }
+
     private void Update()
     {
         //navMeshAgent.destination = movePositionTransform.position;
         if (Input.GetMouseButtonDown(0)) {
-            RaycastHit hit;
 
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
@@ -52,7 +59,7 @@ public class PlayernavMesh : MonoBehaviour
         
         playerPosition.Vector3 = transform.position;
     }
-    
+
     private bool SetDestination(Vector3 targetDestination)
     {
         NavMeshHit hit;
@@ -62,5 +69,10 @@ public class PlayernavMesh : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void ResetToStartPosition()
+    {
+        navMeshAgent.Warp(playerStartPosition.Vector3);
     }
 }
