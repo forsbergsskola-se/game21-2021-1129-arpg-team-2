@@ -17,12 +17,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float walkPointRange = 10f;
     private Vector3 walkPoint;
     private bool walkPointSet;
-    
 
-    //Attacking
-    private float timeBetweenAttacks;
-    private bool alreadyAttacked;
-    
+    //Chasing
     [Header("Chasing")]
     [SerializeField] private float chaseSpeed = 10f;
 
@@ -39,6 +35,10 @@ public class EnemyAI : MonoBehaviour
     private bool isInPatrolState;
     private bool isStartPositionReset; 
     
+    //Player Defeat
+    [Header("Player Defeat")]
+    [SerializeField] private float breathingTimeAfterDefeating = 7f;
+
     //Player and Enemy position- Navmesh
     [Header("Angle")]
     [SerializeField] private float fieldOfViewAngle = 90f;
@@ -111,7 +111,7 @@ public class EnemyAI : MonoBehaviour
         // Conditions for calling patrol, chase and attack methods
         if (isPatrolling && isInPatrolState) Patrolling();
         if (((playerInAwarenessRange && playerInSight) || playerInHearingRange)  && !playerInAttackRange && noObstacle && !playerIsDefeated) ChasePlayer();
-        if (((playerInAwarenessRange && playerInSight) || playerInHearingRange)  && playerInAttackRange && noObstacle && !playerIsDefeated) AttackPlayer();
+        if (((playerInAwarenessRange && playerInSight) || playerInHearingRange)  && playerInAttackRange && noObstacle && !playerIsDefeated) AttackPosition();
     }
 
     private void Patrolling()
@@ -153,7 +153,7 @@ public class EnemyAI : MonoBehaviour
         isStartPositionReset = false;
     }
 
-    private void AttackPlayer()
+    private void AttackPosition()
     {
         agent.speed = chaseSpeed;
         //Make sure enemy doesn't move
@@ -163,18 +163,8 @@ public class EnemyAI : MonoBehaviour
 
         agent.isStopped = true;
         isInPatrolState = false;
-        
-        if (!alreadyAttacked)
-        {
-            // Debug.Log("Attack");
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }
     }
-    private void ResetAttack()
-    {
-        alreadyAttacked = false;
-    }
+   
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -189,7 +179,6 @@ public class EnemyAI : MonoBehaviour
 
     public void OnPlayerDefeated()
     {
-        Debug.Log("enemy knows that player is defeated!");
         playerIsDefeated = true;
         entityAttack.enabled = false;
         if (isPatrolling)
@@ -205,14 +194,13 @@ public class EnemyAI : MonoBehaviour
     
     public void OnPlayerNotDefeated()
     {
-        Debug.Log("enemy knows that player is NO LONGER defeated!");
         StartCoroutine(TestCoroutine());
-        entityAttack.enabled = true;
     }
 
     private IEnumerator TestCoroutine()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(breathingTimeAfterDefeating);
         playerIsDefeated = false;
+        entityAttack.enabled = true;
     }
 }
