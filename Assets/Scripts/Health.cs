@@ -19,7 +19,7 @@ public class Health : MonoBehaviour, IDamageable {
     
     private void Awake()
     {
-        render = GetComponent<Renderer>();
+        render = GetComponentInChildren<Renderer>();
         defaultColor = render.material.color;
 
         if (CurrentHealth == null)

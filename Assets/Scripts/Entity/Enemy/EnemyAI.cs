@@ -50,6 +50,9 @@ public class EnemyAI : MonoBehaviour
     private bool playerIsDefeated;
     private EntityAttack entityAttack;
 
+    //Animatior controller
+    private Animator ratAnimator;
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -80,11 +83,13 @@ public class EnemyAI : MonoBehaviour
             {
                 noObstacle = true;
                 agent.isStopped = false;
+                ratAnimator.SetBool("isInPatrolState", true);
             }
             else
             {
                 noObstacle = false;
                 agent.isStopped = true;
+                ratAnimator.SetBool("isInPatrolState", false);
             }
         }
         
@@ -97,7 +102,8 @@ public class EnemyAI : MonoBehaviour
         {
             if (isPatrolling)
             {
-               isInPatrolState = true; 
+               isInPatrolState = true;
+               ratAnimator.SetBool("isInPatrolState", isInPatrolState);
             }
             else if (!isStartPositionReset)
             { 
@@ -105,6 +111,7 @@ public class EnemyAI : MonoBehaviour
                 agent.isStopped = false;
                 agent.SetDestination(startPosition);
                 isStartPositionReset = true;
+                ratAnimator.SetBool("isInPatrolState", true);
             }
         }
         
@@ -117,6 +124,7 @@ public class EnemyAI : MonoBehaviour
     private void Patrolling()
     {
         isInPatrolState = true;
+        ratAnimator.SetBool("isInPatrolState", isInPatrolState);
         agent.speed = patrolSpeed;
         
         if (!walkPointSet) SearchWalkPoint();
@@ -125,6 +133,7 @@ public class EnemyAI : MonoBehaviour
         {
             agent.SetDestination(walkPoint);
             agent.isStopped = false;
+            ratAnimator.SetBool("isInPatrolState", true);
         }
         
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
@@ -150,6 +159,7 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(playerPosition.Vector3);
         agent.isStopped = false;
         isInPatrolState = false;
+        ratAnimator.SetBool("isInPatrolState", true);
         isStartPositionReset = false;
     }
 
@@ -163,6 +173,7 @@ public class EnemyAI : MonoBehaviour
 
         agent.isStopped = true;
         isInPatrolState = false;
+        ratAnimator.SetBool("isInPatrolState", isInPatrolState);
     }
    
     private void OnDrawGizmosSelected()
@@ -181,9 +192,11 @@ public class EnemyAI : MonoBehaviour
     {
         playerIsDefeated = true;
         entityAttack.enabled = false;
+        
         if (isPatrolling)
         {
             isInPatrolState = true;
+            ratAnimator.SetBool("isInPatrolState", isInPatrolState);
         }
         else
         {
