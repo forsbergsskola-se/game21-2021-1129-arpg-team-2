@@ -52,6 +52,7 @@ public class EnemyAI : MonoBehaviour
 
     //Animatior controller
     private Animator ratAnimator;
+    private AudioSource ratFollowSound;
 
     private void Start()
     {
@@ -62,6 +63,7 @@ public class EnemyAI : MonoBehaviour
         playerIsDefeated = false;
         entityAttack = GetComponent<EntityAttack>();
         ratAnimator = GetComponent<Animator>();
+        ratFollowSound = GetComponent<AudioSource>();
     }
     
     private void Update()
@@ -101,6 +103,7 @@ public class EnemyAI : MonoBehaviour
 
         if (!playerInAwarenessRange)
         {
+            ratFollowSound.Stop();
             if (isPatrolling)
             {
                isInPatrolState = true;
@@ -156,6 +159,7 @@ public class EnemyAI : MonoBehaviour
 
     private void ChasePlayer()
     {
+        ratFollowSound.Play();
         agent.speed = chaseSpeed;
         agent.SetDestination(playerPosition.Vector3);
         agent.isStopped = false;
