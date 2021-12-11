@@ -22,4 +22,9 @@ public class CursorChanger : MonoBehaviour
     {
         Cursor.SetCursor(cursorBase, Vector2.zero, cursorMode);
     }
+
+    public void ResetCursor()
+    {
+        Cursor.SetCursor(cursorBase, hotSpot, cursorMode);
+    }
 }
