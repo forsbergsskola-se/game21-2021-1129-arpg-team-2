@@ -56,6 +56,10 @@ public class Health : MonoBehaviour, IDamageable {
     {
         render.material.SetColor(Color1, defaultColor);
     }
+
+    public void ResetHealth() {
+        currentHealth.RuntimeValue = currentHealth.InitialValue;
+    }
 }
 
 

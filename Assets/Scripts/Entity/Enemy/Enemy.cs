@@ -45,6 +45,7 @@ public class Enemy : MonoBehaviour
         SpawnIndex = index;
         transform.position = spawnPoint.transform.position;
         transform.rotation = Quaternion.identity;
+        enemyHealth.ResetHealth();
         gameObject.SetActive(true);
     }
 
