@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class AttackBehaviourSS : StateMachineBehaviour
 {
-
     private NavMeshAgent agent;
     [Header("Assign the player's position")]
     [SerializeField] private Vector3Value playerPosition;
@@ -18,7 +17,6 @@ public class AttackBehaviourSS : StateMachineBehaviour
     [Header("Assign Layers")]
     public LayerMask PlayerLayer;
     public LayerMask GroundLayer;
-
 
     //Temporary bools
     private bool noObstacle;
