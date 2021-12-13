@@ -268,12 +268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ddef0f0a9e8c0a4498dbd64026ac02c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityType: 1
-  entityStatus: 0
-  currentHealth: {fileID: 11400000, guid: 180cca52c9bb28345b7a28779def4cfb, type: 2}
-  entityDie: {fileID: 11400000, guid: 39a76b532f3c62d41a933832fb614b67, type: 2}
-  destroySound: {fileID: 27220219}
-  destructionParticles: {fileID: 0}
 --- !u!82 &27220219
 AudioSource:
   m_ObjectHideFlags: 0
@@ -382,22 +376,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da242f5ecba0cc34d88c618fcbfdddd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 39a76b532f3c62d41a933832fb614b67, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 27220218}
-        m_TargetAssemblyTypeName: EntityIS, Assembly-CSharp
-        m_MethodName: OnEntityDie
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &27220221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,10 +388,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50484934dc0bfb4492ad37f12001ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorBase: {fileID: 2800000, guid: 8ea795c067613354898068091ffc7130, type: 3}
-  cursorTexture: {fileID: 2800000, guid: 45a565294ab05f9419f7a407dcbff8ce, type: 3}
-  cursorMode: 1
-  hotSpot: {x: 0, y: 0}
 --- !u!114 &27220222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -538,9 +512,7 @@ GameObject:
   - component: {fileID: 564121636}
   - component: {fileID: 564121640}
   - component: {fileID: 564121641}
-  - component: {fileID: 564121639}
   - component: {fileID: 564121642}
-  - component: {fileID: 564121643}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -623,8 +595,7 @@ Transform:
   m_LocalPosition: {x: 1.9615173, y: 1.27, z: 0.662632}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1655208789}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -650,22 +621,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &564121639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 564121631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1ccc8fd7d43c8e419e220b7c6e62c93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  basePower: {fileID: 11400000, guid: 312f2dc86b0e7f74faba0ad42fc30f45, type: 2}
-  attackInterval: {fileID: 11400000, guid: f3ee0385400c6894a8675bba073eb6bb, type: 2}
-  swordAttack: {fileID: 564121641}
-  weapon: {fileID: 11400000, guid: f223fbec50eb6ef4abfdc1abe1c3713a, type: 2}
 --- !u!54 &564121640
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -787,40 +742,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 564121631}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da242f5ecba0cc34d88c618fcbfdddd9, type: 3}
+  m_Script: {fileID: 11500000, guid: 3277bb6da09cdc341ac792cdeda10f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 39a76b532f3c62d41a933832fb614b67, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 564121639}
-        m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
-        m_MethodName: StopCoroutine
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: AttackOnInterval
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &564121643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 564121631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb36b614d7f3b264e98dcc0f130d30c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerPosition: {fileID: 11400000, guid: e0dc665763f850148b4d31424b602fd4, type: 2}
-  weapon: {fileID: 11400000, guid: f223fbec50eb6ef4abfdc1abe1c3713a, type: 2}
-  entityDestination: {fileID: 11400000, guid: ea0b25297ac49e648a38c2f1b561b825, type: 2}
+  playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
+  playerStartPosition: {fileID: 11400000, guid: 9f75e7794d7530d41b81493a936d17a5, type: 2}
+  weapon: {fileID: 11400000, guid: 49e3fb9430814444795772bb521b70fb, type: 2}
+  movementTarget: {fileID: 11400000, guid: 3822b48aecca15341a5d2a736bc7ac74, type: 2}
+  stopFrontOfGateDistance: {fileID: 11400000, guid: 069304486c538450c84c063c7a9dd1e8, type: 2}
+  attackOnGoing: {fileID: 11400000, guid: 50f05ec6bf4f6544abb4034fa1b11666, type: 2}
 --- !u!1 &673693943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,11 +1348,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4205e3b095b9a174aa13f8cc185ea693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 11400000, guid: e0dc665763f850148b4d31424b602fd4, type: 2}
   camTransform: {fileID: 963194228}
   Offset: {x: 0, y: 0, z: 0}
   SmoothTime: 0.3
   navMeshAgent: {fileID: 564121636}
+  target: {fileID: 11400000, guid: e0dc665763f850148b4d31424b602fd4, type: 2}
+  scrollSpeed: 20
+  minY: 20
+  maxY: 120
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1598,7 +1531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPosition: {fileID: 11400000, guid: 58b14229e354f10448433e2b9598d113, type: 2}
   enemy: {fileID: 1102567511}
-  Player: {fileID: 564121635}
+  player: {fileID: 564121635}
 --- !u!114 &1102567513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1842,7 +1775,7 @@ GameObject:
   - component: {fileID: 1655208792}
   - component: {fileID: 1655208791}
   m_Layer: 0
-  m_Name: MockSword
+  m_Name: SomeItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1856,12 +1789,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655208788}
   m_LocalRotation: {x: -0.30714908, y: -0, z: -0, w: 0.95166147}
-  m_LocalPosition: {x: 0.5984826, y: 0.23000002, z: -0.402632}
+  m_LocalPosition: {x: 2.56, y: 1.5, z: 0.26}
   m_LocalScale: {x: 0.2, y: 1.5, z: 0.20000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 564121635}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: -35.775, y: 0, z: 0}
 --- !u!23 &1655208791
 MeshRenderer:
