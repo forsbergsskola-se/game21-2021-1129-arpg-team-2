@@ -1631,10 +1631,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
+  playerStartPosition: {fileID: 11400000, guid: 9f75e7794d7530d41b81493a936d17a5, type: 2}
   weapon: {fileID: 0}
   movementTarget: {fileID: 11400000, guid: 3822b48aecca15341a5d2a736bc7ac74, type: 2}
   stopFrontOfGateDistance: {fileID: 0}
   emptyMovementTarget: {fileID: 422624651}
+  attackOnGoing: {fileID: 11400000, guid: fa42db83105368049be64908eeb1817b, type: 2}
 --- !u!1 &673693943
 GameObject:
   m_ObjectHideFlags: 0
