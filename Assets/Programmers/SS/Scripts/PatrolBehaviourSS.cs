@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PatrolBehaviourSS : StateMachineBehaviour
+public class AttackBehaviourSS : StateMachineBehaviour
 {
 
     private NavMeshAgent agent;
@@ -46,51 +46,13 @@ public class PatrolBehaviourSS : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //Check for the angle of view
-        targetDir = playerPosition.Vector3 - animator.transform.position;
-        angleToPlayer = (Vector3.Angle(targetDir, animator.transform.forward));
-        if (angleToPlayer >= -fieldOfViewAngle && angleToPlayer <= fieldOfViewAngle && noObstacle && playerInAwarenessRange) // 180� FOV
-        {
-            playerInSight = true;
-        }
-        else
-        {
-            playerInSight = false;
-        }
-
-
-        //Check for obstacle
-        RaycastHit hit;
-        if (Physics.Raycast(animator.transform.position, targetDir, out hit))
-        {
-            if (hit.transform.CompareTag("Player"))
-            {
-                noObstacle = true;
-                agent.isStopped = false;
-            }
-            else
-            {
-                noObstacle = false;
-                agent.isStopped = true;
-            }
-        }
-
-        //Check for sight, hearing and attack range
-        playerInAwarenessRange = Physics.CheckSphere(animator.transform.position, awarenessRange, PlayerLayer);
-        playerInAttackRange = Physics.CheckSphere(animator.transform.position, attackRange, PlayerLayer);
-        playerInHearingRange = Physics.CheckSphere(animator.transform.position, hearingRange, PlayerLayer);
-
-        Patrolling(animator.transform);
-
-        //Move to chasing state
-        if (((playerInAwarenessRange && playerInSight) || playerInHearingRange) && !playerInAttackRange && noObstacle && !playerIsDefeated)
-        {
-            animator.SetBool("isChasing", true);
-        }
-
-
-
         
+        //Move to chasing state
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetTrigger("isChasing");
+        }
+
     }
 
     private void Patrolling(Transform thisTransform)
@@ -122,10 +84,10 @@ public class PatrolBehaviourSS : StateMachineBehaviour
             walkPointSet = true;
     }
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

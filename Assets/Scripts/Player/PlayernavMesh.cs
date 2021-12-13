@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,7 +10,7 @@ public class PlayernavMesh : MonoBehaviour
     [SerializeField] private Weapon weapon;
     [SerializeField] private GameObjectValue movementTarget;
     [SerializeField] private FloatValue stopFrontOfGateDistance;
-    [SerializeField] private GameObject emptyMovementTarget;
+    // [SerializeField] private GameObject emptyMovementTarget;
     [SerializeField] private BooleanValue attackOnGoing;
     private NavMeshAgent navMeshAgent;
     private RaycastHit hit;
@@ -21,7 +20,7 @@ public class PlayernavMesh : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         playerPosition.Vector3 = transform.position;
-        movementTarget.Value = emptyMovementTarget;
+        // movementTarget.Value = emptyMovementTarget;
     }
 
     private void Start()
