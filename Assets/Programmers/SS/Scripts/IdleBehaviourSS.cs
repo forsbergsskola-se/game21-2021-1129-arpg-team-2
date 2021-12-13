@@ -83,13 +83,13 @@ public class IdleBehaviourSS : StateMachineBehaviour
         //Moving to chase state
         if (((playerInAwarenessRange && playerInSight) || playerInHearingRange) && !playerInAttackRange && noObstacle && !playerIsDefeated)
         {
-            animator.SetBool("isChasing", true);
+            animator.SetTrigger("isChasing");
         }
 
 
         if(isEnemyPatroling)
         {
-            animator.SetBool("isPatrolling", true);
+            animator.SetTrigger("isPatrolling");
         }
     }
 
@@ -105,10 +105,10 @@ public class IdleBehaviourSS : StateMachineBehaviour
         Gizmos.DrawRay(agent.gameObject.transform.position, targetDir);
     }
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
