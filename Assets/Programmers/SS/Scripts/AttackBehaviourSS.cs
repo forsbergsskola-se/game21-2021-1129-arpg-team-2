@@ -3,43 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PatrolBehaviourSS : StateMachineBehaviour
+public class AttackBehaviourSS : StateMachineBehaviour
 {
 
     private NavMeshAgent agent;
     [Header("Assign the player's position")]
     [SerializeField] private Vector3Value playerPosition;
+    public float chaseSpeed;
     private Vector3 targetDir;
-    private float angleToPlayer;
-    [Header("Angle")]
-    [SerializeField] private float fieldOfViewAngle = 90f;
     [Header("Range")]
-    [SerializeField] private float awarenessRange;
     [SerializeField] private float attackRange;
-    [SerializeField] private float hearingRange;
+    private EntityAttack entityAttack;
     //Layers
     [Header("Assign Layers")]
     public LayerMask PlayerLayer;
     public LayerMask GroundLayer;
 
-    //Patrolling
-    [Header("Patrolling")]
-    [SerializeField] private float patrolSpeed = 4f;
-    [SerializeField] float walkPointRange = 10f;
-    private Vector3 walkPoint;
-    private bool walkPointSet;
 
     //Temporary bools
-    bool playerInSight;
     private bool noObstacle;
-    bool playerInAwarenessRange;
     bool playerInAttackRange;
-    bool playerInHearingRange;
     bool playerIsDefeated;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        entityAttack= animator.GetComponent<EntityAttack>();
         agent = animator.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
@@ -48,17 +37,6 @@ public class PatrolBehaviourSS : StateMachineBehaviour
     {
         //Check for the angle of view
         targetDir = playerPosition.Vector3 - animator.transform.position;
-        angleToPlayer = (Vector3.Angle(targetDir, animator.transform.forward));
-        if (angleToPlayer >= -fieldOfViewAngle && angleToPlayer <= fieldOfViewAngle && noObstacle && playerInAwarenessRange) // 180� FOV
-        {
-            playerInSight = true;
-        }
-        else
-        {
-            playerInSight = false;
-        }
-
-
         //Check for obstacle
         RaycastHit hit;
         if (Physics.Raycast(animator.transform.position, targetDir, out hit))
@@ -76,53 +54,40 @@ public class PatrolBehaviourSS : StateMachineBehaviour
         }
 
         //Check for sight, hearing and attack range
-        playerInAwarenessRange = Physics.CheckSphere(animator.transform.position, awarenessRange, PlayerLayer);
         playerInAttackRange = Physics.CheckSphere(animator.transform.position, attackRange, PlayerLayer);
-        playerInHearingRange = Physics.CheckSphere(animator.transform.position, hearingRange, PlayerLayer);
 
-        Patrolling(animator.transform);
+        //Move to the chase state
+        agent.speed = chaseSpeed;
+        //Make sure enemy doesn't move
+        agent.SetDestination(animator.transform.position);
+        animator.transform.LookAt(playerPosition.Vector3);
+        agent.isStopped = true;
 
-        //Move to chasing state
-        if (((playerInAwarenessRange && playerInSight) || playerInHearingRange) && !playerInAttackRange && noObstacle && !playerIsDefeated)
+        if (!playerInAttackRange || !noObstacle )
         {
             animator.SetTrigger("isChasing");
         }
-
     }
 
-    private void Patrolling(Transform thisTransform)
+    public void OnPlayerDefeated()
     {
-        agent.speed = patrolSpeed;
-
-        if (!walkPointSet) SearchWalkPoint(thisTransform);
-
-        if (walkPointSet)
-        {
-            agent.SetDestination(walkPoint);
-            agent.isStopped = false;
-        }
-
-        Vector3 distanceToWalkPoint = thisTransform.position - walkPoint;
-        //Walkpoint reached
-        if (distanceToWalkPoint.magnitude < 2f)
-            walkPointSet = false;
+        playerIsDefeated = true;
+        entityAttack.enabled = false;
     }
-    private void SearchWalkPoint(Transform thisTransform)
+
+    public void OnPlayerNotDefeated()
     {
-        //Calculate random point in range
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3(thisTransform.position.x + randomX, thisTransform.position.y, thisTransform.position.z + randomZ);
-
-        if (Physics.Raycast(walkPoint, -thisTransform.up, 2f, GroundLayer))
-            walkPointSet = true;
+        //StartCoroutine(TestCoroutine());
+        playerIsDefeated = false;
+        entityAttack.enabled = true;
     }
+
+    
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-
-    }
+    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //
+    //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
