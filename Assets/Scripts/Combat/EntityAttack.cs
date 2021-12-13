@@ -22,7 +22,6 @@ public class EntityAttack : MonoBehaviour, IAttack {
     {
         if (IsInWeaponRange() && !attackOnGoing && movementTarget.Value.TryGetComponent(out IDamageable entity))
         {
-            Debug.Log("Does this get fired?");
             _attackTarget = entity;
             StartCoroutine(AttackOnInterval(_attackTarget));
             OnAttackingChanged?.Invoke(true);

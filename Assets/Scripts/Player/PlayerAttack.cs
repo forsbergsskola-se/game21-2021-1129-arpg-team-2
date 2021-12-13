@@ -13,7 +13,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     private IDamageable attackTarget;
     [SerializeField] private GameObjectValue movementTarget;
     private GameObjectValue defaultValue;
-    [SerializeField] private GameObject emptyMovementTarget;
+    // [SerializeField] private GameObject emptyMovementTarget;
 
     public FloatValue BasePower
     {
@@ -26,7 +26,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
         if (Input.GetMouseButtonDown(0))
         {
             StopAllCoroutines();
-            movementTarget.Value = emptyMovementTarget;
+            // movementTarget.Value = emptyMovementTarget;
             
             if (movementTarget.Value.GetComponent<Entity>() is IDamageable && IsInWeaponRange())
             {
