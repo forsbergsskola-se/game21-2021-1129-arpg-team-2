@@ -8,9 +8,13 @@ public class Billboard : MonoBehaviour
     // public Transform cam;
     public Transform cam;
 
+    public Transform rat;
+    private Vector3 offset;
+
     private void Awake()
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        offset = new Vector3(0, 2f, 0);
     }
 
     void LateUpdate()
@@ -24,5 +28,6 @@ public class Billboard : MonoBehaviour
         //     Camera.main.transform.rotation *- Vector3.down);
         
         // transform.LookAt(cam);
+        transform.position = rat.position + offset;
     }
 }
