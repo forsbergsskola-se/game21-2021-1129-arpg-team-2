@@ -1635,7 +1635,6 @@ MonoBehaviour:
   weapon: {fileID: 0}
   movementTarget: {fileID: 11400000, guid: 3822b48aecca15341a5d2a736bc7ac74, type: 2}
   stopFrontOfGateDistance: {fileID: 0}
-  emptyMovementTarget: {fileID: 422624651}
   attackOnGoing: {fileID: 11400000, guid: fa42db83105368049be64908eeb1817b, type: 2}
 --- !u!1 &673693943
 GameObject:
@@ -2863,13 +2862,14 @@ GameObject:
   - component: {fileID: 1102567511}
   - component: {fileID: 1102567513}
   - component: {fileID: 1102567515}
+  - component: {fileID: 1102567516}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &1102567508
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3000,6 +3000,22 @@ MonoBehaviour:
   hearingRange: 8
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
+--- !u!114 &1102567516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102567506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2f698b8af41f264abd87ae44d449008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 7e9bb74333dc137449b2324eef6a787f, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1103091250
 GameObject:
   m_ObjectHideFlags: 0
@@ -3171,7 +3187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1106279950
 MonoBehaviour:
   m_ObjectHideFlags: 0
