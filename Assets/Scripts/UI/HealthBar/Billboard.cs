@@ -30,4 +30,9 @@ public class Billboard : MonoBehaviour
         // transform.LookAt(cam);
         transform.position = rat.position + offset;
     }
+
+    public void KillBar()
+    {
+        Destroy(gameObject);
+    }
 }

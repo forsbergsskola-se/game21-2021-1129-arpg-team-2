@@ -7326,6 +7326,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4115916589809935760 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6763086309383711144, guid: b225e987155fd4844b6185e89e0418b9, type: 3}
+  m_PrefabInstance: {fileID: 7261460105933982776}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5593627263885699661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f6489749e5a4d45882b38404edef4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4117213374482158316
 GameObject:
   m_ObjectHideFlags: 0
@@ -9470,6 +9481,11 @@ Transform:
   m_Father: {fileID: 7598794282566853858}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5593627263885699661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2982910322626881141, guid: b225e987155fd4844b6185e89e0418b9, type: 3}
+  m_PrefabInstance: {fileID: 7261460105933982776}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5607328482953700211
 GameObject:
   m_ObjectHideFlags: 0
@@ -10185,6 +10201,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6206057082601036387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5593627263885699661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2f698b8af41f264abd87ae44d449008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 7e9bb74333dc137449b2324eef6a787f, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4115916589809935760}
+        m_TargetAssemblyTypeName: Billboard, Assembly-CSharp
+        m_MethodName: KillBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6208935602365381941
 GameObject:
   m_ObjectHideFlags: 0
