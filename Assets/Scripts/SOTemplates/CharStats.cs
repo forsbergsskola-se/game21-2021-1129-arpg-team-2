@@ -20,11 +20,16 @@ public class CharStats : ScriptableObject
 
     public void LevelUp()
     {
-        health *= _levelUpChart.HealthMultiplicator;
+        if(HasLevelUpChart()) health *= _levelUpChart.HealthMultiplicator;
     }
 
     public void GainExperience(float xpUnity)
     {
-        experience += xpUnity;
+        if(HasLevelUpChart()) experience += xpUnity;
+    }
+
+    private bool HasLevelUpChart()
+    {
+        return _levelUpChart != null;
     }
 }
