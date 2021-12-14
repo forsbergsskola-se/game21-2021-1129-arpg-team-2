@@ -2354,6 +2354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73b28d57988e1249aea2d85fa43d4ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryUI: {fileID: 2146976716}
 --- !u!114 &564121644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8354,9 +8355,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotHolder: {fileID: 364741047}
-  itemList:
-  - {fileID: 11400000, guid: ab2c77a6b049f6b4595fd8d2b3314cec, type: 2}
-  itemToAdd: {fileID: 11400000, guid: 7d24fae7da5ed4f40b2e5b004dfdacbe, type: 2}
+  itemList: []
+  itemToAdd: {fileID: 0}
   itemToRemove: {fileID: 0}
 --- !u!4 &1835390932
 Transform:
@@ -9764,7 +9764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2146976717
 RectTransform:
   m_ObjectHideFlags: 0
