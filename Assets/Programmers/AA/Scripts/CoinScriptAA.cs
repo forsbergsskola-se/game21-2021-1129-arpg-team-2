@@ -6,25 +6,11 @@ using UnityEngine;
 
 public class CoinScriptAA : MonoBehaviour
 {
-
-    // Start is called before the first frame update
+    private AudioSource coinCollect;
+    
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
+        coinCollect = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -32,6 +18,7 @@ public class CoinScriptAA : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             CoinCounterAA.coinAmount += 1;
+            coinCollect.Play();
             Destroy(gameObject);
         }
     }
