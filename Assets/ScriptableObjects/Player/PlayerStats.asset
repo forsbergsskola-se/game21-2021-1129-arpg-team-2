@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e07bdae4bb2e14e4db486f580e564919, type: 3}
-  m_Name: Mushroom
+  m_Script: {fileID: 11500000, guid: bb3db74f67bf0654fac8819011774a96, type: 3}
+  m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  itemName: Mushroom
-  consumableType: 1
-  healthAdded: 15
+  health: 0
+  experience: 0
+  attack: 0
+  attackSpeed: 0
+  defence: 0
+  _levelUpChart: {fileID: 0}
