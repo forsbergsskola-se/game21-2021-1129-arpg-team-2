@@ -6,10 +6,10 @@ public class ConsumableIS : ItemIS
 {
     [Header("Consumable")]
     [SerializeField] private ConsumableType consumableType;
-    public enum ConsumableType
+    private enum ConsumableType
     {
-        HealthPotion,
-        Mushroom
+        Meat,
+        Apple
     }
     [SerializeField] private float healthAdded;
 

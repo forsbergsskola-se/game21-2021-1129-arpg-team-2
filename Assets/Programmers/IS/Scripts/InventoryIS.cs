@@ -1,23 +1,53 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class InventoryIS
+public class InventoryIS : MonoBehaviour
 {
-    private List<ItemIS> itemList;
+    [SerializeField] private GameObject slotHolder;
+    [SerializeField] private List<ItemIS> itemList;
+    [SerializeField] private ItemIS itemToAdd;
+    [SerializeField] private ItemIS itemToRemove;
+    private GameObject[] slotList;
 
-    public InventoryIS()
+    private void Start()
     {
-        itemList = new List<ItemIS>();
+        var slotHolderLength = slotHolder.transform.childCount;
+        slotList = new GameObject[slotHolderLength];
+        for (var i = 0; i < slotHolderLength; i++)
+            slotList[i] = slotHolder.transform.GetChild(i).gameObject;
+        
+        RefreshUI();
+        Add(itemToAdd);
     }
 
-    public void AddItem(ItemIS item)
+    public void RefreshUI()
     {
-        itemList.Add(item);
-        Debug.Log("What's in the inventory: ");
-        foreach (var i in itemList)
+        for (var i = 0; i < slotList.Length; i++)
         {
-            Debug.Log($"Item - { i.ItemName }");
+            try
+            {
+                slotList[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
+                slotList[i].transform.GetChild(0).GetComponent<Image>().sprite = itemList[i].ItemIcon;
+            }
+            catch (Exception e)
+            {
+                slotList[i].transform.GetChild(0).GetComponent<Image>().sprite = null;
+                slotList[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
+            }
         }
     }
-    public void RemoveItem(ItemIS item) => itemList.Remove(item);
+
+    public void Add(ItemIS item)
+    {
+        itemList.Add(item);
+        RefreshUI();
+    }
+
+    public void Remove(ItemIS item)
+    {
+        itemList.Remove(item);
+        RefreshUI();
+    }
 }
