@@ -9,6 +9,7 @@ public class CharStats : ScriptableObject
     [SerializeField] private float defence;
 
     public float Health => health;
+    public float Experience => experience;
     public float Attack => attack;
     public float AttackSpeed => attackSpeed;
     public float Defence => defence;
