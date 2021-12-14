@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 770ec688d5b73484aad44497563e2f5a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 770ec688d5b73484aad44497563e2f5a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -25,15 +25,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 770ec688d5b73484aad44497563e2f5a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 770ec688d5b73484aad44497563e2f5a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 770ec688d5b73484aad44497563e2f5a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 770ec688d5b73484aad44497563e2f5a, type: 3}
       propertyPath: m_LocalRotation.z
@@ -45,7 +45,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 770ec688d5b73484aad44497563e2f5a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 770ec688d5b73484aad44497563e2f5a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crypt_Gate
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 770ec688d5b73484aad44497563e2f5a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 770ec688d5b73484aad44497563e2f5a, type: 3}
 --- !u!1 &8573574238923142868 stripped
@@ -62,6 +66,35 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 770ec688d5b73484aad44497563e2f5a, type: 3}
   m_PrefabInstance: {fileID: 8807384497981557637}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &6126742286621533036
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8573574238923142868}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.10280801, y: 2.5701983, z: 2.056159}
+  m_Center: {x: 0, y: -0.68857634, z: 6.000012}
+--- !u!208 &1968340127122468327
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8573574238923142868}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.051000003, y: 1.2850001, z: 1.028}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -0.689, z: 6.0000005}
+  m_TimeToStationary: 0.5
 --- !u!95 &5382575342359082407
 Animator:
   serializedVersion: 4
@@ -99,35 +132,6 @@ MonoBehaviour:
   minDistanceToOpen: {fileID: 11400000, guid: 069304486c538450c84c063c7a9dd1e8, type: 2}
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
   gateOpening: {fileID: 0}
---- !u!65 &6126742286621533036
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8573574238923142868}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.10280801, y: 2.5701983, z: 2.056159}
-  m_Center: {x: 0, y: -0.68857634, z: 6.000012}
---- !u!208 &1968340127122468327
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8573574238923142868}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.051000003, y: 1.2850001, z: 1.028}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: -0.689, z: 6.0000005}
-  m_TimeToStationary: 0.5
 --- !u!114 &6616630867783982370
 MonoBehaviour:
   m_ObjectHideFlags: 0
