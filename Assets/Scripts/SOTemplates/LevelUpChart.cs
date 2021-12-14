@@ -1,17 +1,18 @@
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Game/LevelUpChart", fileName = "LevelUpChart")]
 public class LevelUpChart : ScriptableObject
 {
     [Header("Multiplicators")]
-    [SerializeField] private float healthMultiplicator;
-    [SerializeField] private float attackMultiplicator;
-    [SerializeField] private float attackSpeedMultiplicator;
-    [SerializeField] private float defenceMultiplicator;
+    [SerializeField] private float health;
+    [SerializeField] private float attack;
+    [SerializeField] private float attackSpeed;
+    [SerializeField] private float defence;
     
-    public float HealthMultiplicator => healthMultiplicator;
-    public float AttackMultiplicator => attackMultiplicator;
-    public float AttackSpeedMultiplicator => attackSpeedMultiplicator;
-    public float DefenceMultiplicator => defenceMultiplicator;
+    public float HealthMultiplicator => health;
+    public float AttackMultiplicator => attack;
+    public float AttackSpeedMultiplicator => attackSpeed;
+    public float DefenceMultiplicator => defence;
     
     
 }
