@@ -11,7 +11,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
-        text = GetComponent<TMPro.TextMeshProUGUI>();
+        // text = GetComponent<TMPro.TextMeshProUGUI>();
     }
 
     private void LateUpdate()

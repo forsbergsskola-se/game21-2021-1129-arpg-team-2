@@ -3,30 +3,25 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour, IAttack
 {
-    [SerializeField] private FloatValue basePower;
-    [SerializeField] private FloatValue attackInterval;
-    [SerializeField] private AudioSource attackSound;
+    [Header("Modifiers")]
+    [SerializeField] private CharStats playerStats;
     [SerializeField] private Weapon weapon;
+    [SerializeField] private FloatValue attackInterval;
+    
+    [Header("Dependencies")]
+    [SerializeField] private AudioSource attackSound;
     [SerializeField] private GameEvent onPlayerAttack;
-
     [SerializeField] private BooleanValue attackOnGoing;
-    private IDamageable attackTarget;
     [SerializeField] private GameObjectValue movementTarget;
-    private GameObjectValue defaultValue;
-    // [SerializeField] private GameObject emptyMovementTarget;
 
-    public FloatValue BasePower
-    {
-        get => basePower;
-        set => basePower = value;
-    }
+    private IDamageable attackTarget;
+    private GameObjectValue defaultValue;
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             StopAllCoroutines();
-            // movementTarget.Value = emptyMovementTarget;
             
             if (movementTarget.Value.GetComponent<Entity>() is IDamageable && IsInWeaponRange())
             {
@@ -56,9 +51,9 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     public void Attack(IDamageable thisTarget)
     {
-        // if (thisTarget == null) return;
         attackSound.Play();
-        thisTarget.TakeDamage(BasePower.RuntimeValue);
+        float damage = playerStats.Attack + weapon.Power;
+        thisTarget.TakeDamage(damage);
         onPlayerAttack.Raise();
     }
 
@@ -68,7 +63,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
         while (entity.CurrentHealth.RuntimeValue > 0f)
         {
             Attack(entity);
-            if (attackOnGoing.BoolValue) yield return new WaitForSeconds(attackInterval.RuntimeValue);
+            if (attackOnGoing.BoolValue) yield return new WaitForSeconds(playerStats.AttackSpeed);
             else yield break;
         }
     }

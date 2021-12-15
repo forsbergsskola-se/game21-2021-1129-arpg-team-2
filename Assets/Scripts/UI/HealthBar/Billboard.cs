@@ -28,7 +28,7 @@ public class Billboard : MonoBehaviour
         //     Camera.main.transform.rotation *- Vector3.down);
         
         // transform.LookAt(cam);
-        transform.position = rat.position + offset;
+        //transform.position = rat.position + offset;
     }
 
     public void KillBar()

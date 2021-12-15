@@ -1,19 +1,32 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(menuName = "Game/CharStats", fileName = "CharStats")]
 public class CharStats : ScriptableObject
 {
     [Header("Stats")]
-    [SerializeField] private float health;
+    [SerializeField] private float maxHealth;
+    [SerializeField] private float currenthealth;
     [SerializeField] private float experience;
     [SerializeField] private float attack;
     [SerializeField] private float attackSpeed;
     [SerializeField] private float defence;
 
     [Header("Dependencies")] 
-    [SerializeField] private LevelUpChart _levelUpChart;
+    [SerializeField] private LevelUpChart levelUpChart;
 
-    public float Health => health;
+    public float MaxHealth
+    {
+        get => maxHealth;
+        set => maxHealth = value;
+    }
+
+    public float CurrentHealth
+    {
+        get => currenthealth;
+        set => currenthealth = value;
+    }
+
     public float Experience => experience;
     public float Attack => attack;
     public float AttackSpeed => attackSpeed;
@@ -21,7 +34,7 @@ public class CharStats : ScriptableObject
 
     public void LevelUp()
     {
-        if(HasLevelUpChart()) health *= _levelUpChart.HealthMultiplicator;
+        if(HasLevelUpChart()) currenthealth *= levelUpChart.HealthMultiplicator;
     }
 
     public void GainExperience(float xpUnity)
@@ -31,6 +44,6 @@ public class CharStats : ScriptableObject
 
     private bool HasLevelUpChart()
     {
-        return _levelUpChart != null;
+        return levelUpChart != null;
     }
 }

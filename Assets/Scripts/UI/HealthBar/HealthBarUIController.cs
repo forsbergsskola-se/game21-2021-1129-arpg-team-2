@@ -7,12 +7,18 @@ using UnityEngine.UI;
 public class HealthBarUIController : MonoBehaviour
 {
    public Image healthBar;
-   public Health health;
+   private Health health;
 
-   
+
+   private void Awake()
+   {
+      health = GetComponentInParent<Health>();
+   }
+
    private void LateUpdate()
    {
       healthBar.fillAmount = health.CurrentHealth.RuntimeValue / health.CurrentHealth.InitialValue;
    }
+   
    
 }

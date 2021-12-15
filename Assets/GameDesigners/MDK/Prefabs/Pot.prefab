@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 940252089}
   - component: {fileID: 941644818}
   - component: {fileID: 941644826}
+  - component: {fileID: 879972596}
   m_Layer: 0
   m_Name: Pot
   m_TagString: Destructible
@@ -34,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 7613495829753175376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.287411, y: -14.769235, z: 13.321056}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 100, y: 100.00004, z: 100.00004}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -179,6 +180,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 879972596}
+        m_TargetAssemblyTypeName: CoinDropAA, Assembly-CSharp
+        m_MethodName: DropCoin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &941644818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,3 +222,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41b805387556664d833781e8213fbf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &879972596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7613495829753175376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f4fdeedd9df46244aa89f932937a477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 8581053789443151608, guid: 5e12048b5a116ff42b135ed0a385f832, type: 3}
