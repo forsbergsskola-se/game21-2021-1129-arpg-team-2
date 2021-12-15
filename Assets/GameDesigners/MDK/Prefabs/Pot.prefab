@@ -136,7 +136,6 @@ MonoBehaviour:
   entityType: {fileID: 11400000, guid: 0d4973cf1804e1f40b3ff04d0a0849a7, type: 2}
   maxHealth: 1
   destructionParticlesPrefab: {fileID: 2041660005004726030, guid: 603f58460d308eb48a24c088708dad26, type: 3}
-  coinDropAA: {fileID: 879972596}
 --- !u!114 &6451621834618005137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +171,18 @@ MonoBehaviour:
       - m_Target: {fileID: 596553559}
         m_TargetAssemblyTypeName: Entity, Assembly-CSharp
         m_MethodName: OnEntityDie
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 879972596}
+        m_TargetAssemblyTypeName: CoinDropAA, Assembly-CSharp
+        m_MethodName: DropCoin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

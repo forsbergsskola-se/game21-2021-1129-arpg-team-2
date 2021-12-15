@@ -19,7 +19,7 @@ public class KillTriggeredGate : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        if (!isLocked.BoolValue)
+        if (!isLocked.BoolValue && DistanceDoorCheck()) 
         {
             Debug.Log("Gate be opening!");
             doorAnimation.SetBool("isOpening", true);
@@ -31,5 +31,11 @@ public class KillTriggeredGate : MonoBehaviour {
     private void EnemyDied(int deathCount)
     {
         if (deathCount >= initialEnemiesInRoom) isLocked.BoolValue = false;
+    }
+
+    private bool DistanceDoorCheck()
+    {
+        return Mathf.Round(Vector3.Distance(transform.position, playerPosition.Vector3)) <=
+               minDistanceToOpen.InitialValue;
     }
 }
