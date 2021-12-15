@@ -1,5 +1,5 @@
 public interface IDamageable
 {
-    public FloatValue CurrentHealth { get; set; }
+    public CharStats CharStats { get; set; }
     public void TakeDamage(float damage);
 }

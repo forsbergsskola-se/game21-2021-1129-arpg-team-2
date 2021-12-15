@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "new consumable", menuName = "Item/Consumable")]
@@ -15,4 +14,5 @@ public class ConsumableIS : ItemIS
 
     public override ItemIS GetItem() => this;
     public override ConsumableIS GetConsumable() => this;
+    public override EquippableIS GetEquippable() => null;
 }

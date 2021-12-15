@@ -7,7 +7,7 @@ using UnityEngine;
 public class HealthRegeneration : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private FloatValue playerHealth;
+    [SerializeField] private CharStats playerStats;
     [SerializeField] [Range(0.1f, 1f)] private float healthThreshold;
     [SerializeField] private float regenerationRate;
     [SerializeField] private float regenerationTime;
@@ -30,7 +30,7 @@ public class HealthRegeneration : MonoBehaviour
 
     public void RegenerateHealth()
     {
-        playerHealth.RuntimeValue = 0;
+        playerStats.CurrentHealth = 0;
         
         _health.enabled = false;
         //_playerAttack.enabled = false;
@@ -45,11 +45,11 @@ public class HealthRegeneration : MonoBehaviour
     {
         yield return new WaitForSeconds(regenerationTime / regenerationRate);
         
-        playerHealth.RuntimeValue += regenerationRate;
+        playerStats.CurrentHealth += regenerationRate;
         
-        if (playerHealth.RuntimeValue >= playerHealth.InitialValue * healthThreshold)
+        if ( playerStats.CurrentHealth >=  playerStats.MaxHealth * healthThreshold)
         {
-            playerHealth.RuntimeValue = playerHealth.InitialValue;
+            playerStats.CurrentHealth = playerStats.MaxHealth;
             
             _health.enabled = true;
             _playerAttack.enabled = true;

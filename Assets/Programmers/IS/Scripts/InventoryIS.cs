@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,11 +31,13 @@ public class InventoryIS : MonoBehaviour
             {
                 slotList[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
                 slotList[i].transform.GetChild(0).GetComponent<Image>().sprite = itemList[i].ItemIcon;
+                slotList[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "0";
             }
             catch (Exception e)
             {
                 slotList[i].transform.GetChild(0).GetComponent<Image>().sprite = null;
                 slotList[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
+                slotList[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "";
             }
         }
     }

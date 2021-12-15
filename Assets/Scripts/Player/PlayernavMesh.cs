@@ -20,7 +20,7 @@ public class PlayernavMesh : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         playerPosition.Vector3 = transform.position;
-        // movementTarget.Value = emptyMovementTarget;
+        movementTarget.Value = null;
     }
 
     private void Start()
@@ -34,6 +34,7 @@ public class PlayernavMesh : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) 
         {
             attackOnGoing.BoolValue = false;
+            movementTarget.Value = null;
             
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
@@ -55,6 +56,7 @@ public class PlayernavMesh : MonoBehaviour
                 {
                     navMeshAgent.destination = hit.point;
                     navMeshAgent.stoppingDistance = 1;
+                    movementTarget.Value = null;
                 }
             }
         }

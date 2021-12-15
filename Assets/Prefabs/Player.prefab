@@ -233,8 +233,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: 23f69430033372442b2eec1256acb110, type: 2}
   weapon: {fileID: 11400000, guid: 49e3fb9430814444795772bb521b70fb, type: 2}
-  basePower: {fileID: 11400000, guid: 9c80bf55ad1667a4194d0cebd92c99f2, type: 2}
-  attackInterval: {fileID: 11400000, guid: c4fc31372a1f09c40bc1728dfde71b20, type: 2}
   attackSound: {fileID: 4032229772199897194}
   onPlayerAttack: {fileID: 11400000, guid: a08252074eef29946a542ffb1588ea97, type: 2}
   attackOnGoing: {fileID: 11400000, guid: 50f05ec6bf4f6544abb4034fa1b11666, type: 2}
@@ -319,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63b68c201007f3543bf4d42394a9b014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charStats: {fileID: 11400000, guid: 23f69430033372442b2eec1256acb110, type: 2}
   maxHealth: 77
   entityDeath: {fileID: 11400000, guid: 0bc55e5350f3f5849bed20f71422286b, type: 2}
   currentHealth: {fileID: 11400000, guid: 703c051985a502643a9270229a531eee, type: 2}
