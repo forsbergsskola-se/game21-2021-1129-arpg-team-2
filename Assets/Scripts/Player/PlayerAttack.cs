@@ -3,17 +3,20 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour, IAttack
 {
+    [Header("Modifiers")]
+    [SerializeField] private CharStats playerStats;
+    [SerializeField] private Weapon weapon;
     [SerializeField] private FloatValue basePower;
     [SerializeField] private FloatValue attackInterval;
+    
+    [Header("Dependencies")]
     [SerializeField] private AudioSource attackSound;
-    [SerializeField] private Weapon weapon;
     [SerializeField] private GameEvent onPlayerAttack;
-
     [SerializeField] private BooleanValue attackOnGoing;
-    private IDamageable attackTarget;
     [SerializeField] private GameObjectValue movementTarget;
+
+    private IDamageable attackTarget;
     private GameObjectValue defaultValue;
-    // [SerializeField] private GameObject emptyMovementTarget;
 
     public FloatValue BasePower
     {
@@ -26,7 +29,6 @@ public class PlayerAttack : MonoBehaviour, IAttack
         if (Input.GetMouseButtonDown(0))
         {
             StopAllCoroutines();
-            // movementTarget.Value = emptyMovementTarget;
             
             if (movementTarget.Value.GetComponent<Entity>() is IDamageable && IsInWeaponRange())
             {
@@ -56,7 +58,6 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     public void Attack(IDamageable thisTarget)
     {
-        // if (thisTarget == null) return;
         attackSound.Play();
         thisTarget.TakeDamage(BasePower.RuntimeValue);
         onPlayerAttack.Raise();
