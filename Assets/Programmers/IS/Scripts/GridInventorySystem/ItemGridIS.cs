@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ItemGridIS : MonoBehaviour
 {
-    private const float tileSize = 32f;
+    private const float tileSize = 125f;
     private RectTransform rectTrans;
     private Vector2 positionOnGrid = new Vector2();
     private Vector2Int tileGridPosition = new Vector2Int();
