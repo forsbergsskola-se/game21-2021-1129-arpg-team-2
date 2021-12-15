@@ -43,25 +43,62 @@ public class ItemGridIS : MonoBehaviour
         return tileGridPosition;
     }
 
-    internal void AddItem(InventoryItemIS itemToAdd, int posX, int posY)
+    internal bool AddItem(InventoryItemIS itemToAdd, int posX, int posY)
     {
+        if (!BoundaryCheck(posX, posY, itemToAdd.itemData.width, itemToAdd.itemData.length)) return false;
         var rt = itemToAdd.GetComponent<RectTransform>();
         rt.SetParent(rectTrans);
-        inventoryItemSlots[posX, posY] = itemToAdd;
+        for (int i = 0; i < itemToAdd.itemData.width; i++)
+        {
+            for (int j = 0; j < itemToAdd.itemData.length; j++)
+            {
+                inventoryItemSlots[posX + i, posY + j] = itemToAdd;
+            }
+        }
+
+        itemToAdd.onGridPositionX = posX;
+        itemToAdd.onGridPositionY = posY;
 
         Vector2 position = new Vector2
         {
-            x = posX * tileSize + tileSize / 2,
-            y = -(posY * tileSize + tileSize / 2)
+            x = posX * tileSize + tileSize * itemToAdd.itemData.width / 2,
+            y = -(posY * tileSize + tileSize * itemToAdd.itemData.length / 2)
         };
 
         rt.localPosition = position;
+        return true;
     }
 
     public InventoryItemIS PickUpItem(int x, int y)
     {
         var toReturn = inventoryItemSlots[x, y];
-        inventoryItemSlots[x, y] = null;
+
+        if (toReturn == null) return null;
+
+        for (int i = 0; i < toReturn.itemData.width; i++)
+        {
+            for (int j = 0; j < toReturn.itemData.length; j++)
+            {
+                inventoryItemSlots[toReturn.onGridPositionX + i, toReturn.onGridPositionY + j] = null;
+            }
+        }
+        
         return toReturn;
+    }
+
+    private bool PositionCheck(int posX, int posY)
+    {
+        if (posX < 0 || posY < 0) return false;
+        if (posX >= gridWidth || posY >= gridLength) return false;
+        return true;
+    }
+
+    private bool BoundaryCheck(int posX, int posY, int width, int length)
+    {
+        if (!PositionCheck(posX, posY)) return false;
+        posX += width - 1;
+        posY += length - 1;
+        if (!PositionCheck(posX, posY)) return false;
+        return true;
     }
 }

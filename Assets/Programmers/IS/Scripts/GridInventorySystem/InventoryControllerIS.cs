@@ -59,7 +59,7 @@ public class InventoryControllerIS : MonoBehaviour
 
     private void PlaceItem(Vector2Int tileGridPosition)
     {
-        selectedItemGrid.AddItem(selectedItem, tileGridPosition.x, tileGridPosition.y);
-        selectedItem = null;
+        var successful = selectedItemGrid.AddItem(selectedItem, tileGridPosition.x, tileGridPosition.y);
+        if (successful) selectedItem = null;
     }
 }

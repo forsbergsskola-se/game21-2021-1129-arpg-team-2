@@ -3,7 +3,10 @@ using UnityEngine.UI;
 
 public class InventoryItemIS : MonoBehaviour
 {
-    [SerializeField] private ItemDataIS itemData;
+    [SerializeField] internal ItemDataIS itemData;
+
+    public int onGridPositionX;
+    public int onGridPositionY;
 
     public void Set(ItemDataIS item)
     {
