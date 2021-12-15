@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class CoinScriptAA : MonoBehaviour
 {
-    private AudioSource coinCollect;
+    [SerializeField] private AudioSource coinCollect;
     
     void Start()
     {
