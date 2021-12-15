@@ -6,7 +6,6 @@ public class PlayerAttack : MonoBehaviour, IAttack
     [Header("Modifiers")]
     [SerializeField] private CharStats playerStats;
     [SerializeField] private Weapon weapon;
-    [SerializeField] private FloatValue basePower;
     [SerializeField] private FloatValue attackInterval;
     
     [Header("Dependencies")]
@@ -17,12 +16,6 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     private IDamageable attackTarget;
     private GameObjectValue defaultValue;
-
-    public FloatValue BasePower
-    {
-        get => basePower;
-        set => basePower = value;
-    }
 
     private void Update()
     {
@@ -59,7 +52,8 @@ public class PlayerAttack : MonoBehaviour, IAttack
     public void Attack(IDamageable thisTarget)
     {
         attackSound.Play();
-        thisTarget.TakeDamage(BasePower.RuntimeValue);
+        float damage = playerStats.Attack + weapon.Power;
+        thisTarget.TakeDamage(damage);
         onPlayerAttack.Raise();
     }
 
@@ -69,7 +63,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
         while (entity.CurrentHealth.RuntimeValue > 0f)
         {
             Attack(entity);
-            if (attackOnGoing.BoolValue) yield return new WaitForSeconds(attackInterval.RuntimeValue);
+            if (attackOnGoing.BoolValue) yield return new WaitForSeconds(playerStats.AttackSpeed);
             else yield break;
         }
     }

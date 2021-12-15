@@ -231,10 +231,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 350178baca05e4748ac0d19dc6c1a28d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: 23f69430033372442b2eec1256acb110, type: 2}
+  weapon: {fileID: 11400000, guid: 49e3fb9430814444795772bb521b70fb, type: 2}
   basePower: {fileID: 11400000, guid: 9c80bf55ad1667a4194d0cebd92c99f2, type: 2}
   attackInterval: {fileID: 11400000, guid: c4fc31372a1f09c40bc1728dfde71b20, type: 2}
   attackSound: {fileID: 4032229772199897194}
-  weapon: {fileID: 11400000, guid: 49e3fb9430814444795772bb521b70fb, type: 2}
   onPlayerAttack: {fileID: 11400000, guid: a08252074eef29946a542ffb1588ea97, type: 2}
   attackOnGoing: {fileID: 11400000, guid: 50f05ec6bf4f6544abb4034fa1b11666, type: 2}
   movementTarget: {fileID: 11400000, guid: 3822b48aecca15341a5d2a736bc7ac74, type: 2}
@@ -255,7 +256,7 @@ MonoBehaviour:
   weapon: {fileID: 11400000, guid: 49e3fb9430814444795772bb521b70fb, type: 2}
   movementTarget: {fileID: 11400000, guid: 3822b48aecca15341a5d2a736bc7ac74, type: 2}
   stopFrontOfGateDistance: {fileID: 11400000, guid: 069304486c538450c84c063c7a9dd1e8, type: 2}
-  emptyMovementTarget: {fileID: 2787818640270513650, guid: 830f1e06c8a58cf4c94ab3c0bd5ea272, type: 3}
+  attackOnGoing: {fileID: 11400000, guid: 50f05ec6bf4f6544abb4034fa1b11666, type: 2}
 --- !u!114 &4032229772199897195
 MonoBehaviour:
   m_ObjectHideFlags: 0
