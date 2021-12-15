@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -57,5 +58,12 @@ public class ItemGridIS : MonoBehaviour
         };
 
         rt.localPosition = position;
+    }
+
+    public InventoryItemIS PickUpItem(int x, int y)
+    {
+        var toReturn = inventoryItemSlots[x, y];
+        inventoryItemSlots[x, y] = null;
+        return toReturn;
     }
 }
