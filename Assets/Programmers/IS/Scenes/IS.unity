@@ -412,6 +412,8 @@ GameObject:
   - component: {fileID: 135933669}
   - component: {fileID: 135933671}
   - component: {fileID: 135933670}
+  - component: {fileID: 135933672}
+  - component: {fileID: 135933673}
   m_Layer: 5
   m_Name: Grid
   m_TagString: Untagged
@@ -477,6 +479,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135933668}
   m_CullTransparentMesh: 1
+--- !u!114 &135933672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135933668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 100e83ef2cb531349b78cde0e9ac3a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &135933673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135933668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea3e48b7e588cf8409e512ca10214707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &494903680
 GameObject:
   m_ObjectHideFlags: 0
@@ -869,6 +895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63b68c201007f3543bf4d42394a9b014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charStats: {fileID: 0}
   maxHealth: 55
   entityDeath: {fileID: 0}
   currentHealth: {fileID: 11400000, guid: 95b60d459718dd846a0df982684fd33b, type: 2}
@@ -1384,6 +1411,7 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
+  - component: {fileID: 963194231}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1495,6 +1523,19 @@ MonoBehaviour:
   scrollSpeed: 20
   minY: 15
   maxY: 80
+--- !u!114 &963194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec0d0bcc7b040db46a714cdee5805fa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedItemGrid: {fileID: 135933672}
 --- !u!1 &1007325389 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4480635459621249896, guid: 451197f1edc3f254ea0251dff482e455, type: 3}
