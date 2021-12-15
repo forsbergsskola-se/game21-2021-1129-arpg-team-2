@@ -494,7 +494,6 @@ MonoBehaviour:
   tileSize: 125
   gridWidth: 5
   gridLength: 5
-  inventoryItem: {fileID: 5381171454971151918, guid: ae88c5c08aa03b247a603b8693366477, type: 3}
 --- !u!114 &135933673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1540,6 +1539,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedItemGrid: {fileID: 0}
+  itemList:
+  - {fileID: 11400000, guid: 7d24fae7da5ed4f40b2e5b004dfdacbe, type: 2}
+  - {fileID: 11400000, guid: ab2c77a6b049f6b4595fd8d2b3314cec, type: 2}
+  - {fileID: 11400000, guid: df9f461887f79cf45bbeeb621a3335e2, type: 2}
+  itemPrefab: {fileID: 5381171454971151918, guid: ae88c5c08aa03b247a603b8693366477, type: 3}
+  canvasTransform: {fileID: 1084405275}
 --- !u!1 &1007325389 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4480635459621249896, guid: 451197f1edc3f254ea0251dff482e455, type: 3}

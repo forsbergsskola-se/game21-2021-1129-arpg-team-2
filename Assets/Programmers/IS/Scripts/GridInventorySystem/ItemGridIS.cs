@@ -11,7 +11,7 @@ public class ItemGridIS : MonoBehaviour
     [SerializeField] private float tileSize;
     [SerializeField] private int gridWidth;
     [SerializeField] private int gridLength;
-    [SerializeField] private GameObject inventoryItem;
+    // [SerializeField] private GameObject inventoryItem;
     private RectTransform rectTrans;
     private Vector2 positionOnGrid = new Vector2();
     private Vector2Int tileGridPosition = new Vector2Int();
@@ -21,9 +21,8 @@ public class ItemGridIS : MonoBehaviour
     {
         rectTrans = GetComponent<RectTransform>();
         InitGrid(gridWidth, gridLength);
-
-        var item = Instantiate(inventoryItem).GetComponent<InventoryItemIS>();
-        AddItem(item, 3, 1);
+        // var item = Instantiate(inventoryItem).GetComponent<InventoryItemIS>();
+        // AddItem(item, 3, 1);
     }
 
     private void InitGrid(int width, int length)

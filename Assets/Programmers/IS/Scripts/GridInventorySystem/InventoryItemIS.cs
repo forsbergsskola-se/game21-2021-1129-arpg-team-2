@@ -1,11 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryItemIS : MonoBehaviour
 {
-    [SerializeField] private int sizeWidth;
-    [SerializeField] private int sizeLength;
-    
-    
+    [SerializeField] private ItemDataIS itemData;
+
+    public void Set(ItemDataIS item)
+    {
+        itemData = item;
+        GetComponent<Image>().sprite = itemData.itemIcon;
+    }
 }
