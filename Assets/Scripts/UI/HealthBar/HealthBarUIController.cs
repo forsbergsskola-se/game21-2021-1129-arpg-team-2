@@ -17,8 +17,6 @@ public class HealthBarUIController : MonoBehaviour
 
    private void LateUpdate()
    {
-      healthBar.fillAmount = health.CurrentHealth.RuntimeValue / health.CurrentHealth.InitialValue;
+      healthBar.fillAmount = health.CharStats.CurrentHealth / health.CharStats.MaxHealth;
    }
-   
-   
 }

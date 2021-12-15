@@ -15,22 +15,26 @@ public class Entity : MonoBehaviour, IDamageable
 
     public FloatValue CurrentHealth { get => currentHealth; set => currentHealth = value; }
 
+    public CharStats CharStats { get; set; }
+
     private void Awake()
     {
         render = GetComponent<Renderer>();
         defaultColor = render.material.color;
-        currentHealth = ScriptableObject.CreateInstance<FloatValue>();
-        currentHealth.RuntimeValue = maxHealth;
+        
+        CharStats = ScriptableObject.CreateInstance<CharStats>();
+        CharStats.MaxHealth = maxHealth;
+        CharStats.CurrentHealth = maxHealth;
     }
 
     public void TakeDamage(float damage)
     {
         FlashRed();
-        CurrentHealth.RuntimeValue -= damage;
+        CharStats.CurrentHealth -= damage;
 
-        Debug.Log("Entity taking damage: " + CurrentHealth.RuntimeValue);
+        Debug.Log("Entity taking damage: " + CharStats.CurrentHealth);
 
-        if (CurrentHealth.RuntimeValue <= 0f)
+        if (CharStats.CurrentHealth <= 0f)
         {
             OnEntityDie();
         }
