@@ -9,5 +9,11 @@ public class InventoryItemIS : MonoBehaviour
     {
         itemData = item;
         GetComponent<Image>().sprite = itemData.itemIcon;
+        var size = new Vector2
+        {
+            x = itemData.width * ItemGridIS.tileSize,
+            y = itemData.length * ItemGridIS.tileSize
+        };
+        GetComponent<RectTransform>().sizeDelta = size;
     }
 }

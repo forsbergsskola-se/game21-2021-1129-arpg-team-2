@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 /// <summary>
@@ -8,7 +7,7 @@ using UnityEngine;
 public class ItemGridIS : MonoBehaviour
 {
     // tileSize needs to match the actual size of the slot asset in use
-    [SerializeField] private float tileSize;
+    internal const float tileSize = 125;
     [SerializeField] private int gridWidth;
     [SerializeField] private int gridLength;
     // [SerializeField] private GameObject inventoryItem;
