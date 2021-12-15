@@ -9,10 +9,12 @@ public class InventoryControllerIS : MonoBehaviour
     [SerializeField] internal ItemGridIS selectedItemGrid;
 
     private InventoryItemIS selectedItem;
+    private RectTransform recTrans;
 
     private void Update()
     {
         if (selectedItemGrid == null) return;
+        if (selectedItem != null) recTrans.position = Input.mousePosition;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -20,10 +22,12 @@ public class InventoryControllerIS : MonoBehaviour
             if (selectedItem == null)
             {
                 selectedItem = selectedItemGrid.PickUpItem(tileGridPosition.x, tileGridPosition.y);
+                if (selectedItem != null) recTrans = selectedItem.GetComponent<RectTransform>();
             }
             else
             {
                 selectedItemGrid.AddItem(selectedItem, tileGridPosition.x, tileGridPosition.y);
+                selectedItem = null;
             }
         }
     }
