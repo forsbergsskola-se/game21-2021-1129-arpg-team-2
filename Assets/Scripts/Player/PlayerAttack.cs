@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,7 +7,6 @@ public class PlayerAttack : MonoBehaviour, IAttack
     [Header("Modifiers")]
     [SerializeField] private CharStats playerStats;
     [SerializeField] private Weapon weapon;
-    [SerializeField] private FloatValue attackInterval;
     
     [Header("Dependencies")]
     [SerializeField] private AudioSource attackSound;
@@ -19,7 +19,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && movementTarget.Value != null)
         {
             StopAllCoroutines();
             
@@ -47,7 +47,15 @@ public class PlayerAttack : MonoBehaviour, IAttack
     }
 
     private bool IsInWeaponRange()
-        => Mathf.Round(Vector3.Distance(transform.position, movementTarget.Value.transform.position)) <= weapon.Range;
+    {
+        if (movementTarget.Value != null)
+        {
+            return Mathf.Round(Vector3.Distance(transform.position, movementTarget.Value.transform.position)) <= weapon.Range;
+        }
+        
+        return false;
+    }
+      
 
     public void Attack(IDamageable thisTarget)
     {
@@ -60,7 +68,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     private IEnumerator AttackOnInterval(IDamageable entity)
     {
         attackOnGoing.BoolValue = true;
-        while (entity.CurrentHealth.RuntimeValue > 0f)
+        while (entity.CharStats.CurrentHealth > 0f)
         {
             Attack(entity);
             if (attackOnGoing.BoolValue) yield return new WaitForSeconds(playerStats.AttackSpeed);

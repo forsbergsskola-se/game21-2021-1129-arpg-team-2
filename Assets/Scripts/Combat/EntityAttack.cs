@@ -49,7 +49,7 @@ public class EntityAttack : MonoBehaviour, IAttack {
     private IEnumerator AttackOnInterval(IDamageable entity)
     {
         attackOnGoing = true;
-        while (entity.CurrentHealth.RuntimeValue > 0f)
+        while (entity.CharStats.CurrentHealth > 0f)
         {
             Attack(entity);
             if (attackOnGoing) yield return new WaitForSeconds(attackInterval.RuntimeValue);

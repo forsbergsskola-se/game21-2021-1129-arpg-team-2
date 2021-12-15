@@ -1,15 +1,25 @@
-using TMPro;
 using UnityEngine;
 using System;
-using UnityEngine.UI;
 
 public class Health : MonoBehaviour, IDamageable {
     public Action<float> OnTakeDamage;
+    [SerializeField] private CharStats charStats;
     [SerializeField] private float maxHealth;
    
     public GameEvent entityDeath;
     [SerializeField] private FloatValue currentHealth;
-    public FloatValue CurrentHealth { get => currentHealth; set => currentHealth = value; }
+
+    public CharStats CharStats
+    {
+        get => charStats;
+        set => charStats = value;
+    }
+
+    public FloatValue CurrentHealth
+    {
+        get => currentHealth; 
+        set => currentHealth = value;
+    }
     
     // Flash red when taking damage
     private Renderer render;
@@ -22,21 +32,23 @@ public class Health : MonoBehaviour, IDamageable {
         render = GetComponentInChildren<Renderer>();
         defaultColor = render.material.color;
 
-        if (CurrentHealth == null)
+        if (charStats == null)
         {
-            currentHealth = ScriptableObject.CreateInstance<FloatValue>();
+            charStats = ScriptableObject.CreateInstance<CharStats>();
+            charStats.CurrentHealth = maxHealth;
+            charStats.MaxHealth = maxHealth;
         }
+        else charStats.CurrentHealth = charStats.MaxHealth;
         
-        currentHealth.RuntimeValue = maxHealth;
-        currentHealth.InitialValue = maxHealth;
+        Debug.Log(gameObject.name + ": " + charStats.CurrentHealth);
     }
     
     public void TakeDamage(float damage)
     {
         FlashRed();
-        CurrentHealth.RuntimeValue -= damage;
+        charStats.CurrentHealth -= damage;
 
-        if (CurrentHealth.RuntimeValue <= 0f)
+        if (charStats.CurrentHealth <= 0f)
         {
             entityDeath.Raise();
         }
@@ -44,21 +56,24 @@ public class Health : MonoBehaviour, IDamageable {
         OnTakeDamage?.Invoke(damage);
     }
 
+    public void ResetHealth() 
+    {
+        charStats.CurrentHealth = charStats.MaxHealth;
+    }
+
     // (Hopefully) temporary
+
     private void FlashRed()
     {
         render.material.SetColor(Color1, Color.red);
         Invoke(nameof(SetToDefaultColor), redFlashInterval);
     }
-    
+
     // (Hopefully) temporary
+
     private void SetToDefaultColor()
     {
         render.material.SetColor(Color1, defaultColor);
-    }
-
-    public void ResetHealth() {
-        currentHealth.RuntimeValue = currentHealth.InitialValue;
     }
 }
 

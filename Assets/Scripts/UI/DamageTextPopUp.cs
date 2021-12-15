@@ -14,17 +14,17 @@ namespace UI
         private void Start()
         {
             _health = GetComponent<Health>();
-            _previousHealth = _health.CurrentHealth.InitialValue;
+            _previousHealth = _health.CharStats.MaxHealth;
         }
 
 
         public void ShowFlaotingText()
         {
-            Debug.Log("Current Health: " + _health.CurrentHealth.RuntimeValue);
+            Debug.Log("Current Health: " + _health.CharStats.CurrentHealth);
             Debug.Log("Previous Health: " + _previousHealth);
             var temp = Instantiate(floatingTextPrefab, transform);
-            temp.GetComponentInChildren<TextMeshProUGUI>().text = (_health.CurrentHealth.RuntimeValue - _previousHealth).ToString();
-            _previousHealth = _health.CurrentHealth.RuntimeValue;
+            temp.GetComponentInChildren<TextMeshProUGUI>().text = (_health.CharStats.CurrentHealth - _previousHealth).ToString();
+            _previousHealth = _health.CharStats.CurrentHealth;
         }
     }
 }
