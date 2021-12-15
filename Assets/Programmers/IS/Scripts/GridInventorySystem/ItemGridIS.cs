@@ -6,14 +6,26 @@ using UnityEngine;
 
 public class ItemGridIS : MonoBehaviour
 {
-    private const float tileSize = 125f;
+    // tileSize needs to match the actual size of the slot asset in use
+    [SerializeField] private float tileSize;
+    [SerializeField] private int gridWidth;
+    [SerializeField] private int gridLength;
     private RectTransform rectTrans;
     private Vector2 positionOnGrid = new Vector2();
     private Vector2Int tileGridPosition = new Vector2Int();
+    private InventoryItemIS[,] inventoryItemSlots;
 
     private void Start()
     {
         rectTrans = GetComponent<RectTransform>();
+        InitGrid(gridWidth, gridLength);
+    }
+
+    private void InitGrid(int width, int length)
+    {
+        inventoryItemSlots = new InventoryItemIS[width, length];
+        Vector2 size = new Vector2(width * tileSize, length * tileSize);
+        rectTrans.sizeDelta = size;
     }
 
     internal Vector2Int GetTileGridPosition(Vector2 mousePosition)
