@@ -5,10 +5,16 @@ using UnityEngine;
 /// </summary>
 public class InventoryControllerIS : MonoBehaviour
 {
-    [SerializeField] private ItemGridIS selectedItemGrid;
+    [HideInInspector]
+    [SerializeField] internal ItemGridIS selectedItemGrid;
 
     private void Update()
     {
-        Debug.Log(selectedItemGrid?.GetTileGridPosition(Input.mousePosition));
+        if (selectedItemGrid == null) return;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log(selectedItemGrid.GetTileGridPosition(Input.mousePosition));
+        }
     }
 }
