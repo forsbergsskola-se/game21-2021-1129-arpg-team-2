@@ -2575,6 +2575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inCombatAfterDamageTime: 2
+  ratAnimation: {fileID: 1819773271602062795}
 --- !u!114 &4302932915786100145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2768,7 +2769,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5145112555884845494}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Speed: 8
   m_Acceleration: 5
   avoidancePriority: 50
@@ -2778,7 +2779,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0.5
+  m_BaseOffset: 0.05
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &4716304596872710989
