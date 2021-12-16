@@ -491,7 +491,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100e83ef2cb531349b78cde0e9ac3a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileSize: 125
   gridWidth: 5
   gridLength: 5
 --- !u!114 &135933673
@@ -619,7 +618,6 @@ GameObject:
   - component: {fileID: 564121640}
   - component: {fileID: 564121641}
   - component: {fileID: 564121642}
-  - component: {fileID: 564121643}
   - component: {fileID: 564121645}
   - component: {fileID: 564121644}
   m_Layer: 0
@@ -860,19 +858,6 @@ MonoBehaviour:
   movementTarget: {fileID: 11400000, guid: 3822b48aecca15341a5d2a736bc7ac74, type: 2}
   stopFrontOfGateDistance: {fileID: 11400000, guid: 069304486c538450c84c063c7a9dd1e8, type: 2}
   attackOnGoing: {fileID: 11400000, guid: 50f05ec6bf4f6544abb4034fa1b11666, type: 2}
---- !u!114 &564121643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 564121631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c73b28d57988e1249aea2d85fa43d4ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryUI: {fileID: 0}
 --- !u!114 &564121644
 MonoBehaviour:
   m_ObjectHideFlags: 0
