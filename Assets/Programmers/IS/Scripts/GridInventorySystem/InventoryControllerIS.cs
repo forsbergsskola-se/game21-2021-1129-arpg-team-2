@@ -14,6 +14,7 @@ public class InventoryControllerIS : MonoBehaviour
     [SerializeField] private Transform canvasTransform;
 
     private InventoryItemIS selectedItem;
+    private InventoryItemIS overlapItem;
     private RectTransform recTrans;
 
     private void Update()
@@ -59,7 +60,16 @@ public class InventoryControllerIS : MonoBehaviour
 
     private void PlaceItem(Vector2Int tileGridPosition)
     {
-        var successful = selectedItemGrid.AddItem(selectedItem, tileGridPosition.x, tileGridPosition.y);
-        if (successful) selectedItem = null;
+        var successful = selectedItemGrid.AddItem(selectedItem, tileGridPosition.x, tileGridPosition.y, ref overlapItem);
+        if (successful)
+        {
+            selectedItem = null;
+            if (overlapItem != null)
+            {
+                selectedItem = overlapItem;
+                overlapItem = null;
+                recTrans = selectedItem.GetComponent<RectTransform>();
+            }
+        }
     }
 }
