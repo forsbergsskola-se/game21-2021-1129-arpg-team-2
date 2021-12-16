@@ -46,9 +46,18 @@ public class ItemGridIS : MonoBehaviour
         return tileGridPosition;
     }
 
-    internal bool AddItem(InventoryItemIS itemToAdd, int posX, int posY)
+    internal bool AddItem(InventoryItemIS itemToAdd, int posX, int posY, ref InventoryItemIS overlapItem)
     {
         if (!BoundaryCheck(posX, posY, itemToAdd.itemData.width, itemToAdd.itemData.length)) return false;
+
+        if (!OverlapCheck(posX, posY, itemToAdd.itemData.width, itemToAdd.itemData.length, ref overlapItem))
+        {
+            overlapItem = null;
+            return false;
+        }
+        
+        if (overlapItem != null) CleanGridReference(overlapItem);
+
         var rt = itemToAdd.GetComponent<RectTransform>();
         rt.SetParent(rectTrans);
         for (int i = 0; i < itemToAdd.itemData.width; i++)
@@ -72,21 +81,47 @@ public class ItemGridIS : MonoBehaviour
         return true;
     }
 
+    private bool OverlapCheck(int posX, int posY, int width, int length, ref InventoryItemIS overlapItem)
+    {
+        for (var i = 0; i < width; i++)
+        {
+            for (var j = 0; j < length; j++)
+            {
+                var targetSlot = inventoryItemSlots[posX + i, posY + j];
+                if (targetSlot != null)
+                {
+                    if (overlapItem == null) overlapItem = targetSlot;
+                    else
+                    {
+                        if (overlapItem != targetSlot) return false;
+                    }
+                }
+            }
+        }
+
+        return true;
+    }
+
     public InventoryItemIS PickUpItem(int x, int y)
     {
         var toReturn = inventoryItemSlots[x, y];
 
         if (toReturn == null) return null;
 
-        for (int i = 0; i < toReturn.itemData.width; i++)
-        {
-            for (int j = 0; j < toReturn.itemData.length; j++)
-            {
-                inventoryItemSlots[toReturn.onGridPositionX + i, toReturn.onGridPositionY + j] = null;
-            }
-        }
+        CleanGridReference(toReturn);
         
         return toReturn;
+    }
+
+    private void CleanGridReference(InventoryItemIS item)
+    {
+        for (int i = 0; i < item.itemData.width; i++)
+        {
+            for (int j = 0; j < item.itemData.length; j++)
+            {
+                inventoryItemSlots[item.onGridPositionX + i, item.onGridPositionY + j] = null;
+            }
+        }
     }
 
     private bool PositionCheck(int posX, int posY)
