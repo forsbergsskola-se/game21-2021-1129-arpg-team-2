@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     private GameEventListener listener;
     private bool isAttacking;
     private float tookDamageTimer;
-    private Animator ratAnimation;
+    [SerializeField] private Animator ratAnimation;
     public bool InCombat { get; private set; }
 
     private void Awake()
