@@ -1,15 +1,19 @@
 using UnityEngine;
 
 /// <summary>
-/// The script is responsible for getting the tile position on the inventory grid
+/// The script controls
+/// (1) the size of the grid
+/// (2) initiating the grid
+/// (3) adding/picking up item from the grid
 /// </summary>
 
 public class ItemGridIS : MonoBehaviour
 {
     // tileSize needs to match the actual size of the slot asset in use
-    [SerializeField] private float tileSize;
+    internal const float tileSize = 125;
     [SerializeField] private int gridWidth;
     [SerializeField] private int gridLength;
+    // [SerializeField] private GameObject inventoryItem;
     private RectTransform rectTrans;
     private Vector2 positionOnGrid = new Vector2();
     private Vector2Int tileGridPosition = new Vector2Int();
@@ -19,6 +23,8 @@ public class ItemGridIS : MonoBehaviour
     {
         rectTrans = GetComponent<RectTransform>();
         InitGrid(gridWidth, gridLength);
+        // var item = Instantiate(inventoryItem).GetComponent<InventoryItemIS>();
+        // AddItem(item, 3, 1);
     }
 
     private void InitGrid(int width, int length)
@@ -38,5 +44,99 @@ public class ItemGridIS : MonoBehaviour
         tileGridPosition.y = (int)(positionOnGrid.y / tileSize);
 
         return tileGridPosition;
+    }
+
+    internal bool AddItem(InventoryItemIS itemToAdd, int posX, int posY, ref InventoryItemIS overlapItem)
+    {
+        if (!BoundaryCheck(posX, posY, itemToAdd.itemData.width, itemToAdd.itemData.length)) return false;
+
+        if (!OverlapCheck(posX, posY, itemToAdd.itemData.width, itemToAdd.itemData.length, ref overlapItem))
+        {
+            overlapItem = null;
+            return false;
+        }
+        
+        if (overlapItem != null) CleanGridReference(overlapItem);
+
+        var rt = itemToAdd.GetComponent<RectTransform>();
+        rt.SetParent(rectTrans);
+        for (int i = 0; i < itemToAdd.itemData.width; i++)
+        {
+            for (int j = 0; j < itemToAdd.itemData.length; j++)
+            {
+                inventoryItemSlots[posX + i, posY + j] = itemToAdd;
+            }
+        }
+
+        itemToAdd.onGridPositionX = posX;
+        itemToAdd.onGridPositionY = posY;
+
+        Vector2 position = new Vector2
+        {
+            x = posX * tileSize + tileSize * itemToAdd.itemData.width / 2,
+            y = -(posY * tileSize + tileSize * itemToAdd.itemData.length / 2)
+        };
+
+        rt.localPosition = position;
+        return true;
+    }
+
+    private bool OverlapCheck(int posX, int posY, int width, int length, ref InventoryItemIS overlapItem)
+    {
+        for (var i = 0; i < width; i++)
+        {
+            for (var j = 0; j < length; j++)
+            {
+                var targetSlot = inventoryItemSlots[posX + i, posY + j];
+                if (targetSlot != null)
+                {
+                    if (overlapItem == null) overlapItem = targetSlot;
+                    else
+                    {
+                        if (overlapItem != targetSlot) return false;
+                    }
+                }
+            }
+        }
+
+        return true;
+    }
+
+    public InventoryItemIS PickUpItem(int x, int y)
+    {
+        var toReturn = inventoryItemSlots[x, y];
+
+        if (toReturn == null) return null;
+
+        CleanGridReference(toReturn);
+        
+        return toReturn;
+    }
+
+    private void CleanGridReference(InventoryItemIS item)
+    {
+        for (int i = 0; i < item.itemData.width; i++)
+        {
+            for (int j = 0; j < item.itemData.length; j++)
+            {
+                inventoryItemSlots[item.onGridPositionX + i, item.onGridPositionY + j] = null;
+            }
+        }
+    }
+
+    private bool PositionCheck(int posX, int posY)
+    {
+        if (posX < 0 || posY < 0) return false;
+        if (posX >= gridWidth || posY >= gridLength) return false;
+        return true;
+    }
+
+    private bool BoundaryCheck(int posX, int posY, int width, int length)
+    {
+        if (!PositionCheck(posX, posY)) return false;
+        posX += width - 1;
+        posY += length - 1;
+        if (!PositionCheck(posX, posY)) return false;
+        return true;
     }
 }

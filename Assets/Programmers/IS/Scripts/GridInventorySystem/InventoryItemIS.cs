@@ -1,18 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryItemIS : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] internal ItemDataIS itemData;
 
-    // Update is called once per frame
-    void Update()
+    public int onGridPositionX;
+    public int onGridPositionY;
+
+    public void Set(ItemDataIS item)
     {
-        
+        itemData = item;
+        GetComponent<Image>().sprite = itemData.itemIcon;
+        var size = new Vector2
+        {
+            x = itemData.width * ItemGridIS.tileSize,
+            y = itemData.length * ItemGridIS.tileSize
+        };
+        GetComponent<RectTransform>().sizeDelta = size;
     }
 }

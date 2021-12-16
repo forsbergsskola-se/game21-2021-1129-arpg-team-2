@@ -1,9 +1,9 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 namespace UI
 {
-    [RequireComponent(typeof(Health))]
     public class DamageTextPopUp : MonoBehaviour{
         
         public GameObject floatingTextPrefab;
@@ -15,6 +15,11 @@ namespace UI
         {
             _health = GetComponent<Health>();
             _previousHealth = _health.CharStats.MaxHealth;
+        }
+
+        private void LateUpdate()
+        {
+            if(_previousHealth != _health.CharStats.CurrentHealth) ShowFlaotingText();
         }
 
 
