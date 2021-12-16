@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCollectorScript : MonoBehaviour
 {
     [SerializeField] private AudioSource coinCollect;
+    [SerializeField] private IntegerValue playersCoins;
     
     void Start()
     {
@@ -16,6 +17,7 @@ public class PlayerCollectorScript : MonoBehaviour
         if (collision.collider.CompareTag("Coin"))
         {
             CoinCounterAA.coinAmount += 1;
+            playersCoins.Int = CoinCounterAA.coinAmount;
             coinCollect.Play();
         }
     }
