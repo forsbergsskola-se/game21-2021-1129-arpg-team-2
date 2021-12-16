@@ -7,6 +7,7 @@ public class Billboard : MonoBehaviour
 {
     // public Transform cam;
     public Transform cam;
+    public Transform billboard;
 
     public Transform rat;
     private Vector3 offset;
@@ -19,15 +20,17 @@ public class Billboard : MonoBehaviour
 
     void LateUpdate()
     {    //keeps the HealthBar looking at the camera
-        transform.LookAt(transform.position + cam.forward);
+        // transform.LookAt(transform.position + cam.forward);
         
         
         // transform.LookAt(transform.position + cam.transform.rotation * Vector3.back, cam.transform.rotation * Vector3.up);
         
         // transform.LookAt(transform.position + Camera.main.transform.rotation *- Vector3.back,
         //     Camera.main.transform.rotation *- Vector3.down);
-        
-        // transform.LookAt(cam);
+        // billboard.forward = billboard.position - cam.position;
+        // transform.LookAt(billboard.position -);
+        billboard.rotation = cam.rotation;
+
         //transform.position = rat.position + offset;
     }
 
@@ -35,4 +38,6 @@ public class Billboard : MonoBehaviour
     {
         Destroy(gameObject);
     }
+    
+    
 }

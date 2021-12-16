@@ -5853,6 +5853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inCombatAfterDamageTime: 2
+  ratAnimation: {fileID: 0}
 --- !u!114 &7451778977802126171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13376,6 +13377,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 567848429542637197, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
+      propertyPath: billboard
+      value: 
+      objectReference: {fileID: 8504192923953785446}
+    - target: {fileID: 567848429542637197, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -13482,6 +13487,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 239187605434724309, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
+--- !u!224 &8504192923953785446 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5258864196562683089, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
+  m_PrefabInstance: {fileID: 4539570665594056375}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1091245590685554722 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3592510631728805525, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
