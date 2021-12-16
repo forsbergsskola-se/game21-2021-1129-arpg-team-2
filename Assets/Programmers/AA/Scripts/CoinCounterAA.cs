@@ -5,8 +5,9 @@ using TMPro;
 
 public class CoinCounterAA : MonoBehaviour
 {
+    [SerializeField] private IntegerValue playersCoins;
     private TextMeshProUGUI text;
-    public static int coinAmount;
+    
     void Start()
     {
         text = GetComponent<TMPro.TextMeshProUGUI>();
@@ -14,6 +15,6 @@ public class CoinCounterAA : MonoBehaviour
     
     void Update()
     {
-        text.text = coinAmount.ToString();
+        text.text =playersCoins.Int.ToString();
     }
 }
