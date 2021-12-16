@@ -6,6 +6,7 @@ public class PlayerCollectorScript : MonoBehaviour
 {
     [SerializeField] private AudioSource coinCollect;
     [SerializeField] private IntegerValue playersCoins;
+    [SerializeField] private int coinValue = 10;
     
     void Start()
     {
@@ -17,7 +18,7 @@ public class PlayerCollectorScript : MonoBehaviour
     {
         if (collision.collider.CompareTag("Coin"))
         {
-            playersCoins.Int += 1;
+            playersCoins.Int += coinValue;
             coinCollect.Play();
         }
     }
