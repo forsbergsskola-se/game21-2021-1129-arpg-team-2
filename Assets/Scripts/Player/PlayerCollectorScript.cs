@@ -10,14 +10,14 @@ public class PlayerCollectorScript : MonoBehaviour
     void Start()
     {
         //coinCollect = GetComponent<AudioSource>();
+        playersCoins.Int = 0;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Coin"))
         {
-            CoinCounterAA.coinAmount += 1;
-            playersCoins.Int = CoinCounterAA.coinAmount;
+            playersCoins.Int += 1;
             coinCollect.Play();
         }
     }
