@@ -24,7 +24,7 @@ GameObject:
   m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &7613495829753175377
 Transform:
@@ -224,3 +224,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 6612267172016668206, guid: 7a6c7198435abd74ab3e8da9e11f6896, type: 3}
+  maxCoinsDrop: 5
