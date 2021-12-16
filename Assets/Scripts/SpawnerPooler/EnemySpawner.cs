@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(EnemyPooler))]
 public class EnemySpawner : MonoBehaviour
 {
     public Action<int> OnEnemyDeath;
@@ -11,14 +10,14 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private FloatValue spawnInterval;
     [SerializeField] private Enemy enemyPrefab;
     [SerializeField] private AudioSource deathSound;
-    private EnemyPooler enemyPool;
+    private Pooler<Enemy> enemyPool;
     private List<GameObject> spawnedEnemies;
     private int deathCount;
     public int SpawnPointsCount => spawnPositions.Length;
 
     private void Start()
     {
-        enemyPool = GetComponent<EnemyPooler>();
+        enemyPool = new Pooler<Enemy>();
         enemyPool.Setup(spawnPositions.Length, enemyPrefab);
         
         for (int i = 0; i < spawnPositions.Length; i++)
@@ -47,6 +46,7 @@ public class EnemySpawner : MonoBehaviour
     {
         deathSound.Play();
         deathCount++;
+        enemyPool.Return(enemy);
         OnEnemyDeath?.Invoke(deathCount);
         StartCoroutine(Respawn(enemy.SpawnIndex));
     }

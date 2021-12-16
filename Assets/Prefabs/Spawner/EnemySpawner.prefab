@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8702827382866042907}
   - component: {fileID: 8702827382866042904}
-  - component: {fileID: 8702827382866042905}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -50,15 +49,3 @@ MonoBehaviour:
   spawnInterval: {fileID: 11400000, guid: 064701bf1ae5a404ba7f8fbc2ecbd478, type: 2}
   enemyPrefab: {fileID: 7975904022497877467, guid: fb8c16d1bf0dc2843811dde8eb0b9603, type: 3}
   deathSound: {fileID: 0}
---- !u!114 &8702827382866042905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8702827382866042910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1c7b5bbd1464d238a6d4ae22f2d3cb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
