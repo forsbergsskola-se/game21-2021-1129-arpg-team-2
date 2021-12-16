@@ -732,18 +732,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health_XP_Bar_Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4257734571042593389, guid: 9c44985c99862484aba0d2cd5d1c0b9e, type: 3}
-      propertyPath: m_Type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4257734571042593389, guid: 9c44985c99862484aba0d2cd5d1c0b9e, type: 3}
-      propertyPath: m_FillMethod
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4257734571042593389, guid: 9c44985c99862484aba0d2cd5d1c0b9e, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c44985c99862484aba0d2cd5d1c0b9e, type: 3}
 --- !u!224 &7507261635652092808 stripped
@@ -751,33 +739,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1406416161004735658, guid: 9c44985c99862484aba0d2cd5d1c0b9e, type: 3}
   m_PrefabInstance: {fileID: 8911425893763141410}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7504319511722855789 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1409358903677698639, guid: 9c44985c99862484aba0d2cd5d1c0b9e, type: 3}
-  m_PrefabInstance: {fileID: 8911425893763141410}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4664952589800740175 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4257734571042593389, guid: 9c44985c99862484aba0d2cd5d1c0b9e, type: 3}
-  m_PrefabInstance: {fileID: 8911425893763141410}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1888679524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7504319511722855789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74063ba69bfd96647a3d701926e12611, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 4664952589800740175}
-  charStats: {fileID: 11400000, guid: 23f69430033372442b2eec1256acb110, type: 2}
