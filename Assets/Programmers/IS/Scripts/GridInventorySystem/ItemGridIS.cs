@@ -1,7 +1,10 @@
 using UnityEngine;
 
 /// <summary>
-/// The script is responsible for getting the tile position on the inventory grid
+/// The script controls
+/// (1) the size of the grid
+/// (2) initiating the grid
+/// (3) adding/picking up item from the grid
 /// </summary>
 
 public class ItemGridIS : MonoBehaviour
