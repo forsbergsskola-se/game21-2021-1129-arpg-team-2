@@ -55,12 +55,13 @@ public class Entity : MonoBehaviour, IDamageable
 
     public void OnEntityDie()
     {
+        
+        DisableAsObstacle();
+        StartCoroutine(VisualDestruction());
         if ( coinspawner != null)
         {
             coinspawner.SpawnFromPool();
         }
-        DisableAsObstacle();
-        StartCoroutine(VisualDestruction());
     }
 
     private void DisableAsObstacle()
