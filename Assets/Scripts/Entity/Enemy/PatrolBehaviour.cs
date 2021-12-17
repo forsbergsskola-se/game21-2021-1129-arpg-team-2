@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PatrolBehaviourSS : StateMachineBehaviour
+public class PatrolBehaviour : StateMachineBehaviour
 {
 
     private NavMeshAgent agent;

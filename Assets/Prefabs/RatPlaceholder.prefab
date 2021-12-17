@@ -5792,7 +5792,6 @@ GameObject:
   - component: {fileID: 6974413310255559945}
   - component: {fileID: 8595177707125797863}
   - component: {fileID: 8223023202730446080}
-  - component: {fileID: 6817105619312886264}
   - component: {fileID: 5966973621768611675}
   - component: {fileID: -2957285500752878817}
   - component: {fileID: -8248166045112402509}
@@ -6026,34 +6025,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1091245590685554722}
---- !u!114 &6817105619312886264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3727973343909372596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f07402af12f75664ea7fbb5afc53a64c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  GroundLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  isPatrolling: 1
-  patrolSpeed: 3
-  walkPointRange: 10
-  chaseSpeed: 5
-  awarenessRange: 8
-  attackRange: 1
-  hearingRange: 5
-  breathingTimeAfterDefeating: 7
-  fieldOfViewAngle: 90
-  playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!195 &5966973621768611675
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6092,7 +6063,7 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6817105619312886264}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EnemyAI, Assembly-CSharp
         m_MethodName: OnPlayerDefeated
         m_Mode: 1
@@ -6120,7 +6091,7 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6817105619312886264}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EnemyAI, Assembly-CSharp
         m_MethodName: OnPlayerNotDefeated
         m_Mode: 1
@@ -6142,7 +6113,7 @@ Animator:
   m_GameObject: {fileID: 3727973343909372596}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6ee0980e88458e94090ef355e5b77a2d, type: 2}
+  m_Controller: {fileID: 9100000, guid: fa730bb966b18434facb046625c5b09b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -13487,9 +13458,9 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 239187605434724309, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
---- !u!224 &8504192923953785446 stripped
+--- !u!224 &1220213093531292052 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5258864196562683089, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3319392756575698723, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
   m_PrefabInstance: {fileID: 4539570665594056375}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1091245590685554722 stripped
@@ -13497,8 +13468,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3592510631728805525, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
   m_PrefabInstance: {fileID: 4539570665594056375}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &1220213093531292052 stripped
+--- !u!224 &8504192923953785446 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3319392756575698723, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5258864196562683089, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
   m_PrefabInstance: {fileID: 4539570665594056375}
   m_PrefabAsset: {fileID: 0}

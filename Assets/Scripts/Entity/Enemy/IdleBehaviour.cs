@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class IdleBehaviourSS : StateMachineBehaviour
+public class IdleBehaviour : StateMachineBehaviour
 {
     private NavMeshAgent agent;
     private Vector3 startPosition;

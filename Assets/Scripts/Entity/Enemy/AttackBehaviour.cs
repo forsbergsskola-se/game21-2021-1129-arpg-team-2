@@ -1,40 +1,41 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ChaseBehaviourSS : StateMachineBehaviour
+public class AttackBehaviour : StateMachineBehaviour
 {
     private NavMeshAgent agent;
-    private Transform playerPos;
     [Header("Assign the player's position")]
     [SerializeField] private Vector3Value playerPosition;
     public float chaseSpeed;
-    private bool playerInAwarenessRange;
-    private bool playerInAttackRange;
+    private Vector3 targetDir;
     [Header("Range")]
     [SerializeField] private float attackRange;
-    [SerializeField] private float awarenessRange;
+    private EntityAttack entityAttack;
+    //Layers
     [Header("Assign Layers")]
     public LayerMask PlayerLayer;
-    private Vector3 targetDir;
+    public LayerMask GroundLayer;
+
+    //Temporary bools
     private bool noObstacle;
-    private EntityAttack entityAttack;
-    private bool playerIsDefeated;
-    private float breathingTimeAfterDefeating;
+    bool playerInAttackRange;
+    bool playerIsDefeated;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        entityAttack = animator.GetComponent<EntityAttack>();
+        entityAttack= animator.GetComponent<EntityAttack>();
         agent = animator.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
-        playerPos =GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        //Check for the angle of view
         targetDir = playerPosition.Vector3 - animator.transform.position;
+        //Check for obstacle
         RaycastHit hit;
         if (Physics.Raycast(animator.transform.position, targetDir, out hit))
         {
@@ -50,23 +51,20 @@ public class ChaseBehaviourSS : StateMachineBehaviour
             }
         }
 
-        playerInAwarenessRange = Physics.CheckSphere(animator.transform.position, awarenessRange, PlayerLayer);
+        //Check for sight, hearing and attack range
         playerInAttackRange = Physics.CheckSphere(animator.transform.position, attackRange, PlayerLayer);
+
+        //Move to the chase state
         agent.speed = chaseSpeed;
-        agent.SetDestination(playerPosition.Vector3);
-        agent.isStopped = false;
-        if(playerInAttackRange && noObstacle && !playerIsDefeated)
+        //Make sure enemy doesn't move
+        agent.SetDestination(animator.transform.position);
+        animator.transform.LookAt(playerPosition.Vector3);
+        agent.isStopped = true;
+
+        if (!playerInAttackRange || !noObstacle )
         {
-
-            animator.SetTrigger("isAttacking");
+            animator.SetTrigger("isChasing");
         }
-        if (!playerInAwarenessRange || !noObstacle || playerIsDefeated)
-        {
-            animator.SetTrigger("isPatrolling");
-        }
-
-
-
     }
 
     public void OnPlayerDefeated()
@@ -82,30 +80,13 @@ public class ChaseBehaviourSS : StateMachineBehaviour
         entityAttack.enabled = true;
     }
 
-    private IEnumerator TestCoroutine()
-    {
-        yield return new WaitForSeconds(breathingTimeAfterDefeating);
-        playerIsDefeated = false;
-        entityAttack.enabled = true;
-    }
-
+    
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
+    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //
+    //}
 
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(agent.gameObject.transform.position, attackRange);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(agent.gameObject.transform.position, awarenessRange);
-        //Gizmos.color = Color.magenta;
-        //Gizmos.DrawWireSphere(agent.gameObject.transform.position, hearingRange);
-        Gizmos.color = Color.blue;
-        Gizmos.DrawRay(agent.gameObject.transform.position, targetDir);
-    }
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
