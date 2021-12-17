@@ -1,4 +1,12 @@
+using System;
 using UnityEngine;
+
+public interface IItemGridIS
+{
+    void InitGrid(int width, int length);
+    bool AddItem(InventoryItemIS itemToAdd, int posX, int posY, ref InventoryItemIS overlapItem);
+    InventoryItemIS PickUpItem(int x, int y);
+}
 
 /// <summary>
 /// The script controls
@@ -7,27 +15,34 @@ using UnityEngine;
 /// (3) adding/picking up item from the grid
 /// </summary>
 
-public class ItemGridIS : MonoBehaviour
+public class ItemGridIS : MonoBehaviour, IItemGridIS
 {
+    // ItemGridView?
     // tileSize needs to match the actual size of the slot asset in use
     internal const float tileSize = 125;
     [SerializeField] private int gridWidth;
     [SerializeField] private int gridLength;
-    // [SerializeField] private GameObject inventoryItem;
     private RectTransform rectTrans;
     private Vector2 positionOnGrid = new Vector2();
     private Vector2Int tileGridPosition = new Vector2Int();
-    private InventoryItemIS[,] inventoryItemSlots;
+    internal InventoryItemIS[,] inventoryItemSlots;
 
-    private void Start()
+    // private void Start()
+    // {
+    //     // rectTrans = GetComponent<RectTransform>();
+    //     // InitGrid(gridWidth, gridLength);
+    //     
+    //     // var item = Instantiate(inventoryItem).GetComponent<InventoryItemIS>();
+    //     // AddItem(item, 3, 1, null);
+    // }
+
+    private void Awake()
     {
         rectTrans = GetComponent<RectTransform>();
         InitGrid(gridWidth, gridLength);
-        // var item = Instantiate(inventoryItem).GetComponent<InventoryItemIS>();
-        // AddItem(item, 3, 1);
     }
 
-    private void InitGrid(int width, int length)
+    public void InitGrid(int width, int length)
     {
         inventoryItemSlots = new InventoryItemIS[width, length];
         Vector2 size = new Vector2(width * tileSize, length * tileSize);
@@ -46,11 +61,11 @@ public class ItemGridIS : MonoBehaviour
         return tileGridPosition;
     }
 
-    internal bool AddItem(InventoryItemIS itemToAdd, int posX, int posY, ref InventoryItemIS overlapItem)
+    public bool AddItem(InventoryItemIS itemToAdd, int posX, int posY, ref InventoryItemIS overlapItem)
     {
-        if (!BoundaryCheck(posX, posY, itemToAdd.itemData.width, itemToAdd.itemData.length)) return false;
-
-        if (!OverlapCheck(posX, posY, itemToAdd.itemData.width, itemToAdd.itemData.length, ref overlapItem))
+        if (IsOutsideBoundary(posX, posY, itemToAdd.itemData.width, itemToAdd.itemData.height)) return false;
+        
+        if (!OverlapCheck(posX, posY, itemToAdd.itemData.width, itemToAdd.itemData.height, ref overlapItem))
         {
             overlapItem = null;
             return false;
@@ -60,9 +75,10 @@ public class ItemGridIS : MonoBehaviour
 
         var rt = itemToAdd.GetComponent<RectTransform>();
         rt.SetParent(rectTrans);
+        
         for (int i = 0; i < itemToAdd.itemData.width; i++)
         {
-            for (int j = 0; j < itemToAdd.itemData.length; j++)
+            for (int j = 0; j < itemToAdd.itemData.height; j++)
             {
                 inventoryItemSlots[posX + i, posY + j] = itemToAdd;
             }
@@ -74,7 +90,7 @@ public class ItemGridIS : MonoBehaviour
         Vector2 position = new Vector2
         {
             x = posX * tileSize + tileSize * itemToAdd.itemData.width / 2,
-            y = -(posY * tileSize + tileSize * itemToAdd.itemData.length / 2)
+            y = -(posY * tileSize + tileSize * itemToAdd.itemData.height / 2)
         };
 
         rt.localPosition = position;
@@ -117,7 +133,7 @@ public class ItemGridIS : MonoBehaviour
     {
         for (int i = 0; i < item.itemData.width; i++)
         {
-            for (int j = 0; j < item.itemData.length; j++)
+            for (int j = 0; j < item.itemData.height; j++)
             {
                 inventoryItemSlots[item.onGridPositionX + i, item.onGridPositionY + j] = null;
             }
@@ -131,12 +147,12 @@ public class ItemGridIS : MonoBehaviour
         return true;
     }
 
-    private bool BoundaryCheck(int posX, int posY, int width, int length)
+    private bool IsOutsideBoundary(int posX, int posY, int width, int length)
     {
-        if (!PositionCheck(posX, posY)) return false;
+        if (!PositionCheck(posX, posY)) return true;
         posX += width - 1;
         posY += length - 1;
-        if (!PositionCheck(posX, posY)) return false;
-        return true;
+        if (!PositionCheck(posX, posY)) return true;
+        return false;
     }
 }

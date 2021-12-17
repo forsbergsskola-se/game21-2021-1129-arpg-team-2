@@ -7,12 +7,12 @@ public class Entity : MonoBehaviour, IDamageable
     [SerializeField] private EntityType entityType;
     [SerializeField] private float maxHealth;
     [SerializeField] private ParticleSystem destructionParticlesPrefab;
-    [SerializeField] private CoinDropAA coinDropAA;
     private FloatValue currentHealth;
     private float redFlashInterval = .5f;
     private Renderer render;
     private static readonly int Color1 = Shader.PropertyToID("_Color");
     private Color defaultColor;
+    private CoinSpawner coinspawner;
 
     public FloatValue CurrentHealth { get => currentHealth; set => currentHealth = value; }
 
@@ -20,6 +20,7 @@ public class Entity : MonoBehaviour, IDamageable
 
     private void Awake()
     {
+        coinspawner = GetComponent<CoinSpawner>();
         render = GetComponent<Renderer>();
         defaultColor = render.material.color;
         
@@ -54,12 +55,13 @@ public class Entity : MonoBehaviour, IDamageable
 
     public void OnEntityDie()
     {
-        if ( coinDropAA != null)
-        {
-            coinDropAA.DropCoin(transform);
-        }
+        
         DisableAsObstacle();
         StartCoroutine(VisualDestruction());
+        if ( coinspawner != null)
+        {
+            coinspawner.SpawnFromPool();
+        }
     }
 
     private void DisableAsObstacle()
