@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 940252089}
   - component: {fileID: 941644818}
   - component: {fileID: 941644826}
-  - component: {fileID: 879972596}
+  - component: {fileID: 1704541749695673600}
   m_Layer: 0
   m_Name: Pot
   m_TagString: Destructible
@@ -136,7 +136,7 @@ MonoBehaviour:
   entityType: {fileID: 11400000, guid: 0d4973cf1804e1f40b3ff04d0a0849a7, type: 2}
   maxHealth: 1
   destructionParticlesPrefab: {fileID: 2041660005004726030, guid: 603f58460d308eb48a24c088708dad26, type: 3}
-  coinDropAA: {fileID: 879972596}
+  coinDropAA: {fileID: 0}
 --- !u!114 &6451621834618005137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41b805387556664d833781e8213fbf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &879972596
+--- !u!114 &1704541749695673600
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,8 +220,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7613495829753175376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f4fdeedd9df46244aa89f932937a477, type: 3}
+  m_Script: {fileID: 11500000, guid: 93e76ed47c96b89479f286570de1d70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinPrefab: {fileID: 6612267172016668206, guid: 7a6c7198435abd74ab3e8da9e11f6896, type: 3}
+  coinPrefab: {fileID: 7654362366011462516, guid: 7a6c7198435abd74ab3e8da9e11f6896, type: 3}
+  collectSound: {fileID: 0}
+  playersCoins: {fileID: 11400000, guid: 7616168f7dc4f2746b1fa142c03507b9, type: 2}
   maxCoinsDrop: 5

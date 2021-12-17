@@ -2,20 +2,30 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CoinSpawner : MonoBehaviour
 {
-    [SerializeField] private Enemy coinPrefab;
+    [SerializeField] private CoinScript coinPrefab;
     [SerializeField] private AudioSource collectSound;
     [SerializeField] private IntegerValue playersCoins;
+    [SerializeField] private int maxCoinsDrop = 5;
     private Pooler<CoinScript> coinPool;
     private int coinCollectedCount;
+    private Vector3 spawnPosition;
+    private Vector3 offset;
 
     private void Start()
     {
-        coinPool = new Pooler<CoinScript>();
+        spawnPosition = transform.position;
+        offset = new Vector3(0, 1.32f, 0);
         
-        SpawnFromPool();
+        coinPool = new Pooler<CoinScript>();
+        coinPool.Setup(30,coinPrefab);
+        
+        int randomNum = Random.Range(1, maxCoinsDrop +1);
+        for (var i = 0; i < randomNum; i++)
+            SpawnFromPool();
         
     }
     private void SpawnFromPool()
@@ -23,7 +33,7 @@ public class CoinSpawner : MonoBehaviour
         CoinScript coin = coinPool.GetPooledObject(); 
         if (coin != null)
         {
-            coin.Spawn();
+            coin.Spawn(spawnPosition + offset);
             if ( coin.coinIsCollected )
             {
                 CoinIsCollected(coin);

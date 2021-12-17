@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,11 +6,12 @@ using UnityEngine;
 public class CoinScript : MonoBehaviour
 {
     public bool coinIsCollected;
-    public void Spawn()
+
+    public void Spawn(Vector3 spawnPosition)
     {
-        transform.position = this.transform.position;
-        transform.rotation = Quaternion.identity;
         gameObject.SetActive(true);
+        transform.position = spawnPosition;
+        transform.rotation = Quaternion.identity;
     }
     private void OnCollisionEnter(Collision collision)
     {
