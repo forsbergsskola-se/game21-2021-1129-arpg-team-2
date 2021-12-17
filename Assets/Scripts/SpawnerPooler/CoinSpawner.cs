@@ -6,45 +6,36 @@ using Random = UnityEngine.Random;
 
 public class CoinSpawner : MonoBehaviour
 {
-    [SerializeField] private CoinScript coinPrefab;
-    [SerializeField] private AudioSource collectSound;
-    [SerializeField] private IntegerValue playersCoins;
     [SerializeField] private int maxCoinsDrop = 5;
-    private Pooler<CoinScript> coinPool;
+    [SerializeField] private PoolScriptableObject coinPool;
     private int coinCollectedCount;
-    private Vector3 spawnPosition;
     private Vector3 offset;
 
     private void Start()
     {
-        spawnPosition = transform.position;
         offset = new Vector3(0, 1.32f, 0);
-        
-        coinPool = new Pooler<CoinScript>();
-        coinPool.Setup(30,coinPrefab);
-        
+    }
+    public void SpawnFromPool()
+    {
         int randomNum = Random.Range(1, maxCoinsDrop +1);
         for (var i = 0; i < randomNum; i++)
-            SpawnFromPool();
-        
-    }
-    private void SpawnFromPool()
-    {
-        CoinScript coin = coinPool.GetPooledObject(); 
-        if (coin != null)
         {
-            coin.Spawn(spawnPosition + offset);
-            if ( coin.coinIsCollected )
+            if (coinPool != null)
             {
-                CoinIsCollected(coin);
+                Debug.Log("There is a pool!");
+                var tempCoin = coinPool.pool.Pop();
+                tempCoin.SetActive(true);
+                tempCoin.transform.position = this.transform.position + offset;
+                if ( tempCoin.GetComponent<CoinScript>().coinIsCollected )
+                {
+                    CoinIsCollected(tempCoin);
+                }
             }
         }
     }
 
-    private void CoinIsCollected(CoinScript coin)
+    private void CoinIsCollected(GameObject coin)
     {
-        collectSound.Play();
-        playersCoins.Int += 10;
-        coinPool.Return(coin);
+        coinPool.pool.Push(coin);
     }
 }

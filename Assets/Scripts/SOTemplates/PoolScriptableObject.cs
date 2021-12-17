@@ -5,11 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Pool", fileName = "GameObjectPool")]
 public class PoolScriptableObject : ScriptableObject
 {
-    private Stack<GameObject> pool;
+    public Stack<GameObject> pool;
     private int size;
     private GameObject prefab;
     
-    public Stack<GameObject> Pool => pool;
 
     public int Size
     {
@@ -24,20 +23,12 @@ public class PoolScriptableObject : ScriptableObject
     
     public void Load()
     {
+        pool = new Stack<GameObject>();
         for (int i = 0; i < size; i++)
         {
             var temp = Instantiate(prefab);
             temp.SetActive(false);
+            pool.Push(temp);
         }
-    }
-    
-    public void Add(GameObject objectToAdd)
-    {
-        pool.Push(objectToAdd);
-    }
-
-    public GameObject Pop()
-    {
-        return pool.Pop();
     }
 }
