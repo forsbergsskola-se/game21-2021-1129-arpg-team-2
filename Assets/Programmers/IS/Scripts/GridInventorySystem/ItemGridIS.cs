@@ -1,12 +1,6 @@
-using System;
+using UnityEditor.Search;
 using UnityEngine;
-
-public interface IItemGridIS
-{
-    void InitGrid(int width, int length);
-    bool AddItem(InventoryItemIS itemToAdd, int posX, int posY, ref InventoryItemIS overlapItem);
-    InventoryItemIS PickUpItem(int x, int y);
-}
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// The script controls
@@ -15,9 +9,8 @@ public interface IItemGridIS
 /// (3) adding/picking up item from the grid
 /// </summary>
 
-public class ItemGridIS : MonoBehaviour, IItemGridIS
+public class ItemGridIS : MonoBehaviour, IDropHandler
 {
-    // ItemGridView?
     // tileSize needs to match the actual size of the slot asset in use
     internal const float tileSize = 125;
     [SerializeField] private int gridWidth;
@@ -25,21 +18,14 @@ public class ItemGridIS : MonoBehaviour, IItemGridIS
     private RectTransform rectTrans;
     private Vector2 positionOnGrid = new Vector2();
     private Vector2Int tileGridPosition = new Vector2Int();
-    internal InventoryItemIS[,] inventoryItemSlots;
-
-    // private void Start()
-    // {
-    //     // rectTrans = GetComponent<RectTransform>();
-    //     // InitGrid(gridWidth, gridLength);
-    //     
-    //     // var item = Instantiate(inventoryItem).GetComponent<InventoryItemIS>();
-    //     // AddItem(item, 3, 1, null);
-    // }
+    private InventoryItemIS[,] inventoryItemSlots;
+    private InventoryControllerIS inventoryController;
 
     private void Awake()
     {
         rectTrans = GetComponent<RectTransform>();
         InitGrid(gridWidth, gridLength);
+        inventoryController = FindObjectOfType<InventoryControllerIS>();
     }
 
     public void InitGrid(int width, int length)
@@ -155,4 +141,21 @@ public class ItemGridIS : MonoBehaviour, IItemGridIS
         if (!PositionCheck(posX, posY)) return true;
         return false;
     }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        Debug.Log("Item dropped inside inventory!");
+        if (eventData.pointerDrag != null)
+        {
+            tileGridPosition = GetTileGridPosition(Input.mousePosition);
+            inventoryController.selectedItem = eventData.pointerDrag.GetComponent<InventoryItemIS>();
+            inventoryController.PlaceItem(tileGridPosition);
+            Debug.Log(tileGridPosition);
+        }
+    }
+
+    // public void OnDrag(PointerEventData eventData)
+    // {
+    //     Debug.Log("pointerDrag from OnDrag: " + eventData.pointerDrag);
+    // }
 }

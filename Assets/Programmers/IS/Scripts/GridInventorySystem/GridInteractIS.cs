@@ -13,14 +13,12 @@ public class GridInteractIS : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     private void Awake()
     {
-        inventoryController = FindObjectOfType<InventoryControllerIS>();
         itemGrid = GetComponent<ItemGridIS>();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("pointer entered");
-        inventoryController.selectedItemGrid = itemGrid;
     }
 
     public void OnPointerExit(PointerEventData eventData)

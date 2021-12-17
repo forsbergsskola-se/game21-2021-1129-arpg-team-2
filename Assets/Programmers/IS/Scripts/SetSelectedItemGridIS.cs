@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using Random = UnityEngine.Random;
 
 public class SetSelectedItemGridIS : MonoBehaviour, IPointerDownHandler
 {
@@ -10,7 +8,6 @@ public class SetSelectedItemGridIS : MonoBehaviour, IPointerDownHandler
     [SerializeField] private List<ItemDataIS> itemList;
     [SerializeField] private GameObject itemPrefab;
     private InventoryControllerIS inventoryController;
-    private int itemSpawned = 0;
 
     private void Awake()
     {
@@ -22,15 +19,7 @@ public class SetSelectedItemGridIS : MonoBehaviour, IPointerDownHandler
         inventoryController.selectedItemGrid = 
             inventoryController.selectedItemGrid == null ? itemGrid : null;
         ToggleItemGrid();
-    }
-
-    private void Update()
-    {
-        if (itemGrid.inventoryItemSlots != null && itemSpawned == 0)
-        {
-            CreateRandomItem();
-            itemSpawned++;
-        }
+        CreateRandomItem();
     }
 
     private void CreateRandomItem()
@@ -39,7 +28,7 @@ public class SetSelectedItemGridIS : MonoBehaviour, IPointerDownHandler
         inventoryController.selectedItem = item;
         inventoryController.recTrans = item.GetComponent<RectTransform>();
         inventoryController.recTrans.SetParent(inventoryController.canvasTransform);
-        item.Set(itemList[Random.Range(0, itemList.Count)]);
+        item.Set(itemList[0]);
         
         inventoryController.PlaceItem(new Vector2Int(0, 1));
     }
