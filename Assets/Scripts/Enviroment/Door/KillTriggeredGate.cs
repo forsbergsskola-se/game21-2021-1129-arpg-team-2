@@ -24,7 +24,6 @@ public class KillTriggeredGate : MonoBehaviour {
             Debug.Log("Gate be opening!");
             doorAnimation.SetBool("isOpening", true);
             gateOpening.Play();
-
         }
     }
 
