@@ -2497,7 +2497,6 @@ GameObject:
   - component: {fileID: 5158720213136699809}
   - component: {fileID: 8157742340567314207}
   - component: {fileID: 1649280726777309585}
-  - component: {fileID: 8068487182046431712}
   - component: {fileID: 7324492524421105440}
   - component: {fileID: 4716304596872710989}
   - component: {fileID: 4491243584777546771}
@@ -2506,7 +2505,7 @@ GameObject:
   - component: {fileID: 3173072106909200918}
   m_Layer: 0
   m_Name: NEWEST_RAT
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2538,7 +2537,7 @@ Animator:
   m_GameObject: {fileID: 5145112555884845494}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 12c72094f1f80fc4f898bad55a824ef9, type: 2}
+  m_Controller: {fileID: 9100000, guid: fa730bb966b18434facb046625c5b09b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2621,7 +2620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
   bakeKeys: []
@@ -2652,7 +2651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charStats: {fileID: 0}
   maxHealth: 30
-  entityDeath: {fileID: 11400000, guid: 7e9bb74333dc137449b2324eef6a787f, type: 2}
+  entityDeath: {fileID: 0}
   currentHealth: {fileID: 0}
 --- !u!114 &5158720213136699809
 MonoBehaviour:
@@ -2666,11 +2665,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f698b8af41f264abd87ae44d449008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 7e9bb74333dc137449b2324eef6a787f, type: 2}
+  Event: {fileID: 0}
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 193544249344696679}
         m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
         m_MethodName: OnEnemyDeath
         m_Mode: 1
@@ -2682,21 +2681,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4302932915786100145}
         m_TargetAssemblyTypeName: CursorChanger, Assembly-CSharp
         m_MethodName: ResetCursor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CoinDropAA, Assembly-CSharp
-        m_MethodName: DropCoin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2731,35 +2718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c45b86d4534865aa3e0fb469e0c36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
---- !u!114 &8068487182046431712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5145112555884845494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f07402af12f75664ea7fbb5afc53a64c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  GroundLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  isPatrolling: 1
-  patrolSpeed: 3
-  walkPointRange: 10
-  chaseSpeed: 5
-  awarenessRange: 8
-  attackRange: 1
-  hearingRange: 5
-  breathingTimeAfterDefeating: 7
-  fieldOfViewAngle: 90
-  playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
+  healthBar: {fileID: 8313439491226087760, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
 --- !u!195 &7324492524421105440
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2826,9 +2785,9 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5145112555884845494}
         m_TargetAssemblyTypeName: EnemyAI, Assembly-CSharp
-        m_MethodName: OnPlayerNotDefeated
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2862,7 +2821,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6a43fd2047d84964ba4e04a3c44d75d5, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2960,6 +2919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 8581053789443151608, guid: 5e12048b5a116ff42b135ed0a385f832, type: 3}
+  maxCoinsDrop: 5
 --- !u!1 &5211587929759548091
 GameObject:
   m_ObjectHideFlags: 0
