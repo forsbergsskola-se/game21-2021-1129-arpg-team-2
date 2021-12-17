@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +17,7 @@ public class InventoryItemIS : MonoBehaviour
         var size = new Vector2
         {
             x = itemData.width * ItemGridIS.tileSize,
-            y = itemData.length * ItemGridIS.tileSize
+            y = itemData.height * ItemGridIS.tileSize
         };
         GetComponent<RectTransform>().sizeDelta = size;
     }

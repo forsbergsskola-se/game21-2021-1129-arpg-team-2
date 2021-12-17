@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// The script is responsible for detecting which grid cell is selected
@@ -9,35 +12,26 @@ public class InventoryControllerIS : MonoBehaviour
     [HideInInspector]
     [SerializeField] internal ItemGridIS selectedItemGrid;
 
-    [SerializeField] private List<ItemDataIS> itemList;
-    [SerializeField] private GameObject itemPrefab;
-    [SerializeField] private Transform canvasTransform;
+    // [SerializeField] private List<ItemDataIS> itemList;
+    // [SerializeField] private GameObject itemPrefab;
+    [SerializeField] internal Transform canvasTransform;
 
-    private InventoryItemIS selectedItem;
+    internal InventoryItemIS selectedItem;
     private InventoryItemIS overlapItem;
-    private RectTransform recTrans;
+    internal RectTransform recTrans;
 
     private void Update()
     {
-        ItemIconDrag();
+        // ItemIconDrag();
 
-        if (Input.GetKeyDown(KeyCode.Q)) CreateRandomItem();
-        
-        if (selectedItemGrid == null) return;
+        // if (Input.GetKeyDown(KeyCode.Q)) CreateRandomItem();
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            LeftMouseBtnPress();
-        }
-    }
+        // if (selectedItemGrid == null) return;
 
-    private void CreateRandomItem()
-    {
-        var item = Instantiate(itemPrefab).GetComponent<InventoryItemIS>();
-        selectedItem = item;
-        recTrans = item.GetComponent<RectTransform>();
-        recTrans.SetParent(canvasTransform);
-        item.Set(itemList[Random.Range(0, itemList.Count)]);
+        // if (Input.GetMouseButtonDown(0))
+        // {
+        //     LeftMouseBtnPress();
+        // }
     }
 
     private void ItemIconDrag()
@@ -58,7 +52,7 @@ public class InventoryControllerIS : MonoBehaviour
         if (selectedItem != null) recTrans = selectedItem.GetComponent<RectTransform>();
     }
 
-    private void PlaceItem(Vector2Int tileGridPosition)
+    internal void PlaceItem(Vector2Int tileGridPosition)
     {
         var successful = selectedItemGrid.AddItem(selectedItem, tileGridPosition.x, tileGridPosition.y, ref overlapItem);
         if (successful)
