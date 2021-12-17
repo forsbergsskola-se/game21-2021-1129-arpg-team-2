@@ -14,6 +14,7 @@ public class OutlineActivation : MonoBehaviour
 
    private void OnMouseOver()
    {
+      Debug.Log("Mouse is on the Rat");
       _outline.enabled = true;
    }
 
