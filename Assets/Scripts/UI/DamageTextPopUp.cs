@@ -25,11 +25,12 @@ namespace UI
 
         public void ShowFlaotingText()
         {
-            Debug.Log("Current Health: " + _health.CharStats.CurrentHealth);
-            Debug.Log("Previous Health: " + _previousHealth);
             var temp = Instantiate(floatingTextPrefab, transform);
-            temp.GetComponentInChildren<TextMeshProUGUI>().text = (_health.CharStats.CurrentHealth - _previousHealth).ToString();
+            var textMesh = temp.GetComponentInChildren<TextMeshProUGUI>();
+            
+            textMesh.text = (_health.CharStats.CurrentHealth - _previousHealth).ToString();
             _previousHealth = _health.CharStats.CurrentHealth;
+
         }
     }
 }

@@ -39,8 +39,6 @@ public class Health : MonoBehaviour, IDamageable {
             charStats.MaxHealth = maxHealth;
         }
         else charStats.CurrentHealth = charStats.MaxHealth;
-        
-        Debug.Log(gameObject.name + ": " + charStats.CurrentHealth);
     }
     
     public void TakeDamage(float damage)
