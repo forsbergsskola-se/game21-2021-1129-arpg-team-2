@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 905321144}
   - component: {fileID: 905321146}
   - component: {fileID: 905321145}
+  - component: {fileID: 1935451681}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -294,7 +295,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5000001
   m_Speed: 7
-  m_Acceleration: 8
+  m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 5
@@ -333,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cec221ceff96c8498152429488ca888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 11400000, guid: 703c051985a502643a9270229a531eee, type: 2}
+  playerStats: {fileID: 11400000, guid: 23f69430033372442b2eec1256acb110, type: 2}
   healthThreshold: 1
   regenerationRate: 10
   regenerationTime: 5
@@ -379,3 +380,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1935451681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032229772199897188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1465b36da8c7ea64fbe0a02620ff43c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinCollect: {fileID: 0}
+  playersCoins: {fileID: 11400000, guid: 7616168f7dc4f2746b1fa142c03507b9, type: 2}
+  coinValue: 10
