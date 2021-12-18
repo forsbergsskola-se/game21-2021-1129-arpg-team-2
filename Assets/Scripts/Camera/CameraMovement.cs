@@ -1,4 +1,7 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
@@ -20,6 +23,8 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float minY = 20;
     [SerializeField] private float maxY = 120f;
     
+    
+    
     private void Start()
     {
         cameraOffset = transform.position - playerPosition.Vector3;
@@ -28,25 +33,27 @@ public class CameraMovement : MonoBehaviour
     private void LateUpdate()
     {
         float rotationMagnite = 0;
-        
-        if (Input.mousePosition.x <= distanceToBorder)
-        {
-            rotationMagnite = -1;
-        }
-        else if (Input.mousePosition.x >= Screen.width - distanceToBorder)
-        {
-            rotationMagnite = 1;
-        }
-        else
-        {
-            rotationMagnite = 0;
-        }
-        
-        if (rotateAroundPlayer)
-        {
-            Quaternion camTurnAngle = Quaternion.AngleAxis(rotationMagnite * rotationSpeed / 100, Vector3.up);
+        if (!EventSystem.current.IsPointerOverGameObject()) {
+            
+            if (Input.mousePosition.x <= distanceToBorder)
+            {
+                rotationMagnite = -1;
+            }
+            else if (Input.mousePosition.x >= Screen.width - distanceToBorder)
+            {
+                rotationMagnite = 1;
+            }
+            else
+            {
+                rotationMagnite = 0;
+            }
+            
+            if (rotateAroundPlayer)
+            {
+                Quaternion camTurnAngle = Quaternion.AngleAxis(rotationMagnite * rotationSpeed / 100, Vector3.up);
 
-            cameraOffset = camTurnAngle * cameraOffset;
+                cameraOffset = camTurnAngle * cameraOffset;
+            }
         }
        
         //Check the scrolling This is what changes (Y value)
@@ -61,6 +68,17 @@ public class CameraMovement : MonoBehaviour
         if (lookAtPlayer || rotateAroundPlayer)
         {
             transform.LookAt(playerPosition.Vector3);
+        }
+    }
+
+    private void DebugMouseRaycast() {
+        PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
+        pointerEventData.position = Input.mousePosition;
+
+        List<RaycastResult> raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerEventData, raycastResults);
+        for (int i = 0; i < raycastResults.Count; i++) {
+            Debug.Log(raycastResults[i].gameObject);
         }
     }
 }
