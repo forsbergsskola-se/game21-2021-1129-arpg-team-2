@@ -17,6 +17,7 @@ public class Billboard : MonoBehaviour
 
     void LateUpdate()
     { 
+        //Keeps the the enemy hp bars looking at the camera
         billboard.rotation = cam.rotation;
     }
 
