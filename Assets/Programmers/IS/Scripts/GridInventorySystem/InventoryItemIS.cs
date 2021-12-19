@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// The script is responsible for connecting item prefab with Scriptable Object ItemDataIS
+/// </summary>
 public class InventoryItemIS : MonoBehaviour
 {
     [SerializeField] internal ItemDataIS itemData;

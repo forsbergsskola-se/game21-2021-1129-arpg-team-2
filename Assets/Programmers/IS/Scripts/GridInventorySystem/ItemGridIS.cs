@@ -153,9 +153,4 @@ public class ItemGridIS : MonoBehaviour, IDropHandler
             Debug.Log(tileGridPosition);
         }
     }
-
-    // public void OnDrag(PointerEventData eventData)
-    // {
-    //     Debug.Log("pointerDrag from OnDrag: " + eventData.pointerDrag);
-    // }
 }

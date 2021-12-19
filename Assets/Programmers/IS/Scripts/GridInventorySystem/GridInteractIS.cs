@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 /// <summary>
+/// NOT IN USE ATM
 /// The script is responsible for marking the inventory grid as interactable
 /// </summary>
 

@@ -5,8 +5,12 @@ using UnityEngine.EventSystems;
 public class SetSelectedItemGridIS : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private ItemGridIS itemGrid;
+    
+    // for development only, NOT final
     [SerializeField] private List<ItemDataIS> itemList;
     [SerializeField] private GameObject itemPrefab;
+    // for development only, NOT final
+    
     private InventoryControllerIS inventoryController;
 
     private void Awake()
@@ -19,7 +23,10 @@ public class SetSelectedItemGridIS : MonoBehaviour, IPointerDownHandler
         inventoryController.selectedItemGrid = 
             inventoryController.selectedItemGrid == null ? itemGrid : null;
         ToggleItemGrid();
+        
+        // DEVELOPMENT ONLY
         CreateRandomItem();
+        // DEVELOPMENT ONLY
     }
 
     private void CreateRandomItem()
