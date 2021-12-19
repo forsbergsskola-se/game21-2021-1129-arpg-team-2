@@ -9,6 +9,7 @@ public class ChaseBehaviour : StateMachineBehaviour
     private Transform playerPos;
     [Header("Assign the player's position")]
     [SerializeField] private Vector3Value playerPosition;
+    [SerializeField] private Vector3Value playerStartPosition;
     public float chaseSpeed;
     private bool playerInAwarenessRange;
     private bool playerInAttackRange;
@@ -48,6 +49,15 @@ public class ChaseBehaviour : StateMachineBehaviour
                 noObstacle = false;
                 agent.isStopped = true;
             }
+        }
+
+        if (playerPosition == playerStartPosition)
+        {
+            playerIsDefeated = true;
+        }
+        else
+        {
+            playerIsDefeated = false;
         }
 
         playerInAwarenessRange = Physics.CheckSphere(animator.transform.position, awarenessRange, PlayerLayer);

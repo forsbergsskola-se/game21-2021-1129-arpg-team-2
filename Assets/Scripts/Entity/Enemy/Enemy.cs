@@ -13,7 +13,6 @@ public class Enemy : MonoBehaviour
     private GameEventListener listener;
     private bool isAttacking;
     private float tookDamageTimer;
-    [SerializeField] private Animator ratAnimation;
     public bool InCombat { get; private set; }
 
     private void Awake()
@@ -76,7 +75,6 @@ public class Enemy : MonoBehaviour
             {
                 InCombat = false;
                 InCombatChanged?.Invoke(false);
-                ratAnimation.SetBool("Attacking", false);
             }
         }
         else
@@ -85,7 +83,6 @@ public class Enemy : MonoBehaviour
             {
                 InCombat = true;
                 InCombatChanged?.Invoke(true);
-                ratAnimation.SetBool("Attacking", true);
             }
         }
     }

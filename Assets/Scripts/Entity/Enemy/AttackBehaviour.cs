@@ -8,6 +8,7 @@ public class AttackBehaviour : StateMachineBehaviour
     private NavMeshAgent agent;
     [Header("Assign the player's position")]
     [SerializeField] private Vector3Value playerPosition;
+    [SerializeField] private Vector3Value playerStartPosition;
     public float chaseSpeed;
     private Vector3 targetDir;
     [Header("Range")]
@@ -50,6 +51,14 @@ public class AttackBehaviour : StateMachineBehaviour
                 agent.isStopped = true;
             }
         }
+        if (playerPosition == playerStartPosition)
+        {
+            playerIsDefeated = true;
+        }
+        else
+        {
+            playerIsDefeated = false;
+        }
 
         //Check for sight, hearing and attack range
         playerInAttackRange = Physics.CheckSphere(animator.transform.position, attackRange, PlayerLayer);
@@ -61,7 +70,7 @@ public class AttackBehaviour : StateMachineBehaviour
         animator.transform.LookAt(playerPosition.Vector3);
         agent.isStopped = true;
 
-        if (!playerInAttackRange || !noObstacle )
+        if (!playerInAttackRange || !noObstacle || playerIsDefeated)
         {
             animator.SetTrigger("isChasing");
         }
