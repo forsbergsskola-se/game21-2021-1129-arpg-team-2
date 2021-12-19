@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DraggerIS : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class InventoryDraggerIS : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     private RectTransform rectTrans;
     private CanvasGroup canvasGroup;
@@ -25,7 +25,6 @@ public class DraggerIS : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("stopped dragging");
         canvasGroup.alpha = 1f; // back to one upon finishing dragging
         canvasGroup.blocksRaycasts = true;
     }
