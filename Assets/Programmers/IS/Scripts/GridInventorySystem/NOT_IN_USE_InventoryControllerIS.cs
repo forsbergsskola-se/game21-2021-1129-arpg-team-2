@@ -39,31 +39,31 @@ public class InventoryControllerIS : MonoBehaviour
         if (selectedItem != null) recTrans.position = Input.mousePosition;
     }
     
-    private void LeftMouseBtnPress()
-    {
-        var tileGridPosition = selectedItemGrid.GetTileGridPosition(Input.mousePosition);
-        if (selectedItem == null) PickupItem(tileGridPosition);
-        else PlaceItem(tileGridPosition);
-    }
+    // private void LeftMouseBtnPress()
+    // {
+    //     var tileGridPosition = selectedItemGrid.GetTileGridPosition(Input.mousePosition);
+    //     if (selectedItem == null) PickupItem(tileGridPosition);
+    //     else PlaceItem(tileGridPosition);
+    // }
     
-    private void PickupItem(Vector2Int tileGridPosition)
-    {
-        selectedItem = selectedItemGrid.PickUpItem(tileGridPosition.x, tileGridPosition.y);
-        if (selectedItem != null) recTrans = selectedItem.GetComponent<RectTransform>();
-    }
+    // private void PickupItem(Vector2Int tileGridPosition)
+    // {
+    //     selectedItem = selectedItemGrid.PickUpItem(tileGridPosition.x, tileGridPosition.y);
+    //     if (selectedItem != null) recTrans = selectedItem.GetComponent<RectTransform>();
+    // }
 
     internal void PlaceItem(Vector2Int tileGridPosition)
     {
-        var successful = selectedItemGrid.AddItem(selectedItem, tileGridPosition.x, tileGridPosition.y, ref overlapItem);
-        if (successful)
-        {
-            selectedItem = null;
-            if (overlapItem != null)
-            {
-                selectedItem = overlapItem;
-                overlapItem = null;
-                recTrans = selectedItem.GetComponent<RectTransform>();
-            }
-        }
+        // var successful = selectedItemGrid.AddItem(selectedItem, tileGridPosition.x, tileGridPosition.y, ref overlapItem);
+        // if (successful)
+        // {
+        //     selectedItem = null;
+        //     if (overlapItem != null)
+        //     {
+        //         selectedItem = overlapItem;
+        //         overlapItem = null;
+        //         recTrans = selectedItem.GetComponent<RectTransform>();
+        //     }
+        // }
     }
 }

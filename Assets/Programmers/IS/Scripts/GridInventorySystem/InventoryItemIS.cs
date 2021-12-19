@@ -6,10 +6,14 @@ using UnityEngine.UI;
 /// </summary>
 public class InventoryItemIS : MonoBehaviour
 {
-    [SerializeField] internal ItemDataIS itemData;
+    [SerializeField] private ItemGridIS grid;
 
-    public int onGridPositionX;
-    public int onGridPositionY;
+    [SerializeField] internal ItemDataIS itemData;
+    private int onGridPositionX;
+    private int onGridPositionY;
+
+    public int OnGridPositionX { get => onGridPositionX; set => onGridPositionX = value; }
+    public int OnGridPositionY { get => onGridPositionY; set => onGridPositionY = value; }
 
     public void Set(ItemDataIS item)
     {
@@ -17,8 +21,8 @@ public class InventoryItemIS : MonoBehaviour
         GetComponent<Image>().sprite = itemData.itemIcon;
         var size = new Vector2
         {
-            x = itemData.width * ItemGridIS.tileSize,
-            y = itemData.height * ItemGridIS.tileSize
+            x = itemData.width * grid.TileSize,
+            y = itemData.height * grid.TileSize
         };
         GetComponent<RectTransform>().sizeDelta = size;
     }

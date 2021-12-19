@@ -490,8 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100e83ef2cb531349b78cde0e9ac3a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridWidth: 5
-  gridLength: 5
+  grid: {fileID: 11400000, guid: b51b8152ccf03f1478cc95216e2ae505, type: 2}
 --- !u!1 &494903680
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,7 +1385,6 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
-  - component: {fileID: 963194231}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1498,20 +1496,6 @@ MonoBehaviour:
   scrollSpeed: 20
   minY: 15
   maxY: 80
---- !u!114 &963194231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec0d0bcc7b040db46a714cdee5805fa7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedItemGrid: {fileID: 0}
-  canvasTransform: {fileID: 1084405275}
 --- !u!1 &1007325389 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4480635459621249896, guid: 451197f1edc3f254ea0251dff482e455, type: 3}
@@ -2300,7 +2284,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f39b787a39a627346ae241aa64617d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemGrid: {fileID: 135933672}
+  grid: {fileID: 11400000, guid: b51b8152ccf03f1478cc95216e2ae505, type: 2}
+  gridView: {fileID: 135933672}
   itemList:
   - {fileID: 11400000, guid: 7d24fae7da5ed4f40b2e5b004dfdacbe, type: 2}
   itemPrefab: {fileID: 5381171454971151918, guid: ae88c5c08aa03b247a603b8693366477, type: 3}

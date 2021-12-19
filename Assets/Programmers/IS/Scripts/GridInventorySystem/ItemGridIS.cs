@@ -1,156 +1,50 @@
-using UnityEditor.Search;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-/// <summary>
-/// The script controls
-/// (1) the size of the grid
-/// (2) initiating the grid
-/// (3) adding/picking up item from the grid
-/// </summary>
-
-public class ItemGridIS : MonoBehaviour, IDropHandler
+[CreateAssetMenu(fileName = "inventory grid", menuName = "Game/inventory grid")]
+public class ItemGridIS : ScriptableObject
 {
-    // tileSize needs to match the actual size of the slot asset in use
-    internal const float tileSize = 125;
-    [SerializeField] private int gridWidth;
-    [SerializeField] private int gridLength;
-    private RectTransform rectTrans;
-    private Vector2 positionOnGrid = new Vector2();
-    private Vector2Int tileGridPosition = new Vector2Int();
-    private InventoryItemIS[,] inventoryItemSlots;
-    private InventoryControllerIS inventoryController;
+    [SerializeField] private float tileSize;
+    [SerializeField] private int width;
+    [SerializeField] private int height;
+    [SerializeField] internal RectTransform rectTrans;
+    
+    public float TileSize => tileSize;
+    public int Width => width;
+    public int Height => height;
 
-    private void Awake()
-    {
-        rectTrans = GetComponent<RectTransform>();
-        InitGrid(gridWidth, gridLength);
-        inventoryController = FindObjectOfType<InventoryControllerIS>();
-    }
+    private InventoryItemIS[,] gridSlots;
 
-    public void InitGrid(int width, int length)
+    public void InitGrid()
     {
-        inventoryItemSlots = new InventoryItemIS[width, length];
-        Vector2 size = new Vector2(width * tileSize, length * tileSize);
+        gridSlots = new InventoryItemIS[width, height];
+        var size = new Vector2(width * tileSize, height * tileSize);
         rectTrans.sizeDelta = size;
     }
 
-    internal Vector2Int GetTileGridPosition(Vector2 mousePosition)
+    public bool AddItem(InventoryItemIS itemToAdd, int posX, int posY)
     {
-        var rectTransPosition = rectTrans.position;
-        positionOnGrid.x = mousePosition.x - rectTransPosition.x;
-        positionOnGrid.y = rectTransPosition.y - mousePosition.y;
-
-        tileGridPosition.x = (int)(positionOnGrid.x / tileSize);
-        tileGridPosition.y = (int)(positionOnGrid.y / tileSize);
-
-        return tileGridPosition;
-    }
-
-    public bool AddItem(InventoryItemIS itemToAdd, int posX, int posY, ref InventoryItemIS overlapItem)
-    {
-        if (IsOutsideBoundary(posX, posY, itemToAdd.itemData.width, itemToAdd.itemData.height)) return false;
+        // Boundary and overlap checks should go here later
         
-        if (!OverlapCheck(posX, posY, itemToAdd.itemData.width, itemToAdd.itemData.height, ref overlapItem))
-        {
-            overlapItem = null;
-            return false;
-        }
-        
-        if (overlapItem != null) CleanGridReference(overlapItem);
-
         var rt = itemToAdd.GetComponent<RectTransform>();
         rt.SetParent(rectTrans);
-        
-        for (int i = 0; i < itemToAdd.itemData.width; i++)
+
+        for (var i = 0; i < itemToAdd.itemData.width; i++)
         {
-            for (int j = 0; j < itemToAdd.itemData.height; j++)
+            for (var j = 0; j < itemToAdd.itemData.height; j++)
             {
-                inventoryItemSlots[posX + i, posY + j] = itemToAdd;
+                gridSlots[posX + i, posY + j] = itemToAdd;
             }
         }
 
-        itemToAdd.onGridPositionX = posX;
-        itemToAdd.onGridPositionY = posY;
+        itemToAdd.OnGridPositionX = posX;
+        itemToAdd.OnGridPositionY = posY;
 
-        Vector2 position = new Vector2
+        var position = new Vector2
         {
             x = posX * tileSize + tileSize * itemToAdd.itemData.width / 2,
             y = -(posY * tileSize + tileSize * itemToAdd.itemData.height / 2)
         };
-
         rt.localPosition = position;
         return true;
-    }
-
-    private bool OverlapCheck(int posX, int posY, int width, int length, ref InventoryItemIS overlapItem)
-    {
-        for (var i = 0; i < width; i++)
-        {
-            for (var j = 0; j < length; j++)
-            {
-                var targetSlot = inventoryItemSlots[posX + i, posY + j];
-                if (targetSlot != null)
-                {
-                    if (overlapItem == null) overlapItem = targetSlot;
-                    else
-                    {
-                        if (overlapItem != targetSlot) return false;
-                    }
-                }
-            }
-        }
-
-        return true;
-    }
-
-    public InventoryItemIS PickUpItem(int x, int y)
-    {
-        var toReturn = inventoryItemSlots[x, y];
-
-        if (toReturn == null) return null;
-
-        CleanGridReference(toReturn);
-        
-        return toReturn;
-    }
-
-    private void CleanGridReference(InventoryItemIS item)
-    {
-        for (int i = 0; i < item.itemData.width; i++)
-        {
-            for (int j = 0; j < item.itemData.height; j++)
-            {
-                inventoryItemSlots[item.onGridPositionX + i, item.onGridPositionY + j] = null;
-            }
-        }
-    }
-
-    private bool PositionCheck(int posX, int posY)
-    {
-        if (posX < 0 || posY < 0) return false;
-        if (posX >= gridWidth || posY >= gridLength) return false;
-        return true;
-    }
-
-    private bool IsOutsideBoundary(int posX, int posY, int width, int length)
-    {
-        if (!PositionCheck(posX, posY)) return true;
-        posX += width - 1;
-        posY += length - 1;
-        if (!PositionCheck(posX, posY)) return true;
-        return false;
-    }
-
-    public void OnDrop(PointerEventData eventData)
-    {
-        Debug.Log("Item dropped inside inventory!");
-        if (eventData.pointerDrag != null)
-        {
-            tileGridPosition = GetTileGridPosition(Input.mousePosition);
-            inventoryController.selectedItem = eventData.pointerDrag.GetComponent<InventoryItemIS>();
-            inventoryController.PlaceItem(tileGridPosition);
-            Debug.Log(tileGridPosition);
-        }
     }
 }
