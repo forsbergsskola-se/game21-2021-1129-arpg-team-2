@@ -1,13 +1,16 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class WorldDraggerIS : MonoBehaviour, IPointerDownHandler, IDragHandler
+public class WorldDraggerIS : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-    private GameObject target;
-    private bool isDragging;
-    private Vector3 offset;
-    private Vector3 positionOfScreen;
-    
+    [SerializeField] private float distanceFromGround;
+    private Rigidbody rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log("mouse down from WorldDraggerIS");
@@ -20,5 +23,16 @@ public class WorldDraggerIS : MonoBehaviour, IPointerDownHandler, IDragHandler
         var currentPointerPosition = eventData.pointerCurrentRaycast.worldPosition;
         var newPos = new Vector3(currentPointerPosition.x, transform.position.y, currentPointerPosition.z);
         transform.position = newPos;
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        GetComponent<Rigidbody>().isKinematic = true;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        transform.position += new Vector3(0, distanceFromGround, 0);
+        GetComponent<Rigidbody>().isKinematic = false;
     }
 }
