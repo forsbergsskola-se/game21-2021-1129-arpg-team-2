@@ -8,9 +8,19 @@ public class LevelUpChart : ScriptableObject
     [SerializeField] private int currentXp;
     [SerializeField] private float[] xpMilestones;
 
-    public int CurrentLevel => currentLevel;
-    public int CurrentXp => currentXp;
-    private float[] XpMilestones => xpMilestones;
+    public int CurrentLevel
+    {
+        get => currentLevel;
+        set => currentLevel = value;
+    }
+
+    public int CurrentXp
+    {
+        get => currentXp;
+        set => currentXp = value;
+    }
+
+    public float[] XpMilestones => xpMilestones;
     
     
     [Header("Multiplicators")]
@@ -23,12 +33,4 @@ public class LevelUpChart : ScriptableObject
     public float AttackMultiplicator => attack;
     public float AttackSpeedMultiplicator => attackSpeed;
     public float DefenceMultiplicator => defence;
-
-    public void Reset()
-    {
-        currentLevel = 1;
-        currentXp = 0;
-    }
-    
-    
 }

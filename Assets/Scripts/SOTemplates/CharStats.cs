@@ -11,9 +11,6 @@ public class CharStats : ScriptableObject
     [SerializeField] private float attackSpeed;
     [SerializeField] private float defence;
 
-    [Header("Dependencies")] 
-    [SerializeField] private LevelUpChart levelUpChart;
-
     public float MaxHealth
     {
         get => maxHealth;
@@ -26,17 +23,21 @@ public class CharStats : ScriptableObject
         set => currenthealth = value;
     }
 
-    public float Attack => attack;
-    public float AttackSpeed => attackSpeed;
-    public float Defence => defence;
-
-    public void LevelUp()
+    public float Attack
     {
-        if(HasLevelUpChart()) currenthealth *= levelUpChart.HealthMultiplicator;
+        get => attack;
+        set => attack = value;
     }
 
-    private bool HasLevelUpChart()
+    public float AttackSpeed
     {
-        return levelUpChart != null;
+        get => attackSpeed;
+        set => attackSpeed = value;
+    }
+
+    public float Defence
+    {
+        get => defence;
+        set => defence = value;
     }
 }

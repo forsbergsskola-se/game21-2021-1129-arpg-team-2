@@ -35,7 +35,7 @@ public class PatrolBehaviour : StateMachineBehaviour
     bool playerInAwarenessRange;
     bool playerInAttackRange;
     bool playerInHearingRange;
-    bool playerIsDefeated;
+    public bool playerIsDefeated;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
