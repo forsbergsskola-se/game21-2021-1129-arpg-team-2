@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class InventoryItemIS : MonoBehaviour
 {
     [SerializeField] private ItemGridIS grid;
-
     [SerializeField] internal ItemDataIS itemData;
     private int onGridPositionX;
     private int onGridPositionY;

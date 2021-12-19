@@ -14,13 +14,11 @@ public class DraggerIS : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("dragging");
         rectTrans.anchoredPosition += eventData.delta;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("begin dragging");
         canvasGroup.alpha = .6f; // item appears transparent while being dragged
         canvasGroup.blocksRaycasts = false;
     }

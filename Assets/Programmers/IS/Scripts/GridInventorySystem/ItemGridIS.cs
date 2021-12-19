@@ -13,6 +13,9 @@ public class ItemGridIS : ScriptableObject
     public int Height => height;
 
     private InventoryItemIS[,] gridSlots;
+    private InventoryItemIS overlapItem;
+    private Vector2 positionOnGrid = new Vector2();
+    private Vector2Int tileGridPosition = new Vector2Int();
 
     public void InitGrid()
     {
@@ -23,7 +26,18 @@ public class ItemGridIS : ScriptableObject
 
     public bool AddItem(InventoryItemIS itemToAdd, int posX, int posY)
     {
-        // Boundary and overlap checks should go here later
+        Debug.Log("itemToAdd: " + itemToAdd.itemData);
+        Debug.Log("posX: " + posX);
+        Debug.Log("posY: " + posY);
+        if (IsItemOutsideInventory(posX, posY, itemToAdd.itemData.width, itemToAdd.itemData.height)) return false;
+
+        if (IsItemOverlap(posX, posY, itemToAdd.itemData.width, itemToAdd.itemData.height))
+        {
+            overlapItem = null;
+            return false;
+        }
+
+        if (overlapItem != null) CleanGridReference(overlapItem);
         
         var rt = itemToAdd.GetComponent<RectTransform>();
         rt.SetParent(rectTrans);
@@ -45,6 +59,89 @@ public class ItemGridIS : ScriptableObject
             y = -(posY * tileSize + tileSize * itemToAdd.itemData.height / 2)
         };
         rt.localPosition = position;
+        
         return true;
     }
+
+    private void CleanGridReference(InventoryItemIS item)
+    {
+        for (var i = 0; i < item.itemData.width; i++)
+        {
+            for (var j = 0; j < item.itemData.width; j++)
+            {
+                gridSlots[item.OnGridPositionX + i, item.OnGridPositionY + j] = null;
+            }
+        }
+    }
+
+    private bool IsItemOverlap(int posX, int posY, int itemWidth, int itemHeight)
+    {
+        for (var i = 0; i < itemWidth; i++)
+        {
+            for (var j = 0; j < itemHeight; j++)
+            {
+                var targetSlot = gridSlots[posX + i, posY + j];
+                if (targetSlot != null)
+                {
+                    if (overlapItem == null) overlapItem = targetSlot;
+                    else
+                    {
+                        if (overlapItem != targetSlot) return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private bool IsItemOutsideInventory(int posX, int posY, int itemWidth, int itemHeight)
+    {
+        if (IsPositionOutsideInventory(posX, posY)) return true;
+        posX += itemWidth - 1;
+        posY += itemHeight - 1;
+        if (IsPositionOutsideInventory(posX, posY)) return true;
+        return false;
+    }
+
+    private bool IsPositionOutsideInventory(int posX, int posY)
+    {
+        if (posX < 0 || posY < 0) return true;
+        if (posX >= width || posY >= height) return true;
+        return false;
+    }
+
+    internal Vector2Int GetTileGridPosition(Vector2 mousePosition)
+    {
+        var rectTransPosition = rectTrans.position;
+        positionOnGrid.x = mousePosition.x - rectTransPosition.x;
+        positionOnGrid.y = rectTransPosition.y - mousePosition.y;
+
+        tileGridPosition.x = (int)(positionOnGrid.x / tileSize);
+        tileGridPosition.y = (int)(positionOnGrid.y / tileSize);
+
+        return tileGridPosition;
+    }
+    
+    // private InventoryItemIS PickUpItem(int x, int y)
+    // {
+    //     var toReturn = inventoryItemSlots[x, y];
+    //
+    //     if (toReturn == null) return null;
+    //
+    //     CleanGridReference(toReturn);
+    //     
+    //     return toReturn;
+    // }
+    //
+    // private void CleanGridReference(InventoryItemIS item)
+    // {
+    //     for (int i = 0; i < item.itemData.width; i++)
+    //     {
+    //         for (int j = 0; j < item.itemData.height; j++)
+    //         {
+    //             inventoryItemSlots[item.OnGridPositionX + i, item.OnGridPositionY + j] = null;
+    //         }
+    //     }
+    // }
 }
