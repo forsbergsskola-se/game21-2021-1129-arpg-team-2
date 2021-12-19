@@ -3,14 +3,14 @@ using UnityEngine.EventSystems;
 
 /// <summary>
 /// The script controls
-/// (1) the size of the grid
-/// (2) initiating the grid
-/// (3) adding/picking up item from the grid
+/// (1) initiating the grid
+/// (2) listening for when an item dropped upon inventory space
 /// </summary>
 
 public class ItemGridViewIS : MonoBehaviour, IDropHandler
 {
     [SerializeField] private ItemGridIS grid;
+    [SerializeField] private GameObject itemPrefab;
 
     private void Awake()
     {
@@ -20,12 +20,14 @@ public class ItemGridViewIS : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("Item dropped inside inventory!");
         if (eventData.pointerDrag != null)
         {
+            Debug.Log("Item dropped inside inventory: " + eventData.pointerDrag.gameObject);
             var tileGridPosition = grid.GetTileGridPosition(Input.mousePosition);
-            
-            var itemToAdd = eventData.pointerDrag.GetComponent<InventoryItemIS>();
+            Debug.Log("on: " + tileGridPosition);
+            // var itemToAdd = eventData.pointerDrag.GetComponent<InventoryItemIS>();
+            var itemToAdd = Instantiate(itemPrefab).GetComponent<InventoryItemIS>();
+            itemToAdd.Set(eventData.pointerDrag.GetComponent<InventoryItemIS>().itemData);
             var success = grid.AddItem(itemToAdd, tileGridPosition.x, tileGridPosition.y);
             Debug.Log("Adding item successful? " + success);
         }

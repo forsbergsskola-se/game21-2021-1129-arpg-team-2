@@ -491,6 +491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 11400000, guid: b51b8152ccf03f1478cc95216e2ae505, type: 2}
+  itemPrefab: {fileID: 5381171454971151918, guid: ae88c5c08aa03b247a603b8693366477, type: 3}
 --- !u!1 &494903680
 GameObject:
   m_ObjectHideFlags: 0
@@ -1886,6 +1887,7 @@ GameObject:
   - component: {fileID: 1253262681}
   - component: {fileID: 1253262685}
   - component: {fileID: 1253262680}
+  - component: {fileID: 1253262686}
   m_Layer: 0
   m_Name: WorldItemPlaceholder
   m_TagString: Untagged
@@ -2000,6 +2002,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1253262686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253262679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a7fa6fa1750754f8c0c0903afd8161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grid: {fileID: 11400000, guid: b51b8152ccf03f1478cc95216e2ae505, type: 2}
+  itemData: {fileID: 11400000, guid: 7d24fae7da5ed4f40b2e5b004dfdacbe, type: 2}
 --- !u!1 &1286752561 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8375678359894931284, guid: 451197f1edc3f254ea0251dff482e455, type: 3}

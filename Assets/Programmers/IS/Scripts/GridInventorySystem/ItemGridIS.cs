@@ -29,6 +29,8 @@ public class ItemGridIS : ScriptableObject
         Debug.Log("itemToAdd: " + itemToAdd.itemData);
         Debug.Log("posX: " + posX);
         Debug.Log("posY: " + posY);
+        Debug.Log("item width: " + itemToAdd.itemData.width);
+        Debug.Log("item height: " + itemToAdd.itemData.height);
         if (IsItemOutsideInventory(posX, posY, itemToAdd.itemData.width, itemToAdd.itemData.height)) return false;
 
         if (IsItemOverlap(posX, posY, itemToAdd.itemData.width, itemToAdd.itemData.height))
