@@ -14,6 +14,7 @@ public class particle_controller : MonoBehaviour
     public bool eyeEffect;
     public bool primChainEffect;
     public bool secChainEffect;
+    public bool secArcaneEffect;
 
     //finding all particles attached to weapon
     public GameObject greenGlow;
@@ -25,6 +26,7 @@ public class particle_controller : MonoBehaviour
     public GameObject eyesEffect;
     public GameObject primaryChainsEffect;
     public GameObject secondaryChainsEffect;
+    public GameObject secondaryArcaneEffect;
 
     //creating gradients for color, setting these gradients later
     Gradient greenGrad = new();
@@ -43,6 +45,14 @@ public class particle_controller : MonoBehaviour
         setColors();
 
         //deciding what secondary and primary effects are active
+        if (secArcaneEffect)
+        {
+            secondaryArcaneEffect.SetActive(true);
+        }
+        else
+        {
+            secondaryArcaneEffect.SetActive(false);
+        }
         if (ribbEffect)
         {
             ribbonEffect.SetActive(true);
@@ -94,6 +104,7 @@ public class particle_controller : MonoBehaviour
             particleColorEyes(greenGrad);
             particleColorChainsPrimary(greenGrad);
             particleColorChainsSecondary(greenGrad);
+            particleColorArcane(greenGrad);
 
         }
         else if (rGlow)
@@ -104,6 +115,7 @@ public class particle_controller : MonoBehaviour
             particleColorEyes(redGrad);
             particleColorChainsPrimary(redGrad);
             particleColorChainsSecondary(redGrad);
+            particleColorArcane(redGrad);
         }
         else if (bGlow)
         {
@@ -113,6 +125,7 @@ public class particle_controller : MonoBehaviour
             particleColorEyes(blueGrad);
             particleColorChainsPrimary(blueGrad);
             particleColorChainsSecondary(blueGrad);
+            particleColorArcane(blueGrad);
         }
         else if (yGlow)
         {
@@ -122,6 +135,7 @@ public class particle_controller : MonoBehaviour
             particleColorEyes(yellowGrad);
             particleColorChainsPrimary(yellowGrad);
             particleColorChainsSecondary(yellowGrad);
+            particleColorArcane(yellowGrad);
         }
         else
         {
@@ -135,6 +149,7 @@ public class particle_controller : MonoBehaviour
             particleColorEyes(whiteGrad);
             particleColorChainsPrimary(whiteGrad);
             particleColorChainsSecondary(whiteGrad);
+            particleColorArcane(whiteGrad);
         }
     }
 
@@ -169,7 +184,7 @@ public class particle_controller : MonoBehaviour
         colorRibb.color = ribbGrad;
     }
 
-    // same as before but this time we are changeing the children aswell
+    // same as before but this time we are changing the children aswell
     void particleColorFire(Gradient fireGrad)
     {
         //finds the children of the fire effect
@@ -230,5 +245,16 @@ public class particle_controller : MonoBehaviour
         colorChain1.color = secondaryChainsGrad;
         colorChain2.color = secondaryChainsGrad;
         colorChain3.color = secondaryChainsGrad;
+    }
+
+    void particleColorArcane(Gradient arcaneGrad)
+    {
+        GameObject sphereEffect = secondaryArcaneEffect.transform.Find("sphere effect").gameObject;
+        ParticleSystem arcane = secondaryArcaneEffect.GetComponent<ParticleSystem>();
+        ParticleSystem sphere = sphereEffect.GetComponent<ParticleSystem>();
+        var colorArcane = arcane.colorOverLifetime;
+        var colorSphere = sphere.colorOverLifetime;
+        colorArcane.color = arcaneGrad;
+        colorSphere.color = arcaneGrad;
     }
 }
