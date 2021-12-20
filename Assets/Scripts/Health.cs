@@ -51,7 +51,8 @@ public class Health : MonoBehaviour, IDamageable {
     public void TakeDamage(float damage)
     {
         FlashRed();
-        charStats.CurrentHealth -= damage;
+        var totalDamage = damage - charStats.Defence;
+        charStats.CurrentHealth -= totalDamage;
 
         if (charStats.CurrentHealth <= 0f)
         {
