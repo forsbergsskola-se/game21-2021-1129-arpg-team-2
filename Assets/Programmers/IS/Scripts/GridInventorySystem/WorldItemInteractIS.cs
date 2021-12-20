@@ -5,6 +5,7 @@ public class WorldItemInteractIS : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private float distanceFromCamera;
     [SerializeField] private ItemDataIS pickedUpItem;
+    [SerializeField] private ItemGridViewIS grid;
 
     private GridVisibleControllerIS gridVisibleControl;
     private bool isStickToCursor;
@@ -21,6 +22,8 @@ public class WorldItemInteractIS : MonoBehaviour, IPointerDownHandler
         if (eventData.button == PointerEventData.InputButton.Right && Input.GetKey(KeyCode.LeftControl))
         {
             Debug.Log("Quick add");
+            UpdatePickedUpItemData();
+            grid.OnQuickAdd();
         }
         else
         {

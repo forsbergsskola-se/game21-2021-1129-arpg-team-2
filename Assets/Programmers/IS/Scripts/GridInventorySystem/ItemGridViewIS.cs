@@ -10,7 +10,7 @@ using UnityEngine.EventSystems;
 public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private ItemGridIS grid;
-    [SerializeField] private GameObject itemPrefab;
+    [SerializeField] private GameObject inventoryItem;
     [SerializeField] private ItemDataIS pickedUpItem;
     [SerializeField] private GameEvent addItemSuccessful;
 
@@ -21,22 +21,8 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler
         grid.rectTrans = GetComponent<RectTransform>();
         grid.InitGrid();
         pickedUpItem.ResetItemData();
+        gameObject.SetActive(false);
     }
-
-    // public void OnDrop(PointerEventData eventData)
-    // {
-    //     if (eventData.pointerDrag != null)
-    //     {
-    //         Debug.Log("Item dropped inside inventory: " + eventData.pointerDrag.gameObject);
-    //         var tileGridPosition = grid.GetTileGridPosition(Input.mousePosition);
-    //         Debug.Log("on: " + tileGridPosition);
-    //         var itemToAdd = Instantiate(itemPrefab).GetComponent<InventoryItemIS>();
-    //         itemToAdd.Set(eventData.pointerDrag.GetComponent<InventoryItemIS>().itemData);
-    //         var success = grid.AddItem(itemToAdd, tileGridPosition.x, tileGridPosition.y);
-    //         Debug.Log("Adding item successful? " + success);
-    //         if (success) eventData.pointerDrag.gameObject.SetActive(false);
-    //     }
-    // }
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -57,9 +43,9 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler
 
     private void AddItem(Vector2Int targetGridCell)
     {
-        var inventoryItem = Instantiate(itemPrefab);
-        inventoryItem.GetComponent<InventoryItemIS>().Set(pickedUpItem);
-        var success = grid.AddItem(inventoryItem.GetComponent<InventoryItemIS>(), targetGridCell.x, targetGridCell.y);
+        var item = Instantiate(inventoryItem);
+        item.GetComponent<InventoryItemIS>().Set(pickedUpItem);
+        var success = grid.AddItem(item.GetComponent<InventoryItemIS>(), targetGridCell.x, targetGridCell.y);
         if (success)
         {
             pickedUpItem.ResetItemData();
@@ -68,4 +54,14 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler
     }
 
     private bool IsOverlap() => false;
+
+    public void OnQuickAdd()
+    {
+        var item = Instantiate(inventoryItem);
+        item.GetComponent<InventoryItemIS>().Set(pickedUpItem);
+        
+        // a method to get consecutive available slots
+        
+        AddItem(new Vector2Int(2, 0));
+    }
 }

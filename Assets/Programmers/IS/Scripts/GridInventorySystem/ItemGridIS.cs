@@ -28,6 +28,9 @@ public class ItemGridIS : ScriptableObject
 
     public void InitGrid()
     {
+        
+        Debug.Log("InitGrid from ItemGrid fired");
+        
         gridSlots = new InventoryItemIS[width, height];
         var size = new Vector2(width * tileSize, height * tileSize);
         rectTrans.sizeDelta = size;

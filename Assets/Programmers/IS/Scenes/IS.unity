@@ -419,7 +419,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &135933669
 RectTransform:
   m_ObjectHideFlags: 0
@@ -491,7 +491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 11400000, guid: b51b8152ccf03f1478cc95216e2ae505, type: 2}
-  itemPrefab: {fileID: 5381171454971151918, guid: ae88c5c08aa03b247a603b8693366477, type: 3}
+  inventoryItem: {fileID: 5381171454971151918, guid: ae88c5c08aa03b247a603b8693366477, type: 3}
   pickedUpItem: {fileID: 11400000, guid: aa8d49444aaf5f04cb20e924f542ba42, type: 2}
   addItemSuccessful: {fileID: 11400000, guid: b721d38adb20b5d4f890eb393337741d, type: 2}
 --- !u!1 &494903680
@@ -2281,6 +2281,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3558476749564402723, guid: 167c58e273e3ce843a1a930ab911db90, type: 3}
+      propertyPath: grid
+      value: 
+      objectReference: {fileID: 135933672}
     - target: {fileID: 3558476749564402732, guid: 167c58e273e3ce843a1a930ab911db90, type: 3}
       propertyPath: m_RootOrder
       value: 11
