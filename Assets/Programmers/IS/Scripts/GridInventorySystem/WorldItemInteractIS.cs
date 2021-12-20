@@ -18,20 +18,16 @@ public class WorldItemInteractIS : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (eventData.button != PointerEventData.InputButton.Right) return;
-        var clickCount = eventData.clickCount;
-        switch (clickCount)
+        if (eventData.button == PointerEventData.InputButton.Right && Input.GetKey(KeyCode.LeftControl))
         {
-            case 1:
-                gridVisibleControl.SetGridVisibility(true);
-                isStickToCursor = true;
-                transform.LookAt(cam.transform);
-                UpdatePickedUpItemData();
-
-                break;
-            case 2:
-                Debug.Log("quick pick up fired");
-                break;
+            Debug.Log("Quick add");
+        }
+        else
+        {
+            gridVisibleControl.SetGridVisibility(true);
+            isStickToCursor = true;
+            transform.LookAt(cam.transform);
+            UpdatePickedUpItemData();
         }
     }
 
