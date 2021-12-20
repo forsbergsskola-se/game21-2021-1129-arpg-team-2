@@ -14,12 +14,13 @@ GameObject:
   - component: {fileID: 3757926147879879400}
   - component: {fileID: 211421536479843478}
   - component: {fileID: 7784413244671789531}
+  - component: {fileID: 3082287281355021316}
   m_Layer: 0
   m_Name: Stone_foundation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4710227091192745943
 Transform:
@@ -368,6 +369,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!65 &3082287281355021316
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3043116235706332764}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000003, y: 0.20000009, z: 4}
+  m_Center: {x: -0.1328165, y: 1.1446372, z: -0.65474415}
 --- !u!1 &3398213899128620219
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,12 +433,13 @@ GameObject:
   - component: {fileID: 2636648492205218383}
   - component: {fileID: 7289060532722917017}
   - component: {fileID: 3571262576414254202}
+  - component: {fileID: 85565349972660008}
   m_Layer: 0
   m_Name: Wood_link
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6363853783463824550
 Transform:
@@ -773,6 +788,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!65 &85565349972660008
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4553599699702447594}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19999999, y: 0.20000009, z: 4.200001}
+  m_Center: {x: -0.13281822, y: 1.1446381, z: -0.65474457}
 --- !u!1 &5103279918152030799
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,12 +815,13 @@ GameObject:
   - component: {fileID: 5411777616098313849}
   - component: {fileID: 6865151847498460574}
   - component: {fileID: 8253517627087024384}
+  - component: {fileID: 3888120868062087522}
   m_Layer: 0
   m_Name: Stone_foundation1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4711897742355025925
 Transform:
@@ -1141,6 +1170,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!65 &3888120868062087522
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5103279918152030799}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 0.19999999, z: 0.19999999}
+  m_Center: {x: 1.9248142, y: 0.12029648, z: -0.059195515}
 --- !u!1001 &2613209097134090058
 PrefabInstance:
   m_ObjectHideFlags: 0

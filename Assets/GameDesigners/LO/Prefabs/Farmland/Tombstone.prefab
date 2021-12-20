@@ -14,12 +14,13 @@ GameObject:
   - component: {fileID: 7687262472715695919}
   - component: {fileID: 1241158451531221258}
   - component: {fileID: 4209964690002904441}
+  - component: {fileID: 84444257004397048}
   m_Layer: 0
   m_Name: Tombstone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5344640785550291427
 Transform:
@@ -344,3 +345,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!65 &84444257004397048
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8778686947747987080}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 1.5, z: 1}
+  m_Center: {x: -0.4543686, y: 0.44616127, z: 1.6994476}
