@@ -15,7 +15,9 @@ public class PlayerLevel : MonoBehaviour
 
     private bool ReachedXpMilestone()
     {
-        return levelUpChart.CurrentXp > levelUpChart.XpMilestones[levelUpChart.CurrentLevel - 1];
+        var index = levelUpChart.CurrentLevel - 1;
+        
+        return levelUpChart.CurrentXp > levelUpChart.XpMilestones[index];
     }
 
     private void LevelUp()

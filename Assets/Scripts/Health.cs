@@ -7,6 +7,7 @@ public class Health : MonoBehaviour, IDamageable {
     [SerializeField] private float maxHealth;
    
     public GameEvent entityDeath;
+    public GameEventListener deathListner;
     [SerializeField] private FloatValue currentHealth;
 
     public CharStats CharStats
@@ -39,12 +40,19 @@ public class Health : MonoBehaviour, IDamageable {
             charStats.MaxHealth = maxHealth;
         }
         else charStats.CurrentHealth = charStats.MaxHealth;
+
+        if (entityDeath == null)
+        {
+            entityDeath = ScriptableObject.CreateInstance<GameEvent>();
+            deathListner.Event = entityDeath;
+        }
     }
     
     public void TakeDamage(float damage)
     {
         FlashRed();
-        charStats.CurrentHealth -= damage;
+        var totalDamage = damage - charStats.Defence;
+        charStats.CurrentHealth -= totalDamage;
 
         if (charStats.CurrentHealth <= 0f)
         {
