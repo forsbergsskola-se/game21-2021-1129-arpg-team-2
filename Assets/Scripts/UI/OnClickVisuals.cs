@@ -62,13 +62,17 @@ public class OnClickVisuals : MonoBehaviour
             }
             else
             {
-                //Added lines
-                //Start
-                instantiatedPrefabInvalid.transform.SetPositionAndRotation(hit.point, Quaternion.identity);
-                instantiatedPrefabInvalid.GetComponentInChildren<Animation>().Stop();
-                instantiatedPrefabInvalid.GetComponentInChildren<Animation>().Play();
-                //End
-                InvalidMove.Play();
+                if (!hit.transform.CompareTag("UI"))
+                {
+                    //Added lines
+                    //Start
+                    instantiatedPrefabInvalid.transform.SetPositionAndRotation(hit.point, Quaternion.identity);
+                    instantiatedPrefabInvalid.GetComponentInChildren<Animation>().Stop();
+                    instantiatedPrefabInvalid.GetComponentInChildren<Animation>().Play();
+                    //End
+                    InvalidMove.Play();
+                }
+                
             }
         }
     }
