@@ -413,6 +413,7 @@ GameObject:
   - component: {fileID: 135933671}
   - component: {fileID: 135933670}
   - component: {fileID: 135933672}
+  - component: {fileID: 135933673}
   m_Layer: 5
   m_Name: Grid
   m_TagString: Untagged
@@ -435,9 +436,9 @@ RectTransform:
   m_Father: {fileID: 1084405275}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 2, y: 627}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 2, y: -6}
   m_SizeDelta: {x: 625, y: 625}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &135933670
@@ -492,6 +493,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 11400000, guid: b51b8152ccf03f1478cc95216e2ae505, type: 2}
   itemPrefab: {fileID: 5381171454971151918, guid: ae88c5c08aa03b247a603b8693366477, type: 3}
+--- !u!114 &135933673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135933668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2f698b8af41f264abd87ae44d449008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 96aba230b2d5fd145aecc04b877a82d6, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 135933672}
+        m_TargetAssemblyTypeName: ItemGridViewIS, Assembly-CSharp
+        m_MethodName: OnItemPickedUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  GameObjectResponse:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &494903680
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,6 +891,7 @@ MonoBehaviour:
   charStats: {fileID: 0}
   maxHealth: 55
   entityDeath: {fileID: 0}
+  deathListner: {fileID: 0}
   currentHealth: {fileID: 11400000, guid: 95b60d459718dd846a0df982684fd33b, type: 2}
 --- !u!1 &673693943
 GameObject:
@@ -2288,7 +2321,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f39b787a39a627346ae241aa64617d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 11400000, guid: b51b8152ccf03f1478cc95216e2ae505, type: 2}
   gridView: {fileID: 135933672}
 --- !u!1 &2012140260
 GameObject:
@@ -2402,6 +2434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceFromCamera: 15
+  itemPickedUp: {fileID: 11400000, guid: 96aba230b2d5fd145aecc04b877a82d6, type: 2}
 --- !u!1001 &8375678361635642751
 PrefabInstance:
   m_ObjectHideFlags: 0
