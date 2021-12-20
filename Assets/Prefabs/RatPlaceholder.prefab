@@ -5945,7 +5945,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charStats: {fileID: 0}
   maxHealth: 30
-  entityDeath: {fileID: 11400000, guid: 7e9bb74333dc137449b2324eef6a787f, type: 2}
+  entityDeath: {fileID: 0}
+  deathListner: {fileID: 6974413310255559945}
   currentHealth: {fileID: 0}
 --- !u!114 &6974413310255559945
 MonoBehaviour:
@@ -5959,7 +5960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f698b8af41f264abd87ae44d449008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 7e9bb74333dc137449b2324eef6a787f, type: 2}
+  Event: {fileID: 0}
   Response:
     m_PersistentCalls:
       m_Calls:
