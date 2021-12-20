@@ -35,15 +35,15 @@ public class ItemGridIS : ScriptableObject
 
     public bool AddItem(InventoryItemIS itemToAdd, int posX, int posY)
     {
-        Debug.Log("itemToAdd: " + itemToAdd.itemData);
+        Debug.Log("itemToAdd: " + itemToAdd.ItemData);
         Debug.Log("posX: " + posX);
         Debug.Log("posY: " + posY);
-        Debug.Log("item width: " + itemToAdd.itemData.width);
-        Debug.Log("item height: " + itemToAdd.itemData.height);
+        Debug.Log("item width: " + itemToAdd.ItemData.width);
+        Debug.Log("item height: " + itemToAdd.ItemData.height);
         
-        // if (IsItemOutsideInventory(posX, posY, itemToAdd.itemData.width, itemToAdd.itemData.height)) return false;
+        // if (IsItemOutsideInventory(posX, posY, itemToAdd.ItemData.width, itemToAdd.ItemData.height)) return false;
         //
-        // if (IsItemOverlap(posX, posY, itemToAdd.itemData.width, itemToAdd.itemData.height))
+        // if (IsItemOverlap(posX, posY, itemToAdd.ItemData.width, itemToAdd.ItemData.height))
         // {
         //     overlapItem = null;
         //     return false;
@@ -53,9 +53,9 @@ public class ItemGridIS : ScriptableObject
         var rt = itemToAdd.GetComponent<RectTransform>();
         rt.SetParent(rectTrans);
 
-        for (var i = 0; i < itemToAdd.itemData.width; i++)
+        for (var i = 0; i < itemToAdd.ItemData.width; i++)
         {
-            for (var j = 0; j < itemToAdd.itemData.height; j++)
+            for (var j = 0; j < itemToAdd.ItemData.height; j++)
             {
                 gridSlots[posX + i, posY + j] = itemToAdd;
             }
@@ -66,8 +66,8 @@ public class ItemGridIS : ScriptableObject
 
         var position = new Vector2
         {
-            x = posX * tileSize + tileSize * itemToAdd.itemData.width / 2,
-            y = -(posY * tileSize + tileSize * itemToAdd.itemData.height / 2)
+            x = posX * tileSize + tileSize * itemToAdd.ItemData.width / 2,
+            y = -(posY * tileSize + tileSize * itemToAdd.ItemData.height / 2)
         };
         rt.localPosition = position;
         
@@ -84,9 +84,9 @@ public class ItemGridIS : ScriptableObject
 
     private void CleanGridReference(InventoryItemIS item)
     {
-        for (var i = 0; i < item.itemData.width; i++)
+        for (var i = 0; i < item.ItemData.width; i++)
         {
-            for (var j = 0; j < item.itemData.width; j++)
+            for (var j = 0; j < item.ItemData.width; j++)
             {
                 gridSlots[item.OnGridPositionX + i, item.OnGridPositionY + j] = null;
             }

@@ -11,6 +11,8 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private ItemGridIS grid;
     [SerializeField] private GameObject itemPrefab;
+    [SerializeField] private ItemDataIS pickedUpItem;
+    [SerializeField] private GameEvent addItemSuccessful;
 
     private InventoryItemIS selectedItem;
 
@@ -18,6 +20,7 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler
     {
         grid.rectTrans = GetComponent<RectTransform>();
         grid.InitGrid();
+        pickedUpItem.ResetItemData();
     }
 
     // public void OnDrop(PointerEventData eventData)
@@ -37,7 +40,32 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        // check if clicked grid cell is occupied
+        // if yes, pick up item
         // if right click + selectedItem != null
-        Debug.Log("grid cell clicked: " + grid.GetTileGridPosition(Input.mousePosition));
+        if (eventData.button != PointerEventData.InputButton.Right) return;
+        var targetGridCell = grid.GetTileGridPosition(Input.mousePosition);
+        Debug.Log("grid cell clicked: " + targetGridCell);
+        Debug.Log("pickedUpItem has value: " + pickedUpItem.HasValue);
+        if (pickedUpItem.HasValue) AddItem(targetGridCell);
+        // if (IsOverlap())
+        // {
+        //     // swapping logic goes here, not now though
+        // }
+        Debug.Log("picked up item: " + pickedUpItem.width + " " + pickedUpItem.height);
     }
+
+    private void AddItem(Vector2Int targetGridCell)
+    {
+        var inventoryItem = Instantiate(itemPrefab);
+        inventoryItem.GetComponent<InventoryItemIS>().Set(pickedUpItem);
+        var success = grid.AddItem(inventoryItem.GetComponent<InventoryItemIS>(), targetGridCell.x, targetGridCell.y);
+        if (success)
+        {
+            pickedUpItem.ResetItemData();
+            addItemSuccessful.Raise();
+        }
+    }
+
+    private bool IsOverlap() => false;
 }

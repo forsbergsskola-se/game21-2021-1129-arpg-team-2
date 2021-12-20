@@ -4,6 +4,8 @@ using UnityEngine.EventSystems;
 public class WorldItemInteractIS : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private float distanceFromCamera;
+    [SerializeField] private ItemDataIS pickedUpItem;
+
     private GridVisibleControllerIS gridVisibleControl;
     private bool isStickToCursor;
     private Camera cam;
@@ -24,12 +26,22 @@ public class WorldItemInteractIS : MonoBehaviour, IPointerDownHandler
                 gridVisibleControl.SetGridVisibility(true);
                 isStickToCursor = true;
                 transform.LookAt(cam.transform);
-                // object should fire an event and emit itself
+                UpdatePickedUpItemData();
+
                 break;
             case 2:
                 Debug.Log("quick pick up fired");
                 break;
         }
+    }
+
+    private void UpdatePickedUpItemData()
+    {
+        var currentItem = GetComponent<WorldItemIS>().ItemData;
+        pickedUpItem.height = currentItem.height;
+        pickedUpItem.width = currentItem.width;
+        pickedUpItem.itemIcon = currentItem.itemIcon;
+        pickedUpItem.HasValue = true;
     }
 
     private void Update()
@@ -41,5 +53,10 @@ public class WorldItemInteractIS : MonoBehaviour, IPointerDownHandler
             var mouseWorldPos = cam.ScreenToWorldPoint(mousePos);
             transform.position = mouseWorldPos;
         }
+    }
+
+    public void OnInventoryItemAddedSuccessful()
+    {
+        gameObject.SetActive(false);
     }
 }
