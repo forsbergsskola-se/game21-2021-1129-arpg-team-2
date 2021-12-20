@@ -5799,6 +5799,7 @@ GameObject:
   - component: {fileID: 6589570276758492576}
   - component: {fileID: 6728272073411745708}
   - component: {fileID: -5262075788596362893}
+  - component: {fileID: 7582813487191843633}
   m_Layer: 0
   m_Name: RatPlaceholder
   m_TagString: Enemy
@@ -5852,7 +5853,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inCombatAfterDamageTime: 2
-  ratAnimation: {fileID: 0}
 --- !u!114 &7451778977802126171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6039,7 +6039,7 @@ NavMeshAgent:
   m_Acceleration: 5
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 2.5
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -6113,7 +6113,7 @@ Animator:
   m_GameObject: {fileID: 3727973343909372596}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fa730bb966b18434facb046625c5b09b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6ee0980e88458e94090ef355e5b77a2d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6246,6 +6246,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 6612267172016668206, guid: 7a6c7198435abd74ab3e8da9e11f6896, type: 3}
   maxCoinsDrop: 5
+--- !u!114 &7582813487191843633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3727973343909372596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f07402af12f75664ea7fbb5afc53a64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  isPatrolling: 1
+  patrolSpeed: 4
+  walkPointRange: 10
+  chaseSpeed: 10
+  awarenessRange: 10
+  attackRange: 2.5
+  hearingRange: 6
+  breathingTimeAfterDefeating: 7
+  fieldOfViewAngle: 90
+  playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
 --- !u!1 &3740980011181246174
 GameObject:
   m_ObjectHideFlags: 0
@@ -13455,12 +13483,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8313439491226087760, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 239187605434724309, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
---- !u!224 &1220213093531292052 stripped
+--- !u!224 &8504192923953785446 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3319392756575698723, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5258864196562683089, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
   m_PrefabInstance: {fileID: 4539570665594056375}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1091245590685554722 stripped
@@ -13468,8 +13500,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3592510631728805525, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
   m_PrefabInstance: {fileID: 4539570665594056375}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &8504192923953785446 stripped
+--- !u!224 &1220213093531292052 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5258864196562683089, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3319392756575698723, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
   m_PrefabInstance: {fileID: 4539570665594056375}
   m_PrefabAsset: {fileID: 0}
