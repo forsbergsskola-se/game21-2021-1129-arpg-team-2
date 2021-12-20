@@ -13,7 +13,6 @@ public class particle_controller : MonoBehaviour
     public bool burnEffect;
     public bool eyeEffect;
     public bool primChainEffect;
-    public bool secChainEffect;
     public bool secArcaneEffect;
 
     //finding all particles attached to weapon
@@ -25,7 +24,6 @@ public class particle_controller : MonoBehaviour
     public GameObject fireEffect;
     public GameObject eyesEffect;
     public GameObject primaryChainsEffect;
-    public GameObject secondaryChainsEffect;
     public GameObject secondaryArcaneEffect;
 
     //creating gradients for color, setting these gradients later
@@ -45,54 +43,39 @@ public class particle_controller : MonoBehaviour
         setColors();
 
         //deciding what secondary and primary effects are active
-        if (secArcaneEffect)
-        {
-            secondaryArcaneEffect.SetActive(true);
-        }
-        else
-        {
-            secondaryArcaneEffect.SetActive(false);
-        }
+       
         if (ribbEffect)
         {
             ribbonEffect.SetActive(true);
         }
-        else
+        else if (primChainEffect)
         {
-            ribbonEffect.SetActive(false);
+            primaryChainsEffect.SetActive(true);
         }
-        if (burnEffect)
+        else if (burnEffect)
         {
             fireEffect.SetActive(true);
         }
         else
         {
+            primaryChainsEffect.SetActive(false);
+            ribbonEffect.SetActive(false);
             fireEffect.SetActive(false);
         }
         if (eyeEffect)
         {
             eyesEffect.SetActive(true);
         }
+        else if (secArcaneEffect)
+        {
+            secondaryArcaneEffect.SetActive(true);
+        }
         else
         {
             eyesEffect.SetActive(false);
+            secondaryArcaneEffect.SetActive(false);
         }
-        if (primChainEffect)
-        {
-            primaryChainsEffect.SetActive(true);
-        }
-        else
-        {
-            primaryChainsEffect.SetActive(false);
-        }
-        if (secChainEffect)
-        {
-            secondaryChainsEffect.SetActive(true);
-        }
-        else
-        {
-            secondaryChainsEffect.SetActive(false);
-        }
+       
 
         //deciding which glow is active
         if (gGlow)
@@ -103,7 +86,6 @@ public class particle_controller : MonoBehaviour
             particleColorFire(greenGrad);
             particleColorEyes(greenGrad);
             particleColorChainsPrimary(greenGrad);
-            particleColorChainsSecondary(greenGrad);
             particleColorArcane(greenGrad);
 
         }
@@ -112,9 +94,8 @@ public class particle_controller : MonoBehaviour
             redGlow.SetActive(true);
             particleColorRibbons(redGrad);
             particleColorFire(redGrad);
-            particleColorEyes(redGrad);
+            particleColorEyes(redGrad);           
             particleColorChainsPrimary(redGrad);
-            particleColorChainsSecondary(redGrad);
             particleColorArcane(redGrad);
         }
         else if (bGlow)
@@ -122,9 +103,8 @@ public class particle_controller : MonoBehaviour
             blueGlow.SetActive(true);
             particleColorRibbons(blueGrad);
             particleColorFire(blueGrad);
-            particleColorEyes(blueGrad);
+            particleColorEyes(blueGrad);           
             particleColorChainsPrimary(blueGrad);
-            particleColorChainsSecondary(blueGrad);
             particleColorArcane(blueGrad);
         }
         else if (yGlow)
@@ -132,9 +112,8 @@ public class particle_controller : MonoBehaviour
             yellowGlow.SetActive(true);
             particleColorRibbons(yellowGrad);
             particleColorFire(yellowGrad);
-            particleColorEyes(yellowGrad);
+            particleColorEyes(yellowGrad);         
             particleColorChainsPrimary(yellowGrad);
-            particleColorChainsSecondary(yellowGrad);
             particleColorArcane(yellowGrad);
         }
         else
@@ -146,9 +125,8 @@ public class particle_controller : MonoBehaviour
             //if no glows are active particles will be white
             particleColorRibbons(whiteGrad);
             particleColorFire(whiteGrad);
-            particleColorEyes(whiteGrad);
+            particleColorEyes(whiteGrad);        
             particleColorChainsPrimary(whiteGrad);
-            particleColorChainsSecondary(whiteGrad);
             particleColorArcane(whiteGrad);
         }
     }
@@ -159,7 +137,7 @@ public class particle_controller : MonoBehaviour
     {
         greenGrad.SetKeys(new GradientColorKey[] { new GradientColorKey(Color.green, 0.0f), new GradientColorKey(Color.green, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(0.0f, 0.0f), new GradientAlphaKey(1.0f, 0.1f), new GradientAlphaKey(1.0f, 0.9f), new GradientAlphaKey(0.0f, 1.0f) });
         redGrad.SetKeys(new GradientColorKey[] { new GradientColorKey(Color.red, 0.0f), new GradientColorKey(Color.red, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(0.0f, 0.0f), new GradientAlphaKey(1.0f, 0.1f), new GradientAlphaKey(1.0f, 0.9f), new GradientAlphaKey(0.0f, 1.0f) });
-        blueGrad.SetKeys(new GradientColorKey[] { new GradientColorKey(Color.blue, 0.0f), new GradientColorKey(Color.blue, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(0.0f, 0.0f), new GradientAlphaKey(1.0f, 0.1f), new GradientAlphaKey(1.0f, 0.9f), new GradientAlphaKey(0.0f, 1.0f) });
+        blueGrad.SetKeys(new GradientColorKey[] { new GradientColorKey(Color.cyan, 0.0f), new GradientColorKey(Color.cyan, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(0.0f, 0.0f), new GradientAlphaKey(1.0f, 0.1f), new GradientAlphaKey(1.0f, 0.9f), new GradientAlphaKey(0.0f, 1.0f) });
         yellowGrad.SetKeys(new GradientColorKey[] { new GradientColorKey(Color.yellow, 0.0f), new GradientColorKey(Color.yellow, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(0.0f, 0.0f), new GradientAlphaKey(1.0f, 0.1f), new GradientAlphaKey(1.0f, 0.9f), new GradientAlphaKey(0.0f, 1.0f) });
         whiteGrad.SetKeys(new GradientColorKey[] { new GradientColorKey(Color.white, 0.0f), new GradientColorKey(Color.white, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(0.0f, 0.0f), new GradientAlphaKey(1.0f, 0.1f), new GradientAlphaKey(1.0f, 0.9f), new GradientAlphaKey(0.0f, 1.0f) });
     }
@@ -204,47 +182,18 @@ public class particle_controller : MonoBehaviour
 
     void particleColorChainsPrimary(Gradient primaryChainsGrad)
     {
-        GameObject Chains1 = primaryChainsEffect.transform.Find("Chains 1").gameObject;
-        GameObject Chains2 = primaryChainsEffect.transform.Find("Chains 2").gameObject;
-        GameObject Chains3 = primaryChainsEffect.transform.Find("Chains 3").gameObject;
-        GameObject Chains4 = primaryChainsEffect.transform.Find("Chains 4").gameObject;
-        GameObject Chains5 = primaryChainsEffect.transform.Find("Chains 5").gameObject;
-        GameObject Chains6 = primaryChainsEffect.transform.Find("Chains 6").gameObject;
-        ParticleSystem psChains1 = Chains1.GetComponent<ParticleSystem>();
-        ParticleSystem psChains2 = Chains2.GetComponent<ParticleSystem>();
-        ParticleSystem psChains3 = Chains3.GetComponent<ParticleSystem>();
-        ParticleSystem psChains4 = Chains4.GetComponent<ParticleSystem>();
-        ParticleSystem psChains5 = Chains5.GetComponent<ParticleSystem>();
-        ParticleSystem psChains6 = Chains6.GetComponent<ParticleSystem>();
-        var colorChains1 = psChains1.colorOverLifetime;
-        var colorChains2 = psChains2.colorOverLifetime;
-        var colorChains3 = psChains3.colorOverLifetime;
-        var colorChains4 = psChains4.colorOverLifetime;
-        var colorChains5 = psChains5.colorOverLifetime;
-        var colorChains6 = psChains6.colorOverLifetime;
-        colorChains1.color = primaryChainsGrad;
-        colorChains2.color = primaryChainsGrad;
-        colorChains3.color = primaryChainsGrad;
-        colorChains4.color = primaryChainsGrad;
-        colorChains5.color = primaryChainsGrad;
-        colorChains6.color = primaryChainsGrad;
-
-    }
-
-    void particleColorChainsSecondary(Gradient secondaryChainsGrad)
-    {
-        GameObject Chain1 = secondaryChainsEffect.transform.Find("Chain 1").gameObject;
-        GameObject Chain2 = secondaryChainsEffect.transform.Find("Chain 2").gameObject;
-        GameObject Chain3 = secondaryChainsEffect.transform.Find("Chain 3").gameObject;
+        GameObject Chain1 = primaryChainsEffect.transform.Find("Chain 1").gameObject;
+        GameObject Chain2 = primaryChainsEffect.transform.Find("Chain 2").gameObject;
+        GameObject Chain3 = primaryChainsEffect.transform.Find("Chain 3").gameObject;
         ParticleSystem psChain1 = Chain1.GetComponent<ParticleSystem>();
         ParticleSystem psChain2 = Chain2.GetComponent<ParticleSystem>();
         ParticleSystem psChain3 = Chain3.GetComponent<ParticleSystem>();
         var colorChain1 = psChain1.colorOverLifetime;
         var colorChain2 = psChain2.colorOverLifetime;
         var colorChain3 = psChain3.colorOverLifetime;
-        colorChain1.color = secondaryChainsGrad;
-        colorChain2.color = secondaryChainsGrad;
-        colorChain3.color = secondaryChainsGrad;
+        colorChain1.color = primaryChainsGrad;
+        colorChain2.color = primaryChainsGrad;
+        colorChain3.color = primaryChainsGrad;
     }
 
     void particleColorArcane(Gradient arcaneGrad)
