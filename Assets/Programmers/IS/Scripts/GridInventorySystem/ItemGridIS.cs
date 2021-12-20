@@ -1,12 +1,19 @@
 using UnityEngine;
 
+/// <summary>
+/// This scriptable object stores configuration info for the grid
+/// and its operation logic.
+/// </summary>
+
 [CreateAssetMenu(fileName = "inventory grid", menuName = "Game/inventory grid")]
 public class ItemGridIS : ScriptableObject
 {
+    [Header("Grid configuration")]
+    [Header("Tile size NEEDS to match the exact size of the square tile used in pixel")]
     [SerializeField] private float tileSize;
     [SerializeField] private int width;
     [SerializeField] private int height;
-    [SerializeField] internal RectTransform rectTrans;
+    internal RectTransform rectTrans;
     
     public float TileSize => tileSize;
     public int Width => width;

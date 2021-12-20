@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 /// <summary>
 /// The script controls
 /// (1) initiating the grid
-/// (2) listening for when an item dropped upon inventory space
+/// (2) listening drop release
 /// </summary>
 
 public class ItemGridViewIS : MonoBehaviour, IDropHandler
@@ -25,11 +25,11 @@ public class ItemGridViewIS : MonoBehaviour, IDropHandler
             Debug.Log("Item dropped inside inventory: " + eventData.pointerDrag.gameObject);
             var tileGridPosition = grid.GetTileGridPosition(Input.mousePosition);
             Debug.Log("on: " + tileGridPosition);
-            // var itemToAdd = eventData.pointerDrag.GetComponent<InventoryItemIS>();
             var itemToAdd = Instantiate(itemPrefab).GetComponent<InventoryItemIS>();
             itemToAdd.Set(eventData.pointerDrag.GetComponent<InventoryItemIS>().itemData);
             var success = grid.AddItem(itemToAdd, tileGridPosition.x, tileGridPosition.y);
             Debug.Log("Adding item successful? " + success);
+            if (success) eventData.pointerDrag.gameObject.SetActive(false);
         }
     }
 }

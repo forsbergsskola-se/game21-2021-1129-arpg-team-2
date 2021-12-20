@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventoryDraggerIS : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class InventoryDraggerIS : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
 {
     private RectTransform rectTrans;
     private CanvasGroup canvasGroup;
@@ -27,5 +27,10 @@ public class InventoryDraggerIS : MonoBehaviour, IDragHandler, IBeginDragHandler
     {
         canvasGroup.alpha = 1f; // back to one upon finishing dragging
         canvasGroup.blocksRaycasts = true;
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        Debug.Log("ondrop from inventory dragger fired");
     }
 }
