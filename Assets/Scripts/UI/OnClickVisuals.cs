@@ -34,7 +34,7 @@ public class OnClickVisuals : MonoBehaviour
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit) && CheckDestination(hit.transform.position) && !hit.transform.CompareTag("Destructible") && !hit.transform.CompareTag("Enemy"))
+            if (Physics.Raycast(ray, out hit) && CheckDestination(hit.transform.position) && !hit.transform.CompareTag("Destructible") && !hit.transform.CompareTag("Enemy") && !hit.transform.CompareTag("UI"))
             {
                 //Added lines
                 //Start
@@ -62,13 +62,17 @@ public class OnClickVisuals : MonoBehaviour
             }
             else
             {
-                //Added lines
-                //Start
-                instantiatedPrefabInvalid.transform.SetPositionAndRotation(hit.point, Quaternion.identity);
-                instantiatedPrefabInvalid.GetComponentInChildren<Animation>().Stop();
-                instantiatedPrefabInvalid.GetComponentInChildren<Animation>().Play();
-                //End
-                InvalidMove.Play();
+                if (!hit.transform.CompareTag("UI"))
+                {
+                    //Added lines
+                    //Start
+                    instantiatedPrefabInvalid.transform.SetPositionAndRotation(hit.point, Quaternion.identity);
+                    instantiatedPrefabInvalid.GetComponentInChildren<Animation>().Stop();
+                    instantiatedPrefabInvalid.GetComponentInChildren<Animation>().Play();
+                    //End
+                    InvalidMove.Play();
+                }
+                
             }
         }
     }

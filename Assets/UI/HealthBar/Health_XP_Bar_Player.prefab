@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3214669892223720816}
   - component: {fileID: 314332444229514762}
   - component: {fileID: 365328055187010273}
+  - component: {fileID: 1182462622621742690}
   m_Layer: 5
   m_Name: HB_XP_empty
   m_TagString: Untagged
@@ -76,6 +77,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1182462622621742690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519318549481456788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a3c4eea53a9ca46974a3dabe82687f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xpBar: {fileID: 2669744938683050874}
+  levelUpChart: {fileID: 11400000, guid: 0e0ccba3320e0d6468a61b515f144c4c, type: 2}
 --- !u!1 &1406416161004735659
 GameObject:
   m_ObjectHideFlags: 0

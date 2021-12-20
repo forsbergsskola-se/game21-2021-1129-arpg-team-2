@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerLevel : MonoBehaviour
@@ -5,6 +6,12 @@ public class PlayerLevel : MonoBehaviour
     [SerializeField] private CharStats charStats;
     [SerializeField] private LevelUpChart levelUpChart;
     [SerializeField] private GameEvent levelUp;
+
+    private void Awake()
+    {
+        charStats.Reset();
+        levelUpChart.Reset();
+    }
 
     public void GainXp(int xp)
     {
@@ -15,7 +22,7 @@ public class PlayerLevel : MonoBehaviour
 
     private bool ReachedXpMilestone()
     {
-        var index = levelUpChart.CurrentLevel - 1;
+        var index = levelUpChart.CurrentLevel;
         
         return levelUpChart.CurrentXp > levelUpChart.XpMilestones[index];
     }

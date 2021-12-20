@@ -33,4 +33,10 @@ public class LevelUpChart : ScriptableObject
     public float AttackMultiplicator => attack;
     public float AttackSpeedMultiplicator => attackSpeed;
     public float DefenceMultiplicator => defence;
+
+    public void Reset()
+    {
+        currentLevel = 1;
+        currentXp = 0;
+    }
 }
