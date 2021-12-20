@@ -343,6 +343,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone_foundation
       objectReference: {fileID: 0}
+    - target: {fileID: 3877066961952961966, guid: e1b5041ce51154e70adff5612dcce711, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5237693590237863901, guid: e1b5041ce51154e70adff5612dcce711, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -397,11 +401,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1b5041ce51154e70adff5612dcce711, type: 3}
+--- !u!1 &4390669602258292054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3877066961952961966, guid: e1b5041ce51154e70adff5612dcce711, type: 3}
+  m_PrefabInstance: {fileID: 657755763043596536}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8312363285705783835 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8825827388782805731, guid: e1b5041ce51154e70adff5612dcce711, type: 3}
   m_PrefabInstance: {fileID: 657755763043596536}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &6175104848617864636
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4390669602258292054}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19999999, y: 0.2, z: 4}
+  m_Center: {x: -0.062002357, y: 0.015345573, z: -0.3456192}
 --- !u!1001 &861459565125071276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -783,6 +805,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone_foundation1
       objectReference: {fileID: 0}
+    - target: {fileID: 3877066961952961966, guid: e1b5041ce51154e70adff5612dcce711, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5237693590237863901, guid: e1b5041ce51154e70adff5612dcce711, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -837,11 +863,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1b5041ce51154e70adff5612dcce711, type: 3}
+--- !u!1 &4046486870547705649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3877066961952961966, guid: e1b5041ce51154e70adff5612dcce711, type: 3}
+  m_PrefabInstance: {fileID: 1001516016072448671}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8619250583096580220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8825827388782805731, guid: e1b5041ce51154e70adff5612dcce711, type: 3}
   m_PrefabInstance: {fileID: 1001516016072448671}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &2025643658388213392
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4046486870547705649}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19999999, y: 0.2, z: 4}
+  m_Center: {x: -0.062002357, y: 0.015345573, z: -0.3456192}
 --- !u!1001 &1169474475271583340
 PrefabInstance:
   m_ObjectHideFlags: 0

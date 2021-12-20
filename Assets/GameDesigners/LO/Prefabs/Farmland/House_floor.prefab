@@ -14,12 +14,13 @@ GameObject:
   - component: {fileID: 8536638560587323066}
   - component: {fileID: 6767545290301997587}
   - component: {fileID: 5963418227577789932}
+  - component: {fileID: 5828772742964504954}
   m_Layer: 0
   m_Name: House_floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1371178852152571316
 Transform:
@@ -368,3 +369,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!65 &5828772742964504954
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091349628713498539}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 0.19999999, z: 4}
+  m_Center: {x: -0.6483753, y: 0.041967865, z: -0.72741127}

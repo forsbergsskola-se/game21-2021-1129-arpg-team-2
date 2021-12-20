@@ -14,12 +14,13 @@ GameObject:
   - component: {fileID: 4956170548009878204}
   - component: {fileID: 3276652810094130566}
   - component: {fileID: 6456683218038537941}
+  - component: {fileID: 5543313115260008401}
   m_Layer: 0
   m_Name: growing_plot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5739812103239332990
 Transform:
@@ -368,3 +369,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!65 &5543313115260008401
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3607143043346826610}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8, y: 0.19999999, z: 8}
+  m_Center: {x: 2.7023344, y: 0.11478996, z: -2.4350948}

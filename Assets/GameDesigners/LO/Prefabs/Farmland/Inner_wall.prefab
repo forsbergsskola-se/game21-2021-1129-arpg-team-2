@@ -14,12 +14,13 @@ GameObject:
   - component: {fileID: 8044810621672502229}
   - component: {fileID: 1872355361502693846}
   - component: {fileID: 4576649464092463310}
+  - component: {fileID: 8156575127537640629}
   m_Layer: 0
   m_Name: Stone_foundation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &163492210513361812
 Transform:
@@ -368,6 +369,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!65 &8156575127537640629
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591849881429704788}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.000002, y: 0.19999999, z: 0.20000008}
+  m_Center: {x: -1.9507074, y: 0.060643192, z: 0.07508854}
 --- !u!1 &3965979418838497564
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,12 +396,13 @@ GameObject:
   - component: {fileID: 5640067482630218891}
   - component: {fileID: 1649625793190097288}
   - component: {fileID: 3446563633804917081}
+  - component: {fileID: 4798879999962761110}
   m_Layer: 0
   m_Name: Inner_wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5159525619141170002
 Transform:
@@ -737,3 +752,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!65 &4798879999962761110
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3965979418838497564}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20000003, y: 4, z: 4.000001}
+  m_Center: {x: -0.036927704, y: 0.8613186, z: -0.7563593}
