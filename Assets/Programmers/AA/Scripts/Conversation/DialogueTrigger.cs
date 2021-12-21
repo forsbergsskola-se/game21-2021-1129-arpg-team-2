@@ -7,6 +7,7 @@ public class DialogueTrigger : MonoBehaviour {
 
     public LayerMask PlayerLayer;
     public Dialogue dialogue;
+    public GameObject face;
     [SerializeField] private float dialogueRange = 10f;
     private bool isInDialogueRange;
 
@@ -23,6 +24,7 @@ public class DialogueTrigger : MonoBehaviour {
     public void TriggerDialogue ()
     {
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        face.SetActive(true);
     }
 
 }

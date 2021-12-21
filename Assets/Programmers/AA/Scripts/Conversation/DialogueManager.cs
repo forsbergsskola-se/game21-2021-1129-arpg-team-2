@@ -63,7 +63,6 @@ public class DialogueManager : MonoBehaviour {
     void EndDialogue()
     {
         //Time.timeScale = 1;
-            
         animator.SetBool("IsOpen", false);
     }
 
