@@ -26,7 +26,6 @@ public class WorldItemInteractIS : MonoBehaviour, IPointerDownHandler
     {
         if (eventData.button == PointerEventData.InputButton.Right && Input.GetKey(KeyCode.LeftControl))
         {
-            Debug.Log("Quick add");
             UpdatePickedUpItemData();
             grid.OnQuickAdd();
         }
@@ -64,13 +63,8 @@ public class WorldItemInteractIS : MonoBehaviour, IPointerDownHandler
 
     public void OnItemAddedSuccess()
     {
-        var test = new GameObjectIdClass(gameObject);
-        pickedUpWorldItemIds.AddToList(test);
-        Debug.Log("WORLD ITEM ID TO REMEMBER: " +gameObject.GetInstanceID());
-        // foreach (var id in pickedUpWorldItemIds.List)
-        // {
-        //     Debug.Log("picked up world item id from list: " + id);
-        // }
+        var entry = new GameObjectIdClass(gameObject);
+        pickedUpWorldItemIds.AddToList(entry);
         gameObject.SetActive(false);
     }
 }

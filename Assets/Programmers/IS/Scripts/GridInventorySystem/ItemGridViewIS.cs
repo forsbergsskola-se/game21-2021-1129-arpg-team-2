@@ -44,19 +44,21 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler, IPointerExitHa
 
         if (Input.GetMouseButtonDown(1) && !isCursorInsideGrid && selectedItem != null)
         {
-            var target = selectedItem.ItemData.WorldItemId;
-            Debug.Log("WORLD ID ON SELECTED: " + target);
-            var find = pickedUpWorldItemIds.List.FirstOrDefault(x => x.id == target);
-            Debug.Log("WORLD ITEM FROM SO: " + find?.worldItem);
-            Debug.Log("WORLD ITEM ID FROM SO: " + find?.id);
-
-            find.worldItem.transform.position = itemDrop.transform.position;
-            find?.worldItem.SetActive(true);
-            pickedUpWorldItemIds.RemoveFromList(find);
-            
-            Destroy(selectedItem.gameObject);
-            selectedItem = null;
+            DropItemNextToPlayer();
         }
+    }
+
+    private void DropItemNextToPlayer()
+    {
+        var target = selectedItem.ItemData.WorldItemId;
+        var find = pickedUpWorldItemIds.List.FirstOrDefault(x => x.id == target);
+
+        find.worldItem.transform.position = itemDrop.transform.position;
+        find.worldItem.SetActive(true);
+        pickedUpWorldItemIds.RemoveFromList(find);
+            
+        Destroy(selectedItem.gameObject);
+        selectedItem = null;
     }
 
     private void ItemIconStickToCursor()
@@ -71,8 +73,6 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler, IPointerExitHa
     {
         if (eventData.button != PointerEventData.InputButton.Right || !isCursorInsideGrid) return;
         var targetGridCell = grid.GetTileGridPosition(Input.mousePosition);
-        
-        // Debug.Log("grid cell clicked: " + targetGridCell);
         
         if (pickedUpItem.HasValue) AddItem(targetGridCell);
         else if (selectedItem != null) AddItem(targetGridCell, selectedItem);
@@ -113,7 +113,6 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler, IPointerExitHa
     public void OnQuickAdd()
     {
         var startSlot = grid.GetFirstAvailableSlot(pickedUpItem.width, pickedUpItem.height);
-        // Debug.Log("Available start position: " + startSlot);
         AddItem(startSlot);
     }
     
