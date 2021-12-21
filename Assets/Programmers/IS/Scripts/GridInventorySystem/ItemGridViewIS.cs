@@ -27,6 +27,7 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler, IPointerExitHa
     private RectTransform rectTrans;
 
     private bool isCursorInsideGrid;
+    private ItemDropIS itemDrop;
 
     private void Awake()
     {
@@ -34,6 +35,7 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler, IPointerExitHa
         grid.InitGrid();
         pickedUpItem.ResetItemData();
         gameObject.SetActive(false);
+        itemDrop = FindObjectOfType<ItemDropIS>();
     }
 
     private void Update()
@@ -47,9 +49,12 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler, IPointerExitHa
             var find = pickedUpWorldItemIds.List.FirstOrDefault(x => x.id == target);
             Debug.Log("WORLD ITEM FROM SO: " + find?.worldItem);
             Debug.Log("WORLD ITEM ID FROM SO: " + find?.id);
-            
+
+            find.worldItem.transform.position = itemDrop.transform.position;
             find?.worldItem.SetActive(true);
-            selectedItem.gameObject.SetActive(false);
+            pickedUpWorldItemIds.RemoveFromList(find);
+            
+            Destroy(selectedItem.gameObject);
             selectedItem = null;
         }
     }
