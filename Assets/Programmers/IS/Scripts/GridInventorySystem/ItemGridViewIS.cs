@@ -8,16 +8,18 @@ using UnityEngine.EventSystems;
 /// The script should be used in pair with ItemGrid scriptable object
 /// </summary>
 
-public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler
+public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler, IPointerExitHandler, IPointerEnterHandler
 {
     [SerializeField] private ItemGridIS grid;
     [SerializeField] private GameObject inventoryItem;
     [SerializeField] private ItemDataIS pickedUpItem;
     [SerializeField] private GameEvent addItemSuccessful;
 
-    private InventoryItemIS removedInventoryItem;
+    private InventoryItemIS selectedItem;
     private InventoryItemIS overlapItem;
     private RectTransform rectTrans;
+
+    private bool isCursorOutsideGrid;
 
     private void Awake()
     {
@@ -30,11 +32,16 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler
     private void Update()
     {
         ItemIconStickToCursor();
+
+        if (Input.GetMouseButtonDown(1) && isCursorOutsideGrid)
+        {
+            Debug.Log("right click outside grid view detected");
+        }
     }
 
     private void ItemIconStickToCursor()
     {
-        if (removedInventoryItem != null)
+        if (selectedItem != null)
         {
             rectTrans.position = Input.mousePosition;
         }
@@ -44,9 +51,11 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler
     {
         if (eventData.button != PointerEventData.InputButton.Right) return;
         var targetGridCell = grid.GetTileGridPosition(Input.mousePosition);
-        Debug.Log("grid cell clicked: " + targetGridCell);
+        
+        // Debug.Log("grid cell clicked: " + targetGridCell);
+        
         if (pickedUpItem.HasValue) AddItem(targetGridCell);
-        else if (removedInventoryItem != null) AddItem(targetGridCell, removedInventoryItem);
+        else if (selectedItem != null) AddItem(targetGridCell, selectedItem);
         else RemoveItem(targetGridCell);
     }
 
@@ -70,21 +79,31 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler
         if (success)
         {
             Debug.Log("add back existing item succeeded");
-            removedInventoryItem = null;
+            selectedItem = null;
         }
     }
 
     private void RemoveItem(Vector2Int targetGridCell)
     {
         Debug.Log("Remove item is hit");
-        removedInventoryItem = grid.RemoveItem(targetGridCell.x, targetGridCell.y);
-        if (removedInventoryItem != null) rectTrans = removedInventoryItem.GetComponent<RectTransform>();
+        selectedItem = grid.RemoveItem(targetGridCell.x, targetGridCell.y);
+        if (selectedItem != null) rectTrans = selectedItem.GetComponent<RectTransform>();
     }
 
     public void OnQuickAdd()
     {
         var startSlot = grid.GetFirstAvailableSlot(pickedUpItem.width, pickedUpItem.height);
-        Debug.Log("Available start position: " + startSlot);
+        // Debug.Log("Available start position: " + startSlot);
         AddItem(startSlot);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        isCursorOutsideGrid = true;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        isCursorOutsideGrid = false;
     }
 }

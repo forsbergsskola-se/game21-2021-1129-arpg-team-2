@@ -413,6 +413,7 @@ GameObject:
   - component: {fileID: 135933671}
   - component: {fileID: 135933670}
   - component: {fileID: 135933672}
+  - component: {fileID: 135933673}
   m_Layer: 5
   m_Name: Grid
   m_TagString: Untagged
@@ -494,6 +495,18 @@ MonoBehaviour:
   inventoryItem: {fileID: 5381171454971151918, guid: ae88c5c08aa03b247a603b8693366477, type: 3}
   pickedUpItem: {fileID: 11400000, guid: aa8d49444aaf5f04cb20e924f542ba42, type: 2}
   addItemSuccessful: {fileID: 11400000, guid: b721d38adb20b5d4f890eb393337741d, type: 2}
+--- !u!225 &135933673
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135933668}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &494903680
 GameObject:
   m_ObjectHideFlags: 0

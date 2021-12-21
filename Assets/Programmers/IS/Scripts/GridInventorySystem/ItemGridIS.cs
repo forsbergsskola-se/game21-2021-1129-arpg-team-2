@@ -66,11 +66,6 @@ public class ItemGridIS : ScriptableObject
         };
         rt.localPosition = position;
 
-
-        Debug.Log($"grid slot {posX}, {posY}");
-        Debug.Log("width: " + gridSlots[posX, posY].ItemData.Width);
-        Debug.Log("width: " + gridSlots[posX, posY].ItemData.Height);
-        
         return true;
     }
     
