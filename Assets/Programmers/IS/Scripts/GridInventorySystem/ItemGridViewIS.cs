@@ -19,7 +19,7 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler, IPointerExitHa
     private InventoryItemIS overlapItem;
     private RectTransform rectTrans;
 
-    private bool isCursorOutsideGrid;
+    private bool isCursorInsideGrid;
 
     private void Awake()
     {
@@ -33,9 +33,9 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler, IPointerExitHa
     {
         ItemIconStickToCursor();
 
-        if (Input.GetMouseButtonDown(1) && isCursorOutsideGrid)
+        if (Input.GetMouseButtonDown(1) && !isCursorInsideGrid && selectedItem != null)
         {
-            Debug.Log("right click outside grid view detected");
+            Debug.Log("DROP ITEM IN GAME WORLD");
         }
     }
 
@@ -49,7 +49,7 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler, IPointerExitHa
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (eventData.button != PointerEventData.InputButton.Right) return;
+        if (eventData.button != PointerEventData.InputButton.Right || !isCursorInsideGrid) return;
         var targetGridCell = grid.GetTileGridPosition(Input.mousePosition);
         
         // Debug.Log("grid cell clicked: " + targetGridCell);
@@ -96,14 +96,20 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler, IPointerExitHa
         // Debug.Log("Available start position: " + startSlot);
         AddItem(startSlot);
     }
+    
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        isCursorInsideGrid = true;
+    }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        isCursorOutsideGrid = true;
+        isCursorInsideGrid = false;
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnReceiveInstanceId(int id)
     {
-        isCursorOutsideGrid = false;
+        Debug.Log("grid heard added world item id");
+        Debug.Log("id: " + id);
     }
 }

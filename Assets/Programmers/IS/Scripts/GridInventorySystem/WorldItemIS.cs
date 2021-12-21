@@ -7,6 +7,7 @@ public class WorldItemIS : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("Instance ID from WorldItem: " + gameObject.GetInstanceID());
         GetComponent<SpriteRenderer>().sprite = itemData.itemIcon;
     }
 }

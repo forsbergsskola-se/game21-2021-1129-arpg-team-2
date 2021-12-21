@@ -414,6 +414,7 @@ GameObject:
   - component: {fileID: 135933670}
   - component: {fileID: 135933672}
   - component: {fileID: 135933673}
+  - component: {fileID: 135933674}
   m_Layer: 5
   m_Name: Grid
   m_TagString: Untagged
@@ -507,6 +508,34 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &135933674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135933668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eb02a8b6797026499cf70cd9e091f50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 11fb6f5c5b2a1d54fa3a2a85a5f85dbb, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 135933672}
+        m_TargetAssemblyTypeName: ItemGridViewIS, Assembly-CSharp
+        m_MethodName: OnReceiveInstanceId
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &494903680
 GameObject:
   m_ObjectHideFlags: 0
@@ -2298,6 +2327,10 @@ PrefabInstance:
       propertyPath: grid
       value: 
       objectReference: {fileID: 135933672}
+    - target: {fileID: 3558476749564402723, guid: 167c58e273e3ce843a1a930ab911db90, type: 3}
+      propertyPath: instanceId
+      value: 
+      objectReference: {fileID: 11400000, guid: 11fb6f5c5b2a1d54fa3a2a85a5f85dbb, type: 2}
     - target: {fileID: 3558476749564402732, guid: 167c58e273e3ce843a1a930ab911db90, type: 3}
       propertyPath: m_RootOrder
       value: 11
