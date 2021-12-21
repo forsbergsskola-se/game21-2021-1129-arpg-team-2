@@ -24,6 +24,8 @@ public class DialogueManager : MonoBehaviour {
 
         nameText.text = dialogue.name;
 
+        //Time.timeScale = 0;
+
         sentences.Clear();
 
         foreach (string sentence in dialogue.sentences)
@@ -54,11 +56,14 @@ public class DialogueManager : MonoBehaviour {
         {
             dialogueText.text += letter;
             yield return null;
+            //yield return new WaitForSeconds(typingSpeed);
         }
     }
 
     void EndDialogue()
     {
+        //Time.timeScale = 1;
+            
         animator.SetBool("IsOpen", false);
     }
 
