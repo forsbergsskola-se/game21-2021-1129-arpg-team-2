@@ -83,7 +83,8 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler
 
     public void OnQuickAdd()
     {
-        // a method to get consecutive available slots
-        AddItem(new Vector2Int(2, 0));
+        var startSlot = grid.GetFirstAvailableSlot(pickedUpItem.width, pickedUpItem.height);
+        Debug.Log("Available start position: " + startSlot);
+        AddItem(startSlot);
     }
 }

@@ -141,4 +141,43 @@ public class ItemGridIS : ScriptableObject
     
         return tileGridPosition;
     }
+
+    internal Vector2Int GetFirstAvailableSlot(int itemWidth, int itemHeight)
+    {
+        // TODO:
+        // - Test with multiple items already existing in inventory
+        // - Handle edge case of non 1x1 item + only one space available at the very end of grid
+        Vector2Int startPosition = new Vector2Int();
+        var cellNeeded = itemWidth * itemHeight;
+        var availableCell = 0;
+        for (int x = 0, i = 0; x < width; x++)
+        {
+            for (int y = 0, j = 0; y < height; y++)
+            {
+                if (i > itemWidth) i = 0;
+                if (j > itemHeight) j = 0;
+                if (i == 0 && j == 0) startPosition = new Vector2Int(x, y);
+                
+                Debug.Log($"grid slot {x}, {y} : {gridSlots[x,y]}");
+                
+                if (gridSlots[x + i, y + j] == null)
+                {
+                    availableCell++;
+                    i++;
+                    j++;
+                }
+                else
+                {
+                    i = 0;
+                    j = 0;
+                    startPosition = new Vector2Int();
+                    continue;
+                }
+                if (availableCell == cellNeeded) break;
+            }
+
+            if (availableCell == cellNeeded) break;
+        }
+        return startPosition;
+    }
 }
