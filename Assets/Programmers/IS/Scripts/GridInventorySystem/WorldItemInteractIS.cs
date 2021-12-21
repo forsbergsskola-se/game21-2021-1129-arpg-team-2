@@ -6,7 +6,7 @@ public class WorldItemInteractIS : MonoBehaviour, IPointerDownHandler
     [SerializeField] private float distanceFromCamera;
     [SerializeField] private ItemDataIS pickedUpItem;
     [SerializeField] private ItemGridViewIS grid;
-    // [SerializeField] private GameEventInt instanceId;
+    [SerializeField] private GameEventInt worldItemInstanceId;
 
     private GridVisibleControllerIS gridVisibleControl;
     private bool isStickToCursor;
@@ -24,9 +24,6 @@ public class WorldItemInteractIS : MonoBehaviour, IPointerDownHandler
         {
             Debug.Log("Quick add");
             UpdatePickedUpItemData();
-            
-            // instanceId.Raise(gameObject.GetInstanceID());
-            
             grid.OnQuickAdd();
         }
         else
@@ -35,8 +32,6 @@ public class WorldItemInteractIS : MonoBehaviour, IPointerDownHandler
             isStickToCursor = true;
             transform.LookAt(cam.transform);
             UpdatePickedUpItemData();
-            
-            // instanceId.Raise(gameObject.GetInstanceID());
         }
     }
 
@@ -64,6 +59,7 @@ public class WorldItemInteractIS : MonoBehaviour, IPointerDownHandler
 
     public void OnItemAddedSuccess()
     {
+        worldItemInstanceId.Raise(gameObject.GetInstanceID());
         gameObject.SetActive(false);
     }
 }

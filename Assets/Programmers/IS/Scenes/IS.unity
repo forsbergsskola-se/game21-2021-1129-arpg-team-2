@@ -517,15 +517,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 135933668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eb02a8b6797026499cf70cd9e091f50, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fb96bd75a489e147a5fe25b2894b073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 11fb6f5c5b2a1d54fa3a2a85a5f85dbb, type: 2}
+  Event: {fileID: 11400000, guid: 830251aa985169145a2f9dce7cdbcdbd, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
-      - {m_Target: {fileID: 135933672}, m_TargetAssemblyTypeName: ItemGridViewIS, Assembly-CSharp, m_MethodName: OnReceiveInstanceId, m_Mode: 0, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
-    m_CallsDirty: 1
+      - m_Target: {fileID: 135933672}
+        m_TargetAssemblyTypeName: ItemGridViewIS, Assembly-CSharp
+        m_MethodName: OnReceiveInstanceId
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &494903680
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -18,6 +19,7 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler, IPointerExitHa
     private InventoryItemIS selectedItem;
     private InventoryItemIS overlapItem;
     private RectTransform rectTrans;
+    private List<int> pickedUpWorldItemIds = new List<int>();
 
     private bool isCursorInsideGrid;
 
@@ -111,5 +113,6 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler, IPointerExitHa
     {
         Debug.Log("grid heard added world item id");
         Debug.Log("id: " + id);
+        pickedUpWorldItemIds.Add(id);
     }
 }
