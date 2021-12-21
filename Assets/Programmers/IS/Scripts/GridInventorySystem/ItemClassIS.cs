@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
-
 /// <summary>
 /// The class is used to store dynamic data on individual InventoryItem instance
 /// </summary>
