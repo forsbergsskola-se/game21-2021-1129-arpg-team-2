@@ -141,13 +141,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f698b8af41f264abd87ae44d449008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: b721d38adb20b5d4f890eb393337741d, type: 2}
+  Event: {fileID: 11400000, guid: 5956288c44c48fa47a4ad004c71013be, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3558476749564402723}
         m_TargetAssemblyTypeName: WorldItemInteractIS, Assembly-CSharp
-        m_MethodName: OnInventoryItemAddedSuccessful
+        m_MethodName: OnItemAddedSuccess
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

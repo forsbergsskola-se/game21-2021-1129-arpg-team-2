@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// A generic void game event
 /// </summary>
-[CreateAssetMenu(fileName = "VoidEvent", menuName = "Game/Event")]
+[CreateAssetMenu(fileName = "VoidEvent", menuName = "Game/Event/VoidEvent")]
 public class GameEvent : ScriptableObject
 {
     private List<GameEventListener> listeners = new List<GameEventListener>();

@@ -495,7 +495,7 @@ MonoBehaviour:
   grid: {fileID: 11400000, guid: b51b8152ccf03f1478cc95216e2ae505, type: 2}
   inventoryItem: {fileID: 5381171454971151918, guid: ae88c5c08aa03b247a603b8693366477, type: 3}
   pickedUpItem: {fileID: 11400000, guid: aa8d49444aaf5f04cb20e924f542ba42, type: 2}
-  addItemSuccessful: {fileID: 11400000, guid: b721d38adb20b5d4f890eb393337741d, type: 2}
+  addItemSuccessful: {fileID: 11400000, guid: 5956288c44c48fa47a4ad004c71013be, type: 2}
 --- !u!225 &135933673
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -524,18 +524,8 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 135933672}
-        m_TargetAssemblyTypeName: ItemGridViewIS, Assembly-CSharp
-        m_MethodName: OnReceiveInstanceId
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      - {m_Target: {fileID: 135933672}, m_TargetAssemblyTypeName: ItemGridViewIS, Assembly-CSharp, m_MethodName: OnReceiveInstanceId, m_Mode: 0, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
+    m_CallsDirty: 1
 --- !u!1 &494903680
 GameObject:
   m_ObjectHideFlags: 0
@@ -2327,10 +2317,6 @@ PrefabInstance:
       propertyPath: grid
       value: 
       objectReference: {fileID: 135933672}
-    - target: {fileID: 3558476749564402723, guid: 167c58e273e3ce843a1a930ab911db90, type: 3}
-      propertyPath: instanceId
-      value: 
-      objectReference: {fileID: 11400000, guid: 11fb6f5c5b2a1d54fa3a2a85a5f85dbb, type: 2}
     - target: {fileID: 3558476749564402732, guid: 167c58e273e3ce843a1a930ab911db90, type: 3}
       propertyPath: m_RootOrder
       value: 11

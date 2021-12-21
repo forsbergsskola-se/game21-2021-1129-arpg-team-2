@@ -62,7 +62,7 @@ public class WorldItemInteractIS : MonoBehaviour, IPointerDownHandler
         transform.position = mouseWorldPos;
     }
 
-    public void OnInventoryItemAddedSuccessful()
+    public void OnItemAddedSuccess()
     {
         gameObject.SetActive(false);
     }
