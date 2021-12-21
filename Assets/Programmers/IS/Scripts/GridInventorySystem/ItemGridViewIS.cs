@@ -14,7 +14,8 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler
     [SerializeField] private ItemDataIS pickedUpItem;
     [SerializeField] private GameEvent addItemSuccessful;
 
-    private InventoryItemIS selectedItem;
+    private InventoryItemIS removedInventoryItem;
+    private RectTransform rectTrans;
 
     private void Awake()
     {
@@ -24,21 +25,27 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler
         gameObject.SetActive(false);
     }
 
+    private void Update()
+    {
+        ItemIconStickToCursor();
+    }
+
+    private void ItemIconStickToCursor()
+    {
+        if (removedInventoryItem != null)
+        {
+            rectTrans.position = Input.mousePosition;
+        }
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
-        // check if clicked grid cell is occupied
-        // if yes, pick up item
-        // if right click + selectedItem != null
         if (eventData.button != PointerEventData.InputButton.Right) return;
         var targetGridCell = grid.GetTileGridPosition(Input.mousePosition);
         Debug.Log("grid cell clicked: " + targetGridCell);
         Debug.Log("pickedUpItem has value: " + pickedUpItem.HasValue);
         if (pickedUpItem.HasValue) AddItem(targetGridCell);
-        // if (IsOverlap())
-        // {
-        //     // swapping logic goes here, not now though
-        // }
-        Debug.Log("picked up item: " + pickedUpItem.width + " " + pickedUpItem.height);
+        else RemoveItem(targetGridCell);
     }
 
     private void AddItem(Vector2Int targetGridCell)
@@ -51,6 +58,12 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler
             pickedUpItem.ResetItemData();
             addItemSuccessful.Raise();
         }
+    }
+
+    private void RemoveItem(Vector2Int targetGridCell)
+    {
+        removedInventoryItem = grid.RemoveItem(targetGridCell.x, targetGridCell.y);
+        if (removedInventoryItem != null) rectTrans = removedInventoryItem.GetComponent<RectTransform>();
     }
 
     private bool IsOverlap() => false;

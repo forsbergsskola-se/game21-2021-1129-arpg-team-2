@@ -77,7 +77,7 @@ public class ItemGridIS : ScriptableObject
         return true;
     }
     
-    private InventoryItemIS RemoveItem(int x, int y)
+    public InventoryItemIS RemoveItem(int x, int y)
     {
         var toReturn = gridSlots[x, y];
         if (toReturn == null) return null;

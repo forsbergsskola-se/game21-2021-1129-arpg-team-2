@@ -45,13 +45,15 @@ public class WorldItemInteractIS : MonoBehaviour, IPointerDownHandler
 
     private void Update()
     {
-        if (isStickToCursor)
-        {
-            var mousePos = Input.mousePosition;
-            mousePos.z = cam.nearClipPlane + distanceFromCamera;
-            var mouseWorldPos = cam.ScreenToWorldPoint(mousePos);
-            transform.position = mouseWorldPos;
-        }
+        if (isStickToCursor) ItemStickToCursor();
+    }
+
+    private void ItemStickToCursor()
+    {
+        var mousePos = Input.mousePosition;
+        mousePos.z = cam.nearClipPlane + distanceFromCamera;
+        var mouseWorldPos = cam.ScreenToWorldPoint(mousePos);
+        transform.position = mouseWorldPos;
     }
 
     public void OnInventoryItemAddedSuccessful()
