@@ -14,6 +14,7 @@ public class particle_controller : MonoBehaviour
     public bool eyeEffect;
     public bool primChainEffect;
     public bool secArcaneEffect;
+    public bool secBallsEffect;
 
     //finding all particles attached to weapon
     public GameObject greenGlow;
@@ -25,6 +26,7 @@ public class particle_controller : MonoBehaviour
     public GameObject eyesEffect;
     public GameObject primaryChainsEffect;
     public GameObject secondaryArcaneEffect;
+    public GameObject secondaryBallsEffect;
 
     //creating gradients for color, setting these gradients later
     Gradient greenGrad = new();
@@ -70,10 +72,15 @@ public class particle_controller : MonoBehaviour
         {
             secondaryArcaneEffect.SetActive(true);
         }
+        else if (secBallsEffect)
+        {
+            secondaryBallsEffect.SetActive(true);
+        }
         else
         {
             eyesEffect.SetActive(false);
             secondaryArcaneEffect.SetActive(false);
+            secondaryBallsEffect.SetActive(false);
         }
        
 
@@ -87,6 +94,7 @@ public class particle_controller : MonoBehaviour
             particleColorEyes(greenGrad);
             particleColorChainsPrimary(greenGrad);
             particleColorArcane(greenGrad);
+            particleColorBalls(greenGrad);
 
         }
         else if (rGlow)
@@ -97,6 +105,7 @@ public class particle_controller : MonoBehaviour
             particleColorEyes(redGrad);           
             particleColorChainsPrimary(redGrad);
             particleColorArcane(redGrad);
+            particleColorBalls(redGrad);
         }
         else if (bGlow)
         {
@@ -106,6 +115,7 @@ public class particle_controller : MonoBehaviour
             particleColorEyes(blueGrad);           
             particleColorChainsPrimary(blueGrad);
             particleColorArcane(blueGrad);
+            particleColorBalls(blueGrad);
         }
         else if (yGlow)
         {
@@ -115,6 +125,7 @@ public class particle_controller : MonoBehaviour
             particleColorEyes(yellowGrad);         
             particleColorChainsPrimary(yellowGrad);
             particleColorArcane(yellowGrad);
+            particleColorBalls(yellowGrad);
         }
         else
         {
@@ -128,6 +139,7 @@ public class particle_controller : MonoBehaviour
             particleColorEyes(whiteGrad);        
             particleColorChainsPrimary(whiteGrad);
             particleColorArcane(whiteGrad);
+            particleColorBalls(whiteGrad);
         }
     }
 
@@ -178,6 +190,13 @@ public class particle_controller : MonoBehaviour
         colorFire.color = fireGrad;
         colorFireAdd.color = fireGrad;
         colorFireSmoke.color = fireGrad;
+    }
+
+    void particleColorBalls(Gradient ballsGrad)
+    {
+        ParticleSystem Balls = secondaryBallsEffect.GetComponent<ParticleSystem>();
+        var colorBalls = Balls.colorOverLifetime;
+        colorBalls.color = ballsGrad;
     }
 
     void particleColorChainsPrimary(Gradient primaryChainsGrad)
