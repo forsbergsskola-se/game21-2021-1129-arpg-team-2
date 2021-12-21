@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,15 +11,20 @@ using UnityEngine.EventSystems;
 
 public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler, IPointerExitHandler, IPointerEnterHandler
 {
+    [Header("Grid")]
     [SerializeField] private ItemGridIS grid;
     [SerializeField] private GameObject inventoryItem;
-    [SerializeField] private ItemDataIS pickedUpItem;
+    
+    [Header("Event")]
     [SerializeField] private GameEvent addItemSuccessful;
+    
+    [Header("Scriptable Objects")]
+    [SerializeField] private ItemDataIS pickedUpItem;
+    [SerializeField] private GameObjectIdListValue pickedUpWorldItemIds;
 
     private InventoryItemIS selectedItem;
     private InventoryItemIS overlapItem;
     private RectTransform rectTrans;
-    private List<int> pickedUpWorldItemIds = new List<int>();
 
     private bool isCursorInsideGrid;
 
@@ -37,7 +42,15 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler, IPointerExitHa
 
         if (Input.GetMouseButtonDown(1) && !isCursorInsideGrid && selectedItem != null)
         {
-            Debug.Log("DROP ITEM IN GAME WORLD");
+            var target = selectedItem.ItemData.WorldItemId;
+            Debug.Log("WORLD ID ON SELECTED: " + target);
+            var find = pickedUpWorldItemIds.List.FirstOrDefault(x => x.id == target);
+            Debug.Log("WORLD ITEM FROM SO: " + find?.worldItem);
+            Debug.Log("WORLD ITEM ID FROM SO: " + find?.id);
+            
+            find?.worldItem.SetActive(true);
+            selectedItem.gameObject.SetActive(false);
+            selectedItem = null;
         }
     }
 
@@ -107,12 +120,5 @@ public class ItemGridViewIS : MonoBehaviour, IPointerDownHandler, IPointerExitHa
     public void OnPointerExit(PointerEventData eventData)
     {
         isCursorInsideGrid = false;
-    }
-
-    public void OnReceiveInstanceId(int id)
-    {
-        Debug.Log("grid heard added world item id");
-        Debug.Log("id: " + id);
-        pickedUpWorldItemIds.Add(id);
     }
 }

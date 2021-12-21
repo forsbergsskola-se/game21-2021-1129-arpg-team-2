@@ -414,7 +414,6 @@ GameObject:
   - component: {fileID: 135933670}
   - component: {fileID: 135933672}
   - component: {fileID: 135933673}
-  - component: {fileID: 135933674}
   m_Layer: 5
   m_Name: Grid
   m_TagString: Untagged
@@ -496,6 +495,7 @@ MonoBehaviour:
   inventoryItem: {fileID: 5381171454971151918, guid: ae88c5c08aa03b247a603b8693366477, type: 3}
   pickedUpItem: {fileID: 11400000, guid: aa8d49444aaf5f04cb20e924f542ba42, type: 2}
   addItemSuccessful: {fileID: 11400000, guid: 5956288c44c48fa47a4ad004c71013be, type: 2}
+  pickedUpWorldItemIds: {fileID: 11400000, guid: 09a2f64d32300a141942448546b6fc36, type: 2}
 --- !u!225 &135933673
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -508,34 +508,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &135933674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 135933668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fb96bd75a489e147a5fe25b2894b073, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 830251aa985169145a2f9dce7cdbcdbd, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 135933672}
-        m_TargetAssemblyTypeName: ItemGridViewIS, Assembly-CSharp
-        m_MethodName: OnReceiveInstanceId
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &494903680
 GameObject:
   m_ObjectHideFlags: 0

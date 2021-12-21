@@ -12,16 +12,14 @@ public class InventoryItemIS : MonoBehaviour
     private ItemClassIS data;
     private int onGridPositionX;
     private int onGridPositionY;
-    private int worldItemId;
 
     public int OnGridPositionX { get => onGridPositionX; set => onGridPositionX = value; }
     public int OnGridPositionY { get => onGridPositionY; set => onGridPositionY = value; }
-    public int WorldItemId => worldItemId;
     public ItemClassIS ItemData => data;
 
     public void Set(ItemDataIS item)
     {
-        data = new ItemClassIS(item.width, item.height, item.itemIcon);
+        data = new ItemClassIS(item.width, item.height, item.itemIcon, item.WorldItemId);
         
         GetComponent<Image>().sprite = data.ItemIcon;
         var size = new Vector2
@@ -30,6 +28,5 @@ public class InventoryItemIS : MonoBehaviour
             y = data.Height * grid.TileSize
         };
         GetComponent<RectTransform>().sizeDelta = size;
-        // worldItemId = id;
     }
 }

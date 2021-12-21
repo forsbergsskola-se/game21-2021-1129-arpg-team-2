@@ -13,6 +13,9 @@ public class ItemDataIS : ScriptableObject
     private bool hasValue;
     public bool HasValue { get => hasValue; set => hasValue = value; }
     
+    private int? worldItemId;
+    public int? WorldItemId { get => worldItemId; set => worldItemId = value; }
+    
     // NOTE: Only use this when ItemData is used to pass dynamic values around
     public void ResetItemData()
     {
@@ -20,5 +23,6 @@ public class ItemDataIS : ScriptableObject
         height = 0;
         itemIcon = null;
         HasValue = false;
+        worldItemId = null;
     }
 }

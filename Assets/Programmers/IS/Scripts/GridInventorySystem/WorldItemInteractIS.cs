@@ -1,12 +1,16 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Controls how WorldItem interacts with event and/or user input
+/// </summary>
+
 public class WorldItemInteractIS : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private float distanceFromCamera;
     [SerializeField] private ItemDataIS pickedUpItem;
     [SerializeField] private ItemGridViewIS grid;
-    [SerializeField] private GameEventInt worldItemInstanceId;
+    [SerializeField] private GameObjectIdListValue pickedUpWorldItemIds;
 
     private GridVisibleControllerIS gridVisibleControl;
     private bool isStickToCursor;
@@ -42,6 +46,7 @@ public class WorldItemInteractIS : MonoBehaviour, IPointerDownHandler
         pickedUpItem.width = currentItem.width;
         pickedUpItem.itemIcon = currentItem.itemIcon;
         pickedUpItem.HasValue = true;
+        pickedUpItem.WorldItemId = gameObject.GetInstanceID();
     }
 
     private void Update()
@@ -59,7 +64,13 @@ public class WorldItemInteractIS : MonoBehaviour, IPointerDownHandler
 
     public void OnItemAddedSuccess()
     {
-        worldItemInstanceId.Raise(gameObject.GetInstanceID());
+        var test = new GameObjectIdClass(gameObject);
+        pickedUpWorldItemIds.AddToList(test);
+        Debug.Log("WORLD ITEM ID TO REMEMBER: " +gameObject.GetInstanceID());
+        // foreach (var id in pickedUpWorldItemIds.List)
+        // {
+        //     Debug.Log("picked up world item id from list: " + id);
+        // }
         gameObject.SetActive(false);
     }
 }
