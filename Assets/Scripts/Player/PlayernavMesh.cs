@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class PlayernavMesh : MonoBehaviour
@@ -31,7 +32,7 @@ public class PlayernavMesh : MonoBehaviour
     private void Update()
     {
         //navMeshAgent.destination = movePositionTransform.position;
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) 
         {
             attackOnGoing.BoolValue = false;
             movementTarget.Value = null;
