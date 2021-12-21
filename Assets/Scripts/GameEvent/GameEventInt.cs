@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// An int game event that emits an int value upon being raised
 /// </summary>
-[CreateAssetMenu(fileName = "IntEvent", menuName = "Game/Event")]
+[CreateAssetMenu(fileName = "IntEvent", menuName = "Game/Event/IntEvent")]
 public class GameEventInt : ScriptableObject
 {
     private List<GameEventIntListener> listeners = new List<GameEventIntListener>();

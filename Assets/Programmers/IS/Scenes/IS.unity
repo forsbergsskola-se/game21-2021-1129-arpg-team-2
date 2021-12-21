@@ -495,7 +495,7 @@ MonoBehaviour:
   grid: {fileID: 11400000, guid: b51b8152ccf03f1478cc95216e2ae505, type: 2}
   inventoryItem: {fileID: 5381171454971151918, guid: ae88c5c08aa03b247a603b8693366477, type: 3}
   pickedUpItem: {fileID: 11400000, guid: aa8d49444aaf5f04cb20e924f542ba42, type: 2}
-  addItemSuccessful: {fileID: 11400000, guid: b721d38adb20b5d4f890eb393337741d, type: 2}
+  addItemSuccessful: {fileID: 11400000, guid: 5956288c44c48fa47a4ad004c71013be, type: 2}
 --- !u!225 &135933673
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -517,10 +517,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 135933668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eb02a8b6797026499cf70cd9e091f50, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fb96bd75a489e147a5fe25b2894b073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 11fb6f5c5b2a1d54fa3a2a85a5f85dbb, type: 2}
+  Event: {fileID: 11400000, guid: 830251aa985169145a2f9dce7cdbcdbd, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
@@ -2327,10 +2327,6 @@ PrefabInstance:
       propertyPath: grid
       value: 
       objectReference: {fileID: 135933672}
-    - target: {fileID: 3558476749564402723, guid: 167c58e273e3ce843a1a930ab911db90, type: 3}
-      propertyPath: instanceId
-      value: 
-      objectReference: {fileID: 11400000, guid: 11fb6f5c5b2a1d54fa3a2a85a5f85dbb, type: 2}
     - target: {fileID: 3558476749564402732, guid: 167c58e273e3ce843a1a930ab911db90, type: 3}
       propertyPath: m_RootOrder
       value: 11
