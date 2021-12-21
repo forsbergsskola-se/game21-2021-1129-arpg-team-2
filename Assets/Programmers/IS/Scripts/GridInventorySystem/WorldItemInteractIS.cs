@@ -5,6 +5,7 @@ public class WorldItemInteractIS : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private float distanceFromCamera;
     [SerializeField] private ItemDataIS pickedUpItem;
+    [SerializeField] private ItemGridViewIS grid;
 
     private GridVisibleControllerIS gridVisibleControl;
     private bool isStickToCursor;
@@ -21,6 +22,8 @@ public class WorldItemInteractIS : MonoBehaviour, IPointerDownHandler
         if (eventData.button == PointerEventData.InputButton.Right && Input.GetKey(KeyCode.LeftControl))
         {
             Debug.Log("Quick add");
+            UpdatePickedUpItemData();
+            grid.OnQuickAdd();
         }
         else
         {
@@ -42,13 +45,15 @@ public class WorldItemInteractIS : MonoBehaviour, IPointerDownHandler
 
     private void Update()
     {
-        if (isStickToCursor)
-        {
-            var mousePos = Input.mousePosition;
-            mousePos.z = cam.nearClipPlane + distanceFromCamera;
-            var mouseWorldPos = cam.ScreenToWorldPoint(mousePos);
-            transform.position = mouseWorldPos;
-        }
+        if (isStickToCursor) ItemStickToCursor();
+    }
+
+    private void ItemStickToCursor()
+    {
+        var mousePos = Input.mousePosition;
+        mousePos.z = cam.nearClipPlane + distanceFromCamera;
+        var mouseWorldPos = cam.ScreenToWorldPoint(mousePos);
+        transform.position = mouseWorldPos;
     }
 
     public void OnInventoryItemAddedSuccessful()
