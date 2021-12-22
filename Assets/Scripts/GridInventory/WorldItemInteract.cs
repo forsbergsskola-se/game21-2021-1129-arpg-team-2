@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -61,8 +62,9 @@ public class WorldItemInteract : MonoBehaviour, IPointerDownHandler
         transform.position = mouseWorldPos;
     }
 
-    public void OnItemAddedSuccess()
+    public void OnItemAddedSuccess(int? id)
     {
+        if (id is null || id != gameObject.GetInstanceID()) return;
         var entry = new GameObjectIdClass(gameObject);
         pickedUpWorldItemIds.AddToList(entry);
         isStickToCursor = false;

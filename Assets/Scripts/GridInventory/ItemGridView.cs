@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -16,9 +17,9 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     [SerializeField] private GameObject inventoryItem;
     
     [Header("Event")]
-    [SerializeField] private GameEvent addItemSuccessful;
+    [SerializeField] private GameEventInt addItemSuccessful;
     
-    [Header("Scriptable Objects")]
+    [Header("Data passed to grid")]
     [SerializeField] private ItemData pickedUpItem;
     [SerializeField] private GameObjectIdListValue pickedUpWorldItemIds;
 
@@ -67,7 +68,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     {
         if (eventData.button != PointerEventData.InputButton.Right || !isCursorInsideGrid) return;
         var targetGridCell = grid.GetTileGridPosition(Input.mousePosition);
-        
+
         if (pickedUpItem.HasValue) AddItem(targetGridCell);
         else if (selectedItem != null) AddItem(targetGridCell, selectedItem);
         else RemoveItem(targetGridCell);
@@ -77,23 +78,34 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     {
         var item = Instantiate(inventoryItem);
         item.GetComponent<InventoryItem>().Set(pickedUpItem);
-        var success = grid.AddItem(item.GetComponent<InventoryItem>(), targetGridCell.x, targetGridCell.y);
+        var success = grid.AddItem(item.GetComponent<InventoryItem>(), targetGridCell.x, targetGridCell.y, ref overlapItem);
         if (success)
         {
             Debug.Log("Add new item successful");
+            selectedItem = null;
+            if (overlapItem != null) HandleItemOverlap();
+
+            addItemSuccessful.Raise(pickedUpItem.WorldItemId);
             pickedUpItem.ResetItemData();
-            addItemSuccessful.Raise();
         }
     }
-    
+
     private void AddItem(Vector2Int targetGridCell, InventoryItem existingItem)
     {
-        var success = grid.AddItem(existingItem, targetGridCell.x, targetGridCell.y);
+        var success = grid.AddItem(existingItem, targetGridCell.x, targetGridCell.y, ref overlapItem);
         if (success)
         {
             Debug.Log("Add back existing item succeeded");
             selectedItem = null;
+            if (overlapItem != null) HandleItemOverlap();
         }
+    }
+    
+    private void HandleItemOverlap()
+    {
+        selectedItem = overlapItem;
+        overlapItem = null;
+        rectTrans = selectedItem.GetComponent<RectTransform>();
     }
 
     private void RemoveItem(Vector2Int targetGridCell)
@@ -104,8 +116,16 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
 
     public void OnQuickAdd()
     {
-        var startSlot = grid.GetFirstAvailableSlot(pickedUpItem.width, pickedUpItem.height);
-        AddItem(startSlot);
+        // TODO: GetFirstAvailableSlot() is buggy and needs fixing; putting it in a try-catch for now to avoid exception
+        try
+        {
+            var startSlot = grid.GetFirstAvailableSlot(pickedUpItem.width, pickedUpItem.height);
+            AddItem(startSlot);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Grid operation error: Available space not found");
+        }
     }
     
     public void OnPointerEnter(PointerEventData eventData)
