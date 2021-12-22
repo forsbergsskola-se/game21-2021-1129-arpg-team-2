@@ -16,9 +16,9 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     [SerializeField] private GameObject inventoryItem;
     
     [Header("Event")]
-    [SerializeField] private GameEvent addItemSuccessful;
+    [SerializeField] private GameEventInt addItemSuccessful;
     
-    [Header("Scriptable Objects")]
+    [Header("Information passed to grid")]
     [SerializeField] private ItemData pickedUpItem;
     [SerializeField] private GameObjectIdListValue pickedUpWorldItemIds;
 
@@ -81,8 +81,8 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         if (success)
         {
             Debug.Log("Add new item successful");
+            addItemSuccessful.Raise(pickedUpItem.WorldItemId);
             pickedUpItem.ResetItemData();
-            addItemSuccessful.Raise();
         }
     }
     

@@ -10,7 +10,7 @@ public class GameEventInt : ScriptableObject
 {
     private List<GameEventIntListener> listeners = new List<GameEventIntListener>();
 
-    public void Raise(int value)
+    public void Raise(int? value)
     {
         for (var i = listeners.Count - 1; i >= 0; i--)
         {

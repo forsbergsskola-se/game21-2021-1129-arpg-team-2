@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3855800976685721684}
   - component: {fileID: 3855800976685721685}
   - component: {fileID: 3855800976685721682}
-  - component: {fileID: 3855800976685721683}
   - component: {fileID: 3855800976685721680}
+  - component: {fileID: 435217135}
   m_Layer: 0
   m_Name: WorldItem
   m_TagString: Untagged
@@ -136,7 +136,15 @@ MonoBehaviour:
   pickedUpItem: {fileID: 11400000, guid: aa8d49444aaf5f04cb20e924f542ba42, type: 2}
   grid: {fileID: 0}
   pickedUpWorldItemIds: {fileID: 11400000, guid: 09a2f64d32300a141942448546b6fc36, type: 2}
---- !u!114 &3855800976685721683
+--- !u!222 &3855800976685721680
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3855800976685721681}
+  m_CullTransparentMesh: 1
+--- !u!114 &435217135
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,7 +153,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3855800976685721681}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2f698b8af41f264abd87ae44d449008, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fb96bd75a489e147a5fe25b2894b073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: 5956288c44c48fa47a4ad004c71013be, type: 2}
@@ -155,7 +163,7 @@ MonoBehaviour:
       - m_Target: {fileID: 3855800976685721682}
         m_TargetAssemblyTypeName: WorldItemInteract, Assembly-CSharp
         m_MethodName: OnItemAddedSuccess
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -164,11 +172,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!222 &3855800976685721680
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3855800976685721681}
-  m_CullTransparentMesh: 1
