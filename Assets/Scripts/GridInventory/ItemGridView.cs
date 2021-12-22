@@ -73,6 +73,8 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     {
         if (eventData.button != PointerEventData.InputButton.Right || !isCursorInsideGrid) return;
         var targetGridCell = grid.GetTileGridPosition(Input.mousePosition);
+
+        Debug.Log("What is target grid cell: " + targetGridCell);
         
         if (pickedUpItem.HasValue) AddItem(targetGridCell);
         else if (selectedItem != null) AddItem(targetGridCell, selectedItem);
@@ -87,6 +89,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         var success = grid.AddItem(item.GetComponent<InventoryItem>(), targetGridCell.x, targetGridCell.y);
         if (success)
         {
+            Debug.Log("Add new item successful");
             pickedUpItem.ResetItemData();
             addItemSuccessful.Raise();
         }
@@ -98,7 +101,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         var success = grid.AddItem(existingItem, targetGridCell.x, targetGridCell.y);
         if (success)
         {
-            Debug.Log("add back existing item succeeded");
+            Debug.Log("Add back existing item succeeded");
             selectedItem = null;
         }
     }

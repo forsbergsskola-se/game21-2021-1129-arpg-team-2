@@ -16,7 +16,7 @@ public class XpUIController : MonoBehaviour
 
       currentFill = NormilizeXp();
       
-      Debug.Log(currentFill);
+      // Debug.Log(currentFill);
 
       if (currentFill > previousFill)
       {
