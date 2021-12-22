@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -21,8 +22,8 @@ public class ItemGrid : ScriptableObject
     public int Height => height;
 
     private InventoryItem[,] gridSlots;
-    private InventoryItem overlapItem;
-    private InventoryItem selectedItem;
+    // private InventoryItem overlapItem;
+    // private InventoryItem selectedItem;
     private Vector2 positionOnGrid;
     private Vector2Int tileGridPosition;
 
@@ -33,12 +34,12 @@ public class ItemGrid : ScriptableObject
         rectTrans.sizeDelta = size;
     }
 
-    public bool AddItem(InventoryItem itemToAdd, int posX, int posY)
+    public bool AddItem(InventoryItem itemToAdd, int posX, int posY, ref InventoryItem overlapItem)
     {
         
         if (IsItemOutsideInventory(posX, posY, itemToAdd.ItemData.Width, itemToAdd.ItemData.Height)) return false;
         
-        if (IsItemOverlap(posX, posY, itemToAdd.ItemData.Width, itemToAdd.ItemData.Height))
+        if (IsItemOverlap(posX, posY, itemToAdd.ItemData.Width, itemToAdd.ItemData.Height, ref overlapItem))
         {
             overlapItem = null;
             return false;
@@ -88,7 +89,7 @@ public class ItemGrid : ScriptableObject
         }
     }
 
-    private bool IsItemOverlap(int posX, int posY, int itemWidth, int itemHeight)
+    private bool IsItemOverlap(int posX, int posY, int itemWidth, int itemHeight, ref InventoryItem overlapItem)
     {
         for (var i = 0; i < itemWidth; i++)
         {
@@ -139,9 +140,6 @@ public class ItemGrid : ScriptableObject
 
     internal Vector2Int GetFirstAvailableSlot(int itemWidth, int itemHeight)
     {
-        // TODO:
-        // - Test with multiple items already existing in inventory
-        // - Handle edge case of non 1x1 item + only one space available at the very end of grid
         Vector2Int startPosition = new Vector2Int();
         var cellNeeded = itemWidth * itemHeight;
         var availableCell = 0;
@@ -153,7 +151,7 @@ public class ItemGrid : ScriptableObject
                 if (j > itemHeight) j = 0;
                 if (i == 0 && j == 0) startPosition = new Vector2Int(x, y);
                 
-                Debug.Log($"grid slot {x}, {y} : {gridSlots[x,y]}");
+                // Debug.Log($"grid slot {x}, {y} : {gridSlots[x,y]}");
                 
                 if (gridSlots[x + i, y + j] == null)
                 {
