@@ -42,10 +42,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     {
         ItemIconStickToCursor();
 
-        if (Input.GetMouseButtonDown(1) && !isCursorInsideGrid && selectedItem != null)
-        {
-            DropItemNextToPlayer();
-        }
+        if (Input.GetMouseButtonDown(1) && !isCursorInsideGrid && selectedItem != null) DropItemNextToPlayer();
     }
 
     private void DropItemNextToPlayer()
@@ -63,18 +60,13 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
 
     private void ItemIconStickToCursor()
     {
-        if (selectedItem != null)
-        {
-            rectTrans.position = Input.mousePosition;
-        }
+        if (selectedItem != null) rectTrans.position = Input.mousePosition;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         if (eventData.button != PointerEventData.InputButton.Right || !isCursorInsideGrid) return;
         var targetGridCell = grid.GetTileGridPosition(Input.mousePosition);
-
-        Debug.Log("What is target grid cell: " + targetGridCell);
         
         if (pickedUpItem.HasValue) AddItem(targetGridCell);
         else if (selectedItem != null) AddItem(targetGridCell, selectedItem);
@@ -83,7 +75,6 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
 
     private void AddItem(Vector2Int targetGridCell)
     {
-        Debug.Log("Add new item is hit");
         var item = Instantiate(inventoryItem);
         item.GetComponent<InventoryItem>().Set(pickedUpItem);
         var success = grid.AddItem(item.GetComponent<InventoryItem>(), targetGridCell.x, targetGridCell.y);
@@ -97,7 +88,6 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     
     private void AddItem(Vector2Int targetGridCell, InventoryItem existingItem)
     {
-        Debug.Log("Add back existing item is hit");
         var success = grid.AddItem(existingItem, targetGridCell.x, targetGridCell.y);
         if (success)
         {
@@ -108,7 +98,6 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
 
     private void RemoveItem(Vector2Int targetGridCell)
     {
-        Debug.Log("Remove item is hit");
         selectedItem = grid.RemoveItem(targetGridCell.x, targetGridCell.y);
         if (selectedItem != null) rectTrans = selectedItem.GetComponent<RectTransform>();
     }

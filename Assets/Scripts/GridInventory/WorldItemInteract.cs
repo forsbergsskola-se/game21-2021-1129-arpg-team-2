@@ -65,6 +65,7 @@ public class WorldItemInteract : MonoBehaviour, IPointerDownHandler
     {
         var entry = new GameObjectIdClass(gameObject);
         pickedUpWorldItemIds.AddToList(entry);
+        isStickToCursor = false;
         gameObject.SetActive(false);
     }
 }
