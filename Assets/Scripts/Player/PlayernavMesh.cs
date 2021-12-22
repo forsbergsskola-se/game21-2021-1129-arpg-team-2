@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(NavMeshAgent))]
 public class PlayernavMesh : MonoBehaviour
 {
-
+    
     [SerializeField] private Vector3Value playerPosition;
     [SerializeField] private Vector3Value playerStartPosition;
     [SerializeField] private Weapon weapon;
@@ -15,8 +15,8 @@ public class PlayernavMesh : MonoBehaviour
     [SerializeField] private BooleanValue attackOnGoing;
     private NavMeshAgent navMeshAgent;
     private RaycastHit hit;
-    
-    
+    Animator animator;
+
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -27,6 +27,7 @@ public class PlayernavMesh : MonoBehaviour
     private void Start()
     {
         playerStartPosition.Vector3 = transform.position;
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -58,6 +59,7 @@ public class PlayernavMesh : MonoBehaviour
                     navMeshAgent.destination = hit.point;
                     navMeshAgent.stoppingDistance = 1;
                     movementTarget.Value = null;
+                    
                 }
             }
         }
