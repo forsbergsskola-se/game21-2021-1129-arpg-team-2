@@ -33,7 +33,7 @@ public class PlayernavMesh : MonoBehaviour
     private void Update()
     {
         //navMeshAgent.destination = movePositionTransform.position;
-        if (Input.GetMouseButtonDown(0) && EventSystem.current.IsPointerOverGameObject())
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             attackOnGoing.BoolValue = false;
             movementTarget.Value = null;
