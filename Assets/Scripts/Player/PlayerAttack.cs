@@ -17,26 +17,34 @@ public class PlayerAttack : MonoBehaviour, IAttack
     private IDamageable attackTarget;
     private GameObjectValue defaultValue;
 
+    Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
     private void Update()
     {
         if (Input.GetMouseButtonDown(0) && movementTarget.Value != null)
         {
             StopAllCoroutines();
-            
+
             if (movementTarget.Value.GetComponent<Entity>() is IDamageable && IsInWeaponRange())
             {
                 attackTarget = movementTarget.Value.GetComponent<Entity>();
                 StartCoroutine(AttackOnInterval(attackTarget));
-            }    
+            }
         }
 
         else if (IsInWeaponRange() && !attackOnGoing.BoolValue && movementTarget.Value.TryGetComponent(out IDamageable entity))
         {
             attackTarget = entity;
             StartCoroutine(AttackOnInterval(attackTarget));
+            animator.SetBool("Is attacking", true);
         }
 
         else if (!IsInWeaponRange() && attackOnGoing.BoolValue) StopAttacking();
+        else animator.SetBool("Is attacking", false);
     }
 
     private void StopAttacking()
