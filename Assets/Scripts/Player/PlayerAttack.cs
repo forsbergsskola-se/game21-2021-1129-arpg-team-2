@@ -14,6 +14,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
     [SerializeField] private BooleanValue attackOnGoing;
     [SerializeField] private GameObjectValue movementTarget;
 
+
     private IDamageable attackTarget;
     private GameObjectValue defaultValue;
 
