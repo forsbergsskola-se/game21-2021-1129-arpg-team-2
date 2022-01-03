@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -9,8 +10,7 @@ public class XpUIController : MonoBehaviour
    private float previousFill;
    private float currentFill;
    private float fillSmoothness = 0.008f;
-   
-   
+
    private void LateUpdate()
    {
       previousFill = xpBar.fillAmount;
