@@ -10,6 +10,7 @@ public class XpUIController : MonoBehaviour
    private float currentFill;
    private float fillSmoothness = 0.008f;
    
+   
    private void LateUpdate()
    {
       previousFill = xpBar.fillAmount;
