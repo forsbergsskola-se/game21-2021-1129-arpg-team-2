@@ -22,15 +22,17 @@ public class PlayerAnimationController : MonoBehaviour
         {
             animator.SetBool("Is Running", true);
         }
-      /*  else if (currentSpeed >0 && currentSpeed < 7)
-        {
-            animator.SetBool("Is Walking", true);
-        }
-      */
         else
         {
             animator.SetBool("Is Running", false);
-           // animator.SetBool("Is Walking", false);
         }
+    }
+    public void OnPlayerAttack()
+    {
+        animator.SetBool("Is attacking", true);
+    }
+    public void OnPlayerAttackStop()
+    {
+        animator.SetBool("Is attacking", false);
     }
 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class XpUIController : MonoBehaviour
@@ -9,25 +8,16 @@ public class XpUIController : MonoBehaviour
    private float previousFill;
    private float currentFill;
    private float fillSmoothness = 0.008f;
-   
-   
+
    private void LateUpdate()
    {
       previousFill = xpBar.fillAmount;
 
       currentFill = NormilizeXp();
       
-      // Debug.Log(currentFill);
-
-      if (currentFill > previousFill)
-      {
-         previousFill = Mathf.Min(previousFill + fillSmoothness, currentFill);
-      }
-      else if (currentFill < previousFill)
-      {
-         previousFill = Mathf.Max(previousFill - fillSmoothness, currentFill);
-      }
-   
+      if (currentFill > previousFill) previousFill = Mathf.Min(previousFill + fillSmoothness, currentFill);
+      else if (currentFill < previousFill) previousFill = Mathf.Max(previousFill - fillSmoothness, currentFill);
+      
       xpBar.fillAmount = previousFill;
    }
 
