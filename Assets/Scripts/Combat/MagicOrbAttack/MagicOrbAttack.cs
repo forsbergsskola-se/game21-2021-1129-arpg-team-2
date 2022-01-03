@@ -19,12 +19,13 @@ public class MagicOrbAttack : MonoBehaviour {
         StartCoroutine(MoveOrbToTarget());
     }
     
+    //Later add new script to female enemy and call following method with target.transform instead of player referenced.
     private IEnumerator MoveOrbToTarget() {
         float progress = 0;
-        while (progress < orbLerpTime) {
-            progress += Time.deltaTime;
+        while (progress < 1 && createdOrb != null) {
+            progress += Time.deltaTime / orbLerpTime;
             createdOrb.transform.position =
-                Vector3.Lerp(createdOrb.transform.position, player.transform.position, progress);
+                Vector3.Lerp(orbSpawnPosition.transform.position, player.transform.position, progress);
             yield return 0;
         }
     }

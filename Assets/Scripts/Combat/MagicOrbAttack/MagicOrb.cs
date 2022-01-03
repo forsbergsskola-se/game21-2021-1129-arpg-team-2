@@ -8,7 +8,8 @@ public class MagicOrb : MonoBehaviour {
         //StartCoroutine(Lifetime());
     }
 
-    private void OnCollisionEnter(Collision other) {
+    private void OnTriggerEnter(Collider other) {
+        Debug.Log("Col");
         Destroy(this.gameObject);
     }
 
