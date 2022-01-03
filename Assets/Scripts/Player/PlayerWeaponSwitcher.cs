@@ -15,7 +15,6 @@ public class PlayerWeaponSwitcher : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) AssignWeapon(primary);
         else if (Input.GetKeyDown(KeyCode.Alpha2)) AssignWeapon(secondary);
-       
     }
 
     private void AssignWeapon(Weapon weapon)
