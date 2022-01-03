@@ -15,6 +15,10 @@ public class MagicOrbAttack : MonoBehaviour {
          createdOrb = Instantiate(magicOrbPrefab, orbSpawnPosition.transform.position, quaternion.identity, orbSpawnPosition.transform);
     }
 
+    private void LaunchOrb() {
+        StartCoroutine(MoveOrbToTarget());
+    }
+    
     private IEnumerator MoveOrbToTarget() {
         float progress = 0;
         while (progress < orbLerpTime) {
@@ -23,9 +27,5 @@ public class MagicOrbAttack : MonoBehaviour {
                 Vector3.Lerp(createdOrb.transform.position, player.transform.position, progress);
             yield return 0;
         }
-    }
-
-    private void LaunchOrb() {
-        StartCoroutine(MoveOrbToTarget());
     }
 }

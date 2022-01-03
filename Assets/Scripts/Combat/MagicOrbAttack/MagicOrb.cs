@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class MagicOrb : MonoBehaviour {
     private void Start() {
-        StartCoroutine(Lifetime());
+        //StartCoroutine(Lifetime());
+    }
+
+    private void OnCollisionEnter(Collision other) {
+        Destroy(this.gameObject);
     }
 
     private IEnumerator Lifetime() {
