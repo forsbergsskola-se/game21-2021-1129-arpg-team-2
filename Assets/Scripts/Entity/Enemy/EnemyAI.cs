@@ -166,9 +166,6 @@ public class EnemyAI : MonoBehaviour
         isInPatrolState = false;
         ratAnimator.SetBool("isInPatrolState", true);
         isStartPositionReset = false;
-
-
-
     }
 
     private void AttackPosition()
