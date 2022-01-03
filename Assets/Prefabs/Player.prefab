@@ -72488,6 +72488,7 @@ GameObject:
   - component: {fileID: 905321145}
   - component: {fileID: 905321151}
   - component: {fileID: 421204489}
+  - component: {fileID: 1412212245}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -72651,7 +72652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: 23f69430033372442b2eec1256acb110, type: 2}
-  weapon: {fileID: 11400000, guid: 49e3fb9430814444795772bb521b70fb, type: 2}
+  weapon: {fileID: 11400000, guid: 36c271a5e41da8f4bb6f1cec0b5763e5, type: 2}
   attackSound: {fileID: 4032229772199897194}
   onPlayerAttack: {fileID: 11400000, guid: a08252074eef29946a542ffb1588ea97, type: 2}
   attackOnGoing: {fileID: 11400000, guid: 50f05ec6bf4f6544abb4034fa1b11666, type: 2}
@@ -72670,7 +72671,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
   playerStartPosition: {fileID: 11400000, guid: 9f75e7794d7530d41b81493a936d17a5, type: 2}
-  weapon: {fileID: 11400000, guid: 49e3fb9430814444795772bb521b70fb, type: 2}
+  weapon: {fileID: 11400000, guid: 36c271a5e41da8f4bb6f1cec0b5763e5, type: 2}
   movementTarget: {fileID: 11400000, guid: 3822b48aecca15341a5d2a736bc7ac74, type: 2}
   stopFrontOfGateDistance: {fileID: 11400000, guid: 069304486c538450c84c063c7a9dd1e8, type: 2}
   attackOnGoing: {fileID: 11400000, guid: 50f05ec6bf4f6544abb4034fa1b11666, type: 2}
@@ -72827,6 +72828,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSpeed: 0
+--- !u!114 &1412212245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032229772199897188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c462fbc9904d55944a31bdddad2b7bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primary: {fileID: 11400000, guid: 49e3fb9430814444795772bb521b70fb, type: 2}
+  secondary: {fileID: 11400000, guid: ab06ab52cdbb72f40833de30b38fb7a1, type: 2}
+  current: {fileID: 11400000, guid: 36c271a5e41da8f4bb6f1cec0b5763e5, type: 2}
 --- !u!1001 &99850831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72884,11 +72900,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6fda3df95dc98d49a3a71e52f1b41b2, type: 3}
---- !u!4 &6502182839580168076 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6502182839619065283, guid: c6fda3df95dc98d49a3a71e52f1b41b2, type: 3}
-  m_PrefabInstance: {fileID: 99850831}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &919132149120935710 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c6fda3df95dc98d49a3a71e52f1b41b2, type: 3}
@@ -72902,6 +72913,11 @@ Transform:
 --- !u!4 &5742672707788140195 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3480699329000672020, guid: c6fda3df95dc98d49a3a71e52f1b41b2, type: 3}
+  m_PrefabInstance: {fileID: 99850831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6502182839580168076 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6502182839619065283, guid: c6fda3df95dc98d49a3a71e52f1b41b2, type: 3}
   m_PrefabInstance: {fileID: 99850831}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &717050028
