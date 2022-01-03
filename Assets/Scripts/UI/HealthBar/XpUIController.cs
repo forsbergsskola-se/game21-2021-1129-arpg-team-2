@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class XpUIController : MonoBehaviour
@@ -17,17 +15,9 @@ public class XpUIController : MonoBehaviour
 
       currentFill = NormilizeXp();
       
-      // Debug.Log(currentFill);
-
-      if (currentFill > previousFill)
-      {
-         previousFill = Mathf.Min(previousFill + fillSmoothness, currentFill);
-      }
-      else if (currentFill < previousFill)
-      {
-         previousFill = Mathf.Max(previousFill - fillSmoothness, currentFill);
-      }
-   
+      if (currentFill > previousFill) previousFill = Mathf.Min(previousFill + fillSmoothness, currentFill);
+      else if (currentFill < previousFill) previousFill = Mathf.Max(previousFill - fillSmoothness, currentFill);
+      
       xpBar.fillAmount = previousFill;
    }
 
