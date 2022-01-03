@@ -27,7 +27,7 @@ public class AttackBehaviour : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        entityAttack= animator.GetComponent<EntityAttack>();
+        entityAttack = animator.GetComponent<EntityAttack>();
         agent = animator.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
