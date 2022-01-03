@@ -9,6 +9,7 @@ public class KillTriggeredGate : MonoBehaviour {
     private Animator doorAnimation;
     private int initialEnemiesInRoom;
     private bool gateIsLocked;
+    public bool GateIsLocked => gateIsLocked;
     
     private void Start()
     {
