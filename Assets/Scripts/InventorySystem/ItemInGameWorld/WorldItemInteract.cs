@@ -42,7 +42,7 @@ public class WorldItemInteract : MonoBehaviour, IPointerDownHandler
     private void UpdatePickedUpItemData()
     {
         var currentItem = GetComponent<WorldItem>().Item;
-        pickedUpItem.SetItemData(currentItem.InventoryItemIcon, currentItem.InventoryItemWidth, currentItem.InventoryItemHeight, currentItem.ItemType, currentItem.Description, true);
+        pickedUpItem.SetItemData(currentItem.InventoryItemIcon, currentItem.InventoryItemWidth, currentItem.InventoryItemHeight, currentItem.ItemType, currentItem.Description, true, (int)currentItem.SubType);
     }
 
     private void Update()

@@ -24,6 +24,9 @@ public abstract class BaseItem : ScriptableObject
 
     [SerializeField] private ItemType itemType;
     public ItemType ItemType { get => itemType; private set => itemType = value; }
+
+    private int itemSubType;
+    public int ItemSubType => itemSubType;
     
     [Header("Flavour text description")]
     [TextArea(15, 20)]
@@ -43,7 +46,7 @@ public abstract class BaseItem : ScriptableObject
         ItemType = ItemType.None;
     }
 
-    public void SetItemData(Sprite sprite, int width, int height, ItemType itemType, string description, bool hasValue)
+    public void SetItemData(Sprite sprite, int width, int height, ItemType itemType, string description, bool hasValue, int itemSubType)
     {
         InventoryItemWidth = width;
         InventoryItemHeight = height;
@@ -51,6 +54,7 @@ public abstract class BaseItem : ScriptableObject
         ItemType = itemType;
         Description = description;
         HasValue = hasValue;
+        this.itemSubType = itemSubType;
     }
 
 }

@@ -49,8 +49,9 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
 
     private void DropItemNextToPlayer()
     {
-        var target = selectedItem.ItemData.Type;
-        var find = spawnWorldItems.FirstOrDefault(x => x.Item.ItemType == target);
+        var targetType = selectedItem.ItemData.Type;
+        var targetSubType = selectedItem.ItemData.SubType;
+        var find = spawnWorldItems.FirstOrDefault(x => x.Item.ItemType == targetType && (int)x.Item.SubType == targetSubType);
 
         find.gameObject.transform.position = itemDrop.transform.position;
         find.gameObject.SetActive(true);
@@ -81,7 +82,6 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         var success = grid.AddItem(item.GetComponent<InventoryItem>(), targetGridCell.x, targetGridCell.y, ref overlapItem);
         if (success)
         {
-            Debug.Log("Add new item successful");
             selectedItem = null;
             if (overlapItem != null) HandleItemOverlap();
             
@@ -95,7 +95,6 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         var success = grid.AddItem(existingItem, targetGridCell.x, targetGridCell.y, ref overlapItem);
         if (success)
         {
-            Debug.Log("Add back existing item succeeded");
             selectedItem = null;
             if (overlapItem != null) HandleItemOverlap();
         }
