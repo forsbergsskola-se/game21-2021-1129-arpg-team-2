@@ -23,5 +23,6 @@ public class PlayerWeaponSwitcher : MonoBehaviour
         current.Power = weapon.Power;
         current.Range = weapon.Range;
         current.Ranged = weapon.Ranged;
+        current.Projectile = weapon.Projectile;
     }
 }

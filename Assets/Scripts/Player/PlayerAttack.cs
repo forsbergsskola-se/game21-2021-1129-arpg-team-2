@@ -64,13 +64,12 @@ public class PlayerAttack : MonoBehaviour, IAttack
         
         return false;
     }
-      
 
     public void Attack(IDamageable thisTarget)
     {
         attackSound.Play();
         float damage = playerStats.Attack + weapon.Power;
-        thisTarget.TakeDamage(damage);
+        if(!weapon.Ranged) thisTarget.TakeDamage(damage);
         onPlayerAttack.Raise();
     }
 
