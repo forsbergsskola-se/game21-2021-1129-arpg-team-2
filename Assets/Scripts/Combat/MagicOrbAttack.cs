@@ -11,16 +11,20 @@ public class MagicOrbAttack : MonoBehaviour {
     private GameObject createdOrb;
 
 
-    private void CreateOrb() {
+    private void CreateOrb()
+    {
          createdOrb = Instantiate(magicOrbPrefab, orbSpawnPosition.transform.position, quaternion.identity, orbSpawnPosition.transform);
+         createdOrb.transform.localScale = new Vector3(0.25f,0.25f,0.25f);
     }
 
-    private void LaunchOrb() {
+    private void LaunchOrb()
+    {
         StartCoroutine(MoveOrbToTarget());
     }
     
     //Later add new script to female enemy and call following method with target.transform instead of player referenced.
-    private IEnumerator MoveOrbToTarget() {
+    private IEnumerator MoveOrbToTarget()
+    {
         float progress = 0;
         while (progress < 1 && createdOrb != null) {
             progress += Time.deltaTime / orbLerpTime;
