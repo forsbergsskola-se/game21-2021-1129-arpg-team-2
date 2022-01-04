@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6374416041243873055}
   - component: {fileID: 2651879814086730691}
   - component: {fileID: 5544109386945662236}
+  - component: {fileID: 8925377839324775085}
   m_Layer: 0
   m_Name: Palisade_wall2
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8280915468429570833}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.3888931, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3931227967694063408, guid: d004253f1140946ff8ced96fdad4a0b9, type: 3}
+  - {fileID: 2100000, guid: 9900833e8b671a74296918854908576f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8925377839324775085
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8280915468429570833}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.2384005, y: 4.001418, z: 0.5549771}
+  m_Center: {x: -1.4157091, y: 0.28540462, z: -0.0044442886}

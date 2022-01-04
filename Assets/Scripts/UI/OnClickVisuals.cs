@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 
 public class OnClickVisuals : MonoBehaviour
 {
-    [SerializeField] private BooleanValue isLocked;
     public GameObject myPrefabValid;
     public GameObject myPrefabInvalid;
     public AudioSource ValidMove;
@@ -55,11 +54,7 @@ public class OnClickVisuals : MonoBehaviour
             }
             else if (hit.transform.CompareTag("Gate"))
             {
-                if (isLocked.BoolValue)
-                {
-                  Gate.Play();  
-                }
-                
+                Gate.Play();
             }
             else
             {
