@@ -15,13 +15,9 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     [Header("Grid")]
     [SerializeField] private ItemGrid grid;
     [SerializeField] private GameObject inventoryItem;
-    
-    // [Header("Event")]
-    // [SerializeField] private GameEventInt addItemSuccessful;
-    
+
     [Header("Data passed to grid")]
     [SerializeField] private ConsumableItemData pickedUpConsumableItem;
-    // [SerializeField] private GameObjectIdListValue pickedUpWorldItemIds;
     [SerializeField] internal GameObject currentWorldItem;
 
     private InventoryItem selectedItem;
