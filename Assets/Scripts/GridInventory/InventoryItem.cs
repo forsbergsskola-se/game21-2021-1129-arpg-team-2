@@ -19,7 +19,7 @@ public class InventoryItem : MonoBehaviour
 
     public void Set(ItemData item)
     {
-        data = new ItemClass(item.width, item.height, item.itemIcon, item.WorldItemId);
+        data = new ItemClass(item);
         
         GetComponent<Image>().sprite = data.ItemIcon;
         var size = new Vector2

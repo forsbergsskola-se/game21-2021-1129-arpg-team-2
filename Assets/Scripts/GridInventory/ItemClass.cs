@@ -10,18 +10,18 @@ public class ItemClass
     private int width;
     private int height;
     private Sprite itemIcon;
-    private int? worldItemId;
+    private ItemData data;
 
     public int Width => width;
     public int Height => height;
     public Sprite ItemIcon => itemIcon;
-    public int? WorldItemId => worldItemId;
+    public ItemData Data => data;
 
-    public ItemClass(int width, int height, Sprite itemIcon, int? worldItemId)
+    public ItemClass(ItemData data)
     {
-        this.width = width;
-        this.height = height;
-        this.itemIcon = itemIcon;
-        this.worldItemId = worldItemId;
+        this.data = data;
+        width = data.width;
+        height = data.height;
+        itemIcon = data.itemIcon;
     }
 }

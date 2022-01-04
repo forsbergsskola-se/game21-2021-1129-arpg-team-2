@@ -16,12 +16,13 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     [SerializeField] private ItemGrid grid;
     [SerializeField] private GameObject inventoryItem;
     
-    [Header("Event")]
-    [SerializeField] private GameEventInt addItemSuccessful;
+    // [Header("Event")]
+    // [SerializeField] private GameEventInt addItemSuccessful;
     
     [Header("Data passed to grid")]
     [SerializeField] private ItemData pickedUpItem;
-    [SerializeField] private GameObjectIdListValue pickedUpWorldItemIds;
+    // [SerializeField] private GameObjectIdListValue pickedUpWorldItemIds;
+    [SerializeField] internal GameObject currentWorldItem;
 
     private InventoryItem selectedItem;
     private InventoryItem overlapItem;
@@ -30,6 +31,8 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     private bool isCursorInsideGrid;
     private ItemDropNextToPlayer itemDrop;
 
+    private WorldItem[] spawnWorldItems;
+
     private void Awake()
     {
         grid.rectTrans = GetComponent<RectTransform>();
@@ -37,6 +40,8 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         pickedUpItem.ResetItemData();
         gameObject.SetActive(false);
         itemDrop = FindObjectOfType<ItemDropNextToPlayer>();
+        
+        spawnWorldItems = FindObjectsOfType<WorldItem>();
     }
 
     private void Update()
@@ -48,15 +53,22 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
 
     private void DropItemNextToPlayer()
     {
-        var target = selectedItem.ItemData.WorldItemId;
-        var find = pickedUpWorldItemIds.List.FirstOrDefault(x => x.id == target);
+        var target = selectedItem.ItemData.Data.type.Type;
+        Debug.Log("what is target type:" + target);
+        var find = spawnWorldItems.FirstOrDefault(x => x.ItemData.type.Type == target);
 
-        find.worldItem.transform.position = itemDrop.transform.position;
-        find.worldItem.SetActive(true);
-        pickedUpWorldItemIds.RemoveFromList(find);
-            
+        find.gameObject.transform.position = itemDrop.transform.position;
+        find.gameObject.SetActive(true);
         Destroy(selectedItem.gameObject);
         selectedItem = null;
+        // var find = pickedUpWorldItemIds.List.FirstOrDefault(x => x.id == target);
+        //
+        // find.worldItem.transform.position = itemDrop.transform.position;
+        // find.worldItem.SetActive(true);
+        // pickedUpWorldItemIds.RemoveFromList(find);
+        //     
+        // Destroy(selectedItem.gameObject);
+        // selectedItem = null;
     }
 
     private void ItemIconStickToCursor()
@@ -85,7 +97,8 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
             selectedItem = null;
             if (overlapItem != null) HandleItemOverlap();
 
-            addItemSuccessful.Raise(pickedUpItem.WorldItemId);
+            // addItemSuccessful.Raise(pickedUpItem.WorldItemId);
+            currentWorldItem.GetComponent<WorldItemInteract>().OnItemAddSuccess();
             pickedUpItem.ResetItemData();
         }
     }

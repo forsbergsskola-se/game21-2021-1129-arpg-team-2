@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// NOTE; Deprecating this!!
 public class GameObjectIdClass
 {
     internal GameObject worldItem;

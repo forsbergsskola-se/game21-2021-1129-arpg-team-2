@@ -10,6 +10,8 @@ public class ItemData : ScriptableObject
     [SerializeField] internal int width;
     [SerializeField] internal int height;
     [SerializeField] internal Sprite itemIcon;
+    [SerializeField] internal ItemConsumable type;
+    
     private bool hasValue;
     public bool HasValue { get => hasValue; set => hasValue = value; }
     

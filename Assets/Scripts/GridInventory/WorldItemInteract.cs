@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,7 +10,6 @@ public class WorldItemInteract : MonoBehaviour, IPointerDownHandler
     [SerializeField] private float distanceFromCamera;
     [SerializeField] private ItemData pickedUpItem;
     [SerializeField] private ItemGridView grid;
-    [SerializeField] private GameObjectIdListValue pickedUpWorldItemIds;
 
     private GridVisibleController gridVisibleControl;
     private bool isStickToCursor;
@@ -28,11 +26,13 @@ public class WorldItemInteract : MonoBehaviour, IPointerDownHandler
         if (eventData.button == PointerEventData.InputButton.Right && Input.GetKey(KeyCode.LeftControl))
         {
             UpdatePickedUpItemData();
+            grid.currentWorldItem = gameObject;
             grid.OnQuickAdd();
         }
         else
         {
             gridVisibleControl.SetGridVisibility(true);
+            grid.currentWorldItem = gameObject;
             isStickToCursor = true;
             transform.LookAt(cam.transform);
             UpdatePickedUpItemData();
@@ -46,7 +46,6 @@ public class WorldItemInteract : MonoBehaviour, IPointerDownHandler
         pickedUpItem.width = currentItem.width;
         pickedUpItem.itemIcon = currentItem.itemIcon;
         pickedUpItem.HasValue = true;
-        pickedUpItem.WorldItemId = gameObject.GetInstanceID();
     }
 
     private void Update()
@@ -62,11 +61,8 @@ public class WorldItemInteract : MonoBehaviour, IPointerDownHandler
         transform.position = mouseWorldPos;
     }
 
-    public void OnItemAddedSuccess(int? id)
+    public void OnItemAddSuccess()
     {
-        if (id is null || id != gameObject.GetInstanceID()) return;
-        var entry = new GameObjectIdClass(gameObject);
-        pickedUpWorldItemIds.AddToList(entry);
         isStickToCursor = false;
         gameObject.SetActive(false);
     }
