@@ -5798,7 +5798,7 @@ GameObject:
   - component: {fileID: -8248166045112402509}
   - component: {fileID: 4869274128659477090}
   m_Layer: 6
-  m_Name: RatPlaceholder_save
+  m_Name: RatPlaceholder_Save
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5940,8 +5940,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63b68c201007f3543bf4d42394a9b014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charStats: {fileID: 0}
   maxHealth: 30
   entityDeath: {fileID: 11400000, guid: 7e9bb74333dc137449b2324eef6a787f, type: 2}
+  deathListner: {fileID: 0}
   currentHealth: {fileID: 0}
 --- !u!114 &6974413310255559945
 MonoBehaviour:
