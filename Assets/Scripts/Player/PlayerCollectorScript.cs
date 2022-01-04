@@ -10,7 +10,6 @@ public class PlayerCollectorScript : MonoBehaviour
     
     void Start()
     {
-        //coinCollect = GetComponent<AudioSource>();
         playersCoins.Int = 0;
     }
 
