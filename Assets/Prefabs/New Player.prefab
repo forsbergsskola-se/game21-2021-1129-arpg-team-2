@@ -38707,6 +38707,7 @@ Transform:
   m_Children:
   - {fileID: 5434785391168814593}
   - {fileID: 5541263699885343149}
+  - {fileID: 3574869477590034708}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -72918,6 +72919,82 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &8605684042268006405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3574869477590034708}
+  - component: {fileID: 6318811411324128037}
+  - component: {fileID: 8019959004106161772}
+  m_Layer: 0
+  m_Name: Shooter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3574869477590034708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605684042268006405}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.08, y: 1, z: 0.85}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5541263699580731525}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6318811411324128037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605684042268006405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023ed20b48ca8a64296265737a40fde8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 11400000, guid: 36c271a5e41da8f4bb6f1cec0b5763e5, type: 2}
+  target: {fileID: 11400000, guid: 3822b48aecca15341a5d2a736bc7ac74, type: 2}
+  shootDirection: {fileID: 11400000, guid: 593e7244c106d8346bb649981e692972, type: 2}
+--- !u!114 &8019959004106161772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605684042268006405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2f698b8af41f264abd87ae44d449008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: a08252074eef29946a542ffb1588ea97, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6318811411324128037}
+        m_TargetAssemblyTypeName: Shooter, Assembly-CSharp
+        m_MethodName: Shoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &5541263698296488425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76024,6 +76101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15efa2a8eb261cd4fb9b7b56d6aaf3e7, type: 3}
+--- !u!1 &4622923199693792443 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 15efa2a8eb261cd4fb9b7b56d6aaf3e7, type: 3}
+  m_PrefabInstance: {fileID: 5541263699268082154}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1646876203413834793 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6502182839619065283, guid: 15efa2a8eb261cd4fb9b7b56d6aaf3e7, type: 3}
@@ -76032,11 +76114,6 @@ Transform:
 --- !u!4 &5434785391168814593 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 15efa2a8eb261cd4fb9b7b56d6aaf3e7, type: 3}
-  m_PrefabInstance: {fileID: 5541263699268082154}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4622923199693792443 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 15efa2a8eb261cd4fb9b7b56d6aaf3e7, type: 3}
   m_PrefabInstance: {fileID: 5541263699268082154}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &5541263698596039573
