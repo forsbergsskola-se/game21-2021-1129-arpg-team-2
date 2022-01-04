@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 /// <summary>
-/// Controls how WorldItem interacts with event and/or user input
+/// Allows player to pick up WorldItem through 2 types of commands (right-click OR holding down left ctrl + right-click)
+/// Should be attached to an item prefab
 /// </summary>
 
 public class PickupWorldItem : MonoBehaviour, IPointerDownHandler
