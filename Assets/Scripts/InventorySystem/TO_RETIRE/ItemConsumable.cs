@@ -1,16 +1,20 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class ItemConsumable : Item
-{
-    public enum ConsumableType
-    {
-        Carrot,
-        Potato,
-        Potion
-    }
+///
+/// NOTE: RETIRE TARGET
+/// 
 
-    [SerializeField] private ConsumableType type;
-    public ConsumableType Type => type;
-}
+// [Serializable]
+// public class ItemConsumable : Item
+// {
+//     public enum ConsumableType
+//     {
+//         Carrot,
+//         Potato,
+//         Potion
+//     }
+//
+//     [SerializeField] private ConsumableType type;
+//     public ConsumableType Type => type;
+// }

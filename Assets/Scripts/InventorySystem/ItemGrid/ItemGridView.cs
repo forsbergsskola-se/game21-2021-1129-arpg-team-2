@@ -17,7 +17,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     [SerializeField] private GameObject inventoryItem;
 
     [Header("Data passed to grid")]
-    [SerializeField] private ConsumableItemData pickedUpConsumableItem;
+    [SerializeField] private BaseItem pickedUpItem;
     [SerializeField] internal GameObject currentWorldItem;
 
     private InventoryItem selectedItem;
@@ -33,7 +33,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     {
         grid.rectTrans = GetComponent<RectTransform>();
         grid.InitGrid();
-        pickedUpConsumableItem.ResetItemData();
+        pickedUpItem.ResetItemData();
         gameObject.SetActive(false);
         itemDrop = FindObjectOfType<ItemDropNextToPlayer>();
         
@@ -50,7 +50,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     private void DropItemNextToPlayer()
     {
         var target = selectedItem.ItemData.Type;
-        var find = spawnWorldItems.FirstOrDefault(x => x.ConsumableItemData.type.Type == target);
+        var find = spawnWorldItems.FirstOrDefault(x => x.Item.ItemType == target);
 
         find.gameObject.transform.position = itemDrop.transform.position;
         find.gameObject.SetActive(true);
@@ -68,7 +68,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         if (eventData.button != PointerEventData.InputButton.Right || !isCursorInsideGrid) return;
         var targetGridCell = grid.GetTileGridPosition(Input.mousePosition);
 
-        if (pickedUpConsumableItem.HasValue) AddItem(targetGridCell);
+        if (pickedUpItem.HasValue) AddItem(targetGridCell);
         else if (selectedItem != null) AddItem(targetGridCell, selectedItem);
         else RemoveItem(targetGridCell);
     }
@@ -76,17 +76,17 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     private void AddItem(Vector2Int targetGridCell)
     {
         var item = Instantiate(inventoryItem);
-        item.GetComponent<InventoryItem>().Set(pickedUpConsumableItem);
+        item.GetComponent<InventoryItem>().Set(pickedUpItem);
+
         var success = grid.AddItem(item.GetComponent<InventoryItem>(), targetGridCell.x, targetGridCell.y, ref overlapItem);
         if (success)
         {
             Debug.Log("Add new item successful");
             selectedItem = null;
             if (overlapItem != null) HandleItemOverlap();
-
-            // addItemSuccessful.Raise(pickedUpItem.WorldItemId);
+            
             currentWorldItem.GetComponent<WorldItemInteract>().OnItemAddSuccess();
-            pickedUpConsumableItem.ResetItemData();
+            pickedUpItem.ResetItemData();
         }
     }
 
@@ -119,7 +119,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         // TODO: GetFirstAvailableSlot() is buggy and needs fixing; putting it in a try-catch for now to avoid exception
         try
         {
-            var startSlot = grid.GetFirstAvailableSlot(pickedUpConsumableItem.width, pickedUpConsumableItem.height);
+            var startSlot = grid.GetFirstAvailableSlot(pickedUpItem.InventoryItemWidth, pickedUpItem.InventoryItemHeight);
             AddItem(startSlot);
         }
         catch (Exception e)

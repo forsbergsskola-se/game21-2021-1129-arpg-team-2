@@ -9,17 +9,17 @@ using UnityEngine.UI;
 public class InventoryItem : MonoBehaviour
 {
     [SerializeField] private ItemGrid grid;
-    private ItemClass data;
+    private ItemDataHolder data;
     private int onGridPositionX;
     private int onGridPositionY;
 
     public int OnGridPositionX { get => onGridPositionX; set => onGridPositionX = value; }
     public int OnGridPositionY { get => onGridPositionY; set => onGridPositionY = value; }
-    public ItemClass ItemData => data;
+    public ItemDataHolder ItemData => data;
 
-    public void Set(ConsumableItemData consumableItem)
+    public void Set(BaseItem item)
     {
-        data = new ItemClass(consumableItem);
+        data = new ItemDataHolder(item);
         
         GetComponent<Image>().sprite = data.ItemIcon;
         var size = new Vector2

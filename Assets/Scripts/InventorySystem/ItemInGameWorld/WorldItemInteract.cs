@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class WorldItemInteract : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private float distanceFromCamera;
-    [SerializeField] private ConsumableItemData pickedUpConsumableItem;
+    [SerializeField] private BaseItem pickedUpItem;
     [SerializeField] private ItemGridView grid;
 
     private GridVisibleController gridVisibleControl;
@@ -41,12 +41,8 @@ public class WorldItemInteract : MonoBehaviour, IPointerDownHandler
 
     private void UpdatePickedUpItemData()
     {
-        var currentItem = GetComponent<WorldItem>().ConsumableItemData;
-        pickedUpConsumableItem.height = currentItem.height;
-        pickedUpConsumableItem.width = currentItem.width;
-        pickedUpConsumableItem.itemIcon = currentItem.itemIcon;
-        pickedUpConsumableItem.HasValue = true;
-        pickedUpConsumableItem.type = currentItem.type;
+        var currentItem = GetComponent<WorldItem>().Item;
+        pickedUpItem.SetItemData(currentItem.InventoryItemIcon, currentItem.InventoryItemWidth, currentItem.InventoryItemHeight, currentItem.ItemType, currentItem.Description, true);
     }
 
     private void Update()

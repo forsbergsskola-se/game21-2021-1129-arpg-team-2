@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec99eb276cdca9b4eae85256b7284f94, type: 3}
+  m_Script: {fileID: 11500000, guid: 65723cde946cb1844a2243d9b8ae365a, type: 3}
   m_Name: PickedUpItem
   m_EditorClassIdentifier: 
-  width: 0
-  height: 0
-  itemIcon: {fileID: 0}
-  type:
-    type: 0
+  worldItemPrefab: {fileID: 0}
+  inventoryItemIcon: {fileID: 0}
+  inventoryItemWidth: 0
+  inventoryItemHeight: 0
+  itemType: 0
+  description: 
