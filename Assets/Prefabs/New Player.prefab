@@ -38682,7 +38682,6 @@ GameObject:
   - component: {fileID: 5541263699580731551}
   - component: {fileID: 5541263699580731536}
   - component: {fileID: 5541263699580731537}
-  - component: {fileID: 5541263699580731538}
   - component: {fileID: 5541263699580731539}
   - component: {fileID: 5541263699580731540}
   - component: {fileID: 5541263699580731541}
@@ -39027,21 +39026,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSpeed: 0
---- !u!114 &5541263699580731538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5541263699580731542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c462fbc9904d55944a31bdddad2b7bc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  primary: {fileID: 11400000, guid: 49e3fb9430814444795772bb521b70fb, type: 2}
-  secondary: {fileID: 11400000, guid: ab06ab52cdbb72f40833de30b38fb7a1, type: 2}
-  current: {fileID: 11400000, guid: 36c271a5e41da8f4bb6f1cec0b5763e5, type: 2}
 --- !u!114 &5541263699580731539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39054,6 +39038,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c462fbc9904d55944a31bdddad2b7bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerLevelUpChart: {fileID: 11400000, guid: 0e0ccba3320e0d6468a61b515f144c4c, type: 2}
+  levelSecAtt: 5
   primary: {fileID: 11400000, guid: 49e3fb9430814444795772bb521b70fb, type: 2}
   secondary: {fileID: 11400000, guid: ab06ab52cdbb72f40833de30b38fb7a1, type: 2}
   current: {fileID: 11400000, guid: 36c271a5e41da8f4bb6f1cec0b5763e5, type: 2}

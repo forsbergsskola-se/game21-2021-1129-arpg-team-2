@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class PlayerWeaponSwitcher : MonoBehaviour
 {
+    [Header("Stats")]
+    [SerializeField] private LevelUpChart playerLevelUpChart;
+
+    [SerializeField] private int levelSecAtt;
+    
     [Header("Weapons")]
     [SerializeField] private Weapon primary;
     [SerializeField] private Weapon secondary;
@@ -14,7 +19,7 @@ public class PlayerWeaponSwitcher : MonoBehaviour
     private void SwitchWeapons()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) AssignWeapon(primary);
-        else if (Input.GetKeyDown(KeyCode.Alpha2)) AssignWeapon(secondary);
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && playerLevelUpChart.CurrentLevel >= levelSecAtt) AssignWeapon(secondary);
     }
 
     private void AssignWeapon(Weapon weapon)
