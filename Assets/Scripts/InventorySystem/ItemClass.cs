@@ -10,18 +10,18 @@ public class ItemClass
     private int width;
     private int height;
     private Sprite itemIcon;
-    private ConsumableItemData data;
+    private ItemConsumable.ConsumableType type;
 
     public int Width => width;
     public int Height => height;
     public Sprite ItemIcon => itemIcon;
-    public ConsumableItemData Data => data;
+    public ItemConsumable.ConsumableType Type => type;
 
     public ItemClass(ConsumableItemData data)
     {
-        this.data = data;
         width = data.width;
         height = data.height;
         itemIcon = data.itemIcon;
+        type = data.type.Type;
     }
 }

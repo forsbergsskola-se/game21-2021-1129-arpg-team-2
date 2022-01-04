@@ -53,10 +53,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
 
     private void DropItemNextToPlayer()
     {
-        Debug.Log("what is selectedItem: " + selectedItem);
-        var target = selectedItem.ItemData.Data.type.Type;
-        
-        Debug.Log("what is target type:" + target);
+        var target = selectedItem.ItemData.Type;
         var find = spawnWorldItems.FirstOrDefault(x => x.ConsumableItemData.type.Type == target);
 
         find.gameObject.transform.position = itemDrop.transform.position;
