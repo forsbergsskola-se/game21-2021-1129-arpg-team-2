@@ -22,7 +22,6 @@ public class CoinSpawner : MonoBehaviour
         {
             if (coinPool != null)
             {
-                Debug.Log("There is a pool!");
                 var tempCoin = coinPool.pool.Pop();
                 tempCoin.SetActive(true);
                 tempCoin.transform.position = this.transform.position + offset;
