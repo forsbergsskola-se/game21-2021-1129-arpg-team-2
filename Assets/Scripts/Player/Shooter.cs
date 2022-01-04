@@ -8,7 +8,11 @@ public class Shooter : MonoBehaviour
     
     public void Shoot()
     {
-        var temp = Instantiate(weapon.Projectile, transform.position, Quaternion.identity);
-        shootDirection.Vector3 = (transform.position - target.Value.transform.position).normalized;
+        if (weapon.Ranged)
+        {
+            var temp = Instantiate(weapon.Projectile, transform.position, Quaternion.identity);
+            shootDirection.Vector3 = (transform.position - target.Value.transform.position).normalized;
+        }
+        
     }
 }
