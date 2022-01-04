@@ -11,11 +11,13 @@ public struct ItemDataHolder
     private int height;
     private Sprite itemIcon;
     private ItemType type;
+    private int subType;
 
     public int Width => width;
     public int Height => height;
     public Sprite ItemIcon => itemIcon;
     public ItemType Type => type;
+    public int SubType => subType;
 
     public ItemDataHolder(BaseItem data)
     {
@@ -23,5 +25,6 @@ public struct ItemDataHolder
         height = data.InventoryItemHeight;
         itemIcon = data.InventoryItemIcon;
         type = data.ItemType;
+        subType = data.ItemSubType;
     }
 }
