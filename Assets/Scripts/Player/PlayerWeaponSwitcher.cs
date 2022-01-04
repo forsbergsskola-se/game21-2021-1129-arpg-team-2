@@ -15,7 +15,6 @@ public class PlayerWeaponSwitcher : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) AssignWeapon(primary);
         else if (Input.GetKeyDown(KeyCode.Alpha2)) AssignWeapon(secondary);
-       
     }
 
     private void AssignWeapon(Weapon weapon)
@@ -24,5 +23,6 @@ public class PlayerWeaponSwitcher : MonoBehaviour
         current.Power = weapon.Power;
         current.Range = weapon.Range;
         current.Ranged = weapon.Ranged;
+        current.Projectile = weapon.Projectile;
     }
 }

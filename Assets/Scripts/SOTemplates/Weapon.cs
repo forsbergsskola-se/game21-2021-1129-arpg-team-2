@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Weapon", menuName = "Game/Weapon")]
@@ -7,6 +8,8 @@ public class Weapon : ScriptableObject
     [SerializeField] private float power;
     [SerializeField] private float range;
     [SerializeField] private bool ranged;
+    private GameObject projectile;
+    
     public string Name
     {
         get => name;
@@ -29,5 +32,11 @@ public class Weapon : ScriptableObject
     {
         get => ranged;
         set => ranged = value;
+    }
+
+    public GameObject Projectile
+    {
+        get => projectile;
+        set => projectile = value;
     }
 }
