@@ -85,7 +85,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
             selectedItem = null;
             if (overlapItem != null) HandleItemOverlap();
             
-            currentWorldItem.GetComponent<WorldItemInteract>().OnItemAddSuccess();
+            currentWorldItem.GetComponent<PickupWorldItem>().OnItemAddSuccess();
             pickedUpItem.ResetItemData();
         }
     }
