@@ -20,7 +20,7 @@ public class CursorChanger : MonoBehaviour
     }    
     void OnMouseExit()
     {
-        Cursor.SetCursor(cursorBase, Vector2.zero, cursorMode);
+        Cursor.SetCursor(cursorBase, hotSpot, cursorMode);
     }
 
     public void ResetCursor()
