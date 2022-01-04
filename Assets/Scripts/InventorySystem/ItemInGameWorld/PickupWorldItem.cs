@@ -5,12 +5,13 @@ using UnityEngine.EventSystems;
 /// Controls how WorldItem interacts with event and/or user input
 /// </summary>
 
-public class WorldItemInteract : MonoBehaviour, IPointerDownHandler
+public class PickupWorldItem : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private float distanceFromCamera;
     [SerializeField] private BaseItem pickedUpItem;
     [SerializeField] private ItemGridView grid;
 
+    // Inventory-UI-related
     private GridVisibleController gridVisibleControl;
     private bool isStickToCursor;
     private Camera cam;
