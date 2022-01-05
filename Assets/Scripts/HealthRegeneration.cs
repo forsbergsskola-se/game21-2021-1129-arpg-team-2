@@ -33,17 +33,14 @@ public class HealthRegeneration : MonoBehaviour
         playerStats.CurrentHealth = 0;
         
         _health.enabled = false;
-        //_playerAttack.enabled = false;
         _playernavMesh.enabled = false;
-        
-        //attackOnGoing.BoolValue = false;
         
         StartCoroutine(Heal());
     }
 
     private IEnumerator Heal()
     {
-        yield return new WaitForSeconds(regenerationTime / regenerationRate);
+        yield return new WaitForSeconds(regenerationTime * playerStats.AttackSpeed/ regenerationRate);
         
         playerStats.CurrentHealth += regenerationRate;
         
