@@ -1363,22 +1363,34 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3834534746093839933, guid: 2af6589bb6eb97b4c873f026186783f8, type: 3}
   m_PrefabInstance: {fileID: 7265492633580669326}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1031440119
+--- !u!114 &1031440123
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031440115}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fec1fa47338dac4c87a81af1b622035, type: 3}
+  m_Script: {fileID: 11500000, guid: f07402af12f75664ea7fbb5afc53a64c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackInterval: {fileID: 11400000, guid: cce5f82c76aed4a0c833ff86d5bd6d7e, type: 2}
-  attackSound: {fileID: 0}
-  weapon: {fileID: 11400000, guid: e1d4e7e40f5534c3eb4089439e105db8, type: 2}
-  movementTarget: {fileID: 0}
+  PlayerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  isPatrolling: 0
+  patrolSpeed: 4
+  walkPointRange: 10
+  chaseSpeed: 10
+  awarenessRange: 0
+  attackRange: 0
+  hearingRange: 0
+  breathingTimeAfterDefeating: 7
+  fieldOfViewAngle: 90
+  playerPosition: {fileID: 0}
 --- !u!1 &1211373522
 GameObject:
   m_ObjectHideFlags: 0
