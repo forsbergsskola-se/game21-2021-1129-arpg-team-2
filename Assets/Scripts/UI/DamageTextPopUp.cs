@@ -27,8 +27,9 @@ namespace UI
         {
             var temp = Instantiate(floatingTextPrefab, transform);
             var textMesh = temp.GetComponentInChildren<TextMeshProUGUI>();
-            
-            textMesh.text = (_health.CharStats.CurrentHealth - _previousHealth).ToString();
+
+            float numberToDisplay = Mathf.Round(_health.CharStats.CurrentHealth - _previousHealth);
+            textMesh.text = numberToDisplay.ToString();
             _previousHealth = _health.CharStats.CurrentHealth;
 
         }
