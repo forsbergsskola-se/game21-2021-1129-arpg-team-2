@@ -25,4 +25,10 @@ public class MainMenu : MonoBehaviour
     {
         Time.timeScale = 1;
     }
+
+    public void ResetScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetSceneByName("Level_Crypt").buildIndex);
+    }
+   
 }
