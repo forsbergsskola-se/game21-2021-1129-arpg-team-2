@@ -1,5 +1,39 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7005919205722315387
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
+  m_Name: ShadowsMidtonesHighlights
+  m_EditorClassIdentifier: 
+  active: 0
+  shadows:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1, z: 1, w: 0}
+  midtones:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1, z: 1, w: 0}
+  highlights:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1, z: 1, w: 0}
+  shadowsStart:
+    m_OverrideState: 1
+    m_Value: 0
+  shadowsEnd:
+    m_OverrideState: 1
+    m_Value: 0.3
+  highlightsStart:
+    m_OverrideState: 1
+    m_Value: 0.55
+  highlightsEnd:
+    m_OverrideState: 1
+    m_Value: 1
 --- !u!114 &-6001623707851223694
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -111,10 +145,10 @@ MonoBehaviour:
   active: 0
   temperature:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 30
   tint:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 30
 --- !u!114 &-3416291420897197
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -127,16 +161,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5485954d14dfb9a4c8ead8edb0ded5b1, type: 3}
   m_Name: LiftGammaGain
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9152762, z: 0.95410067, w: 0}
+    m_Value: {x: 0.97633934, y: 1, z: 0.9844939, w: 0}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 0.8103066, y: 0.86114734, z: 1, w: 0}
+    m_Value: {x: 0.8311715, y: 0.8767965, z: 1, w: 0}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.95375913, z: 0.84238404, w: 0}
+    m_Value: {x: 1, y: 0.9610713, z: 0.9960396, w: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +191,7 @@ MonoBehaviour:
   - {fileID: -3416291420897197}
   - {fileID: 1427777732828032855}
   - {fileID: -6001623707851223694}
+  - {fileID: -7005919205722315387}
 --- !u!114 &1427777732828032855
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -358,13 +393,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
   m_Name: ColorAdjustments
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   postExposure:
     m_OverrideState: 1
     m_Value: 0
   contrast:
     m_OverrideState: 1
-    m_Value: -2
+    m_Value: 2
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
