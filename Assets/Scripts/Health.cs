@@ -63,6 +63,11 @@ public class Health : MonoBehaviour, IDamageable, IConsumer {
     {
         charStats.CurrentHealth = charStats.MaxHealth;
     }
+    
+    public void Consume(IConsumable consumable)
+    {
+        charStats.CurrentHealth += consumable.Buff;
+    }
 
     // (Hopefully) temporary
 
@@ -77,11 +82,6 @@ public class Health : MonoBehaviour, IDamageable, IConsumer {
     private void SetToDefaultColor()
     {
         render.material.SetColor(Color1, defaultColor);
-    }
-
-    public void Consume(IConsumable consumable)
-    {
-        charStats.CurrentHealth += consumable.Buff;
     }
 }
 
