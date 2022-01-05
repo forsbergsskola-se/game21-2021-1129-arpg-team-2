@@ -9,7 +9,6 @@ using UnityEngine.EventSystems;
 public class PickupWorldItem : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private float distanceFromCamera;
-    [SerializeField] private BaseItem pickedUpItem;
     [SerializeField] private ItemGridView grid;
 
     // Inventory-UI-related
@@ -28,13 +27,13 @@ public class PickupWorldItem : MonoBehaviour, IPointerDownHandler
         if (eventData.button == PointerEventData.InputButton.Right && Input.GetKey(KeyCode.LeftControl))
         {
             UpdatePickedUpItemData();
-            grid.currentWorldItem = gameObject;
+            grid.currentWorldItemGameObject = gameObject;
             grid.OnQuickAdd();
         }
         else
         {
             gridVisibleControl.SetGridVisibility(true);
-            grid.currentWorldItem = gameObject;
+            grid.currentWorldItemGameObject = gameObject;
             isStickToCursor = true;
             transform.LookAt(cam.transform);
             UpdatePickedUpItemData();
@@ -44,9 +43,7 @@ public class PickupWorldItem : MonoBehaviour, IPointerDownHandler
     private void UpdatePickedUpItemData()
     {
         var currentItem = GetComponent<WorldItem>().Item;
-        int? subType = null;
-        if (currentItem is ConsumableItem) subType = (int?) currentItem.ConsumableType;
-        pickedUpItem.SetItemData(currentItem.InventoryItemIcon, currentItem.InventoryItemWidth, currentItem.InventoryItemHeight, currentItem.ItemType, currentItem.Description, true, subType);
+        Actions.WorldItemChosen(currentItem);
     }
 
     private void Update()

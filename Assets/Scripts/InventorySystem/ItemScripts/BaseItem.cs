@@ -35,29 +35,4 @@ public abstract class BaseItem : ScriptableObject
     [SerializeField] private string description;
     public string Description { get => description; private set => description = value; }
     
-    private bool hasValue;
-    public bool HasValue { get => hasValue; set => hasValue = value; }
-    
-    // NOTE: Only use this when ItemData is used to pass dynamic values around
-    public void ResetItemData()
-    {
-        InventoryItemWidth = 0;
-        InventoryItemHeight = 0;
-        InventoryItemIcon = null;
-        HasValue = false;
-        ItemType = ItemType.None;
-        subType = null;
-    }
-
-    public void SetItemData(Sprite sprite, int width, int height, ItemType itemType, string description, bool hasValue, int? subType)
-    {
-        InventoryItemWidth = width;
-        InventoryItemHeight = height;
-        InventoryItemIcon = sprite;
-        ItemType = itemType;
-        Description = description;
-        HasValue = hasValue;
-        this.subType = subType;
-    }
-
 }

@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -17,9 +16,8 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     [SerializeField] private ItemGrid grid;
     [SerializeField] private GameObject inventoryItem;
 
-    [Header("Data passed to grid")]
-    [SerializeField] private BaseItem pickedUpItem;
-    [SerializeField] internal GameObject currentWorldItem;
+    internal GameObject currentWorldItemGameObject;
+    private BaseItem currentWorldItem;
 
     private InventoryItem selectedItem;
     private InventoryItem overlapItem;
@@ -34,7 +32,6 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     {
         grid.rectTrans = GetComponent<RectTransform>();
         grid.InitGrid();
-        pickedUpItem.ResetItemData();
         gameObject.SetActive(false);
         itemDrop = FindObjectOfType<ItemDropNextToPlayer>();
         
@@ -54,16 +51,6 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         var targetSubType = selectedItem.ItemData.SubType;
 
         WorldItem find;
-
-        Debug.Log("what is targetType: " + targetType);
-        Debug.Log("what is targetSubType: " + targetSubType);
-        
-        foreach (var worldItem in spawnWorldItems)
-        {
-            Debug.Log("Item type: "+ worldItem.Item.ItemType);
-            Debug.Log("Sub type: "+ worldItem.Item.ConsumableType);
-        }
-        
         if (targetType is ItemType.Consumable)
             find = spawnWorldItems.FirstOrDefault(x =>
                 x.Item.ItemType == targetType && (int)x.Item.ConsumableType == targetSubType);
@@ -85,7 +72,8 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         if (eventData.button != PointerEventData.InputButton.Right || !isCursorInsideGrid) return;
         var targetGridCell = grid.GetTileGridPosition(Input.mousePosition);
 
-        if (pickedUpItem.HasValue) AddItem(targetGridCell);
+        // if (pickedUpItem.HasValue) AddItem(targetGridCell);
+        if (currentWorldItem != null) AddItem(targetGridCell);
         else if (selectedItem != null) AddItem(targetGridCell, selectedItem);
         else RemoveItem(targetGridCell);
     }
@@ -93,16 +81,17 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     private void AddItem(Vector2Int targetGridCell)
     {
         var item = Instantiate(inventoryItem);
-        item.GetComponent<InventoryItem>().Set(pickedUpItem);
+        item.GetComponent<InventoryItem>().Set(currentWorldItem);
 
         var success = grid.AddItem(item.GetComponent<InventoryItem>(), targetGridCell.x, targetGridCell.y, ref overlapItem);
         if (success)
         {
             selectedItem = null;
             if (overlapItem != null) HandleItemOverlap();
-            
-            currentWorldItem.GetComponent<PickupWorldItem>().OnItemAddSuccess();
-            pickedUpItem.ResetItemData();
+
+            currentWorldItemGameObject.GetComponent<PickupWorldItem>().OnItemAddSuccess();
+            currentWorldItem = null;
+            // pickedUpItem.ResetItemData();
         }
     }
 
@@ -134,7 +123,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         // TODO: GetFirstAvailableSlot() is buggy and needs fixing; putting it in a try-catch for now to avoid exception
         try
         {
-            var startSlot = grid.GetFirstAvailableSlot(pickedUpItem.InventoryItemWidth, pickedUpItem.InventoryItemHeight);
+            var startSlot = grid.GetFirstAvailableSlot(currentWorldItem.InventoryItemWidth, currentWorldItem.InventoryItemHeight);
             AddItem(startSlot);
         }
         catch (Exception e)
@@ -152,4 +141,16 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     {
         isCursorInsideGrid = false;
     }
+
+    private void OnEnable()
+    {
+        Actions.WorldItemChosen += OnWorldItemChosen;
+    }
+    
+    private void OnDisable()
+    {
+        Actions.WorldItemChosen -= OnWorldItemChosen;
+    }
+
+    private void OnWorldItemChosen(BaseItem item) => currentWorldItem = item;
 }
