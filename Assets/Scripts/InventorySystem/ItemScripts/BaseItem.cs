@@ -22,11 +22,13 @@ public abstract class BaseItem : ScriptableObject
     public int InventoryItemWidth { get => inventoryItemWidth; private set => inventoryItemWidth = value; }
     public int InventoryItemHeight { get => inventoryItemHeight; private set => inventoryItemHeight = value; }
 
-    [SerializeField] private ItemType itemType;
-    public ItemType ItemType { get => itemType; private set => itemType = value; }
+    private ItemType itemType;
+    public ItemType ItemType { get; set; }
 
     private ConsumableType consumableType;
     public ConsumableType ConsumableType { get; set; }
+    private WeaponType weaponType;
+    public WeaponType WeaponType { get; set; }
 
     private int? subType;
 
