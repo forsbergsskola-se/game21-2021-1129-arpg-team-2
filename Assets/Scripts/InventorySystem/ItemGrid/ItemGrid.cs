@@ -22,8 +22,6 @@ public class ItemGrid : ScriptableObject
     public int Height => height;
 
     private InventoryItem[,] gridSlots;
-    // private InventoryItem overlapItem;
-    // private InventoryItem selectedItem;
     private Vector2 positionOnGrid;
     private Vector2Int tileGridPosition;
 
@@ -173,4 +171,7 @@ public class ItemGrid : ScriptableObject
         }
         return startPosition;
     }
+
+    internal bool IsGridTileOccupied(Vector2Int targetGridCell) =>
+        gridSlots[targetGridCell.x, targetGridCell.y] != null;
 }
