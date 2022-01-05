@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -51,8 +52,23 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     {
         var targetType = selectedItem.ItemData.Type;
         var targetSubType = selectedItem.ItemData.SubType;
-        var find = spawnWorldItems.FirstOrDefault(x => x.Item.ItemType == targetType && (int)x.Item.SubType == targetSubType);
 
+        WorldItem find;
+
+        Debug.Log("what is targetType: " + targetType);
+        Debug.Log("what is targetSubType: " + targetSubType);
+        
+        foreach (var worldItem in spawnWorldItems)
+        {
+            Debug.Log("Item type: "+ worldItem.Item.ItemType);
+            Debug.Log("Sub type: "+ worldItem.Item.ConsumableType);
+        }
+        
+        if (targetType is ItemType.Consumable)
+            find = spawnWorldItems.FirstOrDefault(x =>
+                x.Item.ItemType == targetType && (int)x.Item.ConsumableType == targetSubType);
+        else find = null;
+        
         find.gameObject.transform.position = itemDrop.transform.position;
         find.gameObject.SetActive(true);
         Destroy(selectedItem.gameObject);

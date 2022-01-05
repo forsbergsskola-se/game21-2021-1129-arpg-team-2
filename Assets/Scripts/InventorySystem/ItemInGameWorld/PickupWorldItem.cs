@@ -44,7 +44,9 @@ public class PickupWorldItem : MonoBehaviour, IPointerDownHandler
     private void UpdatePickedUpItemData()
     {
         var currentItem = GetComponent<WorldItem>().Item;
-        pickedUpItem.SetItemData(currentItem.InventoryItemIcon, currentItem.InventoryItemWidth, currentItem.InventoryItemHeight, currentItem.ItemType, currentItem.Description, true, (int)currentItem.SubType);
+        int? subType = null;
+        if (currentItem is ConsumableItem) subType = (int?) currentItem.ConsumableType;
+        pickedUpItem.SetItemData(currentItem.InventoryItemIcon, currentItem.InventoryItemWidth, currentItem.InventoryItemHeight, currentItem.ItemType, currentItem.Description, true, subType);
     }
 
     private void Update()
