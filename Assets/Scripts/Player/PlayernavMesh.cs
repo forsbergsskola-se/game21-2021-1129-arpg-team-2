@@ -48,6 +48,8 @@ public class PlayernavMesh : MonoBehaviour
                     navMeshAgent.destination = position;
                     navMeshAgent.stoppingDistance = weapon.Range;
                     movementTarget.Value = hit.transform.gameObject;
+                    
+                    RotateTowards(position);
                 }
                 else if (hit.transform.CompareTag("Gate"))
                 {
@@ -55,12 +57,24 @@ public class PlayernavMesh : MonoBehaviour
                     navMeshAgent.destination = position;
                     navMeshAgent.stoppingDistance = stopFrontOfGateDistance.InitialValue;
                     movementTarget.Value = hit.transform.gameObject;
+                    
+                    RotateTowards(position);
                 }
                 else if (SetDestination(hit.transform.position) || hit.transform.CompareTag("Wall"))
                 {
                     navMeshAgent.destination = hit.point;
                     navMeshAgent.stoppingDistance = 1;
                     movementTarget.Value = null;
+                    
+                    RotateTowards(hit.point);
+                }
+                else
+                {
+                    navMeshAgent.destination = hit.point;
+                    navMeshAgent.stoppingDistance = 1;
+                    movementTarget.Value = null;
+                    
+                    RotateTowards(hit.point);
                 }
             }
         }
@@ -78,6 +92,13 @@ public class PlayernavMesh : MonoBehaviour
         }
         return false;
     }
+
+    private void RotateTowards(Vector3 target)
+    {
+        Vector3 direction = (target - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * navMeshAgent.acceleration);
+    } 
 
     public void ResetToStartPosition()
     {
