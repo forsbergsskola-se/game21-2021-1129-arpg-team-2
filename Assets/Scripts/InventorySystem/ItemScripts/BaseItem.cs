@@ -6,7 +6,6 @@ public enum ItemType
     Consumable,
     Weapon,
     Armour
-    // ,Special e.g. special items for completing quests
 }
 
 public abstract class BaseItem : ScriptableObject
