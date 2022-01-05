@@ -41,6 +41,7 @@ public class PlayernavMesh : MonoBehaviour
             
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
+                Debug.Log("We hit: "+hit.transform.gameObject);
                 if (hit.transform.CompareTag("Destructible") || hit.transform.CompareTag("Enemy"))
                 {
                     var position = hit.transform.position;
