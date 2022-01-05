@@ -55,9 +55,9 @@ public class Entity : MonoBehaviour, IDamageable
 
     public void OnEntityDie()
     {
-        
         DisableAsObstacle();
         StartCoroutine(VisualDestruction());
+        
         if ( coinspawner != null)
         {
             coinspawner.SpawnFromPool();
@@ -68,6 +68,7 @@ public class Entity : MonoBehaviour, IDamageable
     {
         NavMeshObstacle obstacleMesh = GetComponent<NavMeshObstacle>();
         CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
+        
         if (obstacleMesh != null && capsuleCollider != null)
         {
             obstacleMesh.enabled = false;
