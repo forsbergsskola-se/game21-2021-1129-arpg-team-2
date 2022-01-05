@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class Health : MonoBehaviour, IDamageable {
+public class Health : MonoBehaviour, IDamageable, IConsumer {
     public Action<float> OnTakeDamage;
     [SerializeField] private CharStats charStats;
     [SerializeField] private float maxHealth;
@@ -77,6 +77,11 @@ public class Health : MonoBehaviour, IDamageable {
     private void SetToDefaultColor()
     {
         render.material.SetColor(Color1, defaultColor);
+    }
+
+    public void Consume(IConsumable consumable)
+    {
+        charStats.CurrentHealth += consumable.Buff;
     }
 }
 
