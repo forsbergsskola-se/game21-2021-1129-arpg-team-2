@@ -13,6 +13,7 @@ public class Entity : MonoBehaviour, IDamageable
     private static readonly int Color1 = Shader.PropertyToID("_Color");
     private Color defaultColor;
     private CoinSpawner coinspawner;
+    private CarrotSpawner _carrotSpawner;
 
     public FloatValue CurrentHealth { get => currentHealth; set => currentHealth = value; }
 
@@ -21,6 +22,7 @@ public class Entity : MonoBehaviour, IDamageable
     private void Awake()
     {
         coinspawner = GetComponent<CoinSpawner>();
+        _carrotSpawner = GetComponent<CarrotSpawner>();
         render = GetComponent<Renderer>();
         defaultColor = render.material.color;
         
@@ -61,6 +63,11 @@ public class Entity : MonoBehaviour, IDamageable
         if ( coinspawner != null)
         {
             coinspawner.SpawnFromPool();
+        }
+
+        if (_carrotSpawner != null)
+        {
+            _carrotSpawner.SpawnFromPool();
         }
     }
 
