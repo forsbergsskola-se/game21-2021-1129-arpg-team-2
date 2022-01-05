@@ -43,8 +43,22 @@ public class MainMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            menu.gameObject.SetActive(!menu.gameObject.activeSelf);
-            scroll.gameObject.SetActive(!scroll.gameObject.activeSelf);
+            if (scroll.gameObject.activeSelf)
+            {
+                scroll.gameObject.SetActive(false);
+                menu.gameObject.SetActive(false);
+                audioMenu.gameObject.SetActive(false);
+                graphicsMenu.gameObject.SetActive(false);
+                
+                UnpauseGame();
+            }
+            else
+            {
+                scroll.gameObject.SetActive(true);
+                menu.gameObject.SetActive(true);
+                
+                PauseGame();
+            }
         }
     }
 }
