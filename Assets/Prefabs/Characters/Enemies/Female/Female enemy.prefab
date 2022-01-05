@@ -920,3 +920,31 @@ MonoBehaviour:
   orbSpawnPosition: {fileID: 7265492632167032683}
   player: {fileID: 0}
   orbLerpTime: 0.5
+--- !u!114 &7717378555282811541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834534746093839933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f07402af12f75664ea7fbb5afc53a64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  isPatrolling: 0
+  patrolSpeed: 4
+  walkPointRange: 10
+  chaseSpeed: 10
+  awarenessRange: 0
+  attackRange: 0
+  hearingRange: 0
+  breathingTimeAfterDefeating: 7
+  fieldOfViewAngle: 90
+  playerPosition: {fileID: 0}
