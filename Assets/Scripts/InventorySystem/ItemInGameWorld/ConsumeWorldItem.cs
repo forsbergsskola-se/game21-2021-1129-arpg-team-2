@@ -20,8 +20,13 @@ public class ConsumeWorldItem : MonoBehaviour, IPointerDownHandler
             eventData.pointerPressRaycast.gameObject.TryGetComponent(out worldItem) &&
             worldItem.Item.ItemType == ItemType.Consumable)
         {
-            playerHealth.Consume(consumableSelf);
-            gameObject.SetActive(false);
+            PlayerConsumeConsumable();
         }
+    }
+
+    public void PlayerConsumeConsumable()
+    {
+        playerHealth.Consume(consumableSelf);
+        gameObject.SetActive(false);
     }
 }
