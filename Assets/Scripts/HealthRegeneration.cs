@@ -33,10 +33,7 @@ public class HealthRegeneration : MonoBehaviour
         playerStats.CurrentHealth = 0;
         
         _health.enabled = false;
-        //_playerAttack.enabled = false;
         _playernavMesh.enabled = false;
-        
-        //attackOnGoing.BoolValue = false;
         
         StartCoroutine(Heal());
     }
@@ -45,7 +42,7 @@ public class HealthRegeneration : MonoBehaviour
     {
         yield return new WaitForSeconds(regenerationTime / regenerationRate);
         
-        playerStats.CurrentHealth += regenerationRate;
+        playerStats.CurrentHealth += regenerationRate * playerStats.AttackSpeed;
         
         if ( playerStats.CurrentHealth >=  playerStats.MaxHealth * healthThreshold)
         {
