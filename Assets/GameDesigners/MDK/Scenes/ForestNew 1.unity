@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.04
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.6666667, g: 0.7058824, b: 0.78431374, a: 1}
@@ -34921,7 +34921,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1318629905
 Transform:
   m_ObjectHideFlags: 0
@@ -38600,7 +38600,7 @@ ParticleSystem:
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -38769,15 +38769,16 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 2
-    inside: 1
+    inside: 2
     outside: 0
     enter: 0
     exit: 0
     colliderQueryMode: 0
     radiusScale: 1
-    primitives: []
+    primitives:
+    - {fileID: 0}
   SubModule:
     serializedVersion: 2
     enabled: 0
@@ -39728,7 +39729,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b93cc45c3a74a4daaa6da38a9fa34b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 926437487}
 --- !u!1 &1327655445
 GameObject:
   m_ObjectHideFlags: 0
@@ -47714,7 +47714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6595766241156114106, guid: 28a6447c15fe6c24abdadfdebe81f437, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 66.28
+      value: 50.99
       objectReference: {fileID: 0}
     - target: {fileID: 6595766241156114106, guid: 28a6447c15fe6c24abdadfdebe81f437, type: 3}
       propertyPath: m_LocalPosition.y
@@ -47722,7 +47722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6595766241156114106, guid: 28a6447c15fe6c24abdadfdebe81f437, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 49.67
+      value: 66.22
       objectReference: {fileID: 0}
     - target: {fileID: 6595766241156114106, guid: 28a6447c15fe6c24abdadfdebe81f437, type: 3}
       propertyPath: m_LocalRotation.w
