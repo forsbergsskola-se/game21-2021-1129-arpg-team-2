@@ -1,10 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private GameObject menu;
+    [SerializeField] private GameObject scroll;
+    [SerializeField] private GameObject audioMenu;
+    [SerializeField] private GameObject graphicsMenu;
+    
     public void PlayGame()
     {
         SceneManager.LoadScene("Level_Crypt");
@@ -30,5 +38,13 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetSceneByName("Level_Crypt").buildIndex);
     }
-   
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            menu.gameObject.SetActive(!menu.gameObject.activeSelf);
+            scroll.gameObject.SetActive(!scroll.gameObject.activeSelf);
+        }
+    }
 }
