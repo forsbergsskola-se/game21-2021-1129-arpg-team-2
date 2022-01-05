@@ -78,7 +78,7 @@ public class PlayerAttack : MonoBehaviour, IAttack
         while (entity.CharStats.CurrentHealth > 0f)
         {
             Attack(entity);
-            if (attackOnGoing.BoolValue) yield return new WaitForSeconds(playerStats.AttackSpeed);
+            if (attackOnGoing.BoolValue) yield return new WaitForSeconds(1 / playerStats.AttackSpeed);
             else yield break;
         }
     }
