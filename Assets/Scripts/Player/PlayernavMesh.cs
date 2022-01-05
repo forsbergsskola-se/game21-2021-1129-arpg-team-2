@@ -68,6 +68,14 @@ public class PlayernavMesh : MonoBehaviour
                     
                     RotateTowards(hit.point);
                 }
+                else
+                {
+                    navMeshAgent.destination = hit.point;
+                    navMeshAgent.stoppingDistance = 1;
+                    movementTarget.Value = null;
+                    
+                    RotateTowards(hit.point);
+                }
             }
         }
         
