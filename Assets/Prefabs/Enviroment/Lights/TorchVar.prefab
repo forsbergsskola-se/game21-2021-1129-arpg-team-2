@@ -45,8 +45,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.8392157, g: 0.30980393, b: 0.06666667, a: 1}
-  m_Intensity: 3
-  m_Range: 12
+  m_Intensity: 4
+  m_Range: 14.79
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -90,7 +90,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: NaN, z: 4.5905e-41, w: 0}
+  m_BoundingSphereOverride: {x: 2.86e-43, y: NaN, z: NaN, w: NaN}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -221,10 +221,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3563300581999267418}
     m_Modifications:
+    - target: {fileID: 2600039588876301409, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.006
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600039588876301409, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.366
+      objectReference: {fileID: 0}
     - target: {fileID: 2600039588876301411, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
       propertyPath: LightsModule.light
       value: 
       objectReference: {fileID: 1427913064372979895}
+    - target: {fileID: 2600039588876301411, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600039588876301411, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600039589066045469, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600039589066045469, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.006
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600039589066045469, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.366
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600039589066045471, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600039589066045471, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600039589066045471, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.76
+      objectReference: {fileID: 0}
     - target: {fileID: 2600039589367181176, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
       propertyPath: LightsModule.light
       value: 
@@ -297,6 +337,26 @@ PrefabInstance:
       propertyPath: LightsModule.light
       value: 
       objectReference: {fileID: 1427913064372979895}
+    - target: {fileID: 2600039590006224352, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 211
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600039590006224352, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 1.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600039590006224352, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 5.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600039590006224358, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.006
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600039590006224358, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.467
+      objectReference: {fileID: 0}
     - target: {fileID: 2600039590006224359, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -305,10 +365,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5725940395798059797, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.006
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725940395798059797, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.366
+      objectReference: {fileID: 0}
     - target: {fileID: 6190055272231385345, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
       propertyPath: LightsModule.light
       value: 
       objectReference: {fileID: 1427913064372979895}
+    - target: {fileID: 6190055272231385345, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
+      propertyPath: LightsModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ec4d2b601c216a4f98a1287720a7312, type: 3}
 --- !u!4 &7284744569428760706 stripped
