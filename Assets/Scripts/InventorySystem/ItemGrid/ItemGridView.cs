@@ -69,13 +69,41 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (eventData.button != PointerEventData.InputButton.Right || !isCursorInsideGrid) return;
         var targetGridCell = grid.GetTileGridPosition(Input.mousePosition);
+        if (eventData.button == PointerEventData.InputButton.Right && isCursorInsideGrid) PickupInventoryItem();
+        else if (eventData.button == PointerEventData.InputButton.Left &&
+                 Input.GetKey(KeyCode.LeftControl) &&
+                 grid.IsGridTileOccupied(targetGridCell) &&
+                 isCursorInsideGrid
+        ) ConsumeInventoryItem(targetGridCell);
+    }
 
-        // if (pickedUpItem.HasValue) AddItem(targetGridCell);
+    private void PickupInventoryItem()
+    {
+        var targetGridCell = grid.GetTileGridPosition(Input.mousePosition);
         if (currentWorldItem != null) AddItem(targetGridCell);
         else if (selectedItem != null) AddItem(targetGridCell, selectedItem);
         else RemoveItem(targetGridCell);
+    }
+    
+    private void ConsumeInventoryItem(Vector2Int targetGridCell)
+    {
+        RemoveItem(targetGridCell);
+        
+        var targetType = selectedItem.ItemData.Type;
+        var targetSubType = selectedItem.ItemData.SubType;
+
+        WorldItem find = null;
+        if (targetType is ItemType.Consumable)
+        {
+            find = spawnWorldItems.FirstOrDefault(x =>
+                x.Item.ItemType == targetType && (int)x.Item.ConsumableType == targetSubType);
+            find.gameObject.GetComponent<ConsumeWorldItem>().PlayerConsumeConsumable();
+            
+            Destroy(selectedItem.gameObject);
+            selectedItem = null;
+        }
+        
     }
 
     private void AddItem(Vector2Int targetGridCell)
@@ -91,7 +119,6 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
 
             currentWorldItemGameObject.GetComponent<PickupWorldItem>().OnItemAddSuccess();
             currentWorldItem = null;
-            // pickedUpItem.ResetItemData();
         }
     }
 
