@@ -40,9 +40,9 @@ public class HealthRegeneration : MonoBehaviour
 
     private IEnumerator Heal()
     {
-        yield return new WaitForSeconds(regenerationTime * playerStats.AttackSpeed/ regenerationRate);
+        yield return new WaitForSeconds(regenerationTime / regenerationRate);
         
-        playerStats.CurrentHealth += regenerationRate;
+        playerStats.CurrentHealth += regenerationRate * playerStats.AttackSpeed;
         
         if ( playerStats.CurrentHealth >=  playerStats.MaxHealth * healthThreshold)
         {
