@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -5461501941000124034}
   - component: {fileID: 8352571854364536541}
   - component: {fileID: 4928545570094707826}
+  - component: {fileID: -7950858162783627446}
   m_Layer: 5
   m_Name: Potion
   m_TagString: Untagged
@@ -113,7 +114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceFromCamera: 15
-  pickedUpItem: {fileID: 11400000, guid: aa8d49444aaf5f04cb20e924f542ba42, type: 2}
   grid: {fileID: 0}
 --- !u!114 &4928545570094707826
 MonoBehaviour:
@@ -128,3 +128,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 6190d8cfce5d3e541bdc166ffd962b4f, type: 2}
+--- !u!114 &-7950858162783627446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4747833463160881215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8de48c316a4b20c4cab4b8bd720a00ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
