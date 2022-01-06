@@ -1,13 +1,21 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerLevel : MonoBehaviour
 {
     [SerializeField] private CharStats charStats;
     [SerializeField] private LevelUpChart levelUpChart;
     [SerializeField] private GameEvent levelUp;
-
+    
     private void Awake()
+    {
+        var currentScene = SceneManager.GetActiveScene ();
+
+        if (currentScene.name == "Level_Crypt") ResetStats();
+    }
+
+    private void ResetStats()
     {
         charStats.Reset();
         levelUpChart.Reset();
