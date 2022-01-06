@@ -9,7 +9,11 @@ public class Shooter : MonoBehaviour
 
     private void Awake()
     {
-        if(target == null) target.Value = GameObject.FindGameObjectWithTag("Player");
+        if (target == null)
+        {
+            target = ScriptableObject.CreateInstance<GameObjectValue>();
+            target.Value = GameObject.FindGameObjectWithTag("Player");
+        }
     }
 
     public void Shoot()
