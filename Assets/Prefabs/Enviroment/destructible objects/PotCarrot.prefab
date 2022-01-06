@@ -33,7 +33,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5496581748438061988}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -40.11, y: -34.50901, z: -22.32}
   m_LocalScale: {x: 100, y: 100.00004, z: 100.00004}
   m_ConstrainProportionsScale: 1
@@ -224,3 +224,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCarrotDrop: 5
   carrotPool: {fileID: 11400000, guid: 0d9dcdbacf9e64549802e0ea3b85ebcc, type: 2}
+  playerInventory: {fileID: 1728952715674540380, guid: 3f5038eaadc4e03458bd1dde7f2e5889, type: 3}

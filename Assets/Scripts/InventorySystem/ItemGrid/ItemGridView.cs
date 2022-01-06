@@ -15,6 +15,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     [Header("Grid")]
     [SerializeField] private ItemGrid grid;
     [SerializeField] private GameObject inventoryItem;
+    [SerializeField] private GameObject carrotPool;
 
     internal GameObject currentWorldItemGameObject;
     private BaseItem currentWorldItem;
@@ -26,17 +27,12 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     private bool isCursorInsideGrid;
     private ItemDropNextToPlayer itemDrop;
 
-    private WorldItem[] spawnWorldItems;
-
     private void Awake()
     {
         grid.rectTrans = GetComponent<RectTransform>();
         grid.InitGrid();
         gameObject.SetActive(false);
         itemDrop = FindObjectOfType<ItemDropNextToPlayer>();
-        
-        spawnWorldItems = FindObjectsOfType<WorldItem>();
-        spawnWorldItems.ToList().ForEach(x => x.gameObject.GetComponent<PickupWorldItem>().WorldItemChosen += OnWorldItemChosen);
     }
 
     private void Update()
@@ -51,14 +47,16 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         var targetType = selectedItem.ItemData.Type;
         var targetSubType = selectedItem.ItemData.SubType;
 
-        WorldItem find;
-        if (targetType is ItemType.Consumable)
-            find = spawnWorldItems.FirstOrDefault(x =>
-                x.Item.ItemType == targetType && (int)x.Item.ConsumableType == targetSubType);
+        Debug.Log("What is targetType: " + targetType);
+        Debug.Log("What is targetSubType: " + targetSubType);
+
+        GameObject find;
+        if (targetType is ItemType.Consumable && targetSubType == (int) ConsumableType.Carrot)
+            find = carrotPool.GetComponent<CarrotPool>().Pop();
         else find = null;
         
-        find.gameObject.transform.position = itemDrop.transform.position;
-        find.gameObject.SetActive(true);
+        find.transform.position = itemDrop.transform.position;
+        find.SetActive(true);
         Destroy(selectedItem.gameObject);
         selectedItem = null;
     }
@@ -94,13 +92,10 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         var targetType = selectedItem.ItemData.Type;
         var targetSubType = selectedItem.ItemData.SubType;
 
-        WorldItem find = null;
-        if (targetType is ItemType.Consumable)
+        if (targetType is ItemType.Consumable && targetSubType == (int)ConsumableType.Carrot)
         {
-            find = spawnWorldItems.FirstOrDefault(x =>
-                x.Item.ItemType == targetType && (int)x.Item.ConsumableType == targetSubType);
-            find.gameObject.GetComponent<ConsumeWorldItem>().PlayerConsumeConsumable();
-            
+            var find = carrotPool.GetComponent<CarrotPool>().Pop();
+            find.GetComponent<ConsumeWorldItem>().PlayerConsumeConsumable();
             Destroy(selectedItem.gameObject);
             selectedItem = null;
         }
@@ -169,6 +164,8 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     {
         isCursorInsideGrid = false;
     }
+    
+    public void OnWorldItemChosen(BaseItem item) => currentWorldItem = item;
 
-    private void OnWorldItemChosen(BaseItem item) => currentWorldItem = item;
+    public void OnGameObjectChosen(GameObject obj) => currentWorldItemGameObject = obj;
 }

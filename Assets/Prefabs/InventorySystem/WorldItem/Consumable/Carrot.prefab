@@ -115,7 +115,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceFromCamera: 15
-  grid: {fileID: 0}
+  playerInventory: {fileID: 1728952715674540380, guid: 3f5038eaadc4e03458bd1dde7f2e5889, type: 3}
+  spawner: {fileID: 5496581748438061988, guid: df38c6fcf569c6d4a9a1e9e71262774a, type: 3}
+  WorldItemChosen:
+    m_PersistentCalls:
+      m_Calls: []
+  GameObjectChosen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4202929085097482568
 MonoBehaviour:
   m_ObjectHideFlags: 0

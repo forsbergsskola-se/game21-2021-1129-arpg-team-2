@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 /// <summary>
@@ -10,10 +11,13 @@ using UnityEngine.EventSystems;
 public class PickupWorldItem : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private float distanceFromCamera;
-    [SerializeField] private ItemGridView grid;
+    [SerializeField] private GameObject playerInventory;
+    [SerializeField] private GameObject spawner;
 
     // Action to emit
-    public Action<BaseItem> WorldItemChosen;
+    // public Action<BaseItem> WorldItemChosen;
+    public UnityEvent<BaseItem> WorldItemChosen;
+    public UnityEvent<GameObject> GameObjectChosen;
     
     // Inventory-UI-related
     private GridVisibleController gridVisibleControl;
@@ -31,14 +35,12 @@ public class PickupWorldItem : MonoBehaviour, IPointerDownHandler
         if (eventData.button == PointerEventData.InputButton.Right && Input.GetKey(KeyCode.LeftControl))
         {
             UpdatePickedUpItemData();
-            grid.currentWorldItemGameObject = gameObject;
-            grid.OnQuickAdd();
+            playerInventory.GetComponent<ItemGridView>().OnQuickAdd();
         }
         else if (eventData.button == PointerEventData.InputButton.Right && isStickToCursor) isStickToCursor = false;
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
             gridVisibleControl.SetGridVisibility(true);
-            grid.currentWorldItemGameObject = gameObject;
             isStickToCursor = true;
             transform.LookAt(cam.transform);
             UpdatePickedUpItemData();
@@ -48,7 +50,8 @@ public class PickupWorldItem : MonoBehaviour, IPointerDownHandler
     private void UpdatePickedUpItemData()
     {
         var currentItem = GetComponent<WorldItem>().Item;
-        WorldItemChosen(currentItem);
+        WorldItemChosen?.Invoke(currentItem);
+        GameObjectChosen?.Invoke(gameObject);
     }
 
     private void Update()
@@ -67,6 +70,8 @@ public class PickupWorldItem : MonoBehaviour, IPointerDownHandler
     public void OnItemAddSuccess()
     {
         isStickToCursor = false;
-        gameObject.SetActive(false);
+        GameObject o;
+        (o = gameObject).SetActive(false);
+        spawner.GetComponent<CarrotSpawner>().CarrotIsCollected(o);
     }
 }

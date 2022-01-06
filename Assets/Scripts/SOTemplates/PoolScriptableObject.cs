@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,4 +30,6 @@ public class PoolScriptableObject : ScriptableObject
             pool.Push(temp);
         }
     }
+    
+    public GameObject Pop() => pool.Pop();
 }
