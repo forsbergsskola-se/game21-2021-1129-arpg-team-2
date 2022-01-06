@@ -30,8 +30,8 @@ public class Health : MonoBehaviour, IDamageable, IConsumer {
     
     private void Awake()
     {
-        render = GetComponentInChildren<Renderer>();
-        defaultColor = render.material.color;
+        // render = GetComponentInChildren<Renderer>();
+        // defaultColor = render.material.color;
 
         if (charStats == null)
         {
@@ -50,7 +50,7 @@ public class Health : MonoBehaviour, IDamageable, IConsumer {
     
     public void TakeDamage(float damage)
     {
-        FlashRed();
+        // FlashRed();
         var totalDamage = damage - charStats.Defence;
         charStats.CurrentHealth -= totalDamage;
 
@@ -69,20 +69,20 @@ public class Health : MonoBehaviour, IDamageable, IConsumer {
         charStats.CurrentHealth += consumable.Buff;
     }
 
-    // (Hopefully) temporary
-
-    private void FlashRed()
-    {
-        render.material.SetColor(Color1, Color.red);
-        Invoke(nameof(SetToDefaultColor), redFlashInterval);
-    }
-
-    // (Hopefully) temporary
-
-    private void SetToDefaultColor()
-    {
-        render.material.SetColor(Color1, defaultColor);
-    }
+    // // (Hopefully) temporary
+    //
+    // private void FlashRed()
+    // {
+    //     render.material.SetColor(Color1, Color.red);
+    //     Invoke(nameof(SetToDefaultColor), redFlashInterval);
+    // }
+    //
+    // // (Hopefully) temporary
+    //
+    // private void SetToDefaultColor()
+    // {
+    //     render.material.SetColor(Color1, defaultColor);
+    // }
 }
 
 

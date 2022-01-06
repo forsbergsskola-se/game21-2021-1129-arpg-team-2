@@ -152,7 +152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4176640983648010197}
   m_Layer: 0
-  m_Name: Female enemy
+  m_Name: TO_RETIRE_Female enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -343,7 +343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8313439491226087760, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 560cccac876a64d6986b14d430c1736f, type: 3}
@@ -1307,6 +1307,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
+--- !u!114 &1708644357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834534746093839933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e888e63d324948258d4489b8c2b9f86f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatingTextPrefab: {fileID: 5189983744227234827, guid: da7c7c315b9b8ca4cbb88ab6a04efc95, type: 3}
 --- !u!114 &1137476028060048181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1462,9 +1475,9 @@ MonoBehaviour:
   charStats: {fileID: 0}
   maxHealth: 100
   entityDeath: {fileID: 0}
-  deathListner: {fileID: 0}
+  deathListner: {fileID: 1708644375}
   currentHealth: {fileID: 0}
---- !u!114 &1708644357
+--- !u!114 &2061802396410669899
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1477,3 +1490,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floatingTextPrefab: {fileID: 5189983744227234827, guid: da7c7c315b9b8ca4cbb88ab6a04efc95, type: 3}
+--- !u!114 &1708644375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834534746093839933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2f698b8af41f264abd87ae44d449008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 0}
+  Response:
+    m_PersistentCalls:
+      m_Calls: []
