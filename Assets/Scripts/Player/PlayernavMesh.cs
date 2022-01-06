@@ -32,7 +32,12 @@ public class PlayernavMesh : MonoBehaviour
         playerStartPosition.Vector3 = transform.position;
         animator = GetComponentInChildren<Animator>();
 
-        if (fromForest.BoolValue) navMeshAgent.Warp(cryptFinalPosition.Vector3);
+        if (fromForest.BoolValue)
+        {
+            navMeshAgent.Warp(cryptFinalPosition.Vector3);
+        }
+        
+        fromForest.BoolValue = false;
     }
 
     private void Update()
