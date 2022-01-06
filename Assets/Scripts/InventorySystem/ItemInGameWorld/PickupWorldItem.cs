@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -14,10 +13,9 @@ public class PickupWorldItem : MonoBehaviour, IPointerDownHandler
     [SerializeField] private GameObject playerInventory;
     [SerializeField] private GameObject spawner;
 
-    // Action to emit
-    // public Action<BaseItem> WorldItemChosen;
-    public UnityEvent<BaseItem> WorldItemChosen;
-    public UnityEvent<GameObject> GameObjectChosen;
+    // UnityEvents for picking up and dropping items
+    [HideInInspector] public UnityEvent<BaseItem> WorldItemChosen;
+    [HideInInspector] public UnityEvent<GameObject> GameObjectChosen;
     
     // Inventory-UI-related
     private GridVisibleController gridVisibleControl;

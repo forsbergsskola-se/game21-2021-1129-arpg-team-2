@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -46,10 +45,10 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     {
         var targetType = selectedItem.ItemData.Type;
         var targetSubType = selectedItem.ItemData.SubType;
-
+        
         Debug.Log("What is targetType: " + targetType);
         Debug.Log("What is targetSubType: " + targetSubType);
-
+        
         GameObject find;
         if (targetType is ItemType.Consumable && targetSubType == (int) ConsumableType.Carrot)
             find = carrotPool.GetComponent<CarrotPool>().Pop();
@@ -69,6 +68,9 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     public void OnPointerDown(PointerEventData eventData)
     {
         var targetGridCell = grid.GetTileGridPosition(Input.mousePosition);
+        
+        Debug.Log("Target grid cell: " + targetGridCell);
+        
         if (eventData.button == PointerEventData.InputButton.Right && isCursorInsideGrid) PickupInventoryItem();
         else if (eventData.button == PointerEventData.InputButton.Left &&
                  Input.GetKey(KeyCode.LeftControl) &&
@@ -91,7 +93,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         
         var targetType = selectedItem.ItemData.Type;
         var targetSubType = selectedItem.ItemData.SubType;
-
+        
         if (targetType is ItemType.Consumable && targetSubType == (int)ConsumableType.Carrot)
         {
             var find = carrotPool.GetComponent<CarrotPool>().Pop();
@@ -99,7 +101,6 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
             Destroy(selectedItem.gameObject);
             selectedItem = null;
         }
-        
     }
 
     private void AddItem(Vector2Int targetGridCell)
