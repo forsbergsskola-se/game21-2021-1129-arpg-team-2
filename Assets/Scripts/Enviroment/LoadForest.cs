@@ -11,7 +11,7 @@ public class LoadForest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            SceneManager.LoadScene(SceneManager.GetSceneByName("ForestNew").buildIndex);
+            SceneManager.LoadScene(2);
         }
     }
 }
