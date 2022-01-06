@@ -25,8 +25,8 @@ Transform:
   m_GameObject: {fileID: 4176640983648010194}
   m_LocalRotation: {x: 0, y: 0.95527834, z: 0, w: 0.29570806}
   m_LocalPosition: {x: 1.95, y: 0.25, z: 6.9444385}
-  m_LocalScale: {x: 5, y: 5, z: 5}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5000005, y: 1.5, z: 1.5000005}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4502704236502498439}
   m_Father: {fileID: 0}
@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7265492632167032680}
   - component: {fileID: 7265492632167032681}
+  - component: {fileID: 3953848201118533004}
   m_Layer: 0
   m_Name: AttackSpawnPosition
   m_TagString: Untagged
@@ -76,6 +77,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5249cf5ac0aea4c5b85e18c46eadf99f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3953848201118533004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7265492632167032683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023ed20b48ca8a64296265737a40fde8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 11400000, guid: e1d4e7e40f5534c3eb4089439e105db8, type: 2}
+  target: {fileID: 0}
+  shootDirection: {fileID: 11400000, guid: febb7907916a4a044ae7efbebc06dd88, type: 2}
 --- !u!1001 &4176640985379232620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -904,7 +920,73 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7265492633373864264
+--- !u!195 &513535470
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834534746093839933}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 8
+  m_Acceleration: 5
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 2
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &513535471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834534746093839933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fec1fa47338dac4c87a81af1b622035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackInterval: {fileID: 11400000, guid: f929ac7eb0739654c8dce382347b2890, type: 2}
+  attackSound: {fileID: 0}
+  weapon: {fileID: 11400000, guid: e1d4e7e40f5534c3eb4089439e105db8, type: 2}
+  movementTarget: {fileID: 11400000, guid: 70da94d1ac5c40e47af31e9e59bdd34a, type: 2}
+--- !u!114 &5306609014481340072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834534746093839933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e55dc7468fd73425aad5e4c5f0d11491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  isPatrolling: 0
+  patrolSpeed: 4
+  walkPointRange: 10
+  chaseSpeed: 10
+  awarenessRange: 12
+  attackRange: 7
+  hearingRange: 10
+  breathingTimeAfterDefeating: 7
+  fieldOfViewAngle: 90
+  playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
+--- !u!114 &1708644341
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -918,33 +1000,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magicOrbPrefab: {fileID: 6680336195130181756, guid: 52383342ae1915f47bff140a26fc3495, type: 3}
   orbSpawnPosition: {fileID: 7265492632167032683}
-  player: {fileID: 0}
-  orbLerpTime: 0.5
---- !u!114 &7717378555282811541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3834534746093839933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f07402af12f75664ea7fbb5afc53a64c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  GroundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  isPatrolling: 0
-  patrolSpeed: 4
-  walkPointRange: 10
-  chaseSpeed: 10
-  awarenessRange: 0
-  attackRange: 0
-  hearingRange: 0
-  breathingTimeAfterDefeating: 7
-  fieldOfViewAngle: 90
-  playerPosition: {fileID: 0}
+  orbLerpTime: 0.4

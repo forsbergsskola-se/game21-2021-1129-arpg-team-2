@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class PlayernavMesh : MonoBehaviour
@@ -13,6 +14,8 @@ public class PlayernavMesh : MonoBehaviour
     [SerializeField] private FloatValue stopFrontOfGateDistance;
     [SerializeField] private BooleanValue attackOnGoing;
     [SerializeField] private GameEvent attackStop;
+    [SerializeField] private BooleanValue fromForest;
+    [SerializeField] private Vector3Value cryptFinalPosition;
     private NavMeshAgent navMeshAgent;
     private RaycastHit hit;
     Animator animator;
@@ -28,6 +31,14 @@ public class PlayernavMesh : MonoBehaviour
     {
         playerStartPosition.Vector3 = transform.position;
         animator = GetComponentInChildren<Animator>();
+
+        if (fromForest.BoolValue)
+        {
+            navMeshAgent.Warp(cryptFinalPosition.Vector3);
+            fromForest.BoolValue = false;
+        }
+        
+        
     }
 
     private void Update()
