@@ -8,7 +8,7 @@ public class HealthBarUIController : MonoBehaviour
    private Health health;
    private float previousFill;
    private float currentFill;
-   private float fillSmoothness = 0.008f;
+   private float fillSmoothness = 0f;
    
    private void Start()
    {

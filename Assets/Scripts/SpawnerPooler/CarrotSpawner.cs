@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,6 +5,7 @@ public class CarrotSpawner : MonoBehaviour
 {
     [SerializeField] private int maxCarrotDrop = 5;
     [SerializeField] private PoolScriptableObject carrotPool;
+    [SerializeField] private GameObject playerInventory;
     private Vector3 offset;
 
     private void Start()
@@ -22,18 +20,18 @@ public class CarrotSpawner : MonoBehaviour
             if (carrotPool != null)
             {
                 var tempCarrot = carrotPool.pool.Pop();
+                tempCarrot.GetComponent<PickupWorldItem>().WorldItemChosen.AddListener(playerInventory.GetComponent<ItemGridView>().OnWorldItemChosen);
+                tempCarrot.GetComponent<PickupWorldItem>().GameObjectChosen.AddListener(playerInventory.GetComponent<ItemGridView>().OnGameObjectChosen);
                 tempCarrot.SetActive(true);
                 tempCarrot.transform.position = this.transform.position + offset;
-                if ( tempCarrot.GetComponent<CoinScript>().coinIsCollected )
-                {
-                    CarrotIsCollected(tempCarrot);
-                }
             }
         }
     }
 
-    private void CarrotIsCollected(GameObject carrot)
+    public void CarrotIsCollected(GameObject carrot)
     {
+        Debug.Log("pool length before push: " + carrotPool.pool.Count);
         carrotPool.pool.Push(carrot);
+        Debug.Log("pool length before push: " + carrotPool.pool.Count);
     }
 }
