@@ -21,18 +21,13 @@ public class CarrotSpawner : MonoBehaviour
             if (carrotPool != null)
             {
                 var tempCarrot = carrotPool.pool.Pop();
-                tempCarrot.GetComponent<PickupWorldItem>().WorldItemChosen.AddListener(playerInventory.GetComponent<ItemGridView>().OnWorldItemChosen);
-                tempCarrot.GetComponent<PickupWorldItem>().GameObjectChosen.AddListener(playerInventory.GetComponent<ItemGridView>().OnGameObjectChosen);
+                tempCarrot.GetComponent<PickupWorldItem>().PrepareQuickAdd.AddListener(playerInventory.GetComponent<ItemGridView>().OnPrepareQuickAdd);
+                tempCarrot.GetComponent<PickupWorldItem>().PrepareRegularAdd.AddListener(playerInventory.GetComponent<ItemGridView>().OnPrepareRegularAdd);
                 tempCarrot.SetActive(true);
-                tempCarrot.transform.position = this.transform.position + offset;
+                tempCarrot.transform.position = transform.position + offset;
             }
         }
     }
 
-    public void CarrotIsCollected(GameObject carrot)
-    {
-        Debug.Log("pool length before push: " + carrotPool.pool.Count);
-        carrotPool.pool.Push(carrot);
-        Debug.Log("pool length before push: " + carrotPool.pool.Count);
-    }
+    public void CarrotIsCollected(GameObject carrot) => carrotPool.pool.Push(carrot);
 }

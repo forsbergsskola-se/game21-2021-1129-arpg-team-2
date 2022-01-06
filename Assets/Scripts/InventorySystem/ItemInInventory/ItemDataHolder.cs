@@ -24,8 +24,21 @@ public struct ItemDataHolder
         width = data.InventoryItemWidth;
         height = data.InventoryItemHeight;
         itemIcon = data.InventoryItemIcon;
-        type = data.ItemType;
-        if (data.ItemType == ItemType.Consumable) subType = (int) data.ConsumableType;
-        else subType = null;
+        
+        if (data is ConsumableItem c && c)
+        {
+            type = c.Type;
+            subType = (int) c.SubType;
+        }
+        else if (data is WeaponItem w && w)
+        {
+            type = w.Type;
+            subType = (int) w.SubType;
+        }
+        else
+        {
+            type = ItemType.None;
+            subType = null;
+        }
     }
 }

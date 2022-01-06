@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public enum ItemType
@@ -8,6 +9,7 @@ public enum ItemType
     Armour
 }
 
+[Serializable]
 public abstract class BaseItem : ScriptableObject
 {
     [Header("GameObject and sprite representations")]
@@ -20,16 +22,6 @@ public abstract class BaseItem : ScriptableObject
     [SerializeField] private int inventoryItemHeight;
     public int InventoryItemWidth { get => inventoryItemWidth; private set => inventoryItemWidth = value; }
     public int InventoryItemHeight { get => inventoryItemHeight; private set => inventoryItemHeight = value; }
-
-    private ItemType itemType;
-    public ItemType ItemType { get; set; }
-
-    private ConsumableType consumableType;
-    public ConsumableType ConsumableType { get; set; }
-    private WeaponType weaponType;
-    public WeaponType WeaponType { get; set; }
-
-    private int? subType;
 
     [Header("Flavour text description")]
     [TextArea(15, 20)]

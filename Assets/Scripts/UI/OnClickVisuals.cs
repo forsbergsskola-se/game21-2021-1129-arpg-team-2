@@ -16,6 +16,7 @@ public class OnClickVisuals : MonoBehaviour
     //Add those lines
     private GameObject instantiatedPrefabValid;
     private GameObject instantiatedPrefabInvalid;
+    private Vector3 offset;
 
     //Add the whole Start() method
     private void Start()
@@ -24,6 +25,8 @@ public class OnClickVisuals : MonoBehaviour
         instantiatedPrefabValid.GetComponentInChildren<Animation>().Stop();
         instantiatedPrefabInvalid = Instantiate(myPrefabInvalid, Vector3.zero, Quaternion.identity);
         instantiatedPrefabInvalid.GetComponentInChildren<Animation>().Stop();
+
+        offset = new Vector3(0, .2f, 0);
 
     }
 
@@ -36,10 +39,10 @@ public class OnClickVisuals : MonoBehaviour
             Physics.Raycast(ray, out hit);
 
             NavMeshHit navMeshHit;
-            
+
             if (NavMesh.SamplePosition(hit.point, out navMeshHit, 1f, NavMesh.AllAreas) && !hit.transform.CompareTag("Destructible") && !hit.transform.CompareTag("Enemy") && !hit.transform.CompareTag("UI"))
             {
-                instantiatedPrefabValid.transform.SetPositionAndRotation(hit.point, Quaternion.identity);
+                instantiatedPrefabValid.transform.SetPositionAndRotation(hit.point+offset, Quaternion.identity);
                 instantiatedPrefabValid.GetComponentInChildren<Animation>().Stop();
                 instantiatedPrefabValid.GetComponentInChildren<Animation>().Play();
                 

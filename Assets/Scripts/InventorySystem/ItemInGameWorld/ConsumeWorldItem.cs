@@ -18,7 +18,7 @@ public class ConsumeWorldItem : MonoBehaviour, IPointerDownHandler
         if (eventData.button == PointerEventData.InputButton.Left &&
             Input.GetKey(KeyCode.LeftControl) && 
             eventData.pointerPressRaycast.gameObject.TryGetComponent(out worldItem) &&
-            worldItem.Item.ItemType == ItemType.Consumable)
+            worldItem.Item is ConsumableItem)
         {
             PlayerConsumeConsumable();
         }
