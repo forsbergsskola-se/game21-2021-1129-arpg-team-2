@@ -1,11 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-public class EnemyAI : MonoBehaviour
+public class SorceressAI : MonoBehaviour
 {
-    //Layers
+//Layers
     [Header("Assign Layers")]
     public LayerMask PlayerLayer;
     public LayerMask GroundLayer;
@@ -45,25 +45,23 @@ public class EnemyAI : MonoBehaviour
     
     [Header("Assign the player's position")]
     [SerializeField] private Vector3Value playerPosition;
-    private NavMeshAgent agent;
+    private UnityEngine.AI.NavMeshAgent agent;
     private Vector3 startPosition;
     private bool playerIsDefeated;
     private EntityAttack entityAttack;
 
     //Animatior controller
     private Animator sorceressAnimator;
-    private AudioSource ratFollowSound;
 
     private void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         startPosition = agent.transform.position;
         agent.isStopped = false;
         isInPatrolState = true;
         playerIsDefeated = false;
         entityAttack = GetComponent<EntityAttack>();
         sorceressAnimator = GetComponent<Animator>();
-        ratFollowSound = GetComponent<AudioSource>();
     }
     
     private void Update()
@@ -86,13 +84,13 @@ public class EnemyAI : MonoBehaviour
             {
                 noObstacle = true;
                 agent.isStopped = false;
-                sorceressAnimator.SetBool("isInPatrolState", true);
+                sorceressAnimator.SetBool("isWalking", true);
             }
             else
             {
                 noObstacle = false;
                 agent.isStopped = true;
-                sorceressAnimator.SetBool("isInPatrolState", false);
+                sorceressAnimator.SetBool("isWalking", false);
             }
         }
         
@@ -103,11 +101,10 @@ public class EnemyAI : MonoBehaviour
 
         if (!playerInAwarenessRange)
         {
-            ratFollowSound.Stop();
             if (isPatrolling)
             {
                isInPatrolState = true;
-               sorceressAnimator.SetBool("isInPatrolState", isInPatrolState);
+               sorceressAnimator.SetBool("isWalking", isInPatrolState);
             }
             else if (!isStartPositionReset)
             { 
@@ -115,7 +112,7 @@ public class EnemyAI : MonoBehaviour
                 agent.isStopped = false;
                 agent.SetDestination(startPosition);
                 isStartPositionReset = true;
-                sorceressAnimator.SetBool("isInPatrolState", true);
+                sorceressAnimator.SetBool("isWalking", true);
             }
         }
         
@@ -128,7 +125,7 @@ public class EnemyAI : MonoBehaviour
     private void Patrolling()
     {
         isInPatrolState = true;
-        sorceressAnimator.SetBool("isInPatrolState", isInPatrolState);
+        sorceressAnimator.SetBool("isWalking", isInPatrolState);
         agent.speed = patrolSpeed;
         
         if (!walkPointSet) SearchWalkPoint();
@@ -137,7 +134,7 @@ public class EnemyAI : MonoBehaviour
         {
             agent.SetDestination(walkPoint);
             agent.isStopped = false;
-            sorceressAnimator.SetBool("isInPatrolState", true);
+            sorceressAnimator.SetBool("isWalking", true);
         }
         
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
@@ -154,17 +151,18 @@ public class EnemyAI : MonoBehaviour
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
         if (Physics.Raycast(walkPoint, -transform.up, 2f, GroundLayer))
+        {
             walkPointSet = true;
+        }
     }
 
     private void ChasePlayer()
     {
-        ratFollowSound.Play();
         agent.speed = chaseSpeed;
         agent.SetDestination(playerPosition.Vector3);
         agent.isStopped = false;
         isInPatrolState = false;
-        sorceressAnimator.SetBool("isInPatrolState", true);
+        sorceressAnimator.SetBool("isWalking", true);
         isStartPositionReset = false;
     }
 
@@ -178,7 +176,7 @@ public class EnemyAI : MonoBehaviour
 
         agent.isStopped = true;
         isInPatrolState = false;
-        sorceressAnimator.SetBool("isInPatrolState", isInPatrolState);
+        sorceressAnimator.SetBool("isWalking", isInPatrolState);
     }
    
     private void OnDrawGizmosSelected()
@@ -201,7 +199,7 @@ public class EnemyAI : MonoBehaviour
         if (isPatrolling)
         {
             isInPatrolState = true;
-            sorceressAnimator.SetBool("isInPatrolState", isInPatrolState);
+            sorceressAnimator.SetBool("isWalking", isInPatrolState);
         }
         else
         {

@@ -13,7 +13,6 @@ public class MagicOrbAttack : MonoBehaviour {
 
     private void CreateOrb()
     {
-        Debug.Log("Exakt vad som");
          createdOrb = Instantiate(magicOrbPrefab, orbSpawnPosition.transform.position, quaternion.identity, orbSpawnPosition.transform);
          createdOrb.transform.localScale = new Vector3(0.25f,0.25f,0.25f);
     }
