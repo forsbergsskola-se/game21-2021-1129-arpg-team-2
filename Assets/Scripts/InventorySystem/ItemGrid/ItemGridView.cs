@@ -36,6 +36,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         itemDrop = FindObjectOfType<ItemDropNextToPlayer>();
         
         spawnWorldItems = FindObjectsOfType<WorldItem>();
+        spawnWorldItems.ToList().ForEach(x => x.gameObject.GetComponent<PickupWorldItem>().WorldItemChosen += OnWorldItemChosen);
     }
 
     private void Update()
@@ -167,16 +168,6 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     public void OnPointerExit(PointerEventData eventData)
     {
         isCursorInsideGrid = false;
-    }
-
-    private void OnEnable()
-    {
-        Actions.WorldItemChosen += OnWorldItemChosen;
-    }
-    
-    private void OnDisable()
-    {
-        Actions.WorldItemChosen -= OnWorldItemChosen;
     }
 
     private void OnWorldItemChosen(BaseItem item) => currentWorldItem = item;

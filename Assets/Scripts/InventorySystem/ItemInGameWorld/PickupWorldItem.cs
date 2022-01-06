@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,6 +12,9 @@ public class PickupWorldItem : MonoBehaviour, IPointerDownHandler
     [SerializeField] private float distanceFromCamera;
     [SerializeField] private ItemGridView grid;
 
+    // Action to emit
+    public Action<BaseItem> WorldItemChosen;
+    
     // Inventory-UI-related
     private GridVisibleController gridVisibleControl;
     private bool isStickToCursor;
@@ -44,7 +48,7 @@ public class PickupWorldItem : MonoBehaviour, IPointerDownHandler
     private void UpdatePickedUpItemData()
     {
         var currentItem = GetComponent<WorldItem>().Item;
-        Actions.WorldItemChosen(currentItem);
+        WorldItemChosen(currentItem);
     }
 
     private void Update()
