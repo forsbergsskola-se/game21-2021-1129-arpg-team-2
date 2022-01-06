@@ -33,15 +33,16 @@ public class OnClickVisuals : MonoBehaviour
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Physics.Raycast(ray, out hit);
 
-            if (Physics.Raycast(ray, out hit) && CheckDestination(hit.transform.position) && !hit.transform.CompareTag("Destructible") && !hit.transform.CompareTag("Enemy") && !hit.transform.CompareTag("UI"))
+            NavMeshHit navMeshHit;
+            
+            if (NavMesh.SamplePosition(hit.transform.position, out navMeshHit, 1f, NavMesh.AllAreas) && !hit.transform.CompareTag("Destructible") && !hit.transform.CompareTag("Enemy") && !hit.transform.CompareTag("UI"))
             {
-                //Added lines
-                //Start
                 instantiatedPrefabValid.transform.SetPositionAndRotation(hit.point, Quaternion.identity);
                 instantiatedPrefabValid.GetComponentInChildren<Animation>().Stop();
                 instantiatedPrefabValid.GetComponentInChildren<Animation>().Play();
-                //End
+                
                 ValidMove.Play();
             }
             else if (hit.transform.CompareTag("Destructible"))
@@ -60,21 +61,14 @@ public class OnClickVisuals : MonoBehaviour
             {
                 if (!hit.transform.CompareTag("UI"))
                 {
-                    //Added lines
-                    //Start
                     instantiatedPrefabInvalid.transform.SetPositionAndRotation(hit.point, Quaternion.identity);
                     instantiatedPrefabInvalid.GetComponentInChildren<Animation>().Stop();
                     instantiatedPrefabInvalid.GetComponentInChildren<Animation>().Play();
-                    //End
+                    
                     InvalidMove.Play();
                 }
                 
             }
         }
-    }
-    private bool CheckDestination(Vector3 targetDestination)
-    {
-        NavMeshHit hit;
-        return NavMesh.SamplePosition(targetDestination, out hit, 1f, NavMesh.AllAreas);
     }
 }
