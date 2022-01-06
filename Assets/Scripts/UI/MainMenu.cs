@@ -8,8 +8,9 @@ using UnityEngine.UIElements;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject menu;
+    [SerializeField] private GameObject inGameMenu;
     [SerializeField] private GameObject scroll;
+    [SerializeField] private GameObject optionsMenu;
     [SerializeField] private GameObject audioMenu;
     [SerializeField] private GameObject graphicsMenu;
     
@@ -46,16 +47,17 @@ public class MainMenu : MonoBehaviour
             if (scroll.gameObject.activeSelf)
             {
                 scroll.gameObject.SetActive(false);
-                menu.gameObject.SetActive(false);
+                inGameMenu.gameObject.SetActive(false);
                 audioMenu.gameObject.SetActive(false);
                 graphicsMenu.gameObject.SetActive(false);
+                optionsMenu.gameObject.SetActive(false);
                 
                 UnpauseGame();
             }
             else
             {
                 scroll.gameObject.SetActive(true);
-                menu.gameObject.SetActive(true);
+                inGameMenu.gameObject.SetActive(true);
                 
                 PauseGame();
             }
