@@ -35,9 +35,10 @@ public class PlayernavMesh : MonoBehaviour
         if (fromForest.BoolValue)
         {
             navMeshAgent.Warp(cryptFinalPosition.Vector3);
+            fromForest.BoolValue = false;
         }
         
-        fromForest.BoolValue = false;
+        
     }
 
     private void Update()
