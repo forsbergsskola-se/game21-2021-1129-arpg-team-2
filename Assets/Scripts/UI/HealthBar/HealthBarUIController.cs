@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class HealthBarUIController : MonoBehaviour
 {
    public Image healthBar;
-   private CharStats charStats;
+   [SerializeField] private CharStats charStats;
    private Health health;
    private float previousFill;
    private float currentFill;
