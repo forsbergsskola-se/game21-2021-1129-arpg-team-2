@@ -30,6 +30,7 @@ public class PickupWorldItem : MonoBehaviour, IPointerDownHandler
             grid.currentWorldItemGameObject = gameObject;
             grid.OnQuickAdd();
         }
+        else if (eventData.button == PointerEventData.InputButton.Right && isStickToCursor) isStickToCursor = false;
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
             gridVisibleControl.SetGridVisibility(true);
