@@ -37,7 +37,7 @@ public class OnClickVisuals : MonoBehaviour
 
             NavMeshHit navMeshHit;
             
-            if (NavMesh.SamplePosition(hit.transform.position, out navMeshHit, 1f, NavMesh.AllAreas) && !hit.transform.CompareTag("Destructible") && !hit.transform.CompareTag("Enemy") && !hit.transform.CompareTag("UI"))
+            if (NavMesh.SamplePosition(hit.point, out navMeshHit, 1f, NavMesh.AllAreas) && !hit.transform.CompareTag("Destructible") && !hit.transform.CompareTag("Enemy") && !hit.transform.CompareTag("UI"))
             {
                 instantiatedPrefabValid.transform.SetPositionAndRotation(hit.point, Quaternion.identity);
                 instantiatedPrefabValid.GetComponentInChildren<Animation>().Stop();
