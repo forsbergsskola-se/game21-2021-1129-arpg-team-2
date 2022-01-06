@@ -10,8 +10,8 @@ public class MagicOrb : MonoBehaviour, IAttack
     {
         if (other.gameObject.GetComponent<IDamageable>() != null)
         {
-            IDamageable target = other.gameObject.GetComponent<IDamageable>();
-            Attack(target);
+            // IDamageable target = other.gameObject.GetComponent<IDamageable>();
+            // Attack(target);
         }
         
         Destroy(this.gameObject);

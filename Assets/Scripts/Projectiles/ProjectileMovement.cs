@@ -15,6 +15,7 @@ public class ProjectileMovement : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         IDamageable damageable = other.GetComponent<IDamageable>();
-        if(damageable != null) damageable.TakeDamage(weapon.Power * playerStats.AttackSpeed);
+        damageable?.TakeDamage(weapon.Power * playerStats.AttackSpeed);
+        Destroy(this.gameObject);
     }
 }
