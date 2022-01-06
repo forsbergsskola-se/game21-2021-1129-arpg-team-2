@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 103835734751408791}
   - component: {fileID: 3678986196271974622}
   - component: {fileID: 4708503986896463076}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: MagicOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,13 +165,12 @@ GameObject:
   - component: {fileID: 2497955043870087223}
   - component: {fileID: 6250714220816023991}
   - component: {fileID: 2527647475595930175}
-  - component: {fileID: 1210117267427923993}
   - component: {fileID: 6896238898854277849}
   - component: {fileID: 8631113122256388584}
   - component: {fileID: 2093121120743860813}
   - component: {fileID: 4467752184953849060}
   - component: {fileID: 8266900757499009774}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: MagicOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +186,7 @@ Transform:
   m_GameObject: {fileID: 6680336195130181756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.9615173, y: 1.25, z: 0.662632}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6801330880690307219}
@@ -247,21 +246,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.9
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1210117267427923993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6680336195130181756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb67c7b023a94bb42b68700e4ce46be2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  magicOrb: {fileID: 11400000, guid: e1d4e7e40f5534c3eb4089439e105db8, type: 2}
 --- !u!54 &6896238898854277849
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -382,5 +368,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: 23f69430033372442b2eec1256acb110, type: 2}
   weapon: {fileID: 11400000, guid: e1d4e7e40f5534c3eb4089439e105db8, type: 2}
-  shootDirection: {fileID: 11400000, guid: febb7907916a4a044ae7efbebc06dd88, type: 2}
+  shootDirection: {fileID: 11400000, guid: b5117ae6e5f48484890d042f6b0baae6, type: 2}
   speed: 20

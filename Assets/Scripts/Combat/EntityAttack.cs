@@ -13,9 +13,13 @@ public class EntityAttack : MonoBehaviour, IAttack {
     [SerializeField] private GameObjectValue movementTarget;
     private GameObjectValue _defaultValue;
 
+    private GameEvent isAttacking;
+    public GameEvent IsAttacking => isAttacking;
+
     private void Awake()
     {
         attackOnGoing = false;
+        isAttacking = ScriptableObject.CreateInstance<GameEvent>();
     }
 
     private void Update()
@@ -52,6 +56,7 @@ public class EntityAttack : MonoBehaviour, IAttack {
         while (entity.CharStats.CurrentHealth > 0f)
         {
             Attack(entity);
+            isAttacking.Raise();
             if (attackOnGoing) yield return new WaitForSeconds(attackInterval.RuntimeValue);
             else yield break;
         }
