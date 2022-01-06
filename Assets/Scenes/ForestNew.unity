@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16183,49 +16183,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5866492348541539146, guid: 1fb0f249cecfdfb4a83b25cbfd43e95a, type: 3}
   m_PrefabInstance: {fileID: 505857318}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &513535465 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3834534746093839933, guid: 2af6589bb6eb97b4c873f026186783f8, type: 3}
-  m_PrefabInstance: {fileID: 1140435833}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &513535470
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 513535465}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 8
-  m_Acceleration: 5
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 2
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &513535471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 513535465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fec1fa47338dac4c87a81af1b622035, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackInterval: {fileID: 11400000, guid: f929ac7eb0739654c8dce382347b2890, type: 2}
-  attackSound: {fileID: 0}
-  weapon: {fileID: 11400000, guid: e1d4e7e40f5534c3eb4089439e105db8, type: 2}
-  movementTarget: {fileID: 11400000, guid: 70da94d1ac5c40e47af31e9e59bdd34a, type: 2}
 --- !u!1001 &528956607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24137,18 +24094,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4176640983648010197, guid: 2af6589bb6eb97b4c873f026186783f8, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5000005
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176640983648010197, guid: 2af6589bb6eb97b4c873f026186783f8, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176640983648010197, guid: 2af6589bb6eb97b4c873f026186783f8, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5000005
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176640983648010197, guid: 2af6589bb6eb97b4c873f026186783f8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -34.15
       objectReference: {fileID: 0}
@@ -24188,22 +24133,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4176640983648010197, guid: 2af6589bb6eb97b4c873f026186783f8, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7265492633373864264, guid: 2af6589bb6eb97b4c873f026186783f8, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1210509985}
-    - target: {fileID: 7717378555282811541, guid: 2af6589bb6eb97b4c873f026186783f8, type: 3}
-      propertyPath: isPatrolling
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7717378555282811541, guid: 2af6589bb6eb97b4c873f026186783f8, type: 3}
-      propertyPath: playerPosition
-      value: 
-      objectReference: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2af6589bb6eb97b4c873f026186783f8, type: 3}
 --- !u!4 &1140435834 stripped
