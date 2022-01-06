@@ -43,7 +43,7 @@ public class EntityAttack : MonoBehaviour, IAttack {
     {
         if (thisTarget == null) return;
         //attackSound.Play();
-        thisTarget.TakeDamage(weapon.Power);
+        if(!weapon.Ranged) thisTarget.TakeDamage(weapon.Power);
     }
 
     private IEnumerator AttackOnInterval(IDamageable entity)
