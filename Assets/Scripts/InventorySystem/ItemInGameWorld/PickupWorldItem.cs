@@ -14,8 +14,8 @@ public class PickupWorldItem : MonoBehaviour, IPointerDownHandler
     [SerializeField] private GameObject spawner;
 
     // UnityEvents for picking up and dropping items
-    [HideInInspector] public UnityEvent<BaseItem> WorldItemChosen;
-    [HideInInspector] public UnityEvent<GameObject> GameObjectChosen;
+    [HideInInspector] public UnityEvent<PickUp> PrepareQuickAdd;
+    [HideInInspector] public UnityEvent<PickUp> PrepareRegularAdd;
     
     // Inventory-UI-related
     private GridVisibleController gridVisibleControl;
@@ -32,8 +32,7 @@ public class PickupWorldItem : MonoBehaviour, IPointerDownHandler
     {
         if (eventData.button == PointerEventData.InputButton.Right && Input.GetKey(KeyCode.LeftControl))
         {
-            UpdatePickedUpItemData();
-            playerInventory.GetComponent<ItemGridView>().OnQuickAdd();
+            QuickAdd();
         }
         else if (eventData.button == PointerEventData.InputButton.Right && isStickToCursor) isStickToCursor = false;
         else if (eventData.button == PointerEventData.InputButton.Right)
@@ -41,15 +40,22 @@ public class PickupWorldItem : MonoBehaviour, IPointerDownHandler
             gridVisibleControl.SetGridVisibility(true);
             isStickToCursor = true;
             transform.LookAt(cam.transform);
-            UpdatePickedUpItemData();
+            RegularAdd();
         }
     }
 
-    private void UpdatePickedUpItemData()
+    private void QuickAdd()
     {
-        var currentItem = GetComponent<WorldItem>().Item;
-        WorldItemChosen?.Invoke(currentItem);
-        GameObjectChosen?.Invoke(gameObject);
+        var item = GetComponent<WorldItem>().Item;
+        PrepareQuickAdd?.Invoke(new PickUp(item, gameObject));
+        playerInventory.GetComponent<ItemGridView>().ItemAddSuccess.AddListener(OnItemAddSuccess);
+    }
+
+    private void RegularAdd()
+    {
+        var item = GetComponent<WorldItem>().Item;
+        PrepareRegularAdd?.Invoke(new PickUp(item, gameObject));
+        playerInventory.GetComponent<ItemGridView>().ItemAddSuccess.AddListener(OnItemAddSuccess);
     }
 
     private void Update()
@@ -67,9 +73,22 @@ public class PickupWorldItem : MonoBehaviour, IPointerDownHandler
 
     public void OnItemAddSuccess()
     {
+        playerInventory.GetComponent<ItemGridView>().ItemAddSuccess.RemoveListener(OnItemAddSuccess);
         isStickToCursor = false;
         GameObject o;
         (o = gameObject).SetActive(false);
         spawner.GetComponent<CarrotSpawner>().CarrotIsCollected(o);
+    }
+}
+
+public class PickUp
+{
+    public BaseItem item;
+    public GameObject itemGameObject;
+
+    public PickUp(BaseItem item, GameObject itemGameObject)
+    {
+        this.item = item;
+        this.itemGameObject = itemGameObject;
     }
 }

@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 /// <summary>
@@ -16,8 +16,10 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     [SerializeField] private GameObject inventoryItem;
     [SerializeField] private GameObject carrotPool;
 
-    internal GameObject currentWorldItemGameObject;
-    private BaseItem currentWorldItem;
+    [HideInInspector] public UnityEvent ItemAddSuccess;
+
+    private GameObject pickedUpGameObject;
+    private BaseItem pickedUpItem;
 
     private InventoryItem selectedItem;
     private InventoryItem overlapItem;
@@ -45,10 +47,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     {
         var targetType = selectedItem.ItemData.Type;
         var targetSubType = selectedItem.ItemData.SubType;
-        
-        Debug.Log("What is targetType: " + targetType);
-        Debug.Log("What is targetSubType: " + targetSubType);
-        
+
         GameObject find;
         if (targetType is ItemType.Consumable && targetSubType == (int) ConsumableType.Carrot)
             find = carrotPool.GetComponent<CarrotPool>().Pop();
@@ -68,9 +67,6 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     public void OnPointerDown(PointerEventData eventData)
     {
         var targetGridCell = grid.GetTileGridPosition(Input.mousePosition);
-        
-        Debug.Log("Target grid cell: " + targetGridCell);
-        
         if (eventData.button == PointerEventData.InputButton.Right && isCursorInsideGrid) PickupInventoryItem();
         else if (eventData.button == PointerEventData.InputButton.Left &&
                  Input.GetKey(KeyCode.LeftControl) &&
@@ -82,7 +78,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     private void PickupInventoryItem()
     {
         var targetGridCell = grid.GetTileGridPosition(Input.mousePosition);
-        if (currentWorldItem != null) AddItem(targetGridCell);
+        if (pickedUpItem != null) AddItem(targetGridCell);
         else if (selectedItem != null) AddItem(targetGridCell, selectedItem);
         else RemoveItem(targetGridCell);
     }
@@ -106,7 +102,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     private void AddItem(Vector2Int targetGridCell)
     {
         var item = Instantiate(inventoryItem);
-        item.GetComponent<InventoryItem>().Set(currentWorldItem);
+        item.GetComponent<InventoryItem>().Set(pickedUpItem);
 
         var success = grid.AddItem(item.GetComponent<InventoryItem>(), targetGridCell.x, targetGridCell.y, ref overlapItem);
         if (success)
@@ -114,8 +110,9 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
             selectedItem = null;
             if (overlapItem != null) HandleItemOverlap();
 
-            currentWorldItemGameObject.GetComponent<PickupWorldItem>().OnItemAddSuccess();
-            currentWorldItem = null;
+            pickedUpGameObject.GetComponent<PickupWorldItem>().OnItemAddSuccess();
+            ItemAddSuccess?.Invoke();
+            pickedUpItem = null;
         }
     }
 
@@ -142,18 +139,11 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         if (selectedItem != null) rectTrans = selectedItem.GetComponent<RectTransform>();
     }
 
-    public void OnQuickAdd()
+    public void QuickAdd()
     {
         // TODO: GetFirstAvailableSlot() is buggy and needs fixing; putting it in a try-catch for now to avoid exception
-        try
-        {
-            var startSlot = grid.GetFirstAvailableSlot(currentWorldItem.InventoryItemWidth, currentWorldItem.InventoryItemHeight);
-            AddItem(startSlot);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine("Grid operation error: Available space not found");
-        }
+        var startSlot = grid.GetFirstAvailableSlot(pickedUpItem.InventoryItemWidth, pickedUpItem.InventoryItemHeight);
+        AddItem(startSlot);
     }
     
     public void OnPointerEnter(PointerEventData eventData)
@@ -165,8 +155,17 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     {
         isCursorInsideGrid = false;
     }
-    
-    public void OnWorldItemChosen(BaseItem item) => currentWorldItem = item;
 
-    public void OnGameObjectChosen(GameObject obj) => currentWorldItemGameObject = obj;
+    public void OnPrepareQuickAdd(PickUp tmp)
+    {
+        pickedUpItem = tmp.item;
+        pickedUpGameObject = tmp.itemGameObject;
+        QuickAdd();
+    }
+
+    public void OnPrepareRegularAdd(PickUp tmp)
+    {
+        pickedUpItem = tmp.item;
+        pickedUpGameObject = tmp.itemGameObject;
+    }
 }
