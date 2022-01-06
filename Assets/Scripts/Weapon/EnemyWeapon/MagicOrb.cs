@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MagicOrb : MonoBehaviour, IAttack
 {
-    [SerializeField] private float damage;
+    [SerializeField] private Weapon magicOrb;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<IDamageable>() != null)
@@ -26,6 +26,6 @@ public class MagicOrb : MonoBehaviour, IAttack
     public void Attack(IDamageable thisTarget)
     {
         //attackSound.Play();
-        thisTarget?.TakeDamage(damage);
+        thisTarget?.TakeDamage(magicOrb.Power);
     }
 }

@@ -142,6 +142,7 @@ public class SorceressAI : MonoBehaviour
         if (distanceToWalkPoint.magnitude < 5f)
             walkPointSet = false;
     }
+    
     private void SearchWalkPoint()
     {
         //Calculate random point in range
@@ -162,6 +163,7 @@ public class SorceressAI : MonoBehaviour
         agent.SetDestination(playerPosition.Vector3);
         agent.isStopped = false;
         isInPatrolState = false;
+        sorceressAnimator.SetBool("isAttacking", false);
         sorceressAnimator.SetBool("isWalking", true);
         isStartPositionReset = false;
     }
@@ -177,6 +179,7 @@ public class SorceressAI : MonoBehaviour
         agent.isStopped = true;
         isInPatrolState = false;
         sorceressAnimator.SetBool("isWalking", isInPatrolState);
+        sorceressAnimator.SetBool("isAttacking", true);
     }
    
     private void OnDrawGizmosSelected()
@@ -195,6 +198,8 @@ public class SorceressAI : MonoBehaviour
     {
         playerIsDefeated = true;
         entityAttack.enabled = false;
+        
+        sorceressAnimator.SetBool("isAttacking", false);
         
         if (isPatrolling)
         {
