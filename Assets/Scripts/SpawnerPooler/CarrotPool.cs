@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CarrotPool : MonoBehaviour
@@ -11,6 +13,4 @@ public class CarrotPool : MonoBehaviour
         pool.Size = size;
         pool.Load();
     }
-
-    public GameObject Pop() => pool.Pop();
 }

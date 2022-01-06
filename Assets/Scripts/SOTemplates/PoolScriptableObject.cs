@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +8,7 @@ public class PoolScriptableObject : ScriptableObject
     public Stack<GameObject> pool;
     private int size;
     private GameObject prefab;
+    
 
     public int Size
     {
@@ -31,6 +31,4 @@ public class PoolScriptableObject : ScriptableObject
             pool.Push(temp);
         }
     }
-
-    public GameObject Pop() => pool.Pop();
 }
