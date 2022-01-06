@@ -13,6 +13,7 @@ public class SettingsMenu : MonoBehaviour
     public AudioMixer audioMixer;
 
     public TMP_Dropdown resolutionDropdown;
+    
 
     Resolution[] resolutions;
 
