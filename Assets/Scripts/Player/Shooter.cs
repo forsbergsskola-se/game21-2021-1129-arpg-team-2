@@ -18,7 +18,6 @@ public class Shooter : MonoBehaviour
 
     public void Shoot()
     {
-        Debug.Log("It's shooting");
         if (weapon.Ranged && target != null)
         {
             var temp = Instantiate(weapon.Projectile, transform.position, Quaternion.identity);
