@@ -32,5 +32,5 @@ public class PotionSpawner : MonoBehaviour
         }
     }
 
-    public void ReturnToPool(GameObject carrot) => potionPool.pool.Push(carrot);
+    public void ReturnToPool(GameObject potion) => potionPool.pool.Push(potion);
 }

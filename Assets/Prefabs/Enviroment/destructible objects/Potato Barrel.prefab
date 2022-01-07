@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1238099246746671762
+--- !u!1 &6011356205805636378
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,54 +8,54 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1238099246746671763}
-  - component: {fileID: 1238099246746671774}
-  - component: {fileID: 1238099246746671761}
-  - component: {fileID: 1238099246746671760}
-  - component: {fileID: 8684645057495932565}
-  - component: {fileID: 8684645058426054805}
-  - component: {fileID: 2382066973419233619}
-  - component: {fileID: 8684645057964514427}
-  - component: {fileID: 8684645057966955472}
-  - component: {fileID: 8684645057966955480}
-  - component: {fileID: 2699413191816279269}
+  - component: {fileID: 6011356205805636379}
+  - component: {fileID: 6011356205805636374}
+  - component: {fileID: 6011356205805636377}
+  - component: {fileID: 6011356205805636376}
+  - component: {fileID: 4234565077153648413}
+  - component: {fileID: 4234565079228954909}
+  - component: {fileID: 7155359304813834459}
+  - component: {fileID: 4234565078834384371}
+  - component: {fileID: 4234565078832761432}
+  - component: {fileID: 4234565078832761424}
+  - component: {fileID: 7436570898336277869}
   m_Layer: 0
-  m_Name: Potion Barrel
+  m_Name: Potato Barrel
   m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
   m_IsActive: 1
---- !u!4 &1238099246746671763
+--- !u!4 &6011356205805636379
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1238099246746671762}
+  m_GameObject: {fileID: 6011356205805636378}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50.86, y: 32.163994, z: 23.43}
+  m_LocalPosition: {x: 52.08, y: 31.2, z: 16.72}
   m_LocalScale: {x: 0.7, y: 1.05, z: 0.6999999}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1238099246746671774
+--- !u!33 &6011356205805636374
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1238099246746671762}
+  m_GameObject: {fileID: 6011356205805636378}
   m_Mesh: {fileID: -8350479689832642457, guid: c5df2341678e24c0a99fb190fd052529, type: 3}
---- !u!23 &1238099246746671761
+--- !u!23 &6011356205805636377
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1238099246746671762}
+  m_GameObject: {fileID: 6011356205805636378}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -92,13 +92,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1238099246746671760
+--- !u!136 &6011356205805636376
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1238099246746671762}
+  m_GameObject: {fileID: 6011356205805636378}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -106,13 +106,13 @@ CapsuleCollider:
   m_Height: 2.23
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0.007}
---- !u!208 &8684645057495932565
+--- !u!208 &4234565077153648413
 NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1238099246746671762}
+  m_GameObject: {fileID: 6011356205805636378}
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
@@ -122,13 +122,13 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0.009}
   m_TimeToStationary: 0.5
---- !u!114 &8684645058426054805
+--- !u!114 &4234565079228954909
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1238099246746671762}
+  m_GameObject: {fileID: 6011356205805636378}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e6d9d7390e1fcf498ac6b4fcac5a58f, type: 3}
@@ -137,13 +137,13 @@ MonoBehaviour:
   entityType: {fileID: 11400000, guid: 0d4973cf1804e1f40b3ff04d0a0849a7, type: 2}
   maxHealth: 1
   destructionParticlesPrefab: {fileID: 6202561886309452575, guid: d58d78c40fd8ef24ab5abfe96feba25e, type: 3}
---- !u!114 &2382066973419233619
+--- !u!114 &7155359304813834459
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1238099246746671762}
+  m_GameObject: {fileID: 6011356205805636378}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a2c939a5755c7b47bf5a89a617f6c42, type: 3}
@@ -153,13 +153,13 @@ MonoBehaviour:
   cursorTexture: {fileID: 2800000, guid: 547a00b7b8064ee4eb93c881ad30b496, type: 3}
   cursorMode: 1
   hotSpot: {x: 0, y: 0}
---- !u!114 &8684645057964514427
+--- !u!114 &4234565078834384371
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1238099246746671762}
+  m_GameObject: {fileID: 6011356205805636378}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2f698b8af41f264abd87ae44d449008, type: 3}
@@ -169,7 +169,7 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8684645058426054805}
+      - m_Target: {fileID: 4234565079228954909}
         m_TargetAssemblyTypeName: Entity, Assembly-CSharp
         m_MethodName: OnEntityDie
         m_Mode: 1
@@ -181,13 +181,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8684645057966955472
+--- !u!114 &4234565078832761432
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1238099246746671762}
+  m_GameObject: {fileID: 6011356205805636378}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
@@ -199,30 +199,30 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &8684645057966955480
+--- !u!114 &4234565078832761424
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1238099246746671762}
+  m_GameObject: {fileID: 6011356205805636378}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f41b805387556664d833781e8213fbf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2699413191816279269
+--- !u!114 &7436570898336277869
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1238099246746671762}
+  m_GameObject: {fileID: 6011356205805636378}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 457cdb79a2e36b74b8ab40cd680ac348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxCarrotDrop: 5
-  carrotPool: {fileID: 11400000, guid: 0ea0c68bf941c45499fa48863e9fe327, type: 2}
+  carrotPool: {fileID: 11400000, guid: 42ba67f368c9de4409c9c7f59815f336, type: 2}
   playerInventory: {fileID: 1728952715674540380, guid: 3f5038eaadc4e03458bd1dde7f2e5889, type: 3}
