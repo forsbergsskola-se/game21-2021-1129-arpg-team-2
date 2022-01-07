@@ -10,12 +10,18 @@ using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
 {
-    public AudioMixer audioMixer;
+    // public AudioMixer audioMixer;
 
     public TMP_Dropdown resolutionDropdown;
     
 
     Resolution[] resolutions;
+    
+    // [SerializeField] Slider masterSlider;
+    // [SerializeField] Slider musicSlider;
+    // [SerializeField] Slider sfxSlider;
+    // [SerializeField] Slider ambianceSlider;
+    // [SerializeField] Slider voiceSlider;
 
     void Start()
     {
@@ -53,30 +59,30 @@ public class SettingsMenu : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-    public void SetMasterVolume(float mastervolume)
-    {
-        audioMixer.SetFloat("mastervolume", mastervolume);
-    }
-
-    public void SetMusicVolume (float musicvolume)
-    {
-        audioMixer.SetFloat("musicvolume", musicvolume);
-    }
-
-    public void SetSFXVolume(float sfxvolume)
-    {
-        audioMixer.SetFloat("sfxvolume", sfxvolume);
-    }
-
-    public void SetAmbianceVolume(float ambiancevolume)
-    {
-        audioMixer.SetFloat("ambiancevolume", ambiancevolume);
-    }
-
-    public void SetVoiceVolume(float voicevolume)
-    {
-        audioMixer.SetFloat("voicevolume", voicevolume);
-    }
+    // public void SetMasterVolume(float mastervolume)
+    // {
+    //     audioMixer.SetFloat("mastervolume", mastervolume);
+    // }
+    //
+    // public void SetMusicVolume (float musicvolume)
+    // {
+    //     audioMixer.SetFloat("musicvolume", musicvolume);
+    // }
+    //
+    // public void SetSFXVolume(float sfxvolume)
+    // {
+    //     audioMixer.SetFloat("sfxvolume", sfxvolume);
+    // }
+    //
+    // public void SetAmbianceVolume(float ambiancevolume)
+    // {
+    //     audioMixer.SetFloat("ambiancevolume", ambiancevolume);
+    // }
+    //
+    // public void SetVoiceVolume(float voicevolume)
+    // {
+    //     audioMixer.SetFloat("voicevolume", voicevolume);
+    // }
 
     public void SetQuality(int qualityIndex)
     {
