@@ -47,6 +47,4 @@ public class CriteriaGate : MonoBehaviour {
             }
         }
     }
-    
-    //killcriteria always the same as number of spawn points??
 }
