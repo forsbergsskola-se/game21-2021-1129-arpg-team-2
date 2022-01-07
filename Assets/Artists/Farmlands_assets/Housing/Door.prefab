@@ -11,9 +11,13 @@ GameObject:
   - component: {fileID: 5545738613777563696}
   - component: {fileID: 6372009867065988862}
   - component: {fileID: 6043806481352336451}
+  - component: {fileID: 1899854450787334946}
+  - component: {fileID: 7552560303337819284}
+  - component: {fileID: 3464707379533706769}
+  - component: {fileID: 2916358455235279684}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: Gate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,3 +89,65 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1899854450787334946
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4040714771600176242}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5094906, y: 2.5215085, z: 0.33020636}
+  m_Center: {x: 0.019029796, y: 0.011798263, z: 0.014223114}
+--- !u!208 &7552560303337819284
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4040714771600176242}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.75500005, y: 1.25, z: 0.165}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.019000001, y: 0.001, z: 0.014}
+  m_TimeToStationary: 0.5
+--- !u!114 &3464707379533706769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4040714771600176242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e981a9099aa796548922f6b5f31d3d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorBase: {fileID: 2800000, guid: f2d7a1baa860ade4783015e04276f5d9, type: 3}
+  cursorLocked: {fileID: 2800000, guid: 6bd72a5b122318944b72521a980ce048, type: 3}
+  cursorUnlocked: {fileID: 2800000, guid: d4a6547441dddda4ca5d936e43d41545, type: 3}
+  cursorMode: 1
+  hotSpot: {x: 0, y: 0}
+--- !u!114 &2916358455235279684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4040714771600176242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be347d3c501d438b8c90c1fd7580a7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySpawner: {fileID: 0}
+  minDistanceToOpen: {fileID: 11400000, guid: 069304486c538450c84c063c7a9dd1e8, type: 2}
+  playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
+  gateOpening: {fileID: 0}
