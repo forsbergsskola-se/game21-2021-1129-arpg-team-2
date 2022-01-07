@@ -54,6 +54,7 @@ public class PlayernavMesh : MonoBehaviour
             {
                 if (hit.transform.CompareTag("Destructible") || hit.transform.CompareTag("Enemy"))
                 {
+                    navMeshAgent.isStopped = false;
                     var position = hit.transform.position;
                     navMeshAgent.destination = position;
                     navMeshAgent.stoppingDistance = weapon.Range;
@@ -63,6 +64,7 @@ public class PlayernavMesh : MonoBehaviour
                 }
                 else if (hit.transform.CompareTag("Gate"))
                 {
+                    navMeshAgent.isStopped = false;
                     var position = hit.transform.position;
                     navMeshAgent.destination = position;
                     navMeshAgent.stoppingDistance = stopFrontOfGateDistance.InitialValue;
@@ -70,16 +72,22 @@ public class PlayernavMesh : MonoBehaviour
                     
                     RotateTowards(position);
                 }
-                else if (SetDestination(hit.transform.position) || hit.transform.CompareTag("Wall"))
+                else if (SetDestination(hit.transform.position))
                 {
+                    navMeshAgent.isStopped = false;
                     navMeshAgent.destination = hit.point;
                     navMeshAgent.stoppingDistance = 1;
                     movementTarget.Value = null;
                     
                     RotateTowards(hit.point);
                 }
+                else if (hit.transform.CompareTag("Outside") || hit.transform.CompareTag("Wall"))
+                {
+                    navMeshAgent.isStopped = true;
+                }
                 else
                 {
+                    navMeshAgent.isStopped = false;
                     navMeshAgent.destination = hit.point;
                     navMeshAgent.stoppingDistance = 1;
                     movementTarget.Value = null;
