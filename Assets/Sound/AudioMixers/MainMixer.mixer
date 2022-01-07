@@ -96,8 +96,16 @@ AudioMixerController:
   m_EnableSuspend: 0
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: d5a77714ea496f64bb8495dbe4c68517
+    name: ambiancevolume
   - guid: 6287631b6d26ad64391d4df24c0a5d76
-    name: volume
+    name: mastervolume
+  - guid: ee6268954b695b946a5e1faa2b8e2249
+    name: musicvolume
+  - guid: 52597dbcf9a459f4daafeda59ad4a457
+    name: sfxvolume
+  - guid: db3bda9ada61ada4ea40badeb6a7be62
+    name: voicevolume
   m_AudioMixerGroupViews:
   - guids:
     - e6f5c5777eb02aa4a9182cec012c9545
