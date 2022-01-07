@@ -8,7 +8,7 @@ public class Weapon : ScriptableObject
     [SerializeField] private float power;
     [SerializeField] private float range;
     [SerializeField] private bool ranged;
-    private GameObject projectile;
+    [HideInInspector] [SerializeField] private GameObject projectile;
     
     public string Name
     {
