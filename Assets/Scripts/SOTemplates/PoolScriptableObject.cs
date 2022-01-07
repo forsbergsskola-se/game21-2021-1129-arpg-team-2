@@ -32,5 +32,6 @@ public class PoolScriptableObject : ScriptableObject
     }
     
     public GameObject Pop() => pool.Pop();
+
     public void Push(GameObject o) => pool.Push(o);
 }

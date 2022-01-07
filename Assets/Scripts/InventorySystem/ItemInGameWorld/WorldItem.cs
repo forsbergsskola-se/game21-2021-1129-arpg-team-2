@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class WorldItem : MonoBehaviour
@@ -8,7 +7,16 @@ public class WorldItem : MonoBehaviour
 
     [SerializeField] private PoolScriptableObject carrotPool;
 
-    private void Start()
+    public void StartExpirationCountDown()
     {
+        if (item is ConsumableItem c && c && c.IsPerishable) Invoke(nameof(Expire), c.ExpirationInSeconds);
+    }
+
+    private void Expire()
+    {
+        if (!gameObject.activeInHierarchy) return;
+        GameObject o;
+        (o = gameObject).SetActive(false);
+        carrotPool.Push(o);
     }
 }

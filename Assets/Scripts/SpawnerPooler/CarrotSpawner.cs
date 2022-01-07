@@ -24,6 +24,7 @@ public class CarrotSpawner : MonoBehaviour
                 tempCarrot.GetComponent<PickupWorldItem>().PrepareQuickAdd.AddListener(playerInventory.GetComponent<ItemGridView>().OnPrepareQuickAdd);
                 tempCarrot.GetComponent<PickupWorldItem>().PrepareRegularAdd.AddListener(playerInventory.GetComponent<ItemGridView>().OnPrepareRegularAdd);
                 tempCarrot.SetActive(true);
+                tempCarrot.GetComponent<WorldItem>().StartExpirationCountDown();
                 tempCarrot.transform.position = transform.position + offset;
             }
         }
