@@ -81,7 +81,7 @@ public class PlayernavMesh : MonoBehaviour
                     
                     RotateTowards(hit.point);
                 }
-                else if (hit.transform.CompareTag("Outside") || hit.transform.CompareTag("Wall"))
+                else if (hit.transform.CompareTag("Outside") || hit.transform.CompareTag("Wall") ||  hit.transform.CompareTag("Water"))
                 {
                     navMeshAgent.isStopped = true;
                 }
