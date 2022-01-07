@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private GameObject audioMenu;
     [SerializeField] private GameObject graphicsMenu;
-    [SerializeField] private GameObject howToPlay;
+    // [SerializeField] private GameObject howToPlay;
     
     public void PlayGame()
     {
@@ -52,7 +52,7 @@ public class MainMenu : MonoBehaviour
                 audioMenu.gameObject.SetActive(false);
                 graphicsMenu.gameObject.SetActive(false);
                 optionsMenu.gameObject.SetActive(false);
-                howToPlay.gameObject.SetActive(false);
+                // howToPlay.gameObject.SetActive(false);
                 
                 UnpauseGame();
             }
