@@ -60,7 +60,7 @@ public class OnClickVisuals : MonoBehaviour
             {
                 Gate.Play();
             }
-            else if (hit.transform.CompareTag("Outside"))
+            else if (hit.transform.CompareTag("Outside") || hit.transform.CompareTag("Wall"))
             {
                 instantiatedPrefabInvalid.transform.SetPositionAndRotation(hit.point, Quaternion.identity);
                 instantiatedPrefabInvalid.GetComponentInChildren<Animation>().Stop();

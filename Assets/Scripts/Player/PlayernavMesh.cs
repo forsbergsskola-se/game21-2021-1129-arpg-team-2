@@ -52,7 +52,12 @@ public class PlayernavMesh : MonoBehaviour
             
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
-                if (hit.transform.CompareTag("Destructible") || hit.transform.CompareTag("Enemy"))
+                
+                if (hit.transform.CompareTag("Outside") || hit.transform.CompareTag("Wall") ||  hit.transform.CompareTag("Water"))
+                {
+                    navMeshAgent.isStopped = true;
+                }
+                else if (hit.transform.CompareTag("Destructible") || hit.transform.CompareTag("Enemy"))
                 {
                     navMeshAgent.isStopped = false;
                     var position = hit.transform.position;
@@ -80,10 +85,6 @@ public class PlayernavMesh : MonoBehaviour
                     movementTarget.Value = null;
                     
                     RotateTowards(hit.point);
-                }
-                else if (hit.transform.CompareTag("Outside") || hit.transform.CompareTag("Wall") ||  hit.transform.CompareTag("Water"))
-                {
-                    navMeshAgent.isStopped = true;
                 }
                 else
                 {
