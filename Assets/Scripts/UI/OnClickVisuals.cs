@@ -39,8 +39,8 @@ public class OnClickVisuals : MonoBehaviour
             Physics.Raycast(ray, out hit);
 
             NavMeshHit navMeshHit;
-
-            if (NavMesh.SamplePosition(hit.point, out navMeshHit, 1f, NavMesh.AllAreas) && !hit.transform.CompareTag("Destructible") && !hit.transform.CompareTag("Enemy") && !hit.transform.CompareTag("UI"))
+            
+            if (NavMesh.SamplePosition(hit.point, out navMeshHit, 1f, NavMesh.AllAreas) && NavMesh.GetAreaFromName("Walkable") == 0 && !hit.transform.CompareTag("Destructible") && !hit.transform.CompareTag("Enemy") && !hit.transform.CompareTag("UI"))
             {
                 instantiatedPrefabValid.transform.SetPositionAndRotation(hit.point+offset, Quaternion.identity);
                 instantiatedPrefabValid.GetComponentInChildren<Animation>().Stop();
@@ -59,6 +59,14 @@ public class OnClickVisuals : MonoBehaviour
             else if (hit.transform.CompareTag("Gate"))
             {
                 Gate.Play();
+            }
+            else if (hit.transform.CompareTag("Outside"))
+            {
+                instantiatedPrefabInvalid.transform.SetPositionAndRotation(hit.point, Quaternion.identity);
+                instantiatedPrefabInvalid.GetComponentInChildren<Animation>().Stop();
+                instantiatedPrefabInvalid.GetComponentInChildren<Animation>().Play();
+                    
+                InvalidMove.Play();
             }
             else
             {
