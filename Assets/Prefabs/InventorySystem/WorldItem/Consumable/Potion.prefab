@@ -114,13 +114,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02b85f1476e89534cbfdee60fc933dc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceFromCamera: 5
-  playerInventory: {fileID: 0}
-  spawner: {fileID: 0}
-  WorldItemChosen:
+  distanceFromCamera: 10
+  playerInventory: {fileID: 1728952715674540380, guid: 3f5038eaadc4e03458bd1dde7f2e5889, type: 3}
+  spawner: {fileID: 1238099246746671762, guid: 9e3998d923507aa4390432c39f58f04a, type: 3}
+  PrepareQuickAdd:
     m_PersistentCalls:
       m_Calls: []
-  GameObjectChosen:
+  PrepareRegularAdd:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &4928545570094707826
@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 6190d8cfce5d3e541bdc166ffd962b4f, type: 2}
+  carrotPool: {fileID: 11400000, guid: 0ea0c68bf941c45499fa48863e9fe327, type: 2}
 --- !u!114 &-7950858162783627446
 MonoBehaviour:
   m_ObjectHideFlags: 0

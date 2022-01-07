@@ -14,6 +14,7 @@ public class Entity : MonoBehaviour, IDamageable
     private Color defaultColor;
     private CoinSpawner coinspawner;
     private CarrotSpawner _carrotSpawner;
+    private PotionSpawner _potionSpawner;
 
     public FloatValue CurrentHealth { get => currentHealth; set => currentHealth = value; }
 
@@ -68,6 +69,10 @@ public class Entity : MonoBehaviour, IDamageable
         if (_carrotSpawner != null)
         {
             _carrotSpawner.SpawnFromPool();
+        }
+        if (_potionSpawner != null)
+        {
+            _potionSpawner.SpawnFromPool();
         }
     }
 
