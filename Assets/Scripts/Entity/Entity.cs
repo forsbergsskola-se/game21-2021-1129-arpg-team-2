@@ -58,7 +58,7 @@ public class Entity : MonoBehaviour, IDamageable
     public void OnEntityDie()
     {
         DisableAsObstacle();
-        StartCoroutine(VisualDestruction());
+        VisualDestruction();
         
         if ( coinspawner != null)
         {
@@ -83,12 +83,11 @@ public class Entity : MonoBehaviour, IDamageable
         }
     }
 
-    private IEnumerator VisualDestruction()
+    private void VisualDestruction()
     {
         MeshRenderer entityMesh = GetComponent<MeshRenderer>();
         ParticleSystem destructionParticles = Instantiate(destructionParticlesPrefab, this.transform.position, Quaternion.identity);
         destructionParticles.Play();
-        yield return new WaitForSeconds(0.100f);
         entityMesh.enabled = false;
     }
 }
