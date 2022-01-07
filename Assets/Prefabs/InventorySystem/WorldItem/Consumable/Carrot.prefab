@@ -117,10 +117,10 @@ MonoBehaviour:
   distanceFromCamera: 10
   playerInventory: {fileID: 1728952715674540380, guid: 3f5038eaadc4e03458bd1dde7f2e5889, type: 3}
   spawner: {fileID: 5496581748438061988, guid: df38c6fcf569c6d4a9a1e9e71262774a, type: 3}
-  WorldItemChosen:
+  PrepareQuickAdd:
     m_PersistentCalls:
       m_Calls: []
-  GameObjectChosen:
+  PrepareRegularAdd:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &4202929085097482568
@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: b787edd87b1ee234c95b84526c36c9b1, type: 2}
+  carrotPool: {fileID: 11400000, guid: 0d9dcdbacf9e64549802e0ea3b85ebcc, type: 2}
 --- !u!114 &8711246394796132778
 MonoBehaviour:
   m_ObjectHideFlags: 0

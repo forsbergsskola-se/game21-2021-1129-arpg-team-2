@@ -29,5 +29,5 @@ public class CarrotSpawner : MonoBehaviour
         }
     }
 
-    public void CarrotIsCollected(GameObject carrot) => carrotPool.pool.Push(carrot);
+    public void ReturnToPool(GameObject carrot) => carrotPool.pool.Push(carrot);
 }

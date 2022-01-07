@@ -30,10 +30,7 @@ public class PickupWorldItem : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Right && Input.GetKey(KeyCode.LeftControl))
-        {
-            QuickAdd();
-        }
+        if (eventData.button == PointerEventData.InputButton.Right && Input.GetKey(KeyCode.LeftControl)) QuickAdd();
         else if (eventData.button == PointerEventData.InputButton.Right && isStickToCursor) isStickToCursor = false;
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
@@ -77,7 +74,7 @@ public class PickupWorldItem : MonoBehaviour, IPointerDownHandler
         isStickToCursor = false;
         GameObject o;
         (o = gameObject).SetActive(false);
-        spawner.GetComponent<CarrotSpawner>().CarrotIsCollected(o);
+        spawner.GetComponent<CarrotSpawner>().ReturnToPool(o);
     }
 }
 
