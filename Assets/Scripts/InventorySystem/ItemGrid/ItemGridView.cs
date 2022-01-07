@@ -15,6 +15,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     [SerializeField] private ItemGrid grid;
     [SerializeField] private GameObject inventoryItem;
     [SerializeField] private GameObject carrotPool;
+    [SerializeField] private GameObject potionPool;
 
     [HideInInspector] public UnityEvent ItemAddSuccess;
 
@@ -51,6 +52,8 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         GameObject find;
         if (targetType is ItemType.Consumable && targetSubType == (int) ConsumableType.Carrot)
             find = carrotPool.GetComponent<CarrotPool>().Pop();
+        else if (targetType is ItemType.Consumable && targetSubType == (int) ConsumableType.Potion)
+            find = potionPool.GetComponent<PotionPool>().Pop();
         else find = null;
         
         find.transform.position = itemDrop.transform.position;
@@ -95,6 +98,13 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         if (targetType is ItemType.Consumable && targetSubType == (int)ConsumableType.Carrot)
         {
             var find = carrotPool.GetComponent<CarrotPool>().Pop();
+            find.GetComponent<ConsumeWorldItem>().PlayerConsumeConsumable();
+            Destroy(selectedItem.gameObject);
+            selectedItem = null;
+        }
+        else if (targetType is ItemType.Consumable && targetSubType == (int)ConsumableType.Potion)
+        {
+            var find = potionPool.GetComponent<PotionPool>().Pop();
             find.GetComponent<ConsumeWorldItem>().PlayerConsumeConsumable();
             Destroy(selectedItem.gameObject);
             selectedItem = null;
