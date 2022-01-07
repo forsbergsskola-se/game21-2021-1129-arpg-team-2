@@ -4718,6 +4718,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8702827382866042907, guid: 916a3ca7779b140b9a5be9b1fbf9b71b, type: 3}
   m_PrefabInstance: {fileID: 121190547}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &121190549 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8702827382866042904, guid: 916a3ca7779b140b9a5be9b1fbf9b71b, type: 3}
+  m_PrefabInstance: {fileID: 121190547}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02562971cf564c18b97aefbfd0ce635d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &123444578
 GameObject:
   m_ObjectHideFlags: 0
@@ -12012,6 +12023,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1282576741}
     m_Modifications:
+    - target: {fileID: 643060304041132485, guid: e770268956a4744e48c731823f4ec0c3, type: 3}
+      propertyPath: enemySpawner
+      value: 
+      objectReference: {fileID: 121190549}
     - target: {fileID: 8606402760640234066, guid: e770268956a4744e48c731823f4ec0c3, type: 3}
       propertyPath: m_RootOrder
       value: 0
