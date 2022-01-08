@@ -1,7 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DialogueTrigger : MonoBehaviour {
 
@@ -11,6 +9,8 @@ public class DialogueTrigger : MonoBehaviour {
     [SerializeField] private float dialogueRange = 10f;
     private bool isInDialogueRange;
 
+    [HideInInspector] public UnityEvent QuestGiverFires;
+
     private void Update()
     {
         isInDialogueRange = Physics.CheckSphere(transform.position, dialogueRange, PlayerLayer);
@@ -18,6 +18,7 @@ public class DialogueTrigger : MonoBehaviour {
         if (isInDialogueRange && Input.GetKey(KeyCode.F))
         {
             TriggerDialogue();
+            QuestGiverFires.Invoke();
         }
     }
 
