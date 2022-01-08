@@ -36,7 +36,7 @@ public class OnClickVisualsFarmland : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
 
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && !hit.transform.CompareTag("UI"))
             {
 
                 if (hit.transform.CompareTag("Destructible"))
@@ -59,7 +59,7 @@ public class OnClickVisualsFarmland : MonoBehaviour
                     
                     InvalidMove.Play();
                 }
-                else if (SetDestination(hit.transform.position))
+                else if (SetDestination(hit.point) || hit.transform.CompareTag("Ground"))
                 {
                     instantiatedPrefabValid.transform.SetPositionAndRotation(hit.point+offset, Quaternion.identity);
                     instantiatedPrefabValid.GetComponentInChildren<Animation>().Stop();
