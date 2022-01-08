@@ -31393,11 +31393,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7998164434473542647, guid: 1f2caa8db9f7045c781e6c82b066cb13, type: 3}
   m_PrefabInstance: {fileID: 561408654}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &561408658 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4040448015696130093, guid: 1f2caa8db9f7045c781e6c82b066cb13, type: 3}
-  m_PrefabInstance: {fileID: 561408654}
-  m_PrefabAsset: {fileID: 0}
 --- !u!208 &561408659
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -31456,19 +31451,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5716914, y: 3.8233433, z: 0.42390755}
   m_Center: {x: 1.1993557, y: -0.07472104, z: -0.18344225}
---- !u!65 &561408663
-BoxCollider:
+--- !u!114 &561408663
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 561408658}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_GameObject: {fileID: 561408656}
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.9503174, y: 3.645218, z: 0.39341736}
-  m_Center: {x: 0.35059357, y: -0.10039902, z: -0.8294449}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be347d3c501d438b8c90c1fd7580a7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySpawner: {fileID: 121190549}
+  minDistanceToOpen: {fileID: 11400000, guid: 069304486c538450c84c063c7a9dd1e8, type: 2}
+  playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
+  gateOpening: {fileID: 192233256}
+--- !u!114 &561408664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561408657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be347d3c501d438b8c90c1fd7580a7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySpawner: {fileID: 121190549}
+  minDistanceToOpen: {fileID: 11400000, guid: 069304486c538450c84c063c7a9dd1e8, type: 2}
+  playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
+  gateOpening: {fileID: 192233256}
 --- !u!1001 &562955676
 PrefabInstance:
   m_ObjectHideFlags: 0
