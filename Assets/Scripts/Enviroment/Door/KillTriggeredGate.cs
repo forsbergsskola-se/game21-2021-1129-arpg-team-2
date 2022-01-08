@@ -13,7 +13,8 @@ public class KillTriggeredGate : MonoBehaviour {
     
     private void Start()
     {
-        doorAnimation = GetComponent<Animator>();
+        // Get the animator from parent component if it's a door that rotates on its pivot
+        if (!TryGetComponent(out doorAnimation)) doorAnimation = GetComponentInParent<Animator>();
         enemySpawner.OnEnemyDeath += EnemyDied;
         initialEnemiesInRoom = enemySpawner.SpawnPointsCount;
         gateIsLocked = true;
@@ -21,6 +22,7 @@ public class KillTriggeredGate : MonoBehaviour {
 
     private void OnMouseDown()
     {
+        Debug.Log("Gate is being clicked!");
         if (!gateIsLocked)
         {
             doorAnimation.SetBool("isOpening", true);
