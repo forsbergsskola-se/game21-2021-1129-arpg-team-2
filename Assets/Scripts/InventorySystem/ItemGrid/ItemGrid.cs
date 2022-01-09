@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -20,7 +21,7 @@ public class ItemGrid : ScriptableObject
     public float TileSize => tileSize;
     public int Width => width;
     public int Height => height;
-
+    
     private InventoryItem[,] gridSlots;
     private Vector2 positionOnGrid;
     private Vector2Int tileGridPosition;
@@ -174,4 +175,38 @@ public class ItemGrid : ScriptableObject
 
     internal bool IsGridTileOccupied(Vector2Int targetGridCell) =>
         gridSlots[targetGridCell.x, targetGridCell.y] != null;
+    
+    // IMPORTANT: this overload is FOR DEMO ONLY
+    public bool AddItem(InventoryItem itemToAdd, int posX, int posY)
+    {
+        try
+        {
+            var rt = itemToAdd.GetComponent<RectTransform>();
+            rt.SetParent(rectTrans);
+
+            for (var i = 0; i < itemToAdd.ItemData.Width; i++)
+            {
+                for (var j = 0; j < itemToAdd.ItemData.Height; j++)
+                {
+                    gridSlots[posX + i, posY + j] = itemToAdd;
+                }
+            }
+
+            itemToAdd.OnGridPositionX = posX;
+            itemToAdd.OnGridPositionY = posY;
+
+            var position = new Vector2
+            {
+                x = posX * tileSize + tileSize * itemToAdd.ItemData.Width / 2,
+                y = -(posY * tileSize + tileSize * itemToAdd.ItemData.Height / 2)
+            };
+            rt.localPosition = position;
+        }
+        catch(Exception e)
+        {
+            Debug.Log("Adding quest item exception: " + e.Message);
+        }
+
+        return true;
+    }
 }
