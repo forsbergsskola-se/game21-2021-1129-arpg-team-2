@@ -1,14 +1,18 @@
-using System;
 using UnityEngine;
 
 public class QuestListControl : MonoBehaviour
 {
     [SerializeField] private GameObject questNamePrefab;
     [SerializeField] private QuestLog playerQuestLog;
+    
+    private void Awake()
+    {
+        playerQuestLog.NewQuestAdded.AddListener(OnNewQuestAdded);
+    }
 
     private void Start()
     {
-        Debug.Log("Start from QuestListControl fires");
+        // Populate quest list for pre-existing quest(s) from PlayerQuestLog
         if (playerQuestLog.ActiveQuestList.Count != 0) PopulateWithActiveQuests();
     }
 
@@ -19,5 +23,12 @@ public class QuestListControl : MonoBehaviour
             var entry = Instantiate(questNamePrefab, questNamePrefab.transform.parent, false);
             entry.GetComponent<QuestName>().Set(quest.QuestName);
         }
+    }
+
+    // Add quest whenever GiveQuest script is fired
+    private void OnNewQuestAdded(BaseQuest quest)
+    {
+        var entry = Instantiate(questNamePrefab, questNamePrefab.transform.parent, false);
+        entry.GetComponent<QuestName>().Set(quest.QuestName);
     }
 }

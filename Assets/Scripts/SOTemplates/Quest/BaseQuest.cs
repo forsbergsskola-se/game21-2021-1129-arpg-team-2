@@ -16,7 +16,7 @@ public class BaseQuest : ScriptableObject
     public List<QuestTodo> QuestTodoList => questTodoList;
 
     [SerializeField] private QuestStatus questStatus = QuestStatus.Inactive;
-    public QuestStatus QuestStatus => questStatus;
+    public QuestStatus QuestStatus { get; set; }
 }
 
 public enum QuestType
