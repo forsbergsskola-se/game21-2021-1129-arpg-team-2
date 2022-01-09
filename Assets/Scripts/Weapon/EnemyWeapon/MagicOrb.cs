@@ -6,12 +6,22 @@ using UnityEngine;
 public class MagicOrb : MonoBehaviour, IAttack
 {
     [SerializeField] private Weapon magicOrb;
+    private GameObject source;
+
+    public void SetUp(GameObject source) {
+        this.source = source;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject == source) {
+            return;
+        }
+        
         if (other.gameObject.GetComponent<IDamageable>() != null)
         {
-            // IDamageable target = other.gameObject.GetComponent<IDamageable>();
-            // Attack(target);
+            IDamageable target = other.gameObject.GetComponent<IDamageable>();
+            Attack(target);
         }
         
         Destroy(this.gameObject);
@@ -25,7 +35,6 @@ public class MagicOrb : MonoBehaviour, IAttack
 
     public void Attack(IDamageable thisTarget)
     {
-        //attackSound.Play();
         thisTarget?.TakeDamage(magicOrb.Power);
     }
 }

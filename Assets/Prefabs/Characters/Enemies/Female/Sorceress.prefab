@@ -1787,7 +1787,7 @@ GameObject:
   - component: {fileID: 678775177365045757}
   - component: {fileID: 3150210706572486332}
   m_Layer: 0
-  m_Name: Enemy female
+  m_Name: Sorceress
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1881,7 +1881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db11533f97d69a47a1fa919acff6cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magicOrbPrefab: {fileID: 6680336195130181756, guid: 52383342ae1915f47bff140a26fc3495, type: 3}
+  magicOrbPrefab: {fileID: -8248271744834054832, guid: 52383342ae1915f47bff140a26fc3495, type: 3}
   orbSpawnPosition: {fileID: 1518089180607793734}
   orbLerpTime: 0.4
 --- !u!114 &8198065484283951835
@@ -1965,7 +1965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e888e63d324948258d4489b8c2b9f86f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingTextPrefab: {fileID: 5189983744227234827, guid: da7c7c315b9b8ca4cbb88ab6a04efc95, type: 3}
+  floatingTextPrefab: {fileID: 779110284903442608, guid: aedaf426eee698f4abed060305c586c2, type: 3}
 --- !u!136 &5553387637738034972
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2169,9 +2169,9 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4968138986584640272}
+      - m_Target: {fileID: 3535784978206696956}
         m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: OnEnemyDeath
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

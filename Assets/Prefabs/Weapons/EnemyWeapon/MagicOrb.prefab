@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 8631113122256388584}
   - component: {fileID: 2093121120743860813}
   - component: {fileID: 4467752184953849060}
-  - component: {fileID: 8266900757499009774}
+  - component: {fileID: -8248271744834054832}
   m_Layer: 14
   m_Name: MagicOrb
   m_TagString: Untagged
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!114 &8266900757499009774
+--- !u!114 &-8248271744834054832
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -363,10 +363,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6680336195130181756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3e051bc7ef47434fa49ee5452770b4a, type: 3}
+  m_Script: {fileID: 11500000, guid: fb67c7b023a94bb42b68700e4ce46be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: 23f69430033372442b2eec1256acb110, type: 2}
-  weapon: {fileID: 11400000, guid: e1d4e7e40f5534c3eb4089439e105db8, type: 2}
-  shootDirection: {fileID: 11400000, guid: b5117ae6e5f48484890d042f6b0baae6, type: 2}
-  speed: 20
+  magicOrb: {fileID: 11400000, guid: e1d4e7e40f5534c3eb4089439e105db8, type: 2}
