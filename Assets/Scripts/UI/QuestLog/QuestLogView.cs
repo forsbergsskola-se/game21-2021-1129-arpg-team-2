@@ -7,7 +7,6 @@ public class QuestLogView : MonoBehaviour
 {
     [SerializeField] private QuestLog playerQuestLog;
     [SerializeField] private GameObject questListView;
-    [SerializeField] private GameObject questInspector;
 
     private QuestLog questLog;
 
@@ -18,9 +17,6 @@ public class QuestLogView : MonoBehaviour
     
     private void OnNewQuestAdded(BaseQuest quest)
     {
-        // var entry = Instantiate(questNamePrefab, questNamePrefab.transform.parent, false);
-        // entry.GetComponent<QuestName>().Set(quest.QuestName);
         questListView.GetComponent<QuestListView>().AddNewQuestToListView(quest.QuestName);
-        // questInspector.GetComponent<>()
     }
 }
