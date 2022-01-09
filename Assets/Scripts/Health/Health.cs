@@ -50,7 +50,10 @@ public class Health : MonoBehaviour, IDamageable, IConsumer {
         var totalDamage = damage - charStats.Defence;
         charStats.CurrentHealth -= totalDamage;
 
-        if (charStats.CurrentHealth <= 0f) entityDeath.Raise();
+        if (charStats.CurrentHealth <= 0f)
+        {
+            entityDeath.Raise();
+        }
         
         OnTakeDamage?.Invoke(damage);
     }

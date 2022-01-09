@@ -13,11 +13,11 @@ public class ConsumableItem : BaseItem, IConsumable
     [SerializeField] private ConsumableType subType;
     public ConsumableType SubType => subType;
     
-    [SerializeField] private bool isPerishable;
-    public bool IsPerishable => isPerishable;
-    
-    [SerializeField] private float expirationInSeconds;
-    public float ExpirationInSeconds => expirationInSeconds;
+    // [SerializeField] private bool isPerishable;
+    // public bool IsPerishable => isPerishable;
+    //
+    // [SerializeField] private float expirationInSeconds;
+    // public float ExpirationInSeconds => expirationInSeconds;
 }
 
 [Serializable]

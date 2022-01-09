@@ -7,10 +7,10 @@ public class WorldItem : MonoBehaviour
 
     [SerializeField] private PoolScriptableObject carrotPool;
 
-    public void StartExpirationCountDown()
-    {
-        if (item is ConsumableItem c && c && c.IsPerishable) Invoke(nameof(Expire), c.ExpirationInSeconds);
-    }
+    // public void StartExpirationCountDown()
+    // {
+    //     if (item is ConsumableItem c && c && c.IsPerishable) Invoke(nameof(Expire), c.ExpirationInSeconds);
+    // }
 
     private void Expire()
     {

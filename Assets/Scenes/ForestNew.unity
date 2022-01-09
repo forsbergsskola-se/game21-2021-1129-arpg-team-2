@@ -15118,7 +15118,7 @@ PrefabInstance:
     - target: {fileID: 8702827382866042904, guid: 916a3ca7779b140b9a5be9b1fbf9b71b, type: 3}
       propertyPath: enemyPrefab
       value: 
-      objectReference: {fileID: 7975904022497877467, guid: 12f44c669669f0d4481d2e28d6e14ee2, type: 3}
+      objectReference: {fileID: 3535784978206696956, guid: ac85be3d711579344873ca7b6758799e, type: 3}
     - target: {fileID: 8702827382866042904, guid: 916a3ca7779b140b9a5be9b1fbf9b71b, type: 3}
       propertyPath: spawnPositions.Array.data[0]
       value: 
@@ -15170,6 +15170,10 @@ PrefabInstance:
     - target: {fileID: 8702827382866042910, guid: 916a3ca7779b140b9a5be9b1fbf9b71b, type: 3}
       propertyPath: m_Name
       value: SorceressSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8702827382866042910, guid: 916a3ca7779b140b9a5be9b1fbf9b71b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 916a3ca7779b140b9a5be9b1fbf9b71b, type: 3}
@@ -30424,6 +30428,10 @@ PrefabInstance:
     - target: {fileID: 8702827382866042910, guid: 916a3ca7779b140b9a5be9b1fbf9b71b, type: 3}
       propertyPath: m_Name
       value: LadySpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 8702827382866042910, guid: 916a3ca7779b140b9a5be9b1fbf9b71b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 916a3ca7779b140b9a5be9b1fbf9b71b, type: 3}

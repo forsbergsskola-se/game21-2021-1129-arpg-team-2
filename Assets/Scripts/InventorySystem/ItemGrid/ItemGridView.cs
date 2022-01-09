@@ -58,7 +58,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         
         find.transform.position = itemDrop.transform.position;
         find.SetActive(true);
-        find.GetComponent<WorldItem>().StartExpirationCountDown();
+        // find.GetComponent<WorldItem>().StartExpirationCountDown();
         
         Destroy(selectedItem.gameObject);
         selectedItem = null;

@@ -5,11 +5,11 @@ using Unity.Mathematics;
 using UnityEngine;
 
 public class MagicOrbAttack : MonoBehaviour {
-    [SerializeField] private GameObject magicOrbPrefab;
+    [SerializeField] private MagicOrb magicOrbPrefab;
     [SerializeField] private GameObject orbSpawnPosition;
     [SerializeField] private float orbLerpTime = 0.4f;
     private GameObject player;
-    private GameObject createdOrb;
+    private MagicOrb createdOrb;
 
     private void Awake()
     {
@@ -19,6 +19,7 @@ public class MagicOrbAttack : MonoBehaviour {
     private void CreateOrb()
     {
          createdOrb = Instantiate(magicOrbPrefab, orbSpawnPosition.transform.position, quaternion.identity, orbSpawnPosition.transform);
+         createdOrb.SetUp(gameObject);
          createdOrb.transform.localScale = new Vector3(0.25f,0.25f,0.25f);
     }
 
@@ -27,7 +28,6 @@ public class MagicOrbAttack : MonoBehaviour {
         StartCoroutine(MoveOrbToTarget());
     }
     
-    //Later add new script to female enemy and call following method with target.transform instead of player referenced.
     private IEnumerator MoveOrbToTarget()
     {
         float progress = 0;

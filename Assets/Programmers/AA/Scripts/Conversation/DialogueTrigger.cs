@@ -10,6 +10,10 @@ public class DialogueTrigger : MonoBehaviour {
     private bool isInDialogueRange;
 
     [HideInInspector] public UnityEvent QuestGiverFires;
+    
+    // IMPORTANT: Below it's for demo ONLY; REMOVE and do it the proper way after demo
+    [HideInInspector] public UnityEvent FamilyMattersActivated;
+    // IMPORTANT: Above it's for demo ONLY; REMOVE and do it the proper way after demo
 
     private void Update()
     {
@@ -19,6 +23,7 @@ public class DialogueTrigger : MonoBehaviour {
         {
             TriggerDialogue();
             QuestGiverFires.Invoke();
+            FamilyMattersActivated.Invoke();
         }
     }
 
