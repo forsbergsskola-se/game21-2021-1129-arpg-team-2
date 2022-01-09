@@ -48,6 +48,14 @@ public class OnClickVisuals : MonoBehaviour
                 
                 ValidMove.Play();
             }
+            else if (hit.transform.CompareTag("Ground")&& !hit.transform.CompareTag("Destructible") && !hit.transform.CompareTag("Enemy") && !hit.transform.CompareTag("UI"))
+            {
+                instantiatedPrefabValid.transform.SetPositionAndRotation(hit.point+offset, Quaternion.identity);
+                instantiatedPrefabValid.GetComponentInChildren<Animation>().Stop();
+                instantiatedPrefabValid.GetComponentInChildren<Animation>().Play();
+                
+                ValidMove.Play();
+            }
             else if (hit.transform.CompareTag("Destructible"))
             {
                 Hammer.Play();
