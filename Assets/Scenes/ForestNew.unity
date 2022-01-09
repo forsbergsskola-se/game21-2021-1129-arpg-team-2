@@ -17302,7 +17302,6 @@ GameObject:
   m_Component:
   - component: {fileID: 537912441}
   - component: {fileID: 537912444}
-  - component: {fileID: 537912443}
   - component: {fileID: 537912442}
   m_Layer: 0
   m_Name: LoadTriggerFarmland
@@ -17338,19 +17337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6ff2cff687da44592e4b11f7748787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &537912443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 537912440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbc6181189fe3324bb55b6a7e41b938c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  comingFromForest: {fileID: 11400000, guid: e7cadbfb2bbe6f644a20d251a65fcfeb, type: 2}
 --- !u!65 &537912444
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33076,7 +33062,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1571791151
 Transform:
   m_ObjectHideFlags: 0
@@ -34855,65 +34841,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.16800001, y: -0.020000001, z: -0.018000001}
   m_TimeToStationary: 0.5
---- !u!1 &1636384100
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1636384101}
-  - component: {fileID: 1636384102}
-  - component: {fileID: 1636384103}
-  m_Layer: 0
-  m_Name: LoadTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1636384101
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1636384100}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1920635086}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1636384102
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1636384100}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.8765025, y: 5.9703293, z: 2.1944518}
-  m_Center: {x: -2.2357345, y: -1.2533646, z: 0.18159306}
---- !u!114 &1636384103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1636384100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbc6181189fe3324bb55b6a7e41b938c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  comingFromForest: {fileID: 11400000, guid: e7cadbfb2bbe6f644a20d251a65fcfeb, type: 2}
 --- !u!1001 &1637601069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53074,7 +53001,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1636384101, guid: e4a3e8ae580cfa740a8ef4450d8c2991, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1163039640804746144, guid: e4a3e8ae580cfa740a8ef4450d8c2991, type: 3}
       propertyPath: m_RootOrder
