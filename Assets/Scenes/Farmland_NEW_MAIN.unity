@@ -4776,7 +4776,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 112287729}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6258,7 +6258,7 @@ GameObject:
   - component: {fileID: 176834839}
   - component: {fileID: 176834841}
   - component: {fileID: 176834840}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fog (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14007,7 +14007,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 257972695}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Edge fog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15360,7 +15360,7 @@ GameObject:
   - component: {fileID: 300592371}
   - component: {fileID: 300592373}
   - component: {fileID: 300592372}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fog (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24695,7 +24695,7 @@ GameObject:
   - component: {fileID: 474606065}
   - component: {fileID: 474606067}
   - component: {fileID: 474606066}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fog (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31882,6 +31882,10 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7211065365386105291, guid: 1f2caa8db9f7045c781e6c82b066cb13, type: 3}
+      propertyPath: m_TagString
+      value: Gate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7211065365386105291, guid: 1f2caa8db9f7045c781e6c82b066cb13, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -31937,6 +31941,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9900833e8b671a74296918854908576f, type: 2}
+    - target: {fileID: 7998164434473542647, guid: 1f2caa8db9f7045c781e6c82b066cb13, type: 3}
+      propertyPath: m_TagString
+      value: Gate
+      objectReference: {fileID: 0}
     - target: {fileID: 7998164434473542647, guid: 1f2caa8db9f7045c781e6c82b066cb13, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -40299,7 +40307,7 @@ GameObject:
   - component: {fileID: 849738147}
   - component: {fileID: 849738149}
   - component: {fileID: 849738148}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fog (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52725,7 +52733,7 @@ GameObject:
   - component: {fileID: 964399888}
   - component: {fileID: 964399887}
   - component: {fileID: 964399890}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55266,7 +55274,7 @@ GameObject:
   - component: {fileID: 1070123253}
   - component: {fileID: 1070123255}
   - component: {fileID: 1070123254}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fog (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81125,9 +81133,13 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7365516519662291591, guid: 44fbca6e701b20b41a2e089890bc2dff, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 8099663652940911007, guid: 44fbca6e701b20b41a2e089890bc2dff, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8364858022953497928, guid: 44fbca6e701b20b41a2e089890bc2dff, type: 3}
       propertyPath: m_RootOrder
@@ -82451,25 +82463,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterBasicNightime
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 6b436d069d11415d1100ab9b44295342, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 6b436d069d11415d1100ab9b44295342, type: 3}
-      propertyPath: m_TagString
-      value: Water
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6b436d069d11415d1100ab9b44295342, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 6b436d069d11415d1100ab9b44295342, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 6b436d069d11415d1100ab9b44295342, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6b436d069d11415d1100ab9b44295342, type: 3}
       propertyPath: m_LocalPosition.x
@@ -82509,10 +82505,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6b436d069d11415d1100ab9b44295342, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 6b436d069d11415d1100ab9b44295342, type: 3}
-      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -89313,7 +89305,7 @@ GameObject:
   - component: {fileID: 1879906611}
   - component: {fileID: 1879906613}
   - component: {fileID: 1879906612}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fog (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97938,7 +97930,7 @@ GameObject:
   - component: {fileID: 1983141909}
   - component: {fileID: 1983141911}
   - component: {fileID: 1983141910}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100494,6 +100486,7 @@ GameObject:
   - component: {fileID: 2067561175}
   - component: {fileID: 2067561177}
   - component: {fileID: 2067561176}
+  - component: {fileID: 2067561178}
   m_Layer: 0
   m_Name: Planks
   m_TagString: Ground
@@ -100565,6 +100558,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067561174}
+  m_Mesh: {fileID: -5273049311075676327, guid: 3166ad93da4bd42b982a3269654889ae, type: 3}
+--- !u!64 &2067561178
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067561174}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
   m_Mesh: {fileID: -5273049311075676327, guid: 3166ad93da4bd42b982a3269654889ae, type: 3}
 --- !u!1001 &2072634356
 PrefabInstance:

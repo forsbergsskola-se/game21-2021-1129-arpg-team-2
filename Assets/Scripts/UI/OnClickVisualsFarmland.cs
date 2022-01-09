@@ -38,8 +38,11 @@ public class OnClickVisualsFarmland : MonoBehaviour
 
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100) && !hit.transform.CompareTag("UI"))
             {
-
-                if (hit.transform.CompareTag("Destructible"))
+                if (hit.transform.CompareTag("Player"))
+                {
+                    
+                }
+                else if (hit.transform.CompareTag("Destructible"))
                 {
                     Hammer.Play();
                 }
