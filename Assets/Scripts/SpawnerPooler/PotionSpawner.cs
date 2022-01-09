@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PotionSpawner : MonoBehaviour
@@ -26,7 +24,6 @@ public class PotionSpawner : MonoBehaviour
                 tempCarrot.GetComponent<PickupWorldItem>().PrepareQuickAdd.AddListener(playerInventory.GetComponent<ItemGridView>().OnPrepareQuickAdd);
                 tempCarrot.GetComponent<PickupWorldItem>().PrepareRegularAdd.AddListener(playerInventory.GetComponent<ItemGridView>().OnPrepareRegularAdd);
                 tempCarrot.SetActive(true);
-                tempCarrot.GetComponent<WorldItem>().StartExpirationCountDown();
                 tempCarrot.transform.position = transform.position + offset;
             }
         }
