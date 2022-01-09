@@ -33052,6 +33052,40 @@ MonoBehaviour:
   minDistanceToOpen: {fileID: 11400000, guid: 069304486c538450c84c063c7a9dd1e8, type: 2}
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
   gateOpening: {fileID: 192233256}
+--- !u!114 &561408668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561408656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e981a9099aa796548922f6b5f31d3d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorBase: {fileID: 2800000, guid: f2d7a1baa860ade4783015e04276f5d9, type: 3}
+  cursorLocked: {fileID: 2800000, guid: 6bd72a5b122318944b72521a980ce048, type: 3}
+  cursorUnlocked: {fileID: 2800000, guid: d4a6547441dddda4ca5d936e43d41545, type: 3}
+  cursorMode: 1
+  hotSpot: {x: 0, y: 0}
+--- !u!114 &561408671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561408657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e981a9099aa796548922f6b5f31d3d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorBase: {fileID: 2800000, guid: f2d7a1baa860ade4783015e04276f5d9, type: 3}
+  cursorLocked: {fileID: 2800000, guid: 6bd72a5b122318944b72521a980ce048, type: 3}
+  cursorUnlocked: {fileID: 2800000, guid: d4a6547441dddda4ca5d936e43d41545, type: 3}
+  cursorMode: 1
+  hotSpot: {x: 0, y: 0}
 --- !u!1001 &562955676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63591,7 +63625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    rid: 8795885348103389215
+    rid: 2173963409763074486
   m_Size: {x: 0.2, y: 8, z: 20}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -63603,7 +63637,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 8795885348103389215
+    - rid: 2173963409763074486
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1110655547
 MonoBehaviour:
@@ -65325,7 +65359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    rid: 8795885348103389254
+    rid: 2173963409763074468
   m_Size: {x: 0.2, y: 4.5, z: 12}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -65337,7 +65371,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 8795885348103389254
+    - rid: 2173963409763074468
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1163756265
 MonoBehaviour:
@@ -69992,7 +70026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    rid: 8795885348103389224
+    rid: 2173963409763074457
   m_Size: {x: 0.2, y: 4.5, z: 12}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -70004,7 +70038,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 8795885348103389224
+    - rid: 2173963409763074457
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1325248298
 MonoBehaviour:
@@ -71844,6 +71878,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368588725}
   m_Mesh: {fileID: 8530459506952857525, guid: 3166ad93da4bd42b982a3269654889ae, type: 3}
+--- !u!1 &1373314806 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2755103035282720509, guid: c04c7ede0ca60054180e3a3cd29eb4db, type: 3}
+  m_PrefabInstance: {fileID: 1621290937}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1375418558
 GameObject:
   m_ObjectHideFlags: 0
@@ -84604,7 +84643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 305364860075245173, guid: 44fbca6e701b20b41a2e089890bc2dff, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -8.337402
+      value: -8.337463
       objectReference: {fileID: 0}
     - target: {fileID: 616299677654758858, guid: 44fbca6e701b20b41a2e089890bc2dff, type: 3}
       propertyPath: m_AnchorMax.y
@@ -85892,6 +85931,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2755103035282720508, guid: c04c7ede0ca60054180e3a3cd29eb4db, type: 3}
   m_PrefabInstance: {fileID: 1621290937}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1621290949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373314806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2c939a5755c7b47bf5a89a617f6c42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorBase: {fileID: 0}
+  cursorTexture: {fileID: 0}
+  cursorMode: 1
+  hotSpot: {x: 0, y: 0}
 --- !u!1001 &1623959356
 PrefabInstance:
   m_ObjectHideFlags: 0
