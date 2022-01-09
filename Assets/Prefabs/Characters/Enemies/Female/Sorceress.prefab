@@ -1766,26 +1766,23 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5744817115158139306}
+  - component: {fileID: 6034006981483588427}
+  - component: {fileID: 5553387637738034972}
   - component: {fileID: 5202512748880672402}
   - component: {fileID: 8198065482862854339}
+  - component: {fileID: 678775177365045757}
+  - component: {fileID: 8198065484283951834}
+  - component: {fileID: 8198065484283951835}
+  - component: {fileID: 3535784978206696956}
+  - component: {fileID: 4062737072127912837}
   - component: {fileID: 8198065482862854338}
   - component: {fileID: 8198065484283951832}
-  - component: {fileID: 8198065484283951835}
-  - component: {fileID: 8198065484283951834}
+  - component: {fileID: 1689461470969263587}
   - component: {fileID: 8198065484283951829}
   - component: {fileID: 8198065484283950376}
-  - component: {fileID: 5553387637738034972}
-  - component: {fileID: 9082706518343677464}
-  - component: {fileID: 6034006981483588427}
-  - component: {fileID: 3535784978206696956}
   - component: {fileID: 4098643407203411209}
-  - component: {fileID: 4086305301945994786}
-  - component: {fileID: 4062737072127912837}
-  - component: {fileID: 2640121355887646371}
+  - component: {fileID: 9082706518343677464}
   - component: {fileID: 2927180851973244084}
-  - component: {fileID: 1689461470969263587}
-  - component: {fileID: 678775177365045757}
-  - component: {fileID: 3150210706572486332}
   m_Layer: 0
   m_Name: Sorceress
   m_TagString: Enemy
@@ -1811,6 +1808,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 145.6, z: 0}
+--- !u!54 &6034006981483588427
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4968138986584640272}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
+--- !u!136 &5553387637738034972
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4968138986584640272}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5245374
+  m_Height: 2.2801912
+  m_Direction: 1
+  m_Center: {x: 7.670202e-10, y: 0.64009523, z: 0.024537157}
 --- !u!95 &5202512748880672402
 Animator:
   serializedVersion: 4
@@ -1853,38 +1880,7 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &8198065482862854338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4968138986584640272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fec1fa47338dac4c87a81af1b622035, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackInterval: {fileID: 11400000, guid: f929ac7eb0739654c8dce382347b2890, type: 2}
-  attackSound: {fileID: 0}
-  weapon: {fileID: 11400000, guid: e1d4e7e40f5534c3eb4089439e105db8, type: 2}
-  movementTarget: {fileID: 11400000, guid: 70da94d1ac5c40e47af31e9e59bdd34a, type: 2}
---- !u!114 &8198065484283951832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4968138986584640272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9db11533f97d69a47a1fa919acff6cef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  magicOrbPrefab: {fileID: -8248271744834054832, guid: 52383342ae1915f47bff140a26fc3495, type: 3}
-  orbSpawnPosition: {fileID: 1518089180607793734}
-  orbLerpTime: 0.4
---- !u!114 &8198065484283951835
+--- !u!114 &678775177365045757
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1896,18 +1892,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f698b8af41f264abd87ae44d449008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 59d9ed44283d8c04da23250820cd3e8c, type: 2}
+  Event: {fileID: 0}
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4062737072127912837}
-        m_TargetAssemblyTypeName: SorceressAI, Assembly-CSharp
-        m_MethodName: OnPlayerNotDefeated
+      - m_Target: {fileID: 3535784978206696956}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: OnEnemyDeath
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4098643407203411209}
+        m_TargetAssemblyTypeName: CursorChanger, Assembly-CSharp
+        m_MethodName: ResetCursor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6531961497784006010, guid: bfc80e87f5226a9458a07da461dd4bf8, type: 3}
+        m_TargetAssemblyTypeName: PlayerLevel, Assembly-CSharp
+        m_MethodName: GainXp
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 100
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1940,7 +1960,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8198065484283951829
+--- !u!114 &8198065484283951835
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1949,71 +1969,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 4968138986584640272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07c45b86d4534865aa3e0fb469e0c36d, type: 3}
+  m_Script: {fileID: 11500000, guid: c2f698b8af41f264abd87ae44d449008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 1467650282291554377}
---- !u!114 &8198065484283950376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4968138986584640272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e888e63d324948258d4489b8c2b9f86f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floatingTextPrefab: {fileID: 779110284903442608, guid: aedaf426eee698f4abed060305c586c2, type: 3}
---- !u!136 &5553387637738034972
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4968138986584640272}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5245374
-  m_Height: 2.2801912
-  m_Direction: 1
-  m_Center: {x: 7.670202e-10, y: 0.64009523, z: 0.024537157}
---- !u!114 &9082706518343677464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4968138986584640272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 0, b: 0, a: 0.5176471}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
---- !u!54 &6034006981483588427
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4968138986584640272}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
+  Event: {fileID: 11400000, guid: 59d9ed44283d8c04da23250820cd3e8c, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4062737072127912837}
+        m_TargetAssemblyTypeName: SorceressAI, Assembly-CSharp
+        m_MethodName: OnPlayerNotDefeated
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3535784978206696956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2027,62 +2001,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inCombatAfterDamageTime: 2
---- !u!114 &4098643407203411209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4968138986584640272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c25fcf4373b27d749a44bceead491355, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cursorBase: {fileID: 2800000, guid: f2d7a1baa860ade4783015e04276f5d9, type: 3}
-  cursorTexture: {fileID: 2800000, guid: c8057bdffda05f344bc66a7b5d843654, type: 3}
-  cursorMode: 1
-  hotSpot: {x: 0, y: 0}
---- !u!114 &4086305301945994786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4968138986584640272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2f698b8af41f264abd87ae44d449008, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 0}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4098643407203411209}
-        m_TargetAssemblyTypeName: CursorChanger, Assembly-CSharp
-        m_MethodName: ResetCursor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4968138986584640272}
-        m_TargetAssemblyTypeName: CursorChanger, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &4062737072127912837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2111,7 +2029,7 @@ MonoBehaviour:
   breathingTimeAfterDefeating: 5
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
---- !u!114 &2640121355887646371
+--- !u!114 &8198065482862854338
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2120,11 +2038,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4968138986584640272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07c45b86d4534865aa3e0fb469e0c36d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fec1fa47338dac4c87a81af1b622035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 1467650282291554377}
---- !u!114 &2927180851973244084
+  attackInterval: {fileID: 11400000, guid: f929ac7eb0739654c8dce382347b2890, type: 2}
+  attackSound: {fileID: 0}
+  weapon: {fileID: 11400000, guid: e1d4e7e40f5534c3eb4089439e105db8, type: 2}
+  movementTarget: {fileID: 11400000, guid: 70da94d1ac5c40e47af31e9e59bdd34a, type: 2}
+--- !u!114 &8198065484283951832
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2133,9 +2054,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4968138986584640272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f41b805387556664d833781e8213fbf3, type: 3}
+  m_Script: {fileID: 11500000, guid: 9db11533f97d69a47a1fa919acff6cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magicOrbPrefab: {fileID: -8248271744834054832, guid: 52383342ae1915f47bff140a26fc3495, type: 3}
+  orbSpawnPosition: {fileID: 1518089180607793734}
+  orbLerpTime: 0.4
 --- !u!114 &1689461470969263587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2153,7 +2077,7 @@ MonoBehaviour:
   entityDeath: {fileID: 0}
   deathListner: {fileID: 0}
   currentHealth: {fileID: 0}
---- !u!114 &678775177365045757
+--- !u!114 &8198065484283951829
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2162,62 +2086,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4968138986584640272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2f698b8af41f264abd87ae44d449008, type: 3}
+  m_Script: {fileID: 11500000, guid: 07c45b86d4534865aa3e0fb469e0c36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 0}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3535784978206696956}
-        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
-        m_MethodName: OnEnemyDeath
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4968138986584640272}
-        m_TargetAssemblyTypeName: CursorChanger, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4968138986584640272}
-        m_TargetAssemblyTypeName: CoinDropAA, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6531961497784006010, guid: bfc80e87f5226a9458a07da461dd4bf8, type: 3}
-        m_TargetAssemblyTypeName: PlayerLevel, Assembly-CSharp
-        m_MethodName: GainXp
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 60
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &3150210706572486332
+  healthBar: {fileID: 1467650282291554377}
+--- !u!114 &8198065484283950376
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2226,25 +2099,56 @@ MonoBehaviour:
   m_GameObject: {fileID: 4968138986584640272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2f698b8af41f264abd87ae44d449008, type: 3}
+  m_Script: {fileID: 11500000, guid: e888e63d324948258d4489b8c2b9f86f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 59d9ed44283d8c04da23250820cd3e8c, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4062737072127912837}
-        m_TargetAssemblyTypeName: SorceressAI, Assembly-CSharp
-        m_MethodName: OnPlayerNotDefeated
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  floatingTextPrefab: {fileID: 779110284903442608, guid: aedaf426eee698f4abed060305c586c2, type: 3}
+--- !u!114 &4098643407203411209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4968138986584640272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25fcf4373b27d749a44bceead491355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorBase: {fileID: 2800000, guid: f2d7a1baa860ade4783015e04276f5d9, type: 3}
+  cursorTexture: {fileID: 2800000, guid: c8057bdffda05f344bc66a7b5d843654, type: 3}
+  cursorMode: 1
+  hotSpot: {x: 0, y: 0}
+--- !u!114 &9082706518343677464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4968138986584640272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0, b: 0, a: 0.5176471}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &2927180851973244084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4968138986584640272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41b805387556664d833781e8213fbf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4972767622866852680
 GameObject:
   m_ObjectHideFlags: 0
