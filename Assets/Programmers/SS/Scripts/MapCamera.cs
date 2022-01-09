@@ -31,7 +31,7 @@ public class MapCamera : MonoBehaviour
             {
                 transform.position = new Vector3(miniMapPosFarm.x, miniMapPosFarm.y, miniMapPosFarm.z);
             }
-            else if (SceneManager.GetActiveScene().name == "Crypt")
+            else if (SceneManager.GetActiveScene().name == "Level_Crypt")
             {
                 transform.position = new Vector3(miniMapPosCrypt.x, transform.position.y, miniMapPosCrypt.z);
             }
@@ -69,7 +69,7 @@ public class MapCamera : MonoBehaviour
     {
         miniMapContainer.SetActive(false);
         maxMapContainer.SetActive(true);
-        this.GetComponent<Camera>().fieldOfView = maxMapFOV;
+        this.GetComponent<Camera>().orthographicSize = maxMapFOV;
         Time.timeScale = 0;
     }
 

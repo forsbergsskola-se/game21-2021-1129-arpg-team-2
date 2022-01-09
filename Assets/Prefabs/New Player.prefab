@@ -38993,8 +38993,10 @@ MonoBehaviour:
   stopFrontOfGateDistance: {fileID: 11400000, guid: 069304486c538450c84c063c7a9dd1e8, type: 2}
   attackOnGoing: {fileID: 11400000, guid: 50f05ec6bf4f6544abb4034fa1b11666, type: 2}
   attackStop: {fileID: 11400000, guid: 34af79f1c3885f549a5ef4fb89490a23, type: 2}
-  fromForest: {fileID: 11400000, guid: e7cadbfb2bbe6f644a20d251a65fcfeb, type: 2}
+  fromForestToCrypt: {fileID: 0}
   cryptFinalPosition: {fileID: 11400000, guid: 78b2c2dd8985e944a9d0f3ff44908234, type: 2}
+  fromFarmToForest: {fileID: 11400000, guid: 94da5b56576a8b3409e0236930c1b785, type: 2}
+  forestFinalPosition: {fileID: 11400000, guid: 02ceb7b71af4f964f9f938dce720adf7, type: 2}
 --- !u!114 &5541263699580731547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73146,7 +73148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7036622481376083344, guid: 156dae16bcb64534d97f4f07043fdb02, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20
+      value: 62.8
       objectReference: {fileID: 0}
     - target: {fileID: 7036622481376083344, guid: 156dae16bcb64534d97f4f07043fdb02, type: 3}
       propertyPath: m_LocalPosition.z

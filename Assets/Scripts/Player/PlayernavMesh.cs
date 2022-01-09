@@ -14,8 +14,10 @@ public class PlayernavMesh : MonoBehaviour
     [SerializeField] private FloatValue stopFrontOfGateDistance;
     [SerializeField] private BooleanValue attackOnGoing;
     [SerializeField] private GameEvent attackStop;
-    [SerializeField] private BooleanValue fromForest;
+    [SerializeField] private BooleanValue fromForestToCrypt;
     [SerializeField] private Vector3Value cryptFinalPosition;
+    [SerializeField] private BooleanValue fromFarmToForest;
+    [SerializeField] private Vector3Value forestFinalPosition;
     private NavMeshAgent navMeshAgent;
     private RaycastHit hit;
     Animator animator;
@@ -32,10 +34,16 @@ public class PlayernavMesh : MonoBehaviour
         playerStartPosition.Vector3 = transform.position;
         animator = GetComponentInChildren<Animator>();
 
-        if (fromForest.BoolValue)
+        if (fromForestToCrypt.BoolValue)
         {
             navMeshAgent.Warp(cryptFinalPosition.Vector3);
-            fromForest.BoolValue = false;
+            fromForestToCrypt.BoolValue = false;
+        }
+
+        if (fromFarmToForest.BoolValue)
+        {
+            navMeshAgent.Warp(forestFinalPosition.Vector3);
+            fromFarmToForest.BoolValue = false;
         }
         
         
