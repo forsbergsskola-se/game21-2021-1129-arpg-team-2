@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MapCamera : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class MapCamera : MonoBehaviour
     [SerializeField] private int maxMapFOV;
     [SerializeField] private GameObject miniMapContainer;
     [SerializeField] private GameObject maxMapContainer;
+    [SerializeField] private Vector3 miniMapPosCrypt;
+    [SerializeField] private Vector3 miniMapPosFarm;
+    [SerializeField] private Vector3 miniMapPosForst;
     [SerializeField] private bool isMapMaximized;
     // Start is called before the first frame update
     void Start()
@@ -23,7 +27,19 @@ public class MapCamera : MonoBehaviour
     {
         if(isMapMaximized)
         {
-            transform.position = new Vector3(0, transform.position.y, 40f);
+            if (SceneManager.GetActiveScene().name == "Farmland_NEW_MAIN")
+            {
+                transform.position = new Vector3(miniMapPosFarm.x, miniMapPosFarm.y, miniMapPosFarm.z);
+            }
+            else if (SceneManager.GetActiveScene().name == "Crypt")
+            {
+                transform.position = new Vector3(miniMapPosCrypt.x, transform.position.y, miniMapPosCrypt.z);
+            }
+            else if (SceneManager.GetActiveScene().name == "Forest")
+            {
+                transform.position = new Vector3(miniMapPosForst.x, transform.position.y, miniMapPosForst.z);
+            }
+
         }
         else
         {
