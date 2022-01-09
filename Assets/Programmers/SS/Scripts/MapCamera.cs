@@ -8,8 +8,8 @@ public class MapCamera : MonoBehaviour
     Transform playerTransform;
     [SerializeField] private Vector3 offset;
     Vector3 velocity;
-    [SerializeField] private int miniMapFOV;
-    [SerializeField] private int maxMapFOV;
+    [SerializeField] private int miniMapSize;
+    [SerializeField] private int maxMapSize;
     [SerializeField] private GameObject miniMapContainer;
     [SerializeField] private GameObject maxMapContainer;
     [SerializeField] private Vector3 miniMapPosCrypt;
@@ -69,7 +69,7 @@ public class MapCamera : MonoBehaviour
     {
         miniMapContainer.SetActive(false);
         maxMapContainer.SetActive(true);
-        this.GetComponent<Camera>().fieldOfView = maxMapFOV;
+        this.GetComponent<Camera>().orthographicSize = maxMapSize;
         Time.timeScale = 0;
     }
 
@@ -77,7 +77,7 @@ public class MapCamera : MonoBehaviour
     {
         miniMapContainer.SetActive(true);
         maxMapContainer.SetActive(false);
-        this.GetComponent<Camera>().fieldOfView = miniMapFOV;
+        this.GetComponent<Camera>().orthographicSize = miniMapSize;
         Time.timeScale = 1;
         transform.position = playerTransform.position + offset;
     }
