@@ -16416,7 +16416,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 490562795}
-  - component: {fileID: 490562796}
+  - component: {fileID: 490562797}
   m_Layer: 0
   m_Name: ----Environment----
   m_TagString: Untagged
@@ -16450,7 +16450,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &490562796
+--- !u!114 &490562797
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16459,7 +16459,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 490562794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4186d34dced09c64aa3d1211e34f14b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c04e48c660cd72439a686a6e25cf889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myPrefabValid: {fileID: 7366519713308382858, guid: aa81a3e7a22d5f44c89defadcf0ad923, type: 3}
@@ -25140,6 +25140,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8821923174866244140, guid: e8730208dd27ec7438fb6d179b53bad0, type: 3}
   m_PrefabInstance: {fileID: 1095841375}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1095841377 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3937505882632888122, guid: e8730208dd27ec7438fb6d179b53bad0, type: 3}
+  m_PrefabInstance: {fileID: 1095841375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1095841378
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095841377}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5273049311075676327, guid: 3166ad93da4bd42b982a3269654889ae, type: 3}
 --- !u!1001 &1104520256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25601,21 +25620,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterBasicDaytime (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 9485b0c79d11e2e4d0007da98d76c639, type: 3}
-      propertyPath: m_TagString
-      value: Water
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9485b0c79d11e2e4d0007da98d76c639, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 9485b0c79d11e2e4d0007da98d76c639, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 23.870003
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 9485b0c79d11e2e4d0007da98d76c639, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 4.84
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9485b0c79d11e2e4d0007da98d76c639, type: 3}
       propertyPath: m_LocalPosition.x
@@ -35335,7 +35342,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-178230
+  m_Name: pb_Mesh-617124
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -37752,7 +37759,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-178216
+  m_Name: pb_Mesh-617110
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
