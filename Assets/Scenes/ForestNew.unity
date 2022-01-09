@@ -34274,6 +34274,10 @@ PrefabInstance:
       value: QuesExitItem
       objectReference: {fileID: 0}
     - target: {fileID: 527291723121053105, guid: 2e6f66686c5426d4ab173534c27ada28, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 527291723121053105, guid: 2e6f66686c5426d4ab173534c27ada28, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -34344,6 +34348,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7268851623540910598, guid: 2e6f66686c5426d4ab173534c27ada28, type: 3}
   m_PrefabInstance: {fileID: 1630700366}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1630700368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 527291723121053105, guid: 2e6f66686c5426d4ab173534c27ada28, type: 3}
+  m_PrefabInstance: {fileID: 1630700366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1630700370
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630700368}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 68.610886, y: 72.631966, z: 78.17582}
+  m_Center: {x: -0.30110937, y: 21.331207, z: 1.7567046}
+--- !u!114 &1630700373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630700368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 440e8567c7e945c4886f4cf5fdb482ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  isFlowerCollected: {fileID: 11400000, guid: 78f574ff1fcc05645b5d3e56befbac5c, type: 2}
+  intractionRange: 10
 --- !u!1001 &1630778175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38308,6 +38347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1816452350}
+  - component: {fileID: 1816452351}
   m_Layer: 0
   m_Name: Quests
   m_TagString: Untagged
@@ -38331,6 +38371,20 @@ Transform:
   m_Father: {fileID: 490562795}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1816452351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816452349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684ac2d615e6e1548ad3c32bf338eff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstQuest: {fileID: 1630700368}
+  isFlowerCollected: {fileID: 11400000, guid: 78f574ff1fcc05645b5d3e56befbac5c, type: 2}
 --- !u!1001 &1817119497
 PrefabInstance:
   m_ObjectHideFlags: 0
