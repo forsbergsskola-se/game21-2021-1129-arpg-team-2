@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class QuestListControl : MonoBehaviour
+public class QuestListView : MonoBehaviour
 {
     [SerializeField] private GameObject questNamePrefab;
     [SerializeField] private QuestLog playerQuestLog;
     
-    private void Awake()
-    {
-        playerQuestLog.NewQuestAdded.AddListener(OnNewQuestAdded);
-    }
+    // private void Awake()
+    // {
+    //     playerQuestLog.NewQuestAdded.AddListener(OnNewQuestAdded);
+    // }
 
     private void Start()
     {
@@ -26,9 +26,9 @@ public class QuestListControl : MonoBehaviour
     }
 
     // Add quest whenever GiveQuest script is fired
-    private void OnNewQuestAdded(BaseQuest quest)
+    public void AddNewQuestToListView(string questName)
     {
         var entry = Instantiate(questNamePrefab, questNamePrefab.transform.parent, false);
-        entry.GetComponent<QuestName>().Set(quest.QuestName);
+        entry.GetComponent<QuestName>().Set(questName);
     }
 }
