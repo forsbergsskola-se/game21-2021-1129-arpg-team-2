@@ -38801,7 +38801,7 @@ GameObject:
   - component: {fileID: 5541263699580731540}
   - component: {fileID: 5541263699580731541}
   - component: {fileID: 5541263699461717689}
-  - component: {fileID: 7843039467736119856}
+  - component: {fileID: 4468338698278137764}
   m_Layer: 3
   m_Name: New Player
   m_TagString: Player
@@ -39236,7 +39236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healEffect: {fileID: 1857225142720076286}
---- !u!114 &7843039467736119856
+--- !u!114 &4468338698278137764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39245,10 +39245,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 5541263699580731542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a687b8b6c2825e49941a8afbe1ad37b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b3315e398b921347a3069d7eb114715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healEffect: {fileID: 6134102343572364412, guid: 2a699abafe53cc8458364576a6570acf, type: 3}
+  PlayerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  interactRange: 10
+  isCoffinOpen: {fileID: 11400000, guid: 07bce3bee829aab4d86a04d1bed2ac3d, type: 2}
+  PlayerRequestMainQuestItem:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5541263699832143872
 GameObject:
   m_ObjectHideFlags: 0
