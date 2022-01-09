@@ -5,23 +5,23 @@ using UnityEngine;
 
 public class PlayerVoiceScript : MonoBehaviour
 {
-    public LayerMask PlayerLayer;
-    [SerializeField] private float voiceRange = 5f;
-    private bool isInRange;
+    private bool alreadyPlayed;
     private AudioSource _audioClip;
+    
 
     private void Start()
     {
         _audioClip = GetComponent<AudioSource>();
     }
 
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        isInRange = Physics.CheckSphere(transform.position, voiceRange, PlayerLayer);
-
-        if (isInRange)
+        if (alreadyPlayed == false)
         {
             _audioClip.Play();
+            alreadyPlayed = true;
         }
+        
+
     }
 }
