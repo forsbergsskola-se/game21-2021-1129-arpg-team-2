@@ -8,7 +8,7 @@ using UnityEngine;
 /// (2) controls adding and removing logic and validation of doing so
 /// </summary>
 
-[CreateAssetMenu(fileName = "inventory grid", menuName = "Game/inventory grid")]
+[CreateAssetMenu(fileName = "Inventory grid", menuName = "Game/Inventory/Inventory grid")]
 public class ItemGrid : ScriptableObject
 {
     [Header("Grid configuration")]
@@ -16,13 +16,17 @@ public class ItemGrid : ScriptableObject
     [SerializeField] private float tileSize;
     [SerializeField] private int width;
     [SerializeField] private int height;
-    internal RectTransform rectTrans;
+    public ItemDatabase database;
     
+    internal RectTransform rectTrans;
     public float TileSize => tileSize;
     public int Width => width;
     public int Height => height;
     
+    // todo: Add a scriptable object that holds ItemData
     private InventoryItem[,] gridSlots;
+    public InventoryItem[,] GridSlots => gridSlots;
+    
     private Vector2 positionOnGrid;
     private Vector2Int tileGridPosition;
 
@@ -36,9 +40,9 @@ public class ItemGrid : ScriptableObject
     public bool AddItem(InventoryItem itemToAdd, int posX, int posY, ref InventoryItem overlapItem)
     {
         
-        if (IsItemOutsideInventory(posX, posY, itemToAdd.ItemData.Width, itemToAdd.ItemData.Height)) return false;
+        if (IsItemOutsideInventory(posX, posY, itemToAdd.itemData.Width, itemToAdd.itemData.Height)) return false;
         
-        if (IsItemOverlap(posX, posY, itemToAdd.ItemData.Width, itemToAdd.ItemData.Height, ref overlapItem))
+        if (IsItemOverlap(posX, posY, itemToAdd.itemData.Width, itemToAdd.itemData.Height, ref overlapItem))
         {
             overlapItem = null;
             return false;
@@ -48,23 +52,25 @@ public class ItemGrid : ScriptableObject
         var rt = itemToAdd.GetComponent<RectTransform>();
         rt.SetParent(rectTrans);
 
-        for (var i = 0; i < itemToAdd.ItemData.Width; i++)
+        for (var i = 0; i < itemToAdd.itemData.Width; i++)
         {
-            for (var j = 0; j < itemToAdd.ItemData.Height; j++)
+            for (var j = 0; j < itemToAdd.itemData.Height; j++)
             {
                 gridSlots[posX + i, posY + j] = itemToAdd;
             }
         }
 
-        itemToAdd.OnGridPositionX = posX;
-        itemToAdd.OnGridPositionY = posY;
+        itemToAdd.itemData.OnGridPositionX = posX;
+        itemToAdd.itemData.OnGridPositionY = posY;
 
         var position = new Vector2
         {
-            x = posX * tileSize + tileSize * itemToAdd.ItemData.Width / 2,
-            y = -(posY * tileSize + tileSize * itemToAdd.ItemData.Height / 2)
+            x = posX * tileSize + tileSize * itemToAdd.itemData.Width / 2,
+            y = -(posY * tileSize + tileSize * itemToAdd.itemData.Height / 2)
         };
         rt.localPosition = position;
+        
+        database.AddItem(itemToAdd.itemData);
 
         return true;
     }
@@ -73,17 +79,20 @@ public class ItemGrid : ScriptableObject
     {
         var toReturn = gridSlots[x, y];
         if (toReturn == null) return null;
+        
+        database.RemoveItem(toReturn.itemData);
+        
         CleanGridReference(toReturn);
         return toReturn;
     }
 
     private void CleanGridReference(InventoryItem item)
     {
-        for (var i = 0; i < item.ItemData.Width; i++)
+        for (var i = 0; i < item.itemData.Width; i++)
         {
-            for (var j = 0; j < item.ItemData.Height; j++)
+            for (var j = 0; j < item.itemData.Height; j++)
             {
-                gridSlots[item.OnGridPositionX + i, item.OnGridPositionY + j] = null;
+                gridSlots[item.itemData.OnGridPositionX + i, item.itemData.OnGridPositionY + j] = null;
             }
         }
     }
@@ -184,21 +193,21 @@ public class ItemGrid : ScriptableObject
             var rt = itemToAdd.GetComponent<RectTransform>();
             rt.SetParent(rectTrans);
 
-            for (var i = 0; i < itemToAdd.ItemData.Width; i++)
+            for (var i = 0; i < itemToAdd.itemData.Width; i++)
             {
-                for (var j = 0; j < itemToAdd.ItemData.Height; j++)
+                for (var j = 0; j < itemToAdd.itemData.Height; j++)
                 {
                     gridSlots[posX + i, posY + j] = itemToAdd;
                 }
             }
 
-            itemToAdd.OnGridPositionX = posX;
-            itemToAdd.OnGridPositionY = posY;
+            itemToAdd.itemData.OnGridPositionX = posX;
+            itemToAdd.itemData.OnGridPositionY = posY;
 
             var position = new Vector2
             {
-                x = posX * tileSize + tileSize * itemToAdd.ItemData.Width / 2,
-                y = -(posY * tileSize + tileSize * itemToAdd.ItemData.Height / 2)
+                x = posX * tileSize + tileSize * itemToAdd.itemData.Width / 2,
+                y = -(posY * tileSize + tileSize * itemToAdd.itemData.Height / 2)
             };
             rt.localPosition = position;
         }
@@ -206,6 +215,8 @@ public class ItemGrid : ScriptableObject
         {
             Debug.Log("Adding quest item exception: " + e.Message);
         }
+        
+        database.AddItem(itemToAdd.itemData);
 
         return true;
     }

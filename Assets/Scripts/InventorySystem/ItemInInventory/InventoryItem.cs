@@ -9,24 +9,34 @@ using UnityEngine.UI;
 public class InventoryItem : MonoBehaviour
 {
     [SerializeField] private ItemGrid grid;
-    private ItemDataHolder data;
-    private int onGridPositionX;
-    private int onGridPositionY;
-
-    public int OnGridPositionX { get => onGridPositionX; set => onGridPositionX = value; }
-    public int OnGridPositionY { get => onGridPositionY; set => onGridPositionY = value; }
-    public ItemDataHolder ItemData => data;
+    public ItemData itemData;
+    // private ItemDataHolder data;
+    // private int onGridPositionX;
+    // private int onGridPositionY;
+    //
+    // public int OnGridPositionX { get => onGridPositionX; set => onGridPositionX = value; }
+    // public int OnGridPositionY { get => onGridPositionY; set => onGridPositionY = value; }
+    // public ItemDataHolder ItemData => data;
 
     public void Set(BaseItem item)
     {
-        data = new ItemDataHolder(item);
+        // data = new ItemDataHolder(item);
+        //
+        // GetComponent<Image>().sprite = data.ItemIcon;
+        // var size = new Vector2
+        // {
+        //     x = data.Width * grid.TileSize,
+        //     y = data.Height * grid.TileSize
+        // };
+        // GetComponent<RectTransform>().sizeDelta = size;
         
-        GetComponent<Image>().sprite = data.ItemIcon;
         var size = new Vector2
         {
-            x = data.Width * grid.TileSize,
-            y = data.Height * grid.TileSize
+            x = item.InventoryItemWidth * grid.TileSize,
+            y = item.InventoryItemHeight * grid.TileSize
         };
+        itemData = new ItemData(item);
+        GetComponent<Image>().sprite = itemData.ItemIcon;
         GetComponent<RectTransform>().sizeDelta = size;
     }
 }

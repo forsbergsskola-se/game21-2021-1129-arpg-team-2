@@ -32,9 +32,26 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     private void Awake()
     {
         grid.rectTrans = GetComponent<RectTransform>();
-        grid.InitGrid();
+
+        Debug.Log("before init: " + grid.GridSlots);
+        
+        if (grid.GridSlots == null) grid.InitGrid();
+        
+        Debug.Log("before init: " + grid.GridSlots);
+        
         gameObject.SetActive(false);
         itemDrop = FindObjectOfType<ItemDropNextToPlayer>();
+    }
+
+    private void OnEnable()
+    {
+        for (var x = 0; x < grid.Width; x++)
+        {
+            for (var y = 0; y < grid.Height; y++)
+            {
+                Debug.Log($"what's inside grid[{ x }, { y }]: {grid.GridSlots[x, y]}");
+            }
+        }
     }
 
     private void Update()
@@ -46,8 +63,8 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
 
     private void DropItemNextToPlayer()
     {
-        var targetType = selectedItem.ItemData.Type;
-        var targetSubType = selectedItem.ItemData.SubType;
+        var targetType = selectedItem.itemData.Type;
+        var targetSubType = selectedItem.itemData.SubType;
 
         GameObject find;
         if (targetType is ItemType.Consumable && targetSubType == (int) ConsumableType.Carrot)
@@ -92,8 +109,8 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     {
         RemoveItem(targetGridCell);
         
-        var targetType = selectedItem.ItemData.Type;
-        var targetSubType = selectedItem.ItemData.SubType;
+        var targetType = selectedItem.itemData.Type;
+        var targetSubType = selectedItem.itemData.SubType;
         
         if (targetType is ItemType.Consumable && targetSubType == (int)ConsumableType.Carrot)
         {

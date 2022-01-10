@@ -22,7 +22,7 @@ public class GiveMainQuestItem : MonoBehaviour
         var item = Instantiate(inventoryItemPrefab);
         item.GetComponent<InventoryItem>().Set(questItem);
 
-        var firstEmptySlot = playerInventory.GetFirstAvailableSlot(item.ItemData.Width, item.ItemData.Height);
+        var firstEmptySlot = playerInventory.GetFirstAvailableSlot(item.itemData.Width, item.itemData.Height);
 
         var success = playerInventory.AddItem(item, firstEmptySlot.x, firstEmptySlot.y);
         Debug.Log("Adding item successful: " + success);

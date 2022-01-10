@@ -14,9 +14,8 @@ public class QuestLogView : MonoBehaviour
     {
         playerQuestLog.NewQuestAdded.AddListener(OnNewQuestAdded);
     }
-    
-    private void OnNewQuestAdded(BaseQuest quest)
-    {
-        questListView.GetComponent<QuestListView>().AddNewQuestToListView(quest.QuestName);
-    }
+
+    private void OnNewQuestAdded(BaseQuest quest) => AddNewQuestToListView(quest);
+
+    private void AddNewQuestToListView(BaseQuest quest) => questListView.GetComponent<QuestListView>().AddNewQuestToListView(quest.QuestName);
 }
