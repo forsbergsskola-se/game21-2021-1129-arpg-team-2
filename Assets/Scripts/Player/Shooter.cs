@@ -20,6 +20,8 @@ public class Shooter : MonoBehaviour
     {
         if (weapon.Ranged && target != null)
         {
+            Debug.Log(target.name);
+            
             var temp = Instantiate(weapon.Projectile, transform.position, Quaternion.identity);
             shootDirection.Vector3 = (target.Value.transform.position - transform.position).normalized;
         }
