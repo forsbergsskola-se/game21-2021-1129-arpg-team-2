@@ -7,6 +7,7 @@ public class LoadCredits : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene("Credits");
+        //SceneManager.LoadScene("Credits");
+        FindObjectOfType<LoadingScene>().LoadScene("Credits");
     }
 }

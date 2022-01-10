@@ -8,6 +8,7 @@ public class LoadFarmland : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene("Farmland_NEW_MAIN");
+        FindObjectOfType<LoadingScene>().LoadScene("Farmland_NEW_MAIN");
+        //SceneManager.LoadScene("Farmland_NEW_MAIN");
     }
 }

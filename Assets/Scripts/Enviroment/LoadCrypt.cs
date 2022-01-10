@@ -12,6 +12,7 @@ public class LoadCrypt : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         comingFromForest.BoolValue = true;
-        SceneManager.LoadScene("Level_Crypt");
+        FindObjectOfType<LoadingScene>().LoadScene("Level_Crypt");
+        //SceneManager.LoadScene("Level_Crypt");
     }
 }

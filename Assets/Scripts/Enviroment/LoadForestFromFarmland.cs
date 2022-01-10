@@ -10,6 +10,7 @@ public class LoadForestFromFarmland : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         comingFromFarm.BoolValue = true;
-        SceneManager.LoadScene("ForestNew");
+        //SceneManager.LoadScene("ForestNew");
+        FindObjectOfType<LoadingScene>().LoadScene("ForestNew");
     }
 }
