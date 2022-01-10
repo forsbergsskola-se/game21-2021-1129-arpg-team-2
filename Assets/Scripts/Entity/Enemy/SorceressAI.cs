@@ -52,6 +52,9 @@ public class SorceressAI : MonoBehaviour
 
     //Animatior controller
     private Animator sorceressAnimator;
+    
+    // Audio
+    private AudioSource attackOrbSound;
 
     private void Start()
     {
@@ -62,6 +65,7 @@ public class SorceressAI : MonoBehaviour
         playerIsDefeated = false;
         entityAttack = GetComponent<EntityAttack>();
         sorceressAnimator = GetComponent<Animator>();
+        attackOrbSound = GetComponent<AudioSource>();
     }
     
     private void Update()
@@ -165,6 +169,7 @@ public class SorceressAI : MonoBehaviour
         isInPatrolState = false;
         sorceressAnimator.SetBool("isAttacking", false);
         sorceressAnimator.SetBool("isWalking", true);
+        attackOrbSound.Play();
         isStartPositionReset = false;
     }
 
