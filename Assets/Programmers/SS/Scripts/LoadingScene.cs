@@ -38,7 +38,7 @@ public class LoadingScene : MonoBehaviour
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
-            loadingPercent.text = asyncLoad.progress*100 + " %";
+            loadingPercent.text = (asyncLoad.progress*100)+ " %";
             loadingBar.value = asyncLoad.progress;
             
             yield return null;
