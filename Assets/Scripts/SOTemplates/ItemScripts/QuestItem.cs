@@ -5,8 +5,8 @@ public class QuestItem : BaseItem
 {
     private readonly ItemType type = ItemType.Consumable;
     public ItemType Type => type;
-    [SerializeField] private QuestItemType subQuestType;
-    public QuestItemType SubType => subQuestType;
+    [SerializeField] private QuestItemType subType;
+    public QuestItemType SubType => subType;
 }
 
 public enum QuestItemType

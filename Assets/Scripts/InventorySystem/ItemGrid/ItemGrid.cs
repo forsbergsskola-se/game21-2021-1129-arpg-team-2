@@ -16,7 +16,8 @@ public class ItemGrid : ScriptableObject
     [SerializeField] private float tileSize;
     [SerializeField] private int width;
     [SerializeField] private int height;
-    public ItemDatabase database;
+    public ItemDatabase itemDatabase;
+    public GameObject inventoryItem;
     
     internal RectTransform rectTrans;
     public float TileSize => tileSize;
@@ -35,6 +36,15 @@ public class ItemGrid : ScriptableObject
         gridSlots = new InventoryItem[width, height];
         var size = new Vector2(width * tileSize, height * tileSize);
         rectTrans.sizeDelta = size;
+    }
+    
+    public void RepopulateGrid()
+    {
+        Debug.Log("Should repopulate grid!");
+        // foreach (var entry in itemDatabase.itemDataList)
+        // {
+        //     
+        // }
     }
 
     public bool AddItem(InventoryItem itemToAdd, int posX, int posY, ref InventoryItem overlapItem)
@@ -60,9 +70,6 @@ public class ItemGrid : ScriptableObject
             }
         }
 
-        itemToAdd.itemData.OnGridPositionX = posX;
-        itemToAdd.itemData.OnGridPositionY = posY;
-
         var position = new Vector2
         {
             x = posX * tileSize + tileSize * itemToAdd.itemData.Width / 2,
@@ -70,7 +77,9 @@ public class ItemGrid : ScriptableObject
         };
         rt.localPosition = position;
         
-        database.AddItem(itemToAdd.itemData);
+        itemToAdd.itemData.OnGridPositionX = posX;
+        itemToAdd.itemData.OnGridPositionY = posY;
+        itemDatabase.AddItem(itemToAdd.itemData);
 
         return true;
     }
@@ -80,7 +89,7 @@ public class ItemGrid : ScriptableObject
         var toReturn = gridSlots[x, y];
         if (toReturn == null) return null;
         
-        database.RemoveItem(toReturn.itemData);
+        itemDatabase.RemoveItem(toReturn.itemData);
         
         CleanGridReference(toReturn);
         return toReturn;
@@ -216,7 +225,7 @@ public class ItemGrid : ScriptableObject
             Debug.Log("Adding quest item exception: " + e.Message);
         }
         
-        database.AddItem(itemToAdd.itemData);
+        itemDatabase.AddItem(itemToAdd.itemData);
 
         return true;
     }

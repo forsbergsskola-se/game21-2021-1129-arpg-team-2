@@ -34,10 +34,11 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         grid.rectTrans = GetComponent<RectTransform>();
 
         Debug.Log("before init: " + grid.GridSlots);
-        
+
         if (grid.GridSlots == null) grid.InitGrid();
+        else grid.RepopulateGrid();
         
-        Debug.Log("before init: " + grid.GridSlots);
+        Debug.Log("after init: " + grid.GridSlots);
         
         gameObject.SetActive(false);
         itemDrop = FindObjectOfType<ItemDropNextToPlayer>();
@@ -131,7 +132,30 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     private void AddItem(Vector2Int targetGridCell)
     {
         var item = Instantiate(inventoryItem);
-        item.GetComponent<InventoryItem>().Set(pickedUpItem);
+        ItemType type;
+        int? subType;
+        
+         switch (pickedUpItem)
+         {
+             case ConsumableItem c when c:
+                 type = c.Type;
+                 subType = (int) c.SubType;
+                 break;
+             case WeaponItem w when w:
+                 type = w.Type;
+                 subType = (int) w.SubType;
+                 break;
+             case QuestItem q when q:
+                 type = q.Type;
+                 subType = (int) q.SubType;
+                 break;
+             default:
+                 type = ItemType.None;
+                 subType = null;
+                 break;
+         }
+        
+        item.GetComponent<InventoryItem>().Set(pickedUpItem.InventoryItemWidth, pickedUpItem.InventoryItemHeight, pickedUpItem.InventoryItemIcon, type, subType);
 
         var success = grid.AddItem(item.GetComponent<InventoryItem>(), targetGridCell.x, targetGridCell.y, ref overlapItem);
         if (success)

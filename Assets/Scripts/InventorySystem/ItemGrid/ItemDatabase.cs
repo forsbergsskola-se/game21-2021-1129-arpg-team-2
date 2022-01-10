@@ -35,10 +35,10 @@ public struct ItemData
     public Sprite ItemIcon => itemIcon;
     
     [SerializeField] private ItemType type;
-    public ItemType Type => type;
+    public ItemType Type { get => type; set => type = value; }
     
     [SerializeField] private int? subType;
-    public int? SubType => subType;
+    public int? SubType { get => subType; set => subType = value; }
 
     [SerializeField] private int onGridPositionX;
     public int OnGridPositionX { get => onGridPositionX; set => onGridPositionX = value; }
@@ -47,32 +47,13 @@ public struct ItemData
     public int OnGridPositionY { get => onGridPositionY; set => onGridPositionY = value; }
     
 
-    public ItemData(BaseItem item)
+    public ItemData(int width, int height, Sprite itemIcon, ItemType type, int? subType)
     {
-        width = item.InventoryItemWidth;
-        height = item.InventoryItemHeight;
-        itemIcon = item.InventoryItemIcon;
-        if (item is ConsumableItem c && c)
-        {
-            type = c.Type;
-            subType = (int) c.SubType;
-        }
-        else if (item is WeaponItem w && w)
-        {
-            type = w.Type;
-            subType = (int) w.SubType;
-        }
-        else if (item is QuestItem q && q)
-        {
-            type = q.Type;
-            subType = (int) q.SubType;
-        }
-        else
-        {
-            type = ItemType.None;
-            subType = null;
-        }
-        
+        this.width = width;
+        this.height = height;
+        this.itemIcon = itemIcon;
+        this.type = type;
+        this.subType = subType;
         onGridPositionX = 0;
         onGridPositionY = 0;
     }
