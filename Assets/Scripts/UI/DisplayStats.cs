@@ -14,7 +14,9 @@ public class DisplayStats : MonoBehaviour
     
     private void ShowStats()
     {
-        _text.text = "Lvl: " + playerLevelUpChart.CurrentLevel + " | Att: " + playerStats.Attack + " | AttSp: "
-                     + playerStats.AttackSpeed + " | Def: " + playerStats.Defence;
+        string temp = $"Lvl: {playerLevelUpChart.CurrentLevel}  | Att: {this.playerStats.Attack:F2}  " +
+                      $"| AttSp: {this.playerStats.AttackSpeed:F2} | Def: {playerStats.Defence:F2} ";
+        
+        _text.text = temp;
     }
 }
