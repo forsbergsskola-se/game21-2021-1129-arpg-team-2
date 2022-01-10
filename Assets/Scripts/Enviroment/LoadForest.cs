@@ -7,8 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class LoadForest : MonoBehaviour
 {
+    [SerializeField] private GameObject loadingSceneCanvas;
     void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene("ForestNew");
+        FindObjectOfType<LoadingScene>().LoadScene("ForestNew");
+        //SceneManager.LoadScene("ForestNew");
     }
 }
