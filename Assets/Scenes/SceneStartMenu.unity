@@ -1080,10 +1080,10 @@ RectTransform:
   m_Children:
   - {fileID: 1050125487}
   - {fileID: 261315301}
-  - {fileID: 868778193}
-  - {fileID: 1646099592}
   - {fileID: 4441253536333772815}
   - {fileID: 1093187863}
+  - {fileID: 868778193}
+  - {fileID: 1646099592}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1387,7 +1387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1898921107512739259, guid: 675ae1078584db04c88c7952cc3de2b7, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1898921107512739259, guid: 675ae1078584db04c88c7952cc3de2b7, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2492,7 +2492,7 @@ RectTransform:
   m_Children:
   - {fileID: 1794744975}
   m_Father: {fileID: 525389488}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6008,7 +6008,7 @@ GameObject:
   - component: {fileID: 6164766128225767639}
   - component: {fileID: 2651118730342524075}
   m_Layer: 5
-  m_Name: StatScreenMenu
+  m_Name: StratScreenMenu
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6032,7 +6032,7 @@ RectTransform:
   - {fileID: 6164766129031239664}
   - {fileID: 3096143000138231431}
   m_Father: {fileID: 525389488}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6673,7 +6673,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8123697618499914271}
   m_Layer: 5
-  m_Name: Start Menu UI
+  m_Name: 'Start Menu '
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10778,7 +10778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7270072679911646674, guid: a343a66daccbebb428dadfcd305d2de3, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7270072679911646674, guid: a343a66daccbebb428dadfcd305d2de3, type: 3}
       propertyPath: m_AnchorMax.x
