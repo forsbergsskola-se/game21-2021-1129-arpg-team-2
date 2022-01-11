@@ -16425,6 +16425,7 @@ GameObject:
   - component: {fileID: 271073182}
   - component: {fileID: 271073181}
   - component: {fileID: 271073185}
+  - component: {fileID: 271073186}
   m_Layer: 0
   m_Name: BoneFragment
   m_TagString: Untagged
@@ -16527,6 +16528,22 @@ MonoBehaviour:
     m_Bits: 8
   isBoneCollected: {fileID: 11400000, guid: 6990d0dba5fdd9043b3e0efb5d6a7259, type: 2}
   intractionRange: 10
+--- !u!114 &271073186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271073180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db31b90a3fbb0749807a1f409e35abd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questItem: {fileID: 11400000, guid: 29b91e727b269e145ba9335f5c54e6f0, type: 2}
+  playerInventory: {fileID: 11400000, guid: b51b8152ccf03f1478cc95216e2ae505, type: 2}
+  inventoryItemPrefab: {fileID: 2439397202243026017, guid: ae88c5c08aa03b247a603b8693366477, type: 3}
+  player: {fileID: 562955678}
 --- !u!1 &272318565
 GameObject:
   m_ObjectHideFlags: 0
@@ -36266,6 +36283,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25593346}
     m_Modifications:
+    - target: {fileID: 4468338698278137764, guid: 38ad71946da36224f9b89940758d217d, type: 3}
+      propertyPath: isCoffinOpen
+      value: 
+      objectReference: {fileID: 11400000, guid: 6990d0dba5fdd9043b3e0efb5d6a7259, type: 2}
     - target: {fileID: 5541263699580731525, guid: 38ad71946da36224f9b89940758d217d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -36323,6 +36344,11 @@ PrefabInstance:
 --- !u!4 &562955677 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5541263699580731525, guid: 38ad71946da36224f9b89940758d217d, type: 3}
+  m_PrefabInstance: {fileID: 562955676}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &562955678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5541263699580731542, guid: 38ad71946da36224f9b89940758d217d, type: 3}
   m_PrefabInstance: {fileID: 562955676}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &563051935
@@ -92241,6 +92267,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 824125248016689121, guid: 44fbca6e701b20b41a2e089890bc2dff, type: 3}
+      propertyPath: carrotPool
+      value: 
+      objectReference: {fileID: 21395854}
+    - target: {fileID: 824125248016689121, guid: 44fbca6e701b20b41a2e089890bc2dff, type: 3}
+      propertyPath: potatoPool
+      value: 
+      objectReference: {fileID: 1969055937}
+    - target: {fileID: 824125248016689121, guid: 44fbca6e701b20b41a2e089890bc2dff, type: 3}
+      propertyPath: potionPool
+      value: 
+      objectReference: {fileID: 832827238}
     - target: {fileID: 1126542780252503976, guid: 44fbca6e701b20b41a2e089890bc2dff, type: 3}
       propertyPath: m_IsActive
       value: 1
