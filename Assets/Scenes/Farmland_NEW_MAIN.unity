@@ -42068,8 +42068,6 @@ Transform:
   m_Children:
   - {fileID: 1257816929}
   - {fileID: 1157322032}
-  - {fileID: 1330517314}
-  - {fileID: 1042554499}
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -61441,79 +61439,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7208270442471789845, guid: e40e0295f68594b2d9c679cc6f3d81d2, type: 3}
   m_PrefabInstance: {fileID: 1040821184}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1042554498
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 745959864}
-    m_Modifications:
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 57.46
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -16.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 26.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949855, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_Name
-      value: SorceressSpawnPoint (2)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
---- !u!4 &1042554499 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-  m_PrefabInstance: {fileID: 1042554498}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1042554500 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6475150147324949854, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-  m_PrefabInstance: {fileID: 1042554498}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5249cf5ac0aea4c5b85e18c46eadf99f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1043659181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68446,7 +68371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    rid: 2173963445404696681
+    rid: 2173963445404696837
   m_Size: {x: 0.2, y: 8, z: 20}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -68458,7 +68383,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 2173963445404696681
+    - rid: 2173963445404696837
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1110655547
 MonoBehaviour:
@@ -70528,7 +70453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    rid: 2173963445404696656
+    rid: 2173963445404696812
   m_Size: {x: 0.2, y: 4.5, z: 12}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -70540,7 +70465,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 2173963445404696656
+    - rid: 2173963445404696812
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1163756265
 MonoBehaviour:
@@ -73211,7 +73136,7 @@ PrefabInstance:
       objectReference: {fileID: 3535784978206696956, guid: 086c049338afbde46aad547a3e8f629d, type: 3}
     - target: {fileID: 7483410471757842788, guid: 3aae9b10cc4d6b14fbc6ace06d7ac6dd, type: 3}
       propertyPath: spawnPositions.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7483410471757842788, guid: 3aae9b10cc4d6b14fbc6ace06d7ac6dd, type: 3}
       propertyPath: spawnPositions.Array.data[0]
@@ -73220,15 +73145,15 @@ PrefabInstance:
     - target: {fileID: 7483410471757842788, guid: 3aae9b10cc4d6b14fbc6ace06d7ac6dd, type: 3}
       propertyPath: spawnPositions.Array.data[1]
       value: 
-      objectReference: {fileID: 1330517315}
+      objectReference: {fileID: 0}
     - target: {fileID: 7483410471757842788, guid: 3aae9b10cc4d6b14fbc6ace06d7ac6dd, type: 3}
       propertyPath: spawnPositions.Array.data[2]
       value: 
-      objectReference: {fileID: 1042554500}
+      objectReference: {fileID: 0}
     - target: {fileID: 7483410471757842788, guid: 3aae9b10cc4d6b14fbc6ace06d7ac6dd, type: 3}
       propertyPath: spawnPositions.Array.data[3]
       value: 
-      objectReference: {fileID: 1042554500}
+      objectReference: {fileID: 0}
     - target: {fileID: 7483410471757842791, guid: 3aae9b10cc4d6b14fbc6ace06d7ac6dd, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -75729,7 +75654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    rid: 2173963445404696668
+    rid: 2173963445404696824
   m_Size: {x: 0.2, y: 4.5, z: 12}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 1
@@ -75741,7 +75666,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 2173963445404696668
+    - rid: 2173963445404696824
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1325248298
 MonoBehaviour:
@@ -75960,79 +75885,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!1001 &1330517313
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 745959864}
-    m_Modifications:
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 61.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -16.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -5.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475150147324949855, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-      propertyPath: m_Name
-      value: SorceressSpawnPoint (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
---- !u!4 &1330517314 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6475150147324949853, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-  m_PrefabInstance: {fileID: 1330517313}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1330517315 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6475150147324949854, guid: cd4e07f945f95254ab8913cc0e56db06, type: 3}
-  m_PrefabInstance: {fileID: 1330517313}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5249cf5ac0aea4c5b85e18c46eadf99f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1336359806
 PrefabInstance:
   m_ObjectHideFlags: 0
