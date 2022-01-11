@@ -16,6 +16,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     [SerializeField] private GameObject inventoryItem;
     [SerializeField] private GameObject carrotPool;
     [SerializeField] private GameObject potionPool;
+    public ItemDatabase ItemDatabase;
 
     [HideInInspector] public UnityEvent ItemAddSuccess;
 
@@ -36,12 +37,23 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         Debug.Log("before init: " + grid.GridSlots);
 
         if (grid.GridSlots == null) grid.InitGrid();
-        else grid.RepopulateGrid();
+        else RepopulateGridView();
         
         Debug.Log("after init: " + grid.GridSlots);
         
         gameObject.SetActive(false);
         itemDrop = FindObjectOfType<ItemDropNextToPlayer>();
+    }
+
+    private void RepopulateGridView()
+    {
+        foreach (var item in ItemDatabase.itemDataList)
+        {
+            var temp = Instantiate(inventoryItem);
+            temp.GetComponent<InventoryItem>().Set(item.Width, item.Height, item.ItemIcon, item.Type, item.SubType);
+            var success = grid.AddItem(temp.GetComponent<InventoryItem>(), item.OnGridPositionX, item.OnGridPositionY, ref overlapItem);
+            Debug.Log($"Repopulating grid view with item {item.Type}: {success}");
+        }
     }
 
     private void OnEnable()

@@ -17,7 +17,6 @@ public class ItemGrid : ScriptableObject
     [SerializeField] private int width;
     [SerializeField] private int height;
     public ItemDatabase itemDatabase;
-    public GameObject inventoryItem;
     
     internal RectTransform rectTrans;
     public float TileSize => tileSize;
@@ -37,15 +36,6 @@ public class ItemGrid : ScriptableObject
         var size = new Vector2(width * tileSize, height * tileSize);
         rectTrans.sizeDelta = size;
     }
-    
-    public void RepopulateGrid()
-    {
-        Debug.Log("Should repopulate grid!");
-        // foreach (var entry in itemDatabase.itemDataList)
-        // {
-        //     
-        // }
-    }
 
     public bool AddItem(InventoryItem itemToAdd, int posX, int posY, ref InventoryItem overlapItem)
     {
@@ -59,6 +49,33 @@ public class ItemGrid : ScriptableObject
         }
         if (overlapItem != null) CleanGridReference(overlapItem);
         
+        var rt = itemToAdd.GetComponent<RectTransform>();
+        rt.SetParent(rectTrans);
+
+        for (var i = 0; i < itemToAdd.itemData.Width; i++)
+        {
+            for (var j = 0; j < itemToAdd.itemData.Height; j++)
+            {
+                gridSlots[posX + i, posY + j] = itemToAdd;
+            }
+        }
+
+        var position = new Vector2
+        {
+            x = posX * tileSize + tileSize * itemToAdd.itemData.Width / 2,
+            y = -(posY * tileSize + tileSize * itemToAdd.itemData.Height / 2)
+        };
+        rt.localPosition = position;
+        
+        itemToAdd.itemData.OnGridPositionX = posX;
+        itemToAdd.itemData.OnGridPositionY = posY;
+        itemDatabase.AddItem(itemToAdd.itemData);
+
+        return true;
+    }
+    
+    public bool AddItem(InventoryItem itemToAdd, int posX, int posY)
+    {
         var rt = itemToAdd.GetComponent<RectTransform>();
         rt.SetParent(rectTrans);
 
@@ -193,40 +210,4 @@ public class ItemGrid : ScriptableObject
 
     internal bool IsGridTileOccupied(Vector2Int targetGridCell) =>
         gridSlots[targetGridCell.x, targetGridCell.y] != null;
-    
-    // IMPORTANT: this overload is FOR DEMO ONLY
-    public bool AddItem(InventoryItem itemToAdd, int posX, int posY)
-    {
-        try
-        {
-            var rt = itemToAdd.GetComponent<RectTransform>();
-            rt.SetParent(rectTrans);
-
-            for (var i = 0; i < itemToAdd.itemData.Width; i++)
-            {
-                for (var j = 0; j < itemToAdd.itemData.Height; j++)
-                {
-                    gridSlots[posX + i, posY + j] = itemToAdd;
-                }
-            }
-
-            itemToAdd.itemData.OnGridPositionX = posX;
-            itemToAdd.itemData.OnGridPositionY = posY;
-
-            var position = new Vector2
-            {
-                x = posX * tileSize + tileSize * itemToAdd.itemData.Width / 2,
-                y = -(posY * tileSize + tileSize * itemToAdd.itemData.Height / 2)
-            };
-            rt.localPosition = position;
-        }
-        catch(Exception e)
-        {
-            Debug.Log("Adding quest item exception: " + e.Message);
-        }
-        
-        itemDatabase.AddItem(itemToAdd.itemData);
-
-        return true;
-    }
 }
