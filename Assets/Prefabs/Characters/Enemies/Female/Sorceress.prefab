@@ -1784,6 +1784,7 @@ GameObject:
   - component: {fileID: 9082706518343677464}
   - component: {fileID: 2927180851973244084}
   - component: {fileID: 6085993504308735873}
+  - component: {fileID: 5619515722181602021}
   m_Layer: 0
   m_Name: Sorceress
   m_TagString: Enemy
@@ -2246,6 +2247,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5619515722181602021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4968138986584640272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8cad7cefbf74f84db69572cc4ee5cae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 11400000, guid: e1d4e7e40f5534c3eb4089439e105db8, type: 2}
+  projectile: {fileID: 6680336195130181756, guid: 52383342ae1915f47bff140a26fc3495, type: 3}
 --- !u!1 &4972767622866852680
 GameObject:
   m_ObjectHideFlags: 0
