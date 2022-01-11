@@ -33,6 +33,11 @@ public class ActivateFogCamera : MonoBehaviour
         
 
     }
+    private void OnDestroy()
+    {
+        RenderPipelineManager.beginCameraRendering -= OnBeginCameraRendering;
+        RenderPipelineManager.endCameraRendering -= OnEndCameraRendering;
+    }
 
 
 }
