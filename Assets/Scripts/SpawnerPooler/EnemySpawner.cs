@@ -46,6 +46,10 @@ public class EnemySpawner : MonoBehaviour
         deathCount++;
         enemyPool.Return(enemy);
         OnEnemyDeath?.Invoke(deathCount);
-        StartCoroutine(Respawn(enemy.SpawnIndex));
+        
+        if (spawnInterval != null)
+        {
+            StartCoroutine(Respawn(enemy.SpawnIndex));
+        }
     }
 }
