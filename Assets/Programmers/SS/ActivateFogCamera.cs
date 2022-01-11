@@ -1,23 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class ActivateFogCamera : MonoBehaviour
 {
-
-    [SerializeField] private bool doWeHaveFogInScene;
+    
+    public bool AllowFog = true;
 
     private void Start()
     {
-        doWeHaveFogInScene = RenderSettings.fog;
+        RenderPipelineManager.beginCameraRendering += OnBeginCameraRendering;
+        RenderPipelineManager.endCameraRendering += OnEndCameraRendering;
     }
 
-    private void OnPreRender()
+    void OnBeginCameraRendering(ScriptableRenderContext context, Camera camera)
     {
-        RenderSettings.fog = false;
+        // Put the code that you want to execute before the camera renders here
+        // If you are using URP or HDRP, Unity calls this method automatically
+        // If you are writing a custom SRP, you must call RenderPipeline.BeginCameraRendering
+        if(camera== GetComponent<Camera>())
+        {
+            RenderSettings.fog = false;
+        }
+        
     }
-    private void OnPostRender()
+    void OnEndCameraRendering(ScriptableRenderContext context, Camera camera)
     {
-        RenderSettings.fog = false;
+        
+            //FogOn = RenderSettings.fog;
+            RenderSettings.fog = AllowFog;
+        
+
     }
+
+
 }
