@@ -54,6 +54,7 @@ public class SorceressAI : MonoBehaviour
     private float distanceToPlayer;
     //[SerializeField] private Weapon rangeOfOrbAttack;
     [SerializeField] private Vector3 offsetPositionOnOrbAttack;
+    private Vector3 previousPosition;
 
     //Animatior controller
     private Animator sorceressAnimator;
@@ -71,10 +72,19 @@ public class SorceressAI : MonoBehaviour
         entityAttack = GetComponent<EntityAttack>();
         sorceressAnimator = GetComponent<Animator>();
         attackOrbSound = GetComponent<AudioSource>();
+        previousPosition = transform.position;
     }
     
     private void Update()
     {
+        if (previousPosition == transform.position)
+        {
+            float randomX = Random.Range(-1, 1) * 5f;
+            float randomZ = Random.Range(-1, 1) * 5f;
+            offsetPositionOnOrbAttack = new Vector3(randomX, 0, randomZ);
+        }
+
+        previousPosition = transform.position;
         //Check for the angle of view
         targetDir = playerPosition.Vector3 - transform.position;
         angleToPlayer = (Vector3.Angle(targetDir, transform.forward));
@@ -119,7 +129,6 @@ public class SorceressAI : MonoBehaviour
             else if (!isStartPositionReset)
             { 
                 //agent.ResetPath();
-                agent.isStopped = false;
                 agent.SetDestination(startPosition);
                 isStartPositionReset = true;
                 sorceressAnimator.SetBool("isWalking", true);
@@ -143,7 +152,6 @@ public class SorceressAI : MonoBehaviour
         if (walkPointSet)
         {
             agent.SetDestination(walkPoint);
-            agent.isStopped = false;
             sorceressAnimator.SetBool("isWalking", true);
         }
         
@@ -171,7 +179,6 @@ public class SorceressAI : MonoBehaviour
     {
         agent.speed = chaseSpeed;
         agent.SetDestination(playerPosition.Vector3);
-        agent.isStopped = false;
         isInPatrolState = false;
         sorceressAnimator.SetBool("isAttacking", false);
         sorceressAnimator.SetBool("isWalking", true);
