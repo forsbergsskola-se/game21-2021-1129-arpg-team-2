@@ -33,12 +33,9 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     private void Awake()
     {
         grid.rectTrans = GetComponent<RectTransform>();
-
-        Debug.Log("before init: " + grid.gridSlots);
         grid.InitGrid();
-        Debug.Log("after init: " + grid.gridSlots);
         
-        if (ItemDatabase.itemDataList.Count != 0) grid.RepopulateGridView();
+        // if (ItemDatabase.itemDataList.Count != 0) grid.RepopulateGridView();
 
         gameObject.SetActive(false);
         itemDrop = FindObjectOfType<ItemDropNextToPlayer>();
