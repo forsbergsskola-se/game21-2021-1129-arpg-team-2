@@ -17,16 +17,14 @@ public class ItemGrid : ScriptableObject
     [SerializeField] private int width;
     [SerializeField] private int height;
     public ItemDatabase itemDatabase;
+    public GameObject inventoryItem;
     
     internal RectTransform rectTrans;
     public float TileSize => tileSize;
     public int Width => width;
     public int Height => height;
     
-    // todo: Add a scriptable object that holds ItemData
-    private InventoryItem[,] gridSlots;
-    public InventoryItem[,] GridSlots => gridSlots;
-    
+    public InventoryItem[,] gridSlots;
     private Vector2 positionOnGrid;
     private Vector2Int tileGridPosition;
 
@@ -36,6 +34,39 @@ public class ItemGrid : ScriptableObject
         var size = new Vector2(width * tileSize, height * tileSize);
         rectTrans.sizeDelta = size;
     }
+    
+    public void RepopulateGridView()
+    {
+        foreach (var item in itemDatabase.itemDataList)
+        {
+            Debug.Log($"Repopulating grid view with item {item.Type}: {item.SubType}");
+            
+            var temp = Instantiate(inventoryItem);
+            temp.GetComponent<InventoryItem>().Set(item.Width, item.Height, item.ItemIcon, item.Type, item.SubType);
+            var rt = temp.GetComponent<RectTransform>();
+            rt.SetParent(rectTrans);
+
+            for (var i = 0; i < item.Width; i++)
+            {
+                for (var j = 0; j < item.Height; j++)
+                {
+                    Debug.Log("item" + item.Type);
+                    Debug.Log("GridSlots: " + gridSlots);
+                    Debug.Log("item posX: " + item.OnGridPositionX);
+                    Debug.Log("item posY: " + item.OnGridPositionY);
+                    gridSlots[item.OnGridPositionX + i, item.OnGridPositionY + j] = temp.GetComponent<InventoryItem>();
+                }
+            }
+
+            var position = new Vector2
+            {
+                x = item.OnGridPositionX * tileSize + tileSize * item.Width / 2,
+                y = -(item.OnGridPositionY * tileSize + tileSize * item.Height / 2)
+            };
+            rt.localPosition = position;
+        }
+    }
+    
 
     public bool AddItem(InventoryItem itemToAdd, int posX, int posY, ref InventoryItem overlapItem)
     {

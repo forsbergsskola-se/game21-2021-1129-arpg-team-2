@@ -34,37 +34,14 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     {
         grid.rectTrans = GetComponent<RectTransform>();
 
-        Debug.Log("before init: " + grid.GridSlots);
+        Debug.Log("before init: " + grid.gridSlots);
+        grid.InitGrid();
+        Debug.Log("after init: " + grid.gridSlots);
+        
+        if (ItemDatabase.itemDataList.Count != 0) grid.RepopulateGridView();
 
-        if (grid.GridSlots == null) grid.InitGrid();
-        else RepopulateGridView();
-        
-        Debug.Log("after init: " + grid.GridSlots);
-        
         gameObject.SetActive(false);
         itemDrop = FindObjectOfType<ItemDropNextToPlayer>();
-    }
-
-    private void RepopulateGridView()
-    {
-        foreach (var item in ItemDatabase.itemDataList)
-        {
-            var temp = Instantiate(inventoryItem);
-            temp.GetComponent<InventoryItem>().Set(item.Width, item.Height, item.ItemIcon, item.Type, item.SubType);
-            var success = grid.AddItem(temp.GetComponent<InventoryItem>(), item.OnGridPositionX, item.OnGridPositionY, ref overlapItem);
-            Debug.Log($"Repopulating grid view with item {item.Type}: {success}");
-        }
-    }
-
-    private void OnEnable()
-    {
-        for (var x = 0; x < grid.Width; x++)
-        {
-            for (var y = 0; y < grid.Height; y++)
-            {
-                Debug.Log($"what's inside grid[{ x }, { y }]: {grid.GridSlots[x, y]}");
-            }
-        }
     }
 
     private void Update()
