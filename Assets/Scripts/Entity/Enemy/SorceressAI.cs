@@ -49,6 +49,11 @@ public class SorceressAI : MonoBehaviour
     private Vector3 startPosition;
     private bool playerIsDefeated;
     private EntityAttack entityAttack;
+    
+    // UnderAttack
+    private float distanceToPlayer;
+    //[SerializeField] private Weapon rangeOfOrbAttack;
+    [SerializeField] private Vector3 offsetPositionOnOrbAttack;
 
     //Animatior controller
     private Animator sorceressAnimator;
@@ -79,6 +84,7 @@ public class SorceressAI : MonoBehaviour
         {
             playerInSight = false;
         }
+        distanceToPlayer = Vector3.Distance(playerPosition.Vector3, transform.position);
         
         //Check for obstacle
         RaycastHit hit;
@@ -177,11 +183,11 @@ public class SorceressAI : MonoBehaviour
     {
         agent.speed = chaseSpeed;
         //Make sure enemy doesn't move
-        agent.SetDestination(transform.position);
+        agent.SetDestination(playerPosition.Vector3 + offsetPositionOnOrbAttack);
 
         transform.LookAt(playerPosition.Vector3);
 
-        agent.isStopped = true;
+        //agent.isStopped = true;
         isInPatrolState = false;
         sorceressAnimator.SetBool("isWalking", isInPatrolState);
         sorceressAnimator.SetBool("isAttacking", true);
