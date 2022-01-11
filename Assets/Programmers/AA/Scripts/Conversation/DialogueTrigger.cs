@@ -27,7 +27,7 @@ public class DialogueTrigger : MonoBehaviour {
         }
     }
 
-    public void TriggerDialogue ()
+    private void TriggerDialogue ()
     {
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
         face.SetActive(true);

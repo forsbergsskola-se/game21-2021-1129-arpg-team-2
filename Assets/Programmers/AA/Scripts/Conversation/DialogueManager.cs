@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -61,7 +61,7 @@ public class DialogueManager : MonoBehaviour {
         }
     }
 
-    void EndDialogue()
+    public void EndDialogue()
     {
         //Time.timeScale = 1;
         animator.SetBool("IsOpen", false);
