@@ -27,12 +27,6 @@ public class MagicOrb : MonoBehaviour, IAttack
         Destroy(this.gameObject);
     }
 
-    private IEnumerator Lifetime()
-    {
-        yield return new WaitForSeconds(2);
-        Destroy(this.gameObject);
-    }
-
     public void Attack(IDamageable thisTarget)
     {
         thisTarget?.TakeDamage(magicOrb.Power);
