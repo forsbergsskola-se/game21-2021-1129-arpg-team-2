@@ -15,6 +15,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     [SerializeField] private ItemGrid grid;
     [SerializeField] private GameObject inventoryItem;
     [SerializeField] private GameObject carrotPool;
+    [SerializeField] private GameObject potatoPool;
     [SerializeField] private GameObject potionPool;
     public ItemDatabase ItemDatabase;
 
@@ -56,6 +57,8 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         GameObject find;
         if (targetType is ItemType.Consumable && targetSubType == (int) ConsumableType.Carrot)
             find = carrotPool.GetComponent<CarrotPool>().Pop();
+        else if (targetType is ItemType.Consumable && targetSubType == (int) ConsumableType.Potato)
+            find = potionPool.GetComponent<PotatoPool>().Pop();
         else if (targetType is ItemType.Consumable && targetSubType == (int) ConsumableType.Potion)
             find = potionPool.GetComponent<PotionPool>().Pop();
         else find = null;

@@ -5,7 +5,7 @@ public class WorldItem : MonoBehaviour
     [SerializeField] private BaseItem item;
     public BaseItem Item => item;
 
-    [SerializeField] private PoolScriptableObject carrotPool;
+    [SerializeField] private PoolScriptableObject objectPool;
 
     // public void StartExpirationCountDown()
     // {
@@ -17,6 +17,6 @@ public class WorldItem : MonoBehaviour
         if (!gameObject.activeInHierarchy) return;
         GameObject o;
         (o = gameObject).SetActive(false);
-        carrotPool.Push(o);
+        objectPool.Push(o);
     }
 }
