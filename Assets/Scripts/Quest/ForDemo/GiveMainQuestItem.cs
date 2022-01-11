@@ -20,9 +20,9 @@ public class GiveMainQuestItem : MonoBehaviour
     {
         // NOTE: Currently it doesn't check for if player's already acquired the quest item
         var item = Instantiate(inventoryItemPrefab);
-        item.GetComponent<InventoryItem>().Set(questItem);
+        item.GetComponent<InventoryItem>().Set(questItem.InventoryItemWidth, questItem.InventoryItemHeight, questItem.InventoryItemIcon, questItem.Type, (int)questItem.SubType);
 
-        var firstEmptySlot = playerInventory.GetFirstAvailableSlot(item.ItemData.Width, item.ItemData.Height);
+        var firstEmptySlot = playerInventory.GetFirstAvailableSlot(item.itemData.Width, item.itemData.Height);
 
         var success = playerInventory.AddItem(item, firstEmptySlot.x, firstEmptySlot.y);
         Debug.Log("Adding item successful: " + success);

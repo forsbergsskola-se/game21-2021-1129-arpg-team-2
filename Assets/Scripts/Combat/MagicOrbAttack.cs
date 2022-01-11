@@ -10,10 +10,12 @@ public class MagicOrbAttack : MonoBehaviour {
     [SerializeField] private float orbLerpTime = 0.4f;
     private GameObject player;
     private MagicOrb createdOrb;
+    private AudioSource orbAttack;
 
     private void Awake()
     {
         player = GameObject.FindWithTag("Player");
+        orbAttack = GetComponent<AudioSource>();
     }
 
     private void CreateOrb()
@@ -26,6 +28,7 @@ public class MagicOrbAttack : MonoBehaviour {
     private void LaunchOrb()
     {
         StartCoroutine(MoveOrbToTarget());
+        orbAttack.Play();
     }
     
     private IEnumerator MoveOrbToTarget()

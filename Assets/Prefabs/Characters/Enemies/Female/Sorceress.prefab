@@ -1784,6 +1784,7 @@ GameObject:
   - component: {fileID: 9082706518343677464}
   - component: {fileID: 2927180851973244084}
   - component: {fileID: 6085993504308735873}
+  - component: {fileID: 5619515722181602021}
   m_Layer: 0
   m_Name: Sorceress
   m_TagString: Enemy
@@ -1893,7 +1894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f698b8af41f264abd87ae44d449008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 0}
+  Event: {fileID: 11400000, guid: 7e9bb74333dc137449b2324eef6a787f, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
@@ -2030,6 +2031,7 @@ MonoBehaviour:
   breathingTimeAfterDefeating: 5
   fieldOfViewAngle: 90
   playerPosition: {fileID: 11400000, guid: 577c8176ea8272848b1895ccaffba98e, type: 2}
+  offsetPositionOnOrbAttack: {x: 5, y: 0, z: 5}
 --- !u!114 &8198065482862854338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2159,9 +2161,9 @@ AudioSource:
   m_GameObject: {fileID: 4968138986584640272}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8778606759619034449, guid: 5667fe108f62fc44d9dad727bcc5d0c0, type: 2}
   m_audioClip: {fileID: 8300000, guid: b5625becb7ec39e45b0b219658704e77, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2246,6 +2248,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5619515722181602021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4968138986584640272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8cad7cefbf74f84db69572cc4ee5cae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 11400000, guid: e1d4e7e40f5534c3eb4089439e105db8, type: 2}
+  projectile: {fileID: 6680336195130181756, guid: 52383342ae1915f47bff140a26fc3495, type: 3}
 --- !u!1 &4972767622866852680
 GameObject:
   m_ObjectHideFlags: 0

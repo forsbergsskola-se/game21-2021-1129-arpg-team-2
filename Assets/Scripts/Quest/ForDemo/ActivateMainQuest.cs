@@ -1,5 +1,3 @@
-using System.Linq;
-using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -9,9 +7,8 @@ using UnityEngine;
 public class ActivateMainQuest : MonoBehaviour
 {
     [SerializeField] private GameObject mainQuestQuickView;
-    [SerializeField] private CollectQuest mainQuestFamilyMatters;
-    [SerializeField] private GameObject questTitle;
-    [SerializeField] private GameObject questTodos;
+    [SerializeField] private GameObject logQuestName;
+    [SerializeField] private GameObject logQuestDetail;
 
     private void Awake()
     {
@@ -20,10 +17,8 @@ public class ActivateMainQuest : MonoBehaviour
 
     private void OnFamilyMattesActivated()
     {
-        questTitle.GetComponent<TextMeshProUGUI>().text = mainQuestFamilyMatters.QuestName;
-        questTodos.GetComponent<TextMeshProUGUI>().text = GetTodoText();
         mainQuestQuickView.SetActive(true);
+        logQuestName.SetActive(true);
+        logQuestDetail.SetActive(true);
     }
-
-    private string GetTodoText() => mainQuestFamilyMatters.QuestTodoList.Aggregate("", (current, todo) => current + $"- {todo.Description} \n");
 }

@@ -49,9 +49,18 @@ public class SorceressAI : MonoBehaviour
     private Vector3 startPosition;
     private bool playerIsDefeated;
     private EntityAttack entityAttack;
+    
+    // UnderAttack
+    private float distanceToPlayer;
+    //[SerializeField] private Weapon rangeOfOrbAttack;
+    [SerializeField] private Vector3 offsetPositionOnOrbAttack;
+    private Vector3 previousPosition;
 
     //Animatior controller
     private Animator sorceressAnimator;
+    
+    // Audio
+    private AudioSource attackOrbSound;
 
     private void Start()
     {
@@ -62,10 +71,20 @@ public class SorceressAI : MonoBehaviour
         playerIsDefeated = false;
         entityAttack = GetComponent<EntityAttack>();
         sorceressAnimator = GetComponent<Animator>();
+        attackOrbSound = GetComponent<AudioSource>();
+        previousPosition = transform.position;
     }
     
     private void Update()
     {
+        if (previousPosition == transform.position)
+        {
+            float randomX = Random.Range(-1, 1) * 5f;
+            float randomZ = Random.Range(-1, 1) * 5f;
+            offsetPositionOnOrbAttack = new Vector3(randomX, 0, randomZ);
+        }
+
+        previousPosition = transform.position;
         //Check for the angle of view
         targetDir = playerPosition.Vector3 - transform.position;
         angleToPlayer = (Vector3.Angle(targetDir, transform.forward));
@@ -75,6 +94,7 @@ public class SorceressAI : MonoBehaviour
         {
             playerInSight = false;
         }
+        distanceToPlayer = Vector3.Distance(playerPosition.Vector3, transform.position);
         
         //Check for obstacle
         RaycastHit hit;
@@ -109,7 +129,6 @@ public class SorceressAI : MonoBehaviour
             else if (!isStartPositionReset)
             { 
                 //agent.ResetPath();
-                agent.isStopped = false;
                 agent.SetDestination(startPosition);
                 isStartPositionReset = true;
                 sorceressAnimator.SetBool("isWalking", true);
@@ -133,7 +152,6 @@ public class SorceressAI : MonoBehaviour
         if (walkPointSet)
         {
             agent.SetDestination(walkPoint);
-            agent.isStopped = false;
             sorceressAnimator.SetBool("isWalking", true);
         }
         
@@ -161,10 +179,10 @@ public class SorceressAI : MonoBehaviour
     {
         agent.speed = chaseSpeed;
         agent.SetDestination(playerPosition.Vector3);
-        agent.isStopped = false;
         isInPatrolState = false;
         sorceressAnimator.SetBool("isAttacking", false);
         sorceressAnimator.SetBool("isWalking", true);
+        //attackOrbSound.Play();
         isStartPositionReset = false;
     }
 
@@ -172,11 +190,11 @@ public class SorceressAI : MonoBehaviour
     {
         agent.speed = chaseSpeed;
         //Make sure enemy doesn't move
-        agent.SetDestination(transform.position);
+        agent.SetDestination(playerPosition.Vector3 + offsetPositionOnOrbAttack);
 
         transform.LookAt(playerPosition.Vector3);
 
-        agent.isStopped = true;
+        //agent.isStopped = true;
         isInPatrolState = false;
         sorceressAnimator.SetBool("isWalking", isInPatrolState);
         sorceressAnimator.SetBool("isAttacking", true);
@@ -212,7 +230,7 @@ public class SorceressAI : MonoBehaviour
         }
 
     }
-    
+
     public void OnPlayerNotDefeated()
     {
         StartCoroutine(TestCoroutine());

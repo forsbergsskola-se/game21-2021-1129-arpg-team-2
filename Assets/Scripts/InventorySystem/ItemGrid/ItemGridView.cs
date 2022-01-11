@@ -16,6 +16,7 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     [SerializeField] private GameObject inventoryItem;
     [SerializeField] private GameObject carrotPool;
     [SerializeField] private GameObject potionPool;
+    public ItemDatabase ItemDatabase;
 
     [HideInInspector] public UnityEvent ItemAddSuccess;
 
@@ -33,6 +34,9 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     {
         grid.rectTrans = GetComponent<RectTransform>();
         grid.InitGrid();
+        
+        // if (ItemDatabase.itemDataList.Count != 0) grid.RepopulateGridView();
+
         gameObject.SetActive(false);
         itemDrop = FindObjectOfType<ItemDropNextToPlayer>();
     }
@@ -46,8 +50,8 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
 
     private void DropItemNextToPlayer()
     {
-        var targetType = selectedItem.ItemData.Type;
-        var targetSubType = selectedItem.ItemData.SubType;
+        var targetType = selectedItem.itemData.Type;
+        var targetSubType = selectedItem.itemData.SubType;
 
         GameObject find;
         if (targetType is ItemType.Consumable && targetSubType == (int) ConsumableType.Carrot)
@@ -92,8 +96,8 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     {
         RemoveItem(targetGridCell);
         
-        var targetType = selectedItem.ItemData.Type;
-        var targetSubType = selectedItem.ItemData.SubType;
+        var targetType = selectedItem.itemData.Type;
+        var targetSubType = selectedItem.itemData.SubType;
         
         if (targetType is ItemType.Consumable && targetSubType == (int)ConsumableType.Carrot)
         {
@@ -114,7 +118,30 @@ public class ItemGridView : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     private void AddItem(Vector2Int targetGridCell)
     {
         var item = Instantiate(inventoryItem);
-        item.GetComponent<InventoryItem>().Set(pickedUpItem);
+        ItemType type;
+        int? subType;
+        
+         switch (pickedUpItem)
+         {
+             case ConsumableItem c when c:
+                 type = c.Type;
+                 subType = (int) c.SubType;
+                 break;
+             case WeaponItem w when w:
+                 type = w.Type;
+                 subType = (int) w.SubType;
+                 break;
+             case QuestItem q when q:
+                 type = q.Type;
+                 subType = (int) q.SubType;
+                 break;
+             default:
+                 type = ItemType.None;
+                 subType = null;
+                 break;
+         }
+        
+        item.GetComponent<InventoryItem>().Set(pickedUpItem.InventoryItemWidth, pickedUpItem.InventoryItemHeight, pickedUpItem.InventoryItemIcon, type, subType);
 
         var success = grid.AddItem(item.GetComponent<InventoryItem>(), targetGridCell.x, targetGridCell.y, ref overlapItem);
         if (success)
