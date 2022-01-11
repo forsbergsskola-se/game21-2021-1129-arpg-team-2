@@ -1,11 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FlowerScript : MonoBehaviour
 {
     public LayerMask PlayerLayer;
+    
     [SerializeField] private BooleanValue isFlowerCollected;
     [SerializeField] private float intractionRange = 10f;
     private bool isInIntractRange;
