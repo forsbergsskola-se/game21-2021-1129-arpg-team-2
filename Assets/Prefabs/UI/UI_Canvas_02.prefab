@@ -17121,6 +17121,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MaximizedMinimap
       objectReference: {fileID: 0}
+    - target: {fileID: 7699394078262161337, guid: 0b6f47d382161a3418cd1e3c26670bd0, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b6f47d382161a3418cd1e3c26670bd0, type: 3}
 --- !u!224 &7365516519662291591 stripped
@@ -17681,6 +17685,18 @@ PrefabInstance:
       value: 280
       objectReference: {fileID: 0}
     - target: {fileID: 2382078568207541032, guid: 424008ee0ce61f141b70ba78adc0e8b0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382078568207541032, guid: 424008ee0ce61f141b70ba78adc0e8b0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382078568207541032, guid: 424008ee0ce61f141b70ba78adc0e8b0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382078568207541032, guid: 424008ee0ce61f141b70ba78adc0e8b0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -17710,11 +17726,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2382078568207541032, guid: 424008ee0ce61f141b70ba78adc0e8b0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 20
+      value: 4.799988
       objectReference: {fileID: 0}
     - target: {fileID: 2382078568207541032, guid: 424008ee0ce61f141b70ba78adc0e8b0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -220
+      value: -129.4
       objectReference: {fileID: 0}
     - target: {fileID: 2382078568207541032, guid: 424008ee0ce61f141b70ba78adc0e8b0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -17731,6 +17747,17 @@ PrefabInstance:
     - target: {fileID: 2382078568207541033, guid: 424008ee0ce61f141b70ba78adc0e8b0, type: 3}
       propertyPath: m_Name
       value: Quest log
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382078568207541033, guid: 424008ee0ce61f141b70ba78adc0e8b0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382078569001476550, guid: 424008ee0ce61f141b70ba78adc0e8b0, type: 3}
+      propertyPath: m_text
+      value: 'Family matters:
+
+
+'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 424008ee0ce61f141b70ba78adc0e8b0, type: 3}
