@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CoffinScript : MonoBehaviour
@@ -9,12 +7,13 @@ public class CoffinScript : MonoBehaviour
     [SerializeField] private BooleanValue isCoffinOpen;
     private bool isInIntractRange;
     private Animator _animator;
-    void Start()
+
+    private void Awake()
     {
+        isCoffinOpen.BoolValue = false;
         _animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         isInIntractRange = Physics.CheckSphere(transform.position, intractionRange, PlayerLayer);

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class FlowerScript : MonoBehaviour
@@ -7,7 +8,12 @@ public class FlowerScript : MonoBehaviour
     [SerializeField] private BooleanValue isFlowerCollected;
     [SerializeField] private float intractionRange = 10f;
     private bool isInIntractRange;
-    
+
+    private void Awake()
+    {
+        isFlowerCollected.BoolValue = false;
+    }
+
     void Update()
     {
         isInIntractRange = Physics.CheckSphere(transform.position, intractionRange, PlayerLayer);

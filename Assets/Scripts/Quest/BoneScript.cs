@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,12 @@ public class BoneScript : MonoBehaviour
     [SerializeField] private BooleanValue isBoneCollected;
     [SerializeField] private float intractionRange = 10f;
     private bool isInIntractRange;
-    
+
+    private void Awake()
+    {
+        isBoneCollected.BoolValue = false;
+    }
+
     void Update()
     {
         isInIntractRange = Physics.CheckSphere(transform.position, intractionRange, PlayerLayer);
