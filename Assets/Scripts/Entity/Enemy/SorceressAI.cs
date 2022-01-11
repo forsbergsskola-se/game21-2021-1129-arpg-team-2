@@ -169,7 +169,7 @@ public class SorceressAI : MonoBehaviour
         isInPatrolState = false;
         sorceressAnimator.SetBool("isAttacking", false);
         sorceressAnimator.SetBool("isWalking", true);
-        attackOrbSound.Play();
+        //attackOrbSound.Play();
         isStartPositionReset = false;
     }
 
@@ -217,7 +217,7 @@ public class SorceressAI : MonoBehaviour
         }
 
     }
-    
+
     public void OnPlayerNotDefeated()
     {
         StartCoroutine(TestCoroutine());
