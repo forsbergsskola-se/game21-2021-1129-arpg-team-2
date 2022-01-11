@@ -22,10 +22,10 @@ public class VolumeControl : MonoBehaviour
     //     slider.value = PlayerPrefs.GetFloat(volumeParameter, slider.value);
     // }
 
-    private void OnDisable()
-    {
-        PlayerPrefs.SetFloat(volumeParameter, slider.value);
-    }
+    // private void OnDisable()
+    // {
+    //     PlayerPrefs.SetFloat(volumeParameter, slider.value);
+    // }
 
     private void HandleSliderValueChanged(float value)
     {
