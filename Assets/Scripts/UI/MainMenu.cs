@@ -15,10 +15,6 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject graphicsMenu;
     [SerializeField] private GameObject howToPlay;
     
-    // public void PlayGame()
-    // {
-    //     SceneManager.LoadScene("Level_Crypt");
-    // }
 
     public void QuitGame()
     {
