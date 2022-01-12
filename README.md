@@ -4,13 +4,14 @@
 
 https://user-images.githubusercontent.com/26838345/149138203-c970b9d6-f9f8-4133-88c6-ae680fb8bb71.mp4
 
-
+---
 ▶️[Watch it on YouTube](https://www.youtube.com/watch?v=vRLdABADsNg)
 
-Take control of a grieving father that is willing to do anything to save his last child! Go through the crypts of Dannemora and rip apart the rats festering there, take a stroll in the dead forest and pray to see a glimmer of light, and choose between saving humanity or your children. 
+---
 
-In this brand new ARPG you will experience the plague around the 1300s that is true to the ARPG legacy. It will feel like you are playing one of the classics but with state of the art graphics, and an array of different quests to complete. Now it’s up to you to decide how the fathers story ends.
+## Gif and image demos
 
+![image](https://user-images.githubusercontent.com/26838345/149140477-4dedfb8c-ac73-49bb-b82f-6eba276981d8.png)
 
 ![Crypt demo 1](https://user-images.githubusercontent.com/26838345/149138264-a157d2f7-ee81-4433-9b3a-1a876561d754.png)
 
@@ -38,6 +39,7 @@ In this brand new ARPG you will experience the plague around the 1300s that is t
 
 ![Enemy Rat](https://user-images.githubusercontent.com/26838345/149138566-77586a6a-0982-4e19-9e9a-65d913fb7995.png)
 
+---
 
 ## Team Ratmilk
 
@@ -64,6 +66,7 @@ Sokratis Papageorgiou [LinkedIn](https://www.linkedin.com/in/sokratis-papageorgi
 Anton Spetze  
 Ossian Reynolds  
 
+---
 
 ## Design Documents
 
