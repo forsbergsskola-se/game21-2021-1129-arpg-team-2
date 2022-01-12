@@ -1,4 +1,6 @@
-# Little Light
+![LittleLight](https://user-images.githubusercontent.com/26838345/149141278-4680db5c-d44d-46a3-9fae-cc4a65188fe7.png)
+
+# *Little Light*
 
 ## Trailer
 
