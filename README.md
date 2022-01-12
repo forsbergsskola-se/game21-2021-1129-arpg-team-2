@@ -39,7 +39,7 @@ In this brand new ARPG you will experience the plague around the 1300s that is t
 ![Enemy Rat](https://user-images.githubusercontent.com/26838345/149138566-77586a6a-0982-4e19-9e9a-65d913fb7995.png)
 
 
-## Team Name
+## Team Ratmilk
 
 *Game Designers*  
 Elias Bernmarker [LinkedIn](https://www.linkedin.com/in/elias-bernmarker-0733a9203/)  
@@ -72,5 +72,3 @@ Ossian Reynolds
 [Technical Design Document](https://docs.google.com/document/d/14_kPh5Px-M0-tvk30CJfV00Fr18ghlfXW67qha9tHhY/edit?usp=sharing)
 
 [Art Bible](https://docs.google.com/document/d/1w2hx_DtyuTP9tuc-raHeT1AwZhpjA_SCQVNMO1HiSQc/edit?usp=sharing)
-
-## Media
