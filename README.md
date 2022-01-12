@@ -1,8 +1,14 @@
 # {Little-Light}
 
-{video}
+## Trailer
 
-{description}
+▶️[Watch it on YouTube](https://www.youtube.com/watch?v=vRLdABADsNg)
+
+Take control of a grieving father that is willing to do anything to save his last child! Go through the crypts of Dannemora and rip apart the rats festering there, take a stroll in the dead forest and pray to see a glimmer of light, and choose between saving humanity or your children. 
+
+In this brand new ARPG you will experience the plague around the 1300s that is true to the ARPG legacy. It will feel like you are playing one of the classics but with state of the art graphics, and an array of different quests to complete. Now it’s up to you to decide how the fathers story ends.
+
+
 
 ## Team Name
 
