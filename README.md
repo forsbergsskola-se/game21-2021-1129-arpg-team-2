@@ -46,7 +46,7 @@ https://user-images.githubusercontent.com/26838345/149138203-c970b9d6-f9f8-4133-
 ## Team Ratmilk
 
 *Game Designers*  
-Elias Bernmarker [LinkedIn](https://www.linkedin.com/in/elias-bernmarker-0733a9203/)  
+Elias Bernmarker [LinkedIn](https://www.linkedin.com/in/elias-bernmarker-0733a9203/) [Portfolio](https://ivinsiblee.wixsite.com/eliasbernmarker)  
 Lucas Olsson [LinkedIn](https://www.linkedin.com/in/lucasolsson/)  
 Max DK [LinkedIn](https://www.linkedin.com/in/max-dk-5641b5224/)  
 
